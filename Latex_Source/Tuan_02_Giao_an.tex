@@ -1,0 +1,163 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Giáo án Tuần 02} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}KẾ HOẠCH BÀI DẠY CHI TIẾT TUẦN 02}\\[3pt]
+    {\large\textbf{\color{AsianBlue}VÒNG LẶP NÂNG CAO \& KỸ THUẬT MẢNG 1 CHIỀU TOÀN DIỆN}}\\[2pt]
+    \textit{\small Thời lượng: 90 phút -- Dành cho học sinh bồi dưỡng Đội tuyển Olympic Tin học 11}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU BÀI HỌC (90 PHÚT)}]
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Kiến thức:} Làm chủ cơ chế \texttt{while}, \texttt{do-while}, vòng lặp lồng nhau (\textit{nested loops}), cờ hiệu \textit{flag}, và cấu trúc dữ liệu Mảng 1 chiều trong C++.
+    \item \textbf{Kỹ năng lập trình thi đấu:} Phân biệt bộ nhớ Stack (dễ lỗi tràn ngăn xếp) và Heap/BSS; khai báo mảng tĩnh toàn cục kích thước lớn; thuần thục kỹ thuật vào/ra tệp \texttt{.INP} / \texttt{.OUT}.
+    \item \textbf{Tư duy giải thuật:} Cài đặt chính xác các thuật toán duyệt mảng, tìm kiếm Max/Min, đếm tần số, kiểm tra tính chất mảng và tiếp cận thuật toán tối ưu Kadane $O(N)$.
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. TIẾN TRÌNH LÊN LỚP CHI TIẾT (90 PHÚT)}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{[00:00 -- 00:15] Kiểm tra bài cũ \& Fast-Track Diagnostic Tuần 2 (15 phút):}
+    \begin{itemize}
+        \item Chiếu 3 câu hỏi chẩn đoán nhanh: (1) Cho $N = 2026$, làm sao tách chữ số đơn vị và rút gọn? (\texttt{cs = n \% 10; n /= 10;}); (2) Mảng \texttt{int a[5];} có phần tử \texttt{a[5]} không? (Không, chỉ từ \texttt{a[0]} tới \texttt{a[4]}, truy cập \texttt{a[5]} là lỗi Out-of-bounds); (3) Khai báo \texttt{int a[1000000];} trong \texttt{main()} bị gì? (Sập do Stack Overflow, phải khai báo toàn cục ngoài \texttt{main}).
+        \item \textbf{Chiến lược dạy nhanh:} Nếu học sinh đã rõ, lướt nhanh phần nhập/xuất mảng cơ bản (tiết kiệm 20 phút), dồn thời lượng cho kỹ thuật đảo mảng 2 con trỏ và thực hành Debug/Watches trên Code::Blocks!
+        \item Code Audit BTVN Tuần 1: Khắc phục triệt để lỗi tràn số \texttt{long long}, chia nguyên và kỹ thuật tách chữ số.
+    \end{itemize}
+    \item \textbf{[00:15 -- 00:40] Chuyên đề 1: Vòng lặp nâng cao \& Vòng lặp lồng nhau (25 phút):}
+    \begin{itemize}
+        \item Phân biệt \texttt{while} vs \texttt{do-while}; kỹ thuật 2 vòng for lồng nhau vẽ hình tư duy; điều khiển luồng \texttt{break}, \texttt{continue}; kỹ thuật cờ hiệu (\textit{flag}).
+    \end{itemize}
+    \item \textbf{[00:40 -- 01:10] Chuyên đề 2: Kỹ thuật Mảng 1 chiều toàn diện trong C++ (30 phút):}
+    \begin{itemize}
+        \item Cơ chế bộ nhớ liên tiếp và truy xuất $O(1)$; bẫy tràn ngăn xếp Stack Overflow; bộ mẫu thuật toán mảng cơ bản (Max/Min kèm vị trí, đếm tần số $K$, đảo mảng tại chỗ).
+    \end{itemize}
+    \item \textbf{[01:10 -- 01:30] Thực hành tại lớp, Giao Cẩm nang Tự học A--Z \& BTVN (20 phút):}
+    \begin{itemize}
+        \item Cài đặt trực tiếp bài toán đọc tệp \texttt{DAO.INP} / \texttt{DAO.OUT} trên Code::Blocks (\texttt{F9}).
+        \item Giới thiệu tư duy thuật toán Kadane ($O(N^2) \to O(N)$).
+        \item Giao nhiệm vụ tự học: Tự đọc và gõ theo \textbf{Cẩm nang Tự học C++ Tập 02 \& Tập 03}; hoàn thành Phiếu bài tập Tuần 02.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}II. NỘI DUNG TRỌNG TÂM \& BỘ MÃ NGUỒN MẪU}
+
+\subsection*{\color{AsianBlue}1. Vòng lặp lồng nhau (Nested Loops) \& Kỹ thuật Cờ hiệu}
+Vòng lặp lồng nhau là nền tảng để duyệt ma trận hoặc xét các cặp phần tử $(i, j)$ với $i < j$.
+\begin{lstlisting}[language=C++]
+// Dem so cap (i, j) co tong bang S trong O(N^2)
+long long dem = 0;
+for (int i = 0; i < n; ++i) {
+    for (int j = i + 1; j < n; ++j) {
+        if (1LL * a[i] + a[j] == s) dem++;
+    }
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Khai báo Mảng kích thước lớn \& Tránh Stack Overflow}
+Trong C++, mảng cục bộ trong \texttt{main()} được cấp phát trên Stack (tối đa $1 \sim 8\text{MB}$). Khai báo mảng $10^6$ số nguyên trong \texttt{main()} sẽ làm sập chương trình ngay lập tức.
+\begin{lstlisting}[language=C++]
+// QUY TAC VANG: Khai bao mang tinh kich thuoc lon TOAN CUC (ngoai main)
+#include <iostream>
+using namespace std;
+
+const int MAXN = 100005;
+long long a[MAXN]; // Cap phat tren vung nho BSS / Data - an toan tuyet doi
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    // Xu ly mang an toan...
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}3. Cấu hình tệp vào/ra chuẩn thi Olympic Tin học}
+\begin{lstlisting}[language=C++]
+freopen("DAO.INP", "r", stdin);   // Chuyen luong nhap tu ban phim sang tep DAO.INP
+freopen("DAO.OUT", "w", stdout);  // Chuyen luong xuat tu man hinh sang tep DAO.OUT
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}III. ĐÁNH GIÁ VÀ HƯỚNG DẪN TỰ HỌC}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Đánh giá tại lớp:} Học sinh gõ thành công bài toán đảo ngược mảng có đọc xuất file \texttt{.INP} / \texttt{.OUT} trên Code::Blocks (bằng phím tắt \texttt{F9}).
+    \item \textbf{Nhiệm vụ tự học tại nhà:}
+    \begin{itemize}
+        \item Đọc và gõ lại toàn bộ bài tập trong \textbf{Cẩm nang Tự học C++ Tập 02 \& Tập 03} (trích xuất toàn diện từ hệ thống GA C++).
+        \item Hoàn thành tối thiểu 8/10 bài trong \textbf{Phiếu bài tập Tuần 02}.
+    \end{itemize}
+    \item \textbf{Chuẩn bị Tuần 03:} Đọc trước chuyên đề \textit{Hàm (Function), Tham chiếu \& Kỹ thuật Mảng đếm tần số}.
+\end{itemize}
+
+\end{document}

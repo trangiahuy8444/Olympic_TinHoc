@@ -1,0 +1,156 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=18mm, left=20mm, right=20mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Định nghĩa hệ màu chuẩn theo Brand Identity của Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1 - Xanh logo chính
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493 - Xanh navy chữ Asian School
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} % Nền box nhẹ nhàng
+
+% Cấu hình Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Sổ tay Tra cứu C++ STL} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình code listing
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG VỚI LOGO TRƯỜNG
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.5cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.2cm}
+{\color{AsianBlue}\hrule height 1.8pt}
+\vspace{0.3cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}SỔ TAY TRA CỨU C++ STL DÀNH CHO HỌC SINH}\\[4pt]
+    {\large\textbf{\color{AsianBlue}TÀI LIỆU ĐỌC BỎ TÚI CHO ĐỘI TUYỂN OLYMPIC TIN HỌC 11}}\\[4pt]
+    \textit{Cẩm nang cấu trúc dữ liệu \& hàm tiện ích thường dùng trong thi đấu}
+\end{center}
+
+\vspace{0.3cm}
+
+\section*{\color{AsianDarkBlue}1. Kiểu dữ liệu \& Quy tắc chống tràn số}
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Kiểu dữ liệu} & \textbf{Cú pháp khai báo} & \textbf{Phạm vi giá trị} & \textbf{Ý nghĩa thi Olympic} \\ \midrule
+Số nguyên thường & \texttt{int x = 10;} & $\approx 2 \cdot 10^9$ & Dùng cho chỉ số, kích thước $N \le 10^6$ \\
+Số nguyên lớn & \texttt{long long s = 0;} & $\approx 9 \cdot 10^{18}$ & Dùng khi tính tổng, tích, thời gian $\ge 10^9$ \\
+Ép kiểu tích & \texttt{1LL * a * b} & -- & Tránh tràn số trước khi gán \\
+Số thực & \texttt{double d = 3.14;} & -- & Độ chính xác cao \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}2. Tra cứu Cấu trúc Dữ liệu C++ STL Cốt lõi}
+
+\subsection*{\color{AsianBlue}2.1. Mảng động: \texttt{std::vector}}
+\begin{lstlisting}[language=C++]
+#include <vector>
+#include <algorithm>
+
+vector<int> a;
+a.push_back(10);                // Them phan tu vao cuoi
+int x = a.back(); a.pop_back(); // Lay va xoa phan tu cuoi
+int n = a.size();               // Kich thuoc mang
+sort(a.begin(), a.end());       // Sap xep tang dan
+reverse(a.begin(), a.end());    // Dao nguoc mang
+int first = a[0], last = a.back();
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2.2. Tập hợp: \texttt{std::set}}
+\begin{lstlisting}[language=C++]
+#include <set>
+
+set<int> s; // Tu dong sap xep tang dan, loai bo trung lap
+s.insert(5);                 // Them phan tu
+if (s.count(5)) s.erase(5);  // Kiem tra va xoa phan tu
+int n = s.size();
+
+for (int x : s) cout << x << " "; // Duyet tap hop
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2.3. Bảng ánh xạ / Đếm tần số: \texttt{std::map}}
+\begin{lstlisting}[language=C++]
+#include <map>
+
+map<string, int> d;
+d["apple"] = 3;
+if (d.count("apple")) d["apple"]++;
+
+// Dem tan so cac phan tu mang trong O(N log N)
+map<int, int> freq;
+for (int x : arr) freq[x]++;
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2.4. Cặp giá trị: \texttt{std::pair}}
+\begin{lstlisting}[language=C++]
+#include <utility>
+#include <vector>
+#include <algorithm>
+
+pair<int, int> p = {10, 20};
+int x = p.first, y = p.second;
+
+vector<pair<int, int>> points = {{1, 2}, {0, 5}, {1, 1}};
+sort(points.begin(), points.end()); // Tu dong so sanh first roi den second!
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}3. Bảng quy tắc độ phức tạp và giới hạn $N$ (1.0 giây)}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=\textbf{QUY TẮC PHÂN TÍCH THUẬT TOÁN THEO SUBTASK}]
+\begin{itemize}
+    \item $N \le 20$: Thuật toán vét cạn, quay lui $O(2^N)$ hoặc $O(N!)$.
+    \item $N \le 500$: Thuật toán $O(N^3)$ (Floyd, 3 vòng for lồng nhau).
+    \item $N \le 5000$: Thuật toán $O(N^2)$ (Quy hoạch động 2 chiều, 2 vòng for).
+    \item $N \le 10^5 \dots 10^6$: Thuật toán $O(N \log N)$ hoặc $O(N)$ (Sắp xếp, Two Pointers, Prefix Sum, Chặt nhị phân).
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

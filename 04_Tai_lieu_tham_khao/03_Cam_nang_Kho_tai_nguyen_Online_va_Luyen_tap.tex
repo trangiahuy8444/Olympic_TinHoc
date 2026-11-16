@@ -1,0 +1,191 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=16mm, right=16mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Định nghĩa hệ màu chuẩn theo Brand Identity của Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1 - Xanh logo chính
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493 - Xanh navy chữ Asian School
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} % Nền box nhẹ nhàng
+
+% Cấu hình Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Cẩm nang Tài nguyên Online \& Sách} -- Đội tuyển 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=AsianBlue,
+    filecolor=AsianBlue,      
+    urlcolor=AsianBlue,
+}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG VỚI LOGO TRƯỜNG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.45cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.15cm}
+{\color{AsianBlue}\hrule height 1.8pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}CẨM NANG KHAI THÁC TÀI NGUYÊN ONLINE \& ĐỌC SÁCH}\\[3pt]
+    {\normalsize\textbf{\color{AsianBlue}HƯỚNG DẪN TỰ HỌC DÀNH CHO HỌC SINH ĐỘI TUYỂN OLYMPIC TIN HỌC 11}}\\[2pt]
+    \textit{\small Phương pháp kết hợp sách Competitive Programmer's Handbook với VisuAlgo, VNOI Wiki và USACO Guide}
+\end{center}
+
+\vspace{0.1cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=2mm,title=\textbf{ĐỊNH HƯỚNG TỰ HỌC TỪ GIÁO VIÊN HƯỚNG DẪN}]
+\small
+Cuốn sách \textbf{Competitive Programmer's Handbook} (tác giả Antti Laaksonen, 286 trang) là giáo trình đọc chính thức của đội tuyển. Để đạt hiệu quả cao nhất và tránh quá tải, các em học sinh khối 11 cần đọc theo lộ trình chọn lọc dưới đây, đồng thời kết hợp linh hoạt với 3 công cụ trực tuyến: \textbf{VisuAlgo} (mô phỏng hình ảnh trực quan), \textbf{VNOI Wiki} (lý thuyết tiếng Việt \& nộp bài VNOJ), và \textbf{USACO Guide} (giáo trình bài tập chuẩn hóa quốc tế).
+\end{tcolorbox}
+
+\vspace{-0.1cm}
+
+\section*{\color{AsianDarkBlue}\normalsize I. Lộ trình đọc sách "Competitive Programmer's Handbook"}
+
+\vspace{-0.2cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}p{1.8cm}p{3.2cm}p{7.8cm}p{3.8cm}@{}}
+\toprule
+\textbf{Thời gian} & \textbf{Chương \& Số trang} & \textbf{Nội dung trọng tâm cần làm chủ} & \textbf{Ý nghĩa phòng thi} \\ \midrule
+\textbf{Tuần 1 -- 2} & \textbf{Ch. 1: Introduction}\newline (Trang 3 -- 16) & Template chuẩn, Fast I/O (\texttt{cin.tie}), kiểu \texttt{long long}, bẫy tràn số, đọc ghi tệp \texttt{freopen}. & Tránh lỗi TLE vào/ra và tràn số nguyên. \\
+\addlinespace[2pt]
+\textbf{Tuần 3 -- 4} & \textbf{Ch. 2: Time complexity}\newline (Trang 17 -- 24) & Cách tính $O(1), O(N), O(N \log N), O(N^2)$; quy tắc $10^8$ phép tính/giây; bài toán Kadane $O(N)$. & Nhìn giới hạn $N$ đoán ngay thuật toán ăn điểm. \\
+\addlinespace[2pt]
+\textbf{Tuần 5 -- 6} & \textbf{Ch. 3: Sorting}\newline (Trang 25 -- 34) & Hàm \texttt{std::sort}, viết hàm so sánh (Comparator); Tìm kiếm nhị phân (\texttt{lower\_bound}, \texttt{upper\_bound}). & Xử lý sắp xếp và chặt nhị phân kết quả. \\
+\addlinespace[2pt]
+\textbf{Tuần 7 -- 8} & \textbf{Ch. 4: Data structures}\newline (Trang 35 -- 46) & C++ STL: \texttt{vector}, \texttt{set}, \texttt{multiset}, \texttt{map}, hàng đợi ưu tiên \texttt{priority\_queue}. & Cấu trúc dữ liệu kinh điển trong thi đấu. \\
+\addlinespace[2pt]
+\textbf{Tuần 9 -- 10} & \textbf{Ch. 5: Complete search}\newline (Trang 47 -- 56) & Sinh tập con, sinh hoán vị; Đệ quy quay lui (Backtracking); Kỹ thuật tỉa nhánh cận (Pruning). & \textbf{Bí kíp vét cạn ăn trọn Subtask 1 \& 2} (30\% -- 60\% điểm). \\
+\addlinespace[2pt]
+\textbf{Tuần 11 -- 12} & \textbf{Ch. 6: Greedy}\newline (Trang 57 -- 64) & Tư duy thuật toán tham lam; bài toán đổi tiền, xếp lịch hoạt động không giao nhau. & Giải bài toán tối ưu trong thời gian $O(N \log N)$. \\
+\addlinespace[2pt]
+\textbf{Tuần 13 -- 16} & \textbf{Ch. 7: Dynamic Prog.}\newline (Trang 65 -- 76) & Quy hoạch động: Truy hồi \& Memoization; Bài toán Cái túi (Knapsack); Dãy con tăng LIS; DP bảng. & \textbf{Chuyên đề quyết định giải cao} của Olympic 11. \\
+\addlinespace[2pt]
+\textbf{Tuần 17 -- 18} & \textbf{Ch. 8: Amortized}\newline (Trang 77 -- 82) & Kỹ thuật Hai con trỏ (Two Pointers); Bài toán 2SUM; Cửa sổ trượt (Sliding Window Minimum). & Tối ưu từ $O(N^2) \to O(N)$, rất hay gặp ở câu 1 và 2. \\
+\addlinespace[2pt]
+\textbf{Tuần 19 -- 20} & \textbf{Ch. 9: Range queries}\newline (Trang 83 -- 94) & Mảng cộng dồn Prefix Sum 1D \& 2D; Cây chỉ số Fenwick Tree (BIT); Cây phân đoạn Segment Tree. & Xử lý truy vấn tính tổng và Min/Max trên đoạn. \\
+\addlinespace[2pt]
+\textbf{Tuần 21 -- 23} & \textbf{Ch. 11--13, 15: Graphs}\newline (Trang 109 -- 148) & Danh sách kề \texttt{vector<int> adj[]}; Duyệt BFS/DFS; Đường đi ngắn nhất Dijkstra; Cây khung Kruskal (DSU). & Xử lý trọn vẹn câu Đồ thị (thường là bài 3). \\
+\addlinespace[2pt]
+\textbf{Tuần 24 -- 25} & \textbf{Ch. 21: Number theory}\newline (Trang 197 -- 206) & Kiểm tra số nguyên tố, Sàng Eratosthenes; GCD Euclid; Lũy thừa nhị phân nhanh tính $(a^b) \pmod M$. & Ăn trọn điểm câu Số học / Dãy số (Bài 1). \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{-0.1cm}
+\noindent
+\textbf{\color{orange!85!black}\small * Lưu ý giảm tải:} Các chương 17 (2SAT), 19 (Eulerian paths), 20 (Luồng), 22--25 (Tổ hợp cao cấp, Ma trận, Xác suất), 27--30 (Thuật toán Căn, Hình học phức tạp) thuộc cấp độ Quốc tế IOI, học sinh thi Thành phố \textbf{chưa cần đọc}.
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\large II. Hướng dẫn khai thác 3 kho tài nguyên trực tuyến}
+
+\subsection*{\color{AsianBlue}\normalsize 1. VisuAlgo (\url{https://visualgo.net/}) -- Trực quan hóa Thuật toán}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Mục đích:} Giúp học sinh "nhìn thấy" cách dữ liệu di chuyển và thuật toán vận hành từng bước qua hình ảnh động trực quan. Website có hỗ trợ tiếng Việt ở menu góc phải.
+    \item \textbf{5 Module cốt lõi cần thực hành:}
+    \begin{enumerate}
+        \setlength{\itemsep}{1pt}
+        \item \textbf{Sorting (Sắp xếp):} Quan sát cơ chế so sánh và tráo đổi của \textit{Bubble Sort}, \textit{Merge Sort}, và \textit{Quick Sort}.
+        \item \textbf{BST (Binary Search Tree):} Tự gõ các số để xem cây tự cân bằng (\texttt{std::set}) chèn phần tử và tìm kiếm (\texttt{lower\_bound}) theo chiều cao $O(\log N)$.
+        \item \textbf{Graph Traversal (Duyệt đồ thị):} Xem đồ họa so sánh \textit{BFS} (loang theo lớp sóng bằng Queue) và \textit{DFS} (đi sâu kịch đường bằng Stack rồi quay lui).
+        \item \textbf{SSSP (Đường đi ngắn nhất):} Xem thuật toán \textit{Dijkstra} lan truyền và cập nhật khoảng cách bằng hàng đợi ưu tiên.
+        \item \textbf{MST (Cây khung nhỏ nhất):} Xem cách thuật toán \textit{Kruskal} sắp xếp các cạnh và dùng cấu trúc DSU để tránh tạo chu trình.
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{\color{AsianBlue}\normalsize 2. VNOI Wiki (\url{https://wiki.vnoi.info/}) -- Bách khoa toàn thư Thuật toán Việt Nam}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Mục đích:} Cung cấp lời giảng lý thuyết chuẩn mực bằng tiếng Việt, code mẫu C++ chuẩn mực và hệ thống nộp bài luyện tập trực tiếp trên \textbf{VNOJ} (\url{https://oj.vnoi.info/}).
+    \item \textbf{Phương pháp học:} Khi đọc sách tiếng Anh của Antti Laaksonen gặp khái niệm mới, các em mở ngay VNOI Wiki để đọc bài viết tương ứng bằng tiếng Việt. Cuối mỗi bài viết luôn có link bài tập thực hành trên VNOJ để nộp code chấm tự động.
+    \item \textbf{Các chuyên đề đọc hàng tuần:}
+    \begin{itemize}
+        \setlength{\itemsep}{1pt}
+        \item Thư viện C++ STL căn bản: \url{https://wiki.vnoi.info/algo/basic/c++-stl}
+        \item Kỹ thuật Hai con trỏ: \url{https://wiki.vnoi.info/algo/basic/two-pointers}
+        \item Mảng cộng dồn Prefix Sum: \url{https://wiki.vnoi.info/algo/basic/prefix-sum}
+        \item Quy hoạch động nhập môn: \url{https://wiki.vnoi.info/algo/dp/basic-dp}
+        \item Thuật toán trên đồ thị: \url{https://wiki.vnoi.info/algo/graph/dfs-bfs}
+    \end{itemize}
+\end{itemize}
+
+\subsection*{\color{AsianBlue}\normalsize 3. USACO Guide (\url{https://usaco.guide/}) -- Giáo trình Luyện thi Olympic Hoa Kỳ}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Mục đích:} Nền tảng phân bậc bài tập chuẩn hóa số 1 thế giới hiện nay cho học sinh phổ thông.
+    \item \textbf{Cách học từng bước:}
+    \begin{enumerate}
+        \setlength{\itemsep}{1pt}
+        \item Đăng nhập miễn phí bằng tài khoản Google $\to$ Chọn ngôn ngữ mặc định là \textbf{C++17}.
+        \item \textbf{Giai đoạn 1 (2 tháng đầu):} Làm chủ toàn bộ các bài tập mức \textbf{Bronze} (Hạng Đồng).
+        \item \textbf{Giai đoạn 2 (Sau tháng 11):} Chuyển sang cày mức \textbf{Silver} (Hạng Bạc) -- đây chính là độ khó tương đương với các bài 2 và bài 3 trong đề thi Olympic 11 TP.HCM.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\large III. Bảng ma trận đối chiếu tự học (The Study Matrix)}
+
+Khi bắt đầu học hoặc ôn tập bất kỳ chuyên đề nào, các em chỉ cần mở bảng ma trận dưới đây để biết chính xác: \textbf{Đọc lý thuyết ở đâu $\to$ Xem mô phỏng trực quan ở đâu $\to$ Nộp bài tập ở đâu:}
+
+\vspace{0.15cm}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{3.8cm}p{3.2cm}p{3.2cm}p{3.5cm}p{3.2cm}@{}}
+\toprule
+\textbf{Chuyên đề Olympic 11} & \textbf{Sách Antti Laaksonen} & \textbf{Mô phỏng VisuAlgo} & \textbf{Tra cứu VNOI Wiki} & \textbf{Luyện trên USACO} \\ \midrule
+\textbf{C++ Căn bản \& STL} & Chapter 1 \& 4\newline (Trang 3, 35) & BST, Stack, Queue & \texttt{algo/basic/}\newline\texttt{c++-stl} & Bronze $\to$\newline Getting Started \\
+\addlinespace[4pt]
+\textbf{Độ phức tạp \& Hai con trỏ} & Chapter 2 \& 8\newline (Trang 17, 77) & Sorting / Arrays & \texttt{algo/basic/}\newline\texttt{two-pointers} & Silver $\to$\newline Two Pointers \\
+\addlinespace[4pt]
+\textbf{Tìm kiếm nhị phân} & Chapter 3\newline (Trang 31) & BST $\to$\newline Binary Search & \texttt{algo/basic/}\newline\texttt{binary-search} & Silver $\to$\newline Binary Search \\
+\addlinespace[4pt]
+\textbf{Quy hoạch động (DP)} & Chapter 7\newline (Trang 65) & DP (Max Subarray,\newline Knapsack) & \texttt{algo/dp/}\newline\texttt{basic-dp} & Silver $\to$\newline Introduction to DP \\
+\addlinespace[4pt]
+\textbf{Mảng cộng dồn Prefix Sum} & Chapter 9.1\newline (Trang 84) & Array Manipulation & \texttt{algo/basic/}\newline\texttt{prefix-sum} & Silver $\to$\newline Prefix Sums \\
+\addlinespace[4pt]
+\textbf{Duyệt đồ thị (BFS / DFS)} & Chapter 11 \& 12\newline (Trang 109, 117) & Graph Traversal & \texttt{algo/graph/}\newline\texttt{dfs-bfs} & Silver $\to$\newline Graph Traversal \\
+\addlinespace[4pt]
+\textbf{Đường đi ngắn nhất} & Chapter 13\newline (Trang 123) & SSSP $\to$ Dijkstra & \texttt{algo/graph/}\newline\texttt{shortest-path} & Gold $\to$\newline Shortest Paths \\
+\addlinespace[4pt]
+\textbf{Cây khung nhỏ nhất \& DSU} & Chapter 15\newline (Trang 141) & MST (Kruskal)\newline \& UFDS & \texttt{algo/data-}\newline\texttt{structures/dsu} & Gold $\to$\newline Disjoint Sets \\
+\addlinespace[4pt]
+\textbf{Số học \& Số nguyên tố} & Chapter 21\newline (Trang 197) & Math algorithms & \texttt{algo/math/}\newline\texttt{number-theory} & Bronze $\to$\newline Divisibility \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.4cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Chúc các bạn học sinh khai thác tối đa nguồn học liệu chất lượng cao và gặt hái thành tích rực rỡ!}}
+\end{center}
+
+\end{document}

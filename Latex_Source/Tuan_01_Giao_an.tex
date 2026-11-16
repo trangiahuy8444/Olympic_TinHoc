@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Giáo án Tuần 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}KẾ HOẠCH BÀI DẠY CHI TIẾT TUẦN 01}\\[3pt]
+    {\large\textbf{\color{AsianBlue}NHẬP MÔN C++ THI ĐẤU \& XÂY DỰNG TƯ DUY LẬP TRÌNH}}\\[2pt]
+    \textit{\small Thời lượng: 90 phút -- Dạy lại bản chất từ đầu cho học sinh mới bắt đầu học C++}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU BÀI HỌC (90 PHÚT)}]
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Định hướng \& Động lực:} Nắm vững thể lệ Olympic 11 TP.HCM (3 bài/120 phút/20 điểm), phổ điểm xét giải và lý do khoa học chọn C++ (nhanh gấp 10 -- 100 lần Python, tránh quá thời gian TLE).
+    \item \textbf{Tư duy lập trình căn bản:} Bản chất biến nhớ RAM, khắc phục triệt để bẫy \textquotedblleft giá trị rác\textquotedblright\ (khởi tạo \texttt{tong = 0}), bẫy tràn số \texttt{long long}, và bẫy chia nguyên (\texttt{/} vs \texttt{\%}).
+    \item \textbf{Cú pháp \& Phòng thi:} Cấu trúc chương trình C++, lệnh \texttt{cin/cout}, rẽ nhánh \texttt{if/else}, vòng lặp \texttt{for} kèm bảng Trace Dry Run, phím tắt \texttt{F9} trên Code::Blocks và đọc xuất tệp \texttt{.INP} / \texttt{.OUT}.
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. TIẾN TRÌNH LÊN LỚP CHI TIẾT (90 PHÚT)}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{[00:00 -- 00:15] Khởi động, Fast-Track Diagnostic \& Setup Code::Blocks (15 phút):}
+    \begin{itemize}
+        \item Chiếu 3 câu hỏi chẩn đoán nhanh: (1) \texttt{5 / 2 = ?}; (2) \texttt{int} có chứa được 10 tỷ không?; (3) $1 \le x \le 10$ viết thế nào trong C++?
+        \item \textbf{Chiến lược dạy nhanh:} Nếu học sinh đã rõ, lướt qua cú pháp cơ bản (tiết kiệm 20 phút), dồn thời lượng cho bẫy tràn số và bảng Dry Run!
+        \item Cấu hình Code::Blocks (\texttt{-std=c++17}, \texttt{-O2}) và 3 phím tắt vàng: \texttt{Ctrl+Shift+N}, \texttt{Ctrl+S}, \texttt{F9}.
+    \end{itemize}
+    \item \textbf{[00:15 -- 00:45] Chuyên đề 1: Bản chất Biến nhớ, Kiểu dữ liệu \& Bẫy tràn số (30 phút):}
+    \begin{itemize}
+        \item Ẩn dụ biến là chiếc hộp có nhãn; bẫy giá trị rác nếu không khởi tạo; phân biệt \texttt{int} ($2 \cdot 10^9$) và \texttt{long long} ($9 \cdot 10^{18}$).
+        \item Live-code chứng minh bẫy tràn số khi nhân: \texttt{long long s = 1LL * a * b;}.
+    \end{itemize}
+    \item \textbf{[00:45 -- 01:15] Chuyên đề 2: Toán tử số học, Rẽ nhánh if/else \& Vòng lặp for (30 phút):}
+    \begin{itemize}
+        \item Phân biệt chia nguyên \texttt{5 / 2 = 2} và chia dư \texttt{5 \% 2 = 1}; ứng dụng kiểm tra chẵn lẻ và tách chữ số hàng đơn vị.
+        \item Rẽ nhánh \texttt{if/else}, bẫy toán học: viết \texttt{1 <= x \&\& x <= 10} thay vì \texttt{1 <= x <= 10}.
+        \item Kẻ bảng Dry Run chạy từng bước bằng tay tính tổng $S = 1 + 2 + \dots + n$ bằng vòng lặp \texttt{for}.
+    \end{itemize}
+    \item \textbf{[01:15 -- 01:30] Thực hành tại lớp, Giao Cẩm nang Tự học A--Z \& BTVN (15 phút):}
+    \begin{itemize}
+        \item Hướng dẫn mở tệp \texttt{freopen} đọc file \texttt{.INP} và xuất \texttt{.OUT}.
+        \item Giao nhiệm vụ tự học: Tự đọc và gõ lại các bài trong \textbf{Cẩm nang Tự học C++ Tập 01}; hoàn thành Bộ bài tập tăng cường cú pháp Tuần 01.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}II. NỘI DUNG TRỌNG TÂM \& BỘ MÃ NGUỒN MẪU}
+
+\subsection*{\color{AsianBlue}1. Khung chương trình chuẩn thi đấu \& Kỹ thuật vào ra tệp}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // freopen("BAI1.INP", "r", stdin);
+    // freopen("BAI1.OUT", "w", stdout);
+
+    long long a, b;
+    if (cin >> a >> b) {
+        cout << a + b << "\n";
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Minh họa bẫy tràn số nguyên (Integer Overflow) \& Cách khắc phục}
+\begin{lstlisting}[language=C++]
+int a = 1000000, b = 1000000;
+
+// Bay tran so: a * b tinh trong kieu int 32-bit (vuot 2 ty -> ra so am)
+long long sai = a * b;          
+
+// Cach xu ly chuan: Dung 1LL ep phep nhan len kieu 64-bit an toan
+long long dung = 1LL * a * b;   
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}3. Bảng Trace Dry Run: Tính tổng $S = 1 + 2 + 3 + 4$ (Vòng lặp for)}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+\textbf{Vòng} & \textbf{Biến $i$} & \textbf{Điều kiện $i \le 4$} & \textbf{$S$ trước cộng} & \textbf{Lệnh $S = S + i$} & \textbf{$S$ sau cộng} & \textbf{Bước nhảy $i$++} \\
+\midrule
+Khởi tạo & - & - & - & $S = 0$ & 0 & $i = 1$ \\
+1 & 1 & $1 \le 4$ (\textbf{Đúng}) & 0 & $S = 0 + 1$ & \textbf{1} & $i$ tăng lên 2 \\
+2 & 2 & $2 \le 4$ (\textbf{Đúng}) & 1 & $S = 1 + 2$ & \textbf{3} & $i$ tăng lên 3 \\
+3 & 3 & $3 \le 4$ (\textbf{Đúng}) & 3 & $S = 3 + 3$ & \textbf{6} & $i$ tăng lên 4 \\
+4 & 4 & $4 \le 4$ (\textbf{Đúng}) & 6 & $S = 6 + 4$ & \textbf{10} & $i$ tăng lên 5 \\
+Thoát & 5 & $5 \le 4$ (\textbf{Sai!}) & 10 & \textit{Không chạy} & \textbf{10} & Dừng vòng lặp \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{\color{AsianDarkBlue}III. ĐÁNH GIÁ VÀ HƯỚNG DẪN TỰ HỌC}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Đánh giá tại lớp:} Học sinh tự tạo file, lưu đúng đuôi \texttt{.cpp}, biên dịch không lỗi bằng phím \texttt{F9}, và đọc xuất file \texttt{.INP}/\texttt{.OUT} thành công trên Code::Blocks.
+    \item \textbf{Nhiệm vụ về nhà:} Hoàn thành tối thiểu 8/10 bài trong \textbf{Bộ bài tập tăng cường cú pháp Tuần 01} (tập trung Bài 2 về tràn số, Bài 5 về tam giác, Bài 8 và Bài 10 về vòng lặp và tách chữ số).
+    \item \textbf{Chuẩn bị Tuần 02:} Đọc trước chuyên đề \textit{Vòng lặp lồng nhau \& Kỹ thuật Mảng 1 chiều toàn diện}.
+\end{itemize}
+
+\end{document}

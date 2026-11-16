@@ -1,0 +1,12 @@
+BÀI KIỂM TRA C++ BASIC 45 PHÚT
+
+01_De_kiem_tra_CPP_Basic_45_phut.docx: bản học sinh, 3 trang.
+02_Dap_an_Huong_dan_cham_CPP_Basic.docx: bản giáo viên, 4 trang.
+
+Phân bổ: 15 phút trắc nghiệm (16 câu x 0,25 = 4 điểm), 30 phút thực hành (3,5 + 2,5 = 6 điểm). Thu trắc nghiệm trước khi học sinh dùng máy.
+
+Loi_giai/: hai lời giải C++17, nhập bằng cin và xuất bằng cout.
+Bo_test_giao_vien/: mỗi bài 8 cặp .INP/.OUT; dùng chuyển hướng đầu vào/đầu ra để chấm.
+KET_QUA_KIEM_TRA.txt: kết quả chạy thử lời giải và các đoạn mã trắc nghiệm.
+
+Chỉ phát tệp 01 cho học sinh; các tệp khác dành riêng cho giáo viên.

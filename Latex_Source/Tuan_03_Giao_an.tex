@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% He mau Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Giáo án Tuần 03} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage\ / 2}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER DAU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}KẾ HOẠCH BÀI DẠY CHI TIẾT TUẦN 03}\\[3pt]
+    {\large\textbf{\color{AsianBlue}HÀM (FUNCTIONS), TRUYỀN THAM CHIẾU \& MẢNG ĐẾM TẦN SỐ}}\\[2pt]
+    \textit{\small Thời lượng: 90 phút -- Dành cho học sinh bồi dưỡng Đội tuyển Olympic Tin học 11}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU BÀI HỌC (90 PHÚT)}]
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Kiến thức:} Cấu trúc hàm, phân biệt \texttt{void} và hàm có kiểu trả về, cơ chế truyền tham trị (\textit{pass-by-value}) vs truyền tham chiếu (\textit{pass-by-reference \texttt{\&}}).
+    \item \textbf{Bước ngoặt thuật toán:} Làm chủ kỹ thuật \textbf{Mảng đếm tần số (Counting Array / Mảng đánh dấu)}, chuyển đổi độ phức tạp từ $O(N^2)$ (TLE) về $O(N)$ tức thì.
+    \item \textbf{Kỹ năng Olympic:} Xử lý kỹ thuật dời trục (\textit{Offset}) khi dãy có số âm, tiếp cận tư duy kinh điển "Đổi bộ nhớ lấy thời gian" (\textit{Space-Time Tradeoff}).
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. TIẾN TRÌNH LÊN LỚP CHI TIẾT (90 PHÚT)}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{[00:00 -- 00:15] Kiểm tra bài cũ \& Fast-Track Diagnostic Tuần 3 (15 phút):}
+    \begin{itemize}
+        \item Chiếu 3 câu hỏi chẩn đoán nhanh: (1) Hàm \texttt{void} khác hàm có kiểu trả về (\texttt{int}, \texttt{bool}) ở điểm mấu chốt nào? (Không có giá trị trả về, không cần \texttt{return}); (2) Cú pháp \texttt{void tang(int \&x)} có dấu \texttt{\&} khác gì \texttt{void tang(int x)}? (Có \texttt{\&} là tham chiếu làm đổi biến gốc; không có là tham trị chỉ đổi bản sao); (3) Để tìm số xuất hiện nhiều nhất trong $O(N)$ thay vì $O(N^2)$, ta dùng cấu trúc gì? (Mảng đếm tần số \texttt{cnt[x]++}).
+        \item \textbf{Chiến lược dạy nhanh:} Nếu học sinh đã rõ, lướt nhanh phần lý thuyết cú pháp hàm, dồn toàn lực vào phân tích bài toán thực chiến mảng đếm tần số và kỹ thuật dời trục Offset số âm!
+        \item Code Audit BTVN Tuần 2: Thói quen khai báo mảng toàn cục ngoài \texttt{main()}, bẫy khởi tạo Min/Max số âm và lỗi tràn biên \textit{out-of-bounds}.
+    \end{itemize}
+    \item \textbf{[00:15 -- 00:40] Chuyên đề 1: Hàm \& Truyền tham chiếu \texttt{\&} (25 phút):}
+    \begin{itemize}
+        \item Vẽ mô hình ô nhớ RAM trên bảng để phân tích bản sao tham trị vs trỏ thẳng ô nhớ tham chiếu; học sinh code thử nghiệm hàm \texttt{my\_swap(int \&u, int \&v)}.
+    \end{itemize}
+    \item \textbf{[00:40 -- 01:10] Chuyên đề 2: Đột phá Mảng đếm tần số $O(N)$ (30 phút):}
+    \begin{itemize}
+        \item Trực quan hóa so sánh: 2 vòng lặp for lồng nhau đơ máy ($10^{10}$ phép tính) vs mảng \texttt{cnt[x]++} chạy trong $0.01$s; kỹ thuật dời trục \textit{Offset} khi dãy có số âm.
+    \end{itemize}
+    \item \textbf{[01:10 -- 01:30] Thực hành tại lớp, Giao Cẩm nang Tự học A--Z \& BTVN (20 phút):}
+    \begin{itemize}
+        \item Cài đặt trực tiếp bài toán \texttt{UNIQUE.INP} / \texttt{UNIQUE.OUT} trên Code::Blocks (\texttt{F9}).
+        \item Giao nhiệm vụ tự học: Tự học theo \textbf{Cẩm nang Tự học C++ Tập 04}; làm Phiếu bài tập Tuần 03.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\section*{\color{AsianDarkBlue}II. NỘI DUNG TRỌNG TÂM \& BỘ MÃ NGUỒN MẪU}
+
+\subsection*{\color{AsianBlue}1. Phân biệt Tham trị vs. Tham chiếu (\texttt{\&})}
+\begin{lstlisting}[language=C++]
+// Tham tri: tao ban sao moi tren Stack, khong doi bien goc
+void tang_mot(int x) { x++; }
+
+// Tham chieu (&): nhan truc tiep dia chi o nho, bien goc thay doi
+void tang_mot_that(int &x) { x++; }
+
+// Ham hoan doi 2 so dung tham chieu
+void my_swap(long long &u, long long &v) {
+    long long temp = u; u = v; v = temp;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Khuôn mẫu Mảng đếm tần số $O(N)$ chuẩn phòng thi}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+const int MAX_VAL = 1000005;
+int cnt[MAX_VAL]; // Mang dem toan cuc tren vung BSS (tu dong = 0)
+
+int main() {
+    freopen("UNIQUE.INP", "r", stdin);
+    freopen("UNIQUE.OUT", "w", stdout);
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+
+    int n; if (!(cin >> n)) return 0;
+    int max_val = 0;
+    for (int i = 1; i <= n; i++) {
+        int x; cin >> x;
+        cnt[x]++; // Chi so la gia tri, noi dung la so lan xuat hien
+        if (x > max_val) max_val = x;
+    }
+    // Dem so luong gia tri phan biet trong day
+    int dem_phan_biet = 0;
+    for (int v = 0; v <= max_val; v++) {
+        if (cnt[v] > 0) dem_phan_biet++;
+    }
+    cout << dem_phan_biet << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}III. ĐÁNH GIÁ VÀ HƯỚNG DẪN TỰ HỌC}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Đánh giá tại lớp:} Học sinh phân biệt chuẩn xác cơ chế tham chiếu \texttt{\&} và hoàn thành code đếm phần tử phân biệt \texttt{UNIQUE.INP} / \texttt{UNIQUE.OUT} trên Code::Blocks (\texttt{F9}).
+    \item \textbf{Nhiệm vụ tự học tại nhà:}
+    \begin{itemize}
+        \item Đọc và gõ lại toàn bộ bài tập trong \textbf{Cẩm nang Tự học C++ Tập 04} (Hàm \& Tham chiếu).
+        \item Hoàn thành trọn vẹn 7 bài toán trong \textbf{Phiếu bài tập Tuần 03}.
+    \end{itemize}
+    \item \textbf{Chuẩn bị Tuần 04:} Ôn tập kỹ thuật Tìm kiếm nhị phân (\textit{Binary Search}) \& Hai con trỏ (\textit{Two Pointers}).
+\end{itemize}
+
+\end{document}

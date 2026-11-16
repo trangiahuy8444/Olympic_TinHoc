@@ -1,0 +1,337 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=15mm, right=15mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Dinh nghia he mau chuan Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Lý thuyết Tuần 03} -- Olympic Tin học 11}
+\rfoot{\color{gray}\small Trang \thepage\ / 4}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% ==================== TRANG 1 ====================
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.4cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}TÀI LIỆU LÝ THUYẾT TUẦN 03}\\[2pt]
+    {\large\textbf{\color{AsianBlue}HÀM (FUNCTIONS), TRUYỀN THAM CHIẾU \& MẢNG ĐẾM TẦN SỐ}}\\[2pt]
+    \textit{\small Bản chất tham trị vs tham chiếu, đột phá thuật toán $O(N)$ bằng mảng đếm và kỹ thuật dời trục}
+\end{center}
+
+\vspace{-0.1cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\small MỤC TIÊU BÀI HỌC CỐT LÕI}]
+\footnotesize
+\begin{enumerate}
+    \setlength{\itemsep}{0.5pt}
+    \item \textbf{Tư duy Module hóa:} Hiểu cơ chế hoạt động của Hàm (\textit{Function}), phân biệt hàm \texttt{void} và hàm có giá trị trả về (\texttt{bool}, \texttt{long long}).
+    \item \textbf{Bản chất Tham số:} Nắm chắc cơ chế Truyền tham trị (\textit{Pass-by-value}) và Truyền tham chiếu (\textit{Pass-by-reference \texttt{\&}}) trên ô nhớ RAM.
+    \item \textbf{Bước ngoặt thuật toán ($O(N^2) \rightarrow O(N)$):} Làm chủ kỹ thuật \textbf{Mảng đếm tần số (Counting Array / Mảng đánh dấu)}, chuyển đổi thuật toán vét cạn sang tức thì trong $0.01$s.
+    \item \textbf{Xử lý tình huống biên:} Nắm vững giới hạn kích thước mảng đếm tĩnh trong RAM ($\le 10^7$) và kỹ thuật dời trục tọa độ (\textit{Offset}) khi xử lý số âm.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{-0.15cm}
+\section*{\color{AsianDarkBlue}\normalsize 1. Hàm trong C++ (Functions) \& Tư duy Module hóa}
+\vspace{-0.2cm}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Tại sao phải dùng hàm?} Thay vì viết một đoạn code kiểm tra số nguyên tố hay tính ước số chung lớn nhất lặp đi lặp lại 10 lần ở nhiều nơi, ta đóng gói nó thành một \textbf{Hàm}. Code trở nên trong sáng, dễ đọc, dễ kiểm tra lỗi và tái sử dụng tối đa.
+    \item \textbf{Cấu trúc hàm tổng quát:}
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+kieu_tra_ve ten_ham(kieu_1 tham_so_1, kieu_2 tham_so_2, ...) {
+    // Khoi lenh xu ly ben trong ham
+    return gia_tri; // Neu kieu_tra_ve khac void
+}
+\end{lstlisting}
+
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Hàm \texttt{void}:} Không trả về giá trị, dùng để in ấn hoặc thực hiện một chuỗi thao tác độc lập:
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+void in_loi_chao() {
+    cout << "Chao mung cac ban den voi Doi tuyen Olympic 11!\n";
+}
+\end{lstlisting}
+
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Hàm trả về kết quả (\texttt{bool}, \texttt{int}, \texttt{long long}):} Bắt buộc có lệnh \texttt{return}. Khi gặp lệnh \texttt{return}, hàm lập tức dừng lại và gửi kết quả về nơi gọi hàm:
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+// Ham kiem tra mot so nguyen x co phai so chan hay khong
+bool is_even(long long x) {
+    if (x % 2 == 0) return true;
+    return false; // Hoac viet gon: return (x % 2 == 0);
+}
+\end{lstlisting}
+
+\newpage
+% ==================== TRANG 2 ====================
+\section*{\color{AsianDarkBlue}\normalsize 2. Cơ chế truyền tham số: Tham trị vs. Tham chiếu (\texttt{\&})}
+
+\subsection*{\color{AsianBlue}\small 2.1. Truyền tham trị (Pass-by-value) -- Cơ chế "Photocopy"}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item Khi truyền biến vào hàm bình thường, máy tính sẽ \textbf{tạo ra một bản sao mới} của biến trên Stack.
+    \item Mọi thay đổi đối với bản sao này \textbf{không hề ảnh hưởng} đến biến ban đầu ngoài hàm \texttt{main()}:
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+void tang_mot(int x) {
+    x = x + 1; // Chi tang gia tri cua ban sao x ben trong ham
+}
+
+int main() {
+    int a = 5;
+    tang_mot(a);
+    cout << a << "\n"; // Van in ra 5! Bien a ngoai main khong he bi doi!
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small 2.2. Truyền tham chiếu (Pass-by-reference \texttt{\&}) -- Cơ chế "Dùng chung ô nhớ"}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item Khi thêm ký tự \texttt{\&} trước tên tham số, hàm không sao chép biến mà \textbf{nhận trực tiếp địa chỉ ô nhớ} của biến bên ngoài.
+    \item Bất kỳ thay đổi nào trong hàm sẽ làm thay đổi trực tiếp giá trị của biến gốc:
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+void tang_mot_that(int &x) { // Co ky tu &
+    x = x + 1; // Lam thay doi truc tiep o nho cua bien truyen vao
+}
+
+int main() {
+    int a = 5;
+    tang_mot_that(a);
+    cout << a << "\n"; // In ra 6! Bien a da thuc su thay doi!
+    return 0;
+}
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\small ỨNG DỤNG KINH ĐIỂN: HÀM TỰ ĐỔI CHỖ HAI SỐ (MY\_SWAP)}]
+\footnotesize
+Muốn viết hàm hoán đổi 2 số mà C++ cung cấp sẵn qua thư viện \texttt{<algorithm>}, ta bắt buộc phải dùng tham chiếu \texttt{\&}:
+\begin{lstlisting}[language=C++]
+void my_swap(long long &u, long long &v) {
+    long long temp = u;
+    u = v;
+    v = temp;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\subsection*{\color{AsianBlue}\small 2.3. Quy tắc truyền mảng vào hàm trong C++}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item Trong C++, khi truyền mảng vào hàm: \texttt{void xu\_ly(long long a[], int n)}, mảng \textbf{mặc định được truyền theo cơ chế tham chiếu} (địa chỉ ô nhớ đầu tiên). Do đó, thay đổi phần tử mảng bên trong hàm sẽ làm thay đổi mảng thật bên ngoài!
+    \item Trong lập trình thi đấu, cách tốt nhất là \textbf{khai báo mảng toàn cục ngoài \texttt{main()}}, khi đó tất cả các hàm đều có thể truy cập mảng tự nhiên mà không cần truyền qua tham số.
+\end{itemize}
+
+\newpage
+% ==================== TRANG 3 ====================
+\section*{\color{AsianDarkBlue}\normalsize 3. Bước ngoặt thuật toán: Kỹ thuật Mảng đếm tần số (Counting Array)}
+
+\subsection*{\color{AsianBlue}\small 3.1. Bài toán đặt ra}
+Cho dãy gồm $N$ số nguyên dương ($1 \le N \le 10^5$, các số $0 \le A_i \le 10^6$). Tìm số có số lần xuất hiện nhiều nhất trong dãy và số lần xuất hiện của nó.
+
+\subsection*{\color{AsianBlue}\small 3.2. So sánh hai cách tiếp cận}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \footnotesize
+    \item \textbf{Cách ngây thơ (Duyệt cạn 2 vòng for):} Với mỗi phần tử $A_i$, dùng vòng lặp thứ hai đếm xem có bao nhiêu số $A_j = A_i$. Độ phức tạp: $O(N^2) = (10^5)^2 = 10^{10}$ phép tính $\implies$ Chạy mất $\approx 100$ giây $\implies$ \textbf{TLE (0 điểm)!}
+    \item \textbf{Cách đột phá (Mảng đếm tần số $O(N)$):} Dùng chính \textbf{giá trị của phần tử làm chỉ số} của mảng đếm \texttt{cnt}. Khi đọc vào số $x$, ta chỉ cần thực hiện 1 thao tác duy nhất: \texttt{cnt[x]++;}
+\end{itemize}
+
+\begin{center}
+\footnotesize
+\textbf{Minh họa cơ chế đếm với dãy số $A = [3, 5, 3, 2, 5, 3]$:}
+\vspace{0.1cm}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Chỉ số mảng \texttt{cnt} (Giá trị $x$)} & \texttt{0} & \texttt{1} & \texttt{2} & \texttt{3} & \texttt{4} & \texttt{5} \\
+\hline
+\textbf{Giá trị ô nhớ \texttt{cnt[x]} (Số lần xuất hiện)} & 0 & 0 & 1 & \textbf{3} & 0 & 2 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-0.15cm}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \footnotesize
+    \item \textbf{Độ phức tạp thời gian:} Đọc và đếm mất $O(N)$; tìm giá trị có \texttt{cnt[x]} lớn nhất mất $O(\max(A_i)) \le 10^6$. Tổng thời gian chạy mất dưới \textbf{$0.02$ giây} $\implies$ \textbf{Ăn trọn 100\% điểm!}
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+const int MAX_VAL = 1000005;
+int cnt[MAX_VAL]; // Mang toan cuc tu dong khoi tao toan bo = 0
+
+// Trong ham main:
+for (int i = 1; i <= n; i++) {
+    int x; cin >> x;
+    cnt[x]++; // Tang so lan xuat hien cua gia tri x
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small 3.3. Hai cạm bẫy sống còn khi dùng Counting Array}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1.5mm,title=\textbf{\small 1. GIỚI HẠN GIÁ TRỊ PHẦN TỬ TRONG BỘ NHỚ RAM}]
+\footnotesize
+Kỹ thuật mảng đếm tĩnh chỉ áp dụng khi giá trị các phần tử $A_i \le 10^7$ (để mảng \texttt{cnt} nhét vừa dung lượng RAM). Nếu đề bài cho $A_i \le 10^9$ hay $10^{18}$, không thể khai báo \texttt{int cnt[1000000000]} (sẽ sập bộ nhớ ngay lập tức). Khi đó, ta bắt buộc phải dùng \texttt{std::map} hoặc kỹ thuật \textbf{Nén số} (sẽ học ở giai đoạn sau).
+\end{tcolorbox}
+
+\vspace{-0.15cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\small 2. KỸ THUẬT DỜI TRỤC TỌA ĐỘ (OFFSET) KHI DÃY CÓ SỐ ÂM}]
+\footnotesize
+Nếu đề bài cho $-10^5 \le A_i \le 10^5$, trong C++ chỉ số mảng không thể là số âm (\texttt{cnt[-5]} gây sập chương trình!).\\
+$\Longrightarrow$ \textbf{Giải pháp:} Cộng thêm một lượng dời trục: \texttt{const int OFFSET = 100005;}. Khi đọc số $x$, ta lưu vào ô: \texttt{cnt[x + OFFSET]++;}.
+\end{tcolorbox}
+
+\newpage
+% ==================== TRANG 4 ====================
+\enlargethispage{2\baselineskip}
+\section*{\color{AsianDarkBlue}\normalsize 4. Bài toán mẫu thực chiến Olympic (Phòng thi)}
+
+\vspace{-0.15cm}
+\begin{tcolorbox}[colback=white,colframe=AsianDarkBlue,arc=1.5mm,title=\textbf{\small BÀI TOÁN: PHẦN TỬ ĐỘC NHẤT (UNIQUE.INP / UNIQUE.OUT)}]
+\footnotesize
+\textbf{Đề bài:} Cho tệp \texttt{UNIQUE.INP} gồm dòng 1 chứa số nguyên $N$ ($1 \le N \le 10^5$), dòng 2 chứa $N$ số nguyên $A_1, A_2, \dots, A_N$ ($0 \le A_i \le 10^6$).\\
+\textbf{Yêu cầu:} Ghi ra tệp \texttt{UNIQUE.OUT}:
+Dòng 1: Số lượng các giá trị khác nhau có trong dãy; Dòng 2: In ra các số chỉ xuất hiện \textbf{đúng 1 lần duy nhất} theo thứ tự tăng dần (nếu không có số nào, in $-1$).
+\end{tcolorbox}
+
+\vspace{-0.15cm}
+\subsection*{\color{AsianBlue}\small Mã nguồn C++17 hoàn chỉnh chuẩn phòng thi Olympic:}
+\vspace{-0.1cm}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize]
+#include <iostream>
+using namespace std;
+
+const int MAX_VAL = 1000005;
+int cnt[MAX_VAL]; // Mang dem toan cuc tren vung Data segment (tu dong = 0)
+
+int main() {
+    freopen("UNIQUE.INP", "r", stdin);
+    freopen("UNIQUE.OUT", "w", stdout);
+
+    // Bo doi tang toc vao/ra (Fast I/O)
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    if (!(cin >> n)) return 0;
+
+    int max_val = 0;
+    for (int i = 1; i <= n; i++) {
+        int x; cin >> x;
+        cnt[x]++;
+        if (x > max_val) max_val = x;
+    }
+
+    // 1. Dem so luong cac gia tri khac nhau co trong day
+    int dem_phan_biet = 0;
+    for (int v = 0; v <= max_val; v++) {
+        if (cnt[v] > 0) dem_phan_biet++;
+    }
+    cout << dem_phan_biet << "\n";
+
+    // 2. In ra cac so chi xuat hien dung 1 lan duy nhat
+    bool co_so_doc_nhat = false;
+    for (int v = 0; v <= max_val; v++) {
+        if (cnt[v] == 1) { cout << v << " "; co_so_doc_nhat = true; }
+    }
+    if (!co_so_doc_nhat) cout << "-1";
+    cout << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{-0.15cm}
+\begin{tcolorbox}[colback=AsianLightBlue!40,colframe=AsianBlue,arc=1.2mm,title=\textbf{\small BÍ KÍP PHÒNG THI: GIẢI THÍCH BỘ ĐÔI TĂNG TỐC VÀO/RA (FAST I/O)}]
+\footnotesize
+Trong các bài thi Olympic, dữ liệu vào/ra rất lớn ($N \ge 10^5$). Dùng \texttt{cin/cout} mặc định sẽ tốn hơn 50\% thời gian chạy, dễ bị vượt giới hạn thời gian (\textbf{TLE}):
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \texttt{\textbf{ios\_base::sync\_with\_stdio(false);}}: Mặc định trong C++, luồng \texttt{cin/cout} được \textit{đồng bộ hóa} với \texttt{scanf/printf} của C để dùng chung bộ đệm. Lệnh này \textbf{hủy đồng bộ hóa}, giúp \texttt{cin/cout} có bộ đệm riêng và tăng tốc gấp 5--10 lần. \textit{Lưu ý sống còn:} Đã tắt đồng bộ thì \textbf{tuyệt đối không} dùng chung \texttt{cin/cout} với \texttt{scanf/printf}.
+    \item \texttt{\textbf{cin.tie(NULL);}}: Mặc định \texttt{cin} bị buộc (\textit{tied}) với \texttt{cout}, mỗi khi gọi \texttt{cin} thì hệ thống tự động xả đệm (\textit{flush}) của \texttt{cout}. Lệnh này \textbf{gỡ bỏ liên kết}, giúp \texttt{cin} đọc dữ liệu liên tục không chờ xả đệm, tránh nghẽn I/O khi đọc tệp lớn.
+    \item \textbf{Quy tắc đi kèm:} Luôn dùng \texttt{"\textbackslash n"} thay vì \texttt{endl} (vì \texttt{endl} ép xả đệm liên tục, làm mất tác dụng tăng tốc).
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.05cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\small\textbf{Bước ngoặt tư duy: Chuyển phép đếm từ Tìm kiếm sang Truy xuất ô nhớ trực tiếp là cốt lõi của tối ưu hóa thuật toán!}}
+\end{center}
+
+\end{document}

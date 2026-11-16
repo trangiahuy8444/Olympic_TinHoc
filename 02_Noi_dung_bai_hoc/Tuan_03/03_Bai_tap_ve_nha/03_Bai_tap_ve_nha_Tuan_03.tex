@@ -1,0 +1,153 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=16mm, right=16mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% He mau Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Bài tập về nhà Tuần 03} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage\ / 2}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER DAU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}BÀI TẬP VỀ NHÀ -- TUẦN 03}\\[3pt]
+    {\large\textbf{\color{AsianBlue}HÀM, TRUYỀN THAM CHIẾU \& MẢNG ĐẾM TẦN SỐ (COUNTING ARRAY)}}\\[2pt]
+    \textit{\small Hệ thống 7 bài tập phân tầng $\vert$ Luyện tập tư duy mảng đếm $O(N)$ \& tối ưu hiệu năng}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{HƯỚNG DẪN LÀM BÀI \& TIÊU CHUẨN THI ĐẤU}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Mỗi bài tập tạo một tệp mã nguồn riêng biệt (\texttt{bai1.cpp}, \texttt{bai2.cpp},...) trên phần mềm \textbf{Code::Blocks}.
+    \item Bài 1 đến 2 rèn luyện kỹ năng viết hàm và truyền tham chiếu (\texttt{\&}); Bài 3 đến 7 bắt buộc áp dụng kỹ thuật \textbf{Mảng đếm tần số} để đạt độ phức tạp $O(N)$, tuyệt đối không dùng 2 vòng lặp lồng nhau $O(N^2)$ (dẫn đến lỗi TLE).
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.1cm}
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 1: Hàm kiểm tra số nguyên tố (File: \texttt{bai1\_nguyen\_to.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Viết hàm \texttt{bool is\_prime(long long n)} kiểm tra tính nguyên tố trong $O(\sqrt{N})$. Nhập mảng $A$ gồm $N$ số ($N \le 10^5, A_i \le 10^9$), đếm xem trong mảng có bao nhiêu số nguyên tố.
+    \item \textbf{Ví dụ:} Input: \texttt{5} và dãy \texttt{2 4 7 9 11} $\implies$ Output: \texttt{3} (gồm 2, 7, 11).
+\end{itemize}
+
+\vspace{-0.2cm}
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 2: Tự viết hàm đổi chỗ \& Sắp xếp (File: \texttt{bai2\_hoan\_doi.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Viết hàm \texttt{void my\_swap(long long \&a, long long \&b)} có sử dụng dấu tham chiếu \texttt{\&}. Áp dụng hàm này để sắp xếp một dãy $N$ số ($N \le 1000$) theo thứ tự tăng dần.
+    \item \textbf{Ví dụ:} Input: \texttt{5} và dãy \texttt{9 3 7 1 5} $\implies$ Output: \texttt{1 3 5 7 9}.
+\end{itemize}
+
+\vspace{-0.2cm}
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 3: Tìm giá trị xuất hiện nhiều nhất (Mode) (File: \texttt{bai3\_mode.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Cho mảng $A$ gồm $N$ số nguyên ($N \le 10^5, 0 \le A_i \le 10^6$). Dùng mảng đếm tần số $O(N)$ tìm số xuất hiện nhiều lần nhất trong dãy và số lần xuất hiện của nó. Nếu có nhiều số cùng tần số lớn nhất, in ra số nhỏ nhất trong chúng.
+    \item \textbf{Ví dụ:} Input: \texttt{7} và dãy \texttt{1 5 3 5 3 2 5} $\implies$ Output: \texttt{5 3} (số 5 xuất hiện 3 lần).
+\end{itemize}
+
+\newpage
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 4: Đếm số lượng giá trị phân biệt (File: \texttt{bai4\_dem\_phan\_biet.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Cho dãy $N$ số nguyên ($N \le 10^5, 0 \le A_i \le 10^6$). Đếm xem trong dãy có bao nhiêu giá trị khác nhau đôi một bằng mảng đánh dấu / mảng đếm tần số $O(N)$.
+    \item \textbf{Ví dụ:} Input: \texttt{6} và dãy \texttt{2 7 2 3 7 2} $\implies$ Output: \texttt{3} (3 giá trị khác nhau là 2, 3, 7).
+\end{itemize}
+
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 5: Phần tử xuất hiện đúng K lần (File: \texttt{bai5\_dung\_k\_lan.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Cho dãy $N$ số ($N \le 10^5, 0 \le A_i \le 10^6$) và số nguyên $K$. In ra tất cả các giá trị xuất hiện đúng $K$ lần trong dãy theo thứ tự tăng dần. Nếu không có số nào thỏa mãn, in \texttt{-1}.
+    \item \textbf{Ví dụ:} Input: \texttt{8 2} và dãy \texttt{3 5 2 3 7 5 8 5} $\implies$ Output: \texttt{3} (số 3 xuất hiện đúng 2 lần).
+\end{itemize}
+
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 6: Đếm cặp số có tổng bằng S ($O(N)$) (File: \texttt{bai6\_tong\_s.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Cho dãy $A$ gồm $N$ số nguyên không âm ($N \le 10^5, 0 \le A_i \le 10^5$) và số $S$. Đếm số cặp chỉ số $(i, j)$ với $1 \le i < j \le N$ sao cho $A_i + A_j = S$.
+    \item \textbf{Gợi ý tối ưu:} Duyệt qua từng số $A_j$, số lượng phần tử $A_i$ ($i < j$) thỏa mãn chính là \texttt{cnt[S - A[j]]}! Sau đó mới cập nhật \texttt{cnt[A[j]]++}. Thuật toán đạt độ phức tạp $O(N)$ tức thì.
+    \item \textbf{Ví dụ:} Input: \texttt{5 8} và dãy \texttt{3 5 3 5 4} $\implies$ Output: \texttt{4}.
+\end{itemize}
+
+\subsection*{\color{AsianDarkBlue}\normalsize Bài 7: Mảng đếm có số âm (Kỹ thuật Dời trục Offset) (File: \texttt{bai7\_so\_am\_offset.cpp})}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Đề bài:} Cho dãy $N$ số nguyên ($N \le 10^5, -10^5 \le A_i \le 10^5$). Dùng mảng đếm có dời trục \texttt{OFFSET = 100005} để tìm số âm xuất hiện nhiều lần nhất trong dãy. Nếu không có số âm nào, in \texttt{0}.
+    \item \textbf{Ví dụ:} Input: \texttt{6} và dãy \texttt{-3 5 -7 -3 2 -7} $\implies$ Output: \texttt{-7} (cả -7 và -3 xuất hiện 2 lần, in số nhỏ nhất là -7).
+\end{itemize}
+
+\vspace{0.4cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Chúc các em học sinh làm bài nghiêm túc và làm chủ hoàn toàn kỹ thuật Mảng đếm tần số!}}
+\end{center}
+
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=17mm, right=17mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Lý thuyết: Đọc/Ghi Tệp C++} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}CHUYÊN ĐỀ 02: KỸ THUẬT ĐỌC/GHI TỆP THI ĐẤU CĂN BẢN}\\[2pt]
+    {\small\textit{Quy chuẩn nộp bài tệp .INP / .OUT trên Code::Blocks 20.03 cho học sinh Olympic}}
+\end{center}
+
+\vspace{-1mm}
+\section*{\color{AsianDarkBlue}\normalsize 1. Quy định Sống còn về Tệp trong Các Kỳ thi HSG \& Olympic}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item Trong tất cả các kỳ thi Olympic Tin học 30/4, HSG Thành phố TP.HCM và Quốc gia, bài thi được chấm hoàn toàn \textbf{tự động bằng máy tính} (hệ thống Themis / CMS / VNOJ).
+    \item Máy chấm quy định: Dữ liệu vào được lưu trong tệp \texttt{TEN\_BAI.INP} và kết quả làm bài phải được xuất ra tệp \texttt{TEN\_BAI.OUT}.
+    \item \textbf{Cảnh báo tuyệt đối:} Nếu học sinh nhập xuất qua màn hình bàn phím (không dùng tệp) hoặc đặt sai tên tệp (dù chỉ sai 1 chữ hoa/thường) $\implies$ \textbf{Bài thi bị chấm 0 điểm toàn bộ}!
+\end{itemize}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 2. Bản chất Cơ chế ``Bẻ Hướng Luồng'' của Hàm \texttt{freopen}}
+C++ cung cấp hàm \texttt{freopen} trong thư viện \texttt{<cstdio>} để bẻ hướng các luồng dữ liệu chuẩn:
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \texttt{freopen("TEN\_BAI.INP", "r", stdin);} $\implies$ Chuyển hướng luồng nhập chuẩn \texttt{stdin} (vốn nhận từ bàn phím) sang đọc từ file \texttt{TEN\_BAI.INP} (\texttt{"r"} = read).
+    \item \texttt{freopen("TEN\_BAI.OUT", "w", stdout);} $\implies$ Chuyển hướng luồng xuất chuẩn \texttt{stdout} (vốn in ra màn hình) sang ghi vào file \texttt{TEN\_BAI.OUT} (\texttt{"w"} = write).
+    \item \textbf{Ưu điểm vượt trội:} Toàn bộ các câu lệnh \texttt{cin >>} và \texttt{cout <<} bên dưới được \textbf{giữ nguyên 100\%}, học sinh không phải học thêm bất kỳ thư viện đọc file phức tạp nào!
+\end{itemize}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 3. Quy trình 4 Bước Thao tác Chuẩn mực trên Code::Blocks 20.03}
+\begin{enumerate}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item \textbf{Bước 1 (Tạo mã nguồn):} Mở Code::Blocks, nhấn tổ hợp phím \textbf{\texttt{Ctrl + Shift + N}} tạo file mới. Nhấn \textbf{\texttt{Ctrl + S}} lưu lại với tên bài, đuôi \texttt{.cpp} (ví dụ: \texttt{TONG.cpp}).
+    \item \textbf{Bước 2 (Tạo file dữ liệu test):} Mở thư mục chứa file code vừa lưu. Tạo một file văn bản mới, đổi tên thành đúng tên bài với đuôi \texttt{.INP} (ví dụ: \texttt{TONG.INP}). Mở file này bằng Notepad hoặc Code::Blocks, gõ dữ liệu đề bài cho và lưu lại.
+    \item \textbf{Bước 3 (Biên dịch và chạy):} Nhấn phím tắt \textbf{\texttt{F9}} (Build \& Run) trên Code::Blocks.
+    \item \textbf{Bước 4 (Kiểm tra kết quả):} Mở lại thư mục bài làm, bạn sẽ thấy file \textbf{\texttt{TONG.OUT}} tự động xuất hiện! Mở file này lên kiểm tra xem kết quả có đúng yêu cầu đề bài hay không.
+\end{enumerate}
+
+\vspace{-1mm}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1mm,title=\textbf{\footnotesize BẪY CỰC NGUY HIỂM TRÊN HỆ ĐIỀU HÀNH WINDOWS: ẨN ĐUÔI TỆP .TXT}]
+\footnotesize
+Trên máy tính Windows ở trường học hoặc phòng thi, hệ thống thường bật chế độ ẩn đuôi file (\textit{Hide extensions for known file types}).\\
+Khi học sinh tạo file \texttt{TONG.INP}, thực tế file đó bị lưu thành \textbf{\texttt{TONG.INP.txt}}!\\
+$\implies$ Chương trình không tìm thấy file và không xuất ra kết quả.\\
+\textbf{Cách xử lý:} Trong cửa sổ File Explorer của Windows, chọn tab \textbf{View} $\to$ Đánh dấu tích vào ô \textbf{File name extensions}. Sau đó kiểm tra và xóa bỏ đuôi \texttt{.txt} thừa.
+\end{tcolorbox}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\normalsize 4. Khung Chương trình Mẫu Chuẩn Căn bản (Vỡ lòng cho Học sinh)}
+Dưới đây là khung chương trình chuẩn mực mà học sinh chỉ cần sao chép và áp dụng cho mọi bài thi:
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cstdio> // Bat buoc de su dung ham freopen
+
+using namespace std;
+
+int main() {
+    // 1. Chuyen huong doc ghi file
+    freopen("TONG.INP", "r", stdin);
+    freopen("TONG.OUT", "w", stdout);
+
+    // 2. Khai bao bien va doc du lieu (dung cin binh thuong)
+    long long a, b;
+    if (cin >> a >> b) {
+        // 3. Xu ly thuat toan va ghi ket qua (dung cout binh thuong)
+        long long tong = a + b;
+        cout << tong << "\n";
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 5. Tuyệt chiêu Cao thủ: Tự động Nhận diện Tệp Thông minh}
+Khi ở nhà học sinh muốn gõ trực tiếp từ bàn phím để test nhanh, nhưng khi nộp bài thi lại cần đọc từ tệp. Thay vì phải liên tục thêm hoặc xóa dấu comment \texttt{// freopen}, các tuyển thủ Olympic sử dụng hàm kiểm tra tệp tồn tại:
+
+\begin{lstlisting}[language=C++]
+// Neu trong thu muc co file TONG.INP thi doc file, neu khong thi nhap ban phim
+if (fopen("TONG.INP", "r")) {
+    freopen("TONG.INP", "r", stdin);
+    freopen("TONG.OUT", "w", stdout);
+}
+\end{lstlisting}
+\textbf{Lợi ích:} Dù học sinh test máy ở nhà hay nộp lên hệ thống máy chấm thi tự động, \textbf{không cần sửa hay đóng/mở comment bất kỳ dòng code nào}!
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 6. Bảng Chẩn đoán 5 Lỗi Đọc/Ghi Tệp Thường gặp \& Cách Xử lý}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{7.6cm}@{}}
+\toprule
+\textbf{Hiện tượng lỗi} & \textbf{Nguyên nhân thực tế} & \textbf{Cách xử lý ngay lập tức} \\
+\midrule
+File \texttt{.OUT} không xuất hiện sau khi nhấn F9 & Chưa nhấn đúng phím \textbf{F9} (Build \& Run) hoặc code đang có lỗi cú pháp đỏ ở dòng khác. & Nhìn vào tab \textit{Build messages} bên dưới kiểm tra lỗi cú pháp, sửa hết lỗi rồi nhấn lại \textbf{F9}. \\
+\addlinespace[3pt]
+File \texttt{.OUT} có sinh ra nhưng bên trong trống rỗng & Đặt sai tên file \texttt{.INP} trong lệnh \texttt{freopen} (ví dụ trong code là \texttt{TONG.INP} nhưng bên ngoài đặt là \texttt{tong.inp} hoặc \texttt{BAI1.INP}). & Kiểm tra chính xác từng ký tự chữ hoa/thường giữa code C++ và tên file thực tế trong thư mục. \\
+\addlinespace[3pt]
+File bị lưu thành \texttt{TONG.INP.txt} & Windows bị ẩn đuôi file văn bản mặc định. & Mở File Explorer $\to$ tab \textit{View} $\to$ tích chọn \textit{File name extensions} và xóa đuôi \texttt{.txt}. \\
+\addlinespace[3pt]
+Code::Blocks báo lỗi \textit{Permission denied} khi Build & Cửa sổ màn hình console đen của lần chạy trước chưa được tắt. & Tìm và tắt cửa sổ đen console đang chạy ngầm, sau đó nhấn lại \textbf{F9}. \\
+\addlinespace[3pt]
+Chương trình đọc ra toàn số 0 hoặc số rác & File \texttt{.INP} để ở thư mục khác so với thư mục chứa file mã nguồn \texttt{.cpp}. & Đảm bảo file mã nguồn \texttt{.cpp} và file \texttt{.INP} nằm \textbf{chung một thư mục}. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

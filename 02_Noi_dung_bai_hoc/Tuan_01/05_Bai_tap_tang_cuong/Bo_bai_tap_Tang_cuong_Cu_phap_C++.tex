@@ -1,0 +1,183 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=15mm, right=15mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Bài tập tăng cường Tuần 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=none,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}BỘ BÀI TẬP TĂNG CƯỜNG TUẦN 01}\\[2pt]
+    {\normalsize\textbf{\color{AsianBlue}THUẦN THỤC CÚ PHÁP C++ \& RÈN LUYỆN TƯ DUY LOGIC CĂN BẢN}}\\[1pt]
+    \textit{\footnotesize Dành cho học sinh mới bắt đầu -- Xây móng vững chắc trước khi học Mảng \& Thuật toán}
+\end{center}
+
+\vspace{-0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\footnotesize MỤC TIÊU \& CẤU TRÚC PHÂN TẦNG (10 BÀI)}]
+\footnotesize
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \item \textbf{Mục tiêu:} Gõ quen tay 100\% cú pháp C++, biến, nhập xuất chuẩn \texttt{cin/cout}, làm chủ rẽ nhánh \texttt{if/else} và vòng lặp.
+    \item \textbf{Phần A (Bài 1--4):} Cú pháp, Biến, Nhập xuất \& Phép tính số học. \textbf{Phần B (Bài 5--7):} Rẽ nhánh \texttt{if/else}. \textbf{Phần C (Bài 8--10):} Vòng lặp \& Số học.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN A: CÚ PHÁP, BIẾN \& NHẬP XUẤT CĂN BẢN}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 1: Khung chào mừng Đội tuyển.} Xuất ra màn hình khung viền chào mừng:\\
+\texttt{**************************************************}\\
+\texttt{* \ \ \ CHAO MUNG DEN VOI DOI TUYEN OLYMPIC 11 \ \ \ *}\\
+\texttt{* \ \ \ \ \ \ \ \ TRUONG QUOC TE A CHAU \ \ \ \ \ \ \ \ *}\\
+\texttt{* \ \ \ \ \ \ \ \ \ \ \ \ "QUYET TAM DOAT GIAI!" \ \ \ \ \ \ \ \ \ \ \ \ *}\\
+\texttt{**************************************************}\\
+\textit{Lưu ý kỹ thuật:} Để in dấu ngoặc kép \texttt{"}, dùng ký tự thoát \texttt{\textbackslash"}.
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 2: Diện tích hình thang \& Bẫy tràn số nguyên.} Nhập vào 3 số nguyên dương $a, b, h$ ($1 \le a, b, h \le 10^6$) là đáy lớn, đáy nhỏ, chiều cao. Tính $S = \frac{(a + b) \cdot h}{2}$.\\
+\textit{Ví dụ:} Input \texttt{5 3 4} $\to$ Output \texttt{16}; Input \texttt{1000000 1000000 1000000} $\to$ Output \texttt{1000000000000}.\\
+\textit{Bẫy phòng thi:} $(a + b) \cdot h$ có thể lên tới $2 \cdot 10^{12} > 2 \cdot 10^9$. Bắt buộc khai báo kiểu \texttt{long long}.
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 3: Chuyển đổi thời gian.} Nhập số giây $T$ ($0 \le T \le 10^9$). Đổi sang dạng \texttt{hh:mm:ss} (mỗi đại lượng 2 chữ số).\\
+\textit{Ví dụ:} Input \texttt{3665} $\to$ Output \texttt{01:01:05}. \textit{Gợi ý:} \texttt{gio = T / 3600; phut = (T \% 3600) / 60; giay = T \% 60;}.
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 4: Bài toán chia kẹo.} Có $N$ kẹo chia đều cho $K$ học sinh ($1 \le N, K \le 10^9$). In số kẹo mỗi bạn nhận và số kẹo còn dư.\\
+\textit{Ví dụ:} Input \texttt{25 4} $\to$ Output \texttt{6 1}.
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN B: CÂU LỆNH RẼ NHÁNH IF / ELSE \& TƯ DUY LOGIC}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 5: Phân loại tam giác.} Nhập 3 số nguyên dương $a, b, c$ ($1 \le a, b, c \le 10^6$).
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item Không tạo thành tam giác ($a+b \le c$ hoặc $a+c \le b$ hoặc $b+c \le a$): In \texttt{KHONG PHAI TAM GIAC}.
+    \item Tạo thành tam giác: In \texttt{TAM GIAC DEU} (nếu $a=b=c$), \texttt{TAM GIAC VUONG} (thỏa Pytago: $a^2+b^2=c^2 \dots$ dùng \texttt{1LL*a*a}), \texttt{TAM GIAC CAN} (có 2 cạnh bằng nhau), hoặc \texttt{TAM GIAC THUONG}.
+\end{itemize}
+
+\newpage
+
+\textbf{\color{AsianBlue}Bài 6: Tính tiền cước taxi lũy tiến.} Giá cước: 1 km đầu giá 15,000đ; từ km 2 đến 5 giá 13,500đ/km; từ km 6 trở đi giá 11,000đ/km. Nếu tổng quãng đường $> 30$ km, giảm 10\% trên tổng tiền. Nhập số km $X$ ($1 \le X \le 1000$), tính cước phải trả.\\
+\textit{Ví dụ:} Input \texttt{1} $\to$ Output \texttt{15000}; Input \texttt{3} $\to$ Output \texttt{42000}; Input \texttt{35} $\to$ Output \texttt{359100}.
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 7: Tọa độ điểm trong mặt phẳng Oxy.} Cho điểm $M(x, y)$ với $x, y \in [-10^6, 10^6]$. Xác định vị trí:
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item Nếu $x=0, y=0$: \texttt{GOC TOA DO}; Nếu $x=0, y\ne 0$: \texttt{TRUC TUNG}; Nếu $y=0, x\ne 0$: \texttt{TRUC HOANH}.
+    \item Nếu $x>0, y>0$: \texttt{GOC I}; Nếu $x<0, y>0$: \texttt{GOC II}; Nếu $x<0, y<0$: \texttt{GOC III}; Nếu $x>0, y<0$: \texttt{GOC IV}.
+\end{itemize}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN C: VÒNG LẶP \& TƯ DUY SỐ HỌC CƠ BẢN}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 8: Tính tổng dãy bình phương.} Nhập số nguyên dương $N$ ($1 \le N \le 10^5$). Tính $S = 1^2 + 2^2 + \dots + N^2$.\\
+\textit{Ví dụ:} Input \texttt{3} $\to$ Output \texttt{14}; Input \texttt{100000} $\to$ Output \texttt{333338333350000}.\\
+\textit{Lưu ý:} Biến tổng bắt buộc dùng kiểu \texttt{long long}, cộng dồn: \texttt{S += 1LL * i * i;}.
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 9: Đếm và tính tổng các ước số của N.} Cho $N$ ($1 \le N \le 10^6$). Đếm số lượng ước và tính tổng các ước số nguyên dương của $N$.\\
+\textit{Ví dụ:} Input \texttt{6} $\to$ Dòng 1 in \texttt{4}, Dòng 2 in \texttt{12} (vì các ước là 1, 2, 3, 6; tổng = 12).\\
+\textit{Gợi ý:} Duyệt \texttt{for (int i = 1; i <= n; i++)}, nếu \texttt{n \% i == 0} thì tăng biến đếm và cộng dồn vào biến tổng.
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 10: Tách chữ số \& Kiểm tra số đối xứng (Palindrome).} Số đối xứng đọc xuôi hay ngược đều như nhau. Nhập $N$ ($1 \le N \le 10^{14}$).
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item Dòng 1: In tổng các chữ số của $N$.
+    \item Dòng 2: In số đảo ngược của $N$.
+    \item Dòng 3: In \texttt{YES} nếu $N$ là số đối xứng, ngược lại in \texttt{NO}.
+\end{itemize}
+\textit{Ví dụ:} Input \texttt{12321} $\to$ Dòng 1: \texttt{9}, Dòng 2: \texttt{12321}, Dòng 3: \texttt{YES}.\\
+\textit{Template kỹ thuật cốt lõi trong lập trình thi đấu:}
+\begin{lstlisting}[language=C++]
+long long temp = N, tong = 0, dao = 0;
+while (temp > 0) {
+    int d = temp % 10;      // Lay chu so hang don vi
+    tong += d;              // Cong vao tong chu so
+    dao = dao * 10 + d;     // Ghep vao so dao nguoc
+    temp /= 10;             // Bo chu so hang don vi
+}
+if (dao == N) cout << "YES\n"; else cout << "NO\n";
+\end{lstlisting}
+
+\vspace{0.25cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Hãy kiên trì tự tay gõ từng bài trên máy tính để biến C++ thành phản xạ tự nhiên của các em!}}
+\end{center}
+
+\end{document}

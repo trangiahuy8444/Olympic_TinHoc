@@ -1,0 +1,16 @@
+C++ BASIC — KIỂM TRA 45 PHÚT
+
+1. Nhập câu hỏi trắc nghiệm bằng tệp LMS_CPP_Basic_45_phut_Trac_nghiem.docx.
+   16 câu, 4 điểm, thời gian 15 phút; mỗi câu một đáp án đúng.
+   Nhãn đáp án đúng [A.] / [B.] / [C.] / [D.] được in đậm theo quy tắc LMS.
+   Đây là tệp nhập ngân hàng câu hỏi cho giáo viên, không đính kèm trực tiếp để học sinh đọc.
+   Các đoạn mã giả sử đã có thư viện và using namespace std; phù hợp.
+
+2. Tệp LMS_CPP_Basic_45_phut_Thuc_hanh.docx dùng đính kèm bài tập thực hành.
+   Thời gian 30 phút, 6 điểm: Bài 1 = 3,5 điểm; Bài 2 = 2,5 điểm.
+   Học sinh nộp BAI1.cpp và BAI2.cpp.
+
+3. Trước khi giao, xem bản xem trước trên LMS để kiểm tra dấu <, >, &, dòng mã và đáp án; tắt hiển thị đáp án đúng cho đến khi kết thúc kiểm tra.
+   Trạng thái: đã định dạng tệp và đối chiếu nội dung; chưa nhập thử vào hệ thống LMS.
+
+Đáp án và hướng dẫn chấm vẫn nằm ở thư mục cấp trên, chỉ dành cho giáo viên.

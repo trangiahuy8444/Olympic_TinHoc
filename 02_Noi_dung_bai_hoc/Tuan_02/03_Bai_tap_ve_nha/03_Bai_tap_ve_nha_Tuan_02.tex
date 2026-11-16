@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=15mm, right=15mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Bài tập về nhà Tuần 02} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=none,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}BÀI TẬP VỀ NHÀ -- TUẦN 02}\\[2pt]
+    {\normalsize\textbf{\color{AsianBlue}MẢNG 1 CHIỀU \& KỸ THUẬT VÒNG LẶP NÂNG CAO}}\\[1pt]
+    \textit{\footnotesize Hệ thống 10 bài tập phân tầng A -- B -- C $\vert$ Thực hành tự luyện trên Code::Blocks}
+\end{center}
+
+\vspace{-0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\footnotesize MỤC TIÊU \& CẤU TRÚC PHÂN TẦNG (10 BÀI)}]
+\footnotesize
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \item \textbf{Mục tiêu:} Làm chủ duyệt mảng 1 chiều, tìm kiếm Min/Max, đếm tần số, vào ra tệp \texttt{.INP} / \texttt{.OUT}, thuật toán 2 vòng lặp và Kadane.
+    \item \textbf{Phần A (Bài 1--4):} Thao tác cơ bản trên Mảng. \textbf{Phần B (Bài 5--8):} Tần số, Chuẩn tệp \& Tính chất. \textbf{Phần C (Bài 9--10):} Thử thách Olympic.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN A: THAO TÁC CĂN BẢN TRÊN MẢNG (MỨC 1)}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 1: Liệt kê các phần tử chẵn.} Nhập $N$ ($1 \le N \le 10^5$) và mảng $A_1, \dots, A_N$ ($|A_i| \le 10^9$). In tất cả các số chẵn theo thứ tự xuất hiện (cách nhau dấu cách). Nếu không có số chẵn nào, in \texttt{-1}.\\
+\textit{Ví dụ:} Input \texttt{6} / \texttt{1 4 7 8 10 3} $\to$ Output: \texttt{4 8 10}.
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 2: Tìm Max, Min và độ chênh lệch.} Cho mảng $A$ gồm $N$ số nguyên ($1 \le N \le 10^5$, $|A_i| \le 10^9$). Tìm giá trị lớn nhất ($Max$), nhỏ nhất ($Min$) và hiệu số $(Max - Min)$.\\
+\textit{Ví dụ:} Input \texttt{5} / \texttt{-3 7 2 15 -8} $\to$ Output: \texttt{15 -8 23}.\\
+\textit{Lưu ý:} $Max - Min$ có thể chạm $2 \cdot 10^9 \implies$ Dùng kiểu \texttt{long long} và khởi tạo $Max, Min$ an toàn với \texttt{A[0]}.
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 3: Tổng phần tử đầu, cuối và trung tâm.} Cho số nguyên dương lẻ $N$ ($3 \le N \le 10^5$) và mảng $A$. Tính tổng của 3 phần tử: phần tử đầu tiên ($A_1$), phần tử chính giữa ($A_{(N+1)/2}$), và phần tử cuối cùng ($A_N$).\\
+\textit{Ví dụ:} Input \texttt{5} / \texttt{10 20 30 40 50} $\to$ Output: \texttt{90} ($10 + 30 + 50$).
+
+\vspace{0.1cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 4: Đếm và tính tổng các số dương.} Cho mảng $A$ gồm $N$ số nguyên ($1 \le N \le 10^5$, $|A_i| \le 10^9$). Đếm số lượng phần tử dương ($A_i > 0$) và tính tổng các phần tử đó.\\
+\textit{Ví dụ:} Input \texttt{6} / \texttt{-2 5 0 8 -4 10} $\to$ Output: \texttt{3 23} (các số dương: 5, 8, 10; tổng: 23).
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN B: DUYỆT MẢNG, ĐẾM TẦN SỐ \& CHUẨN TỆP (MỨC 2)}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 5: Đếm số lần xuất hiện của K.} Cho mảng $A$ ($N$ số) và số nguyên $K$ ($1 \le N \le 10^5$, $|A_i|, |K| \le 10^9$). Đếm số lần $K$ xuất hiện và in vị trí (1-based) xuất hiện đầu tiên của $K$ (nếu không có, vị trí là \texttt{-1}).\\
+\textit{Ví dụ:} Input \texttt{7 3} / \texttt{1 3 5 3 7 3 9} $\to$ Dòng 1: \texttt{3}, Dòng 2: \texttt{2}.
+
+\newpage
+
+\textbf{\color{AsianBlue}Bài 6: Đảo ngược mảng (Chuẩn tệp DAO.INP / DAO.OUT).} Đọc mảng $N$ phần tử từ tệp \texttt{DAO.INP} ($1 \le N \le 10^5$, $|A_i| \le 10^9$), in mảng theo thứ tự đảo ngược từ cuối về đầu ra tệp \texttt{DAO.OUT}.\\
+\textit{Ví dụ:} \texttt{DAO.INP}: \texttt{4} / \texttt{1 2 3 4} $\to$ \texttt{DAO.OUT}: \texttt{4 3 2 1}.\\
+\textit{Cú pháp chuẩn:}
+\begin{lstlisting}[language=C++]
+freopen("DAO.INP", "r", stdin);
+freopen("DAO.OUT", "w", stdout);
+\end{lstlisting}
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 7: Kiểm tra dãy số tăng dần.} Cho mảng $A$ ($2 \le N \le 10^5$). Kiểm tra dãy có tăng ngặt không ($A_i < A_{i+1}$ với mọi $i$). In \texttt{YES} nếu tăng ngặt, ngược lại in \texttt{NO}.\\
+\textit{Ví dụ:} Input \texttt{5} / \texttt{1 3 7 9 12} $\to$ \texttt{YES}; Input \texttt{4} / \texttt{2 5 5 9} $\to$ \texttt{NO}.
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 8: Đếm số nguyên tố trong mảng.} Cho mảng $A$ gồm $N$ số nguyên dương ($1 \le N \le 10^4$, $1 \le A_i \le 10^6$). Đếm số lượng các số nguyên tố và tính tổng của chúng.\\
+\textit{Ví dụ:} Input \texttt{6} / \texttt{1 2 3 4 5 6} $\to$ Dòng 1: \texttt{3}, Dòng 2: \texttt{10} (các số nguyên tố: 2, 3, 5; số 1 không phải số nguyên tố).
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\small PHẦN C: VÒNG LẶP LỒNG NHAU \& THỬ THÁCH OLYMPIC (MỨC 3)}
+\vspace{-0.2cm}
+
+\textbf{\color{AsianBlue}Bài 9: Đếm số cặp có tổng bằng S.} Cho mảng $A$ gồm $N$ số nguyên và số $S$ ($2 \le N \le 2000$, $|A_i|, |S| \le 10^9$). Đếm số lượng cặp chỉ số $(i, j)$ với $1 \le i < j \le N$ sao cho $A_i + A_j = S$.\\
+\textit{Ví dụ:} Input \texttt{5 8} / \texttt{3 5 2 6 5} $\to$ Output: \texttt{3} (gồm các cặp $(1,2), (1,5)$ cho $3+5=8$, và $(3,4)$ cho $2+6=8$).\\
+\textit{Tư duy:} Dùng 2 vòng lặp $O(N^2)$: $N = 2000 \implies \approx 2 \cdot 10^6$ phép tính, chạy $\approx 0.01$s. Chú ý ép kiểu \texttt{1LL * A[i] + A[j] == S}.
+
+\vspace{0.15cm}
+\noindent
+\textbf{\color{AsianBlue}Bài 10: Đoạn con liên tiếp có tổng lớn nhất (Thuật toán Kadane).} Cho mảng $A$ gồm $N$ số ($1 \le N \le 10^5$, $|A_i| \le 10^6$). Tìm đoạn con liên tiếp $A_i, A_{i+1}, \dots, A_j$ ($1 \le i \le j \le N$) có tổng lớn nhất.\\
+\textit{Ví dụ:} Input \texttt{8} / \texttt{-2 -3 4 -1 -2 1 5 -3} $\to$ Output: \texttt{7} (đoạn con $[4, -1, -2, 1, 5]$ có tổng $7$).\\
+\textit{Mã nguồn mẫu tối ưu $O(N)$:}
+\begin{lstlisting}[language=C++]
+long long max_sum = a[0], cur_sum = 0;
+for (int i = 0; i < n; i++) {
+    cur_sum += a[i];
+    max_sum = max(max_sum, cur_sum);
+    if (cur_sum < 0) cur_sum = 0;
+}
+cout << max_sum << "\n";
+\end{lstlisting}
+
+\vspace{0.2cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Lập trình thi đấu đòi hỏi sự kiên trì: Hiểu đề -- Viết code mẫu -- Tự sinh test biên -- Tối ưu hóa!}}
+\end{center}
+
+\end{document}

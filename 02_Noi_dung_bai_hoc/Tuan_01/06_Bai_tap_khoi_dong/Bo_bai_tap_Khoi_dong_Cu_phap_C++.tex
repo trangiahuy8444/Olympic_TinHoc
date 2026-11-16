@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Định nghĩa hệ màu chuẩn theo Brand Identity của Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1 - Xanh logo chính
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493 - Xanh navy chữ Asian School
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} % Nền box nhẹ nhàng
+
+% Cấu hình Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Thực hành Tuần 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG VỚI LOGO TRƯỜNG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}PHIẾU THỰC HÀNH TẠI LỚP -- TUẦN 01}\\[3pt]
+    {\large\textbf{\color{AsianBlue}CÚ PHÁP C++ CỐT LÕI \& THAO TÁC TRÊN CODE::BLOCKS}}\\[2pt]
+    \textit{\small Dành cho thời lượng thực hành trực tiếp trên máy (30 -- 45 phút) $\vert$ Bấm phím tắt F9 để chạy}
+\end{center}
+
+\vspace{0.1cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU THỰC HÀNH \& CHỈ DẪN KỸ THUẬT}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Mục tiêu:} Gõ quen tay cú pháp C++, dấu chấm phẩy \texttt{;}, câu lệnh \texttt{if/else} và vòng lặp \texttt{for}.
+    \item \textbf{Phím tắt vàng trên Code::Blocks:} Tạo tệp mới (\texttt{Ctrl+Shift+N}), Lưu tệp (\texttt{Ctrl+S}), Dịch \& Chạy (\texttt{F9}).
+    \item \textbf{Bẫy tràn số:} Với các bài toán có tính tổng hoặc tích lớn, luôn dùng kiểu \texttt{long long} thay vì \texttt{int}.
+    \item \textbf{Vào ra tệp:} Ở Bài 5, áp dụng lệnh \texttt{freopen} để đọc từ \texttt{TONG.INP} và ghi ra \texttt{TONG.OUT}.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}Bài 1: Tính toán hình học cơ bản}
+\textbf{Đề bài:} Nhập vào 2 số nguyên dương $a, b$ ($1 \le a, b \le 10^6$) là chiều dài và chiều rộng của một hình chữ nhật.
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Dòng 1 in ra chu vi hình chữ nhật: $P = (a + b) \times 2$.
+    \item Dòng 2 in ra diện tích hình chữ nhật: $S = a \times b$.
+\end{itemize}
+\textbf{Lưu ý:} Biến diện tích có thể lên tới $10^{12}$, bắt buộc dùng kiểu \texttt{long long}.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input (Bàn phím)} & \textbf{Output (Màn hình)} \\ \hline
+\texttt{100000 200000} & \texttt{600000} \\
+& \texttt{20000000000} \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 2: Tìm số lớn nhất trong ba số (Rèn luyện if/else)}
+\textbf{Đề bài:} Nhập vào 3 số nguyên $a, b, c$ ($|a|, |b|, |c| \le 10^9$). Hãy in ra giá trị lớn nhất trong 3 số.\\
+\textbf{Gợi ý:} Khởi tạo biến \texttt{max\_val = a}, sau đó so sánh lần lượt với $b$ và $c$.\\
+\textbf{Ví dụ:} Input \texttt{15 -7 28} $\implies$ Output là \texttt{28}.
+
+\newpage
+
+\section*{\color{AsianDarkBlue}Bài 3: Kiểm tra năm nhuận (Toán tử Logic \&\& và ||)}
+\textbf{Đề bài:} Nhập vào một năm nguyên dương $N$ ($1 \le N \le 10^5$). Một năm là năm nhuận nếu:
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Năm đó chia hết cho 400, HOẶC:
+    \item Năm đó chia hết cho 4 nhưng KHÔNG chia hết cho 100.
+\end{itemize}
+In ra \texttt{YES} nếu là năm nhuận, ngược lại in \texttt{NO}.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input} & \textbf{Output} \\ \hline
+\texttt{2024} & \texttt{YES} \\ \hline
+\texttt{1900} & \texttt{NO} \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 4: Tính tổng các số chẵn từ 1 đến N (Vòng lặp for)}
+\textbf{Đề bài:} Nhập vào số nguyên dương $N$ ($1 \le N \le 10^6$). Hãy tính tổng tất cả các số chẵn trong khoảng từ 1 đến $N$.\\
+\textbf{Lưu ý:} Biến tổng tích lũy phải dùng kiểu \texttt{long long} và khởi tạo bằng 0 (\texttt{long long tong = 0;}).\\
+\textbf{Ví dụ:} Với $N = 10$, các số chẵn là $2, 4, 6, 8, 10 \implies$ Tổng là \texttt{30}.
+
+\section*{\color{AsianDarkBlue}Bài 5: Tập đọc ghi tệp phòng thi Olympic (Tổng dãy số)}
+\textbf{Quy cách tệp:} Đọc dữ liệu từ tệp \texttt{TONG.INP}, ghi kết quả ra tệp \texttt{TONG.OUT}.\\
+\textbf{Hướng dẫn:} Đặt 2 dòng code sau vào đầu hàm \texttt{main()}:
+\begin{center}
+\texttt{freopen("TONG.INP", "r", stdin); freopen("TONG.OUT", "w", stdout);}
+\end{center}
+\textbf{Đề bài:} 
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Dòng đầu chứa số nguyên dương $N$ ($1 \le N \le 10^5$).
+    \item Dòng thứ hai chứa $N$ số nguyên $A_1, A_2, \dots, A_N$ ($|A_i| \le 10^9$).
+\end{itemize}
+Hãy tính và in ra tổng của $N$ số nguyên đó.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Tệp TONG.INP} & \textbf{Tệp TONG.OUT} \\ \hline
+\texttt{4} & \texttt{125} \\
+\texttt{10 20 -5 100} & \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

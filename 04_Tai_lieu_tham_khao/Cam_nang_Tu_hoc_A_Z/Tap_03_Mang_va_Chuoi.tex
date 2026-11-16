@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% He mau Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Cẩm nang Tự học C++ từ A-Z}
+\rhead{\color{AsianDarkBlue}\small\textbf{Tập 03: Mảng \& Chuỗi ký tự}}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER DAU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{TÀI LIỆU TỰ HỌC C++ TỪ A ĐẾN Z CHO HỌC SINH}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}CẨM NANG TỰ HỌC C++ TỪ A ĐẾN Z -- TẬP 03}\\[3pt]
+    {\large\textbf{\color{AsianBlue}MẢNG 1 CHIỀU \& CHUỖI KÝ TỰ \texttt{std::string} CĂN BẢN}}\\[2pt]
+    \textit{\small Dành riêng cho học sinh Đội tuyển Olympic Tin học 11 tự học và thực hành tại nhà}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU TỰ HỌC TẬP 03}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Hiểu bản chất mảng 1 chiều: tập hợp biến cùng kiểu, chỉ số đánh từ $0$ đến $N - 1$.
+    \item Nắm chắc 3 thao tác cơ bản: Nhập/xuất mảng, tính tổng và tìm Max/Min (khởi tạo \texttt{max = a[0]}).
+    \item Làm chủ chuỗi ký tự \texttt{std::string}: Phân biệt \texttt{cin >>} (đọc 1 từ) vs \texttt{getline(cin, s)} (đọc cả dòng).
+    \item Duyệt và đếm ký tự trong chuỗi bằng vòng lặp \texttt{for} từ \texttt{0} đến \texttt{s.length() - 1}.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. MẢNG 1 CHIỀU CĂN BẢN}
+
+\subsection*{\color{AsianBlue}1. Khai báo, Nhập và Xuất mảng}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int a[105]; // Khai bao mang du dung cho n phan tu
+
+    for (int i = 0; i < n; i++) cin >> a[i]; // Nhap mang tu ban phim
+
+    for (int i = 0; i < n; i++) cout << a[i] << " "; // Xuat mang
+    cout << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Tìm Max, Min và Tính tổng mảng}
+\begin{lstlisting}[language=C++]
+int max_val = a[0]; // LUON khoi tao bang a[0], tuyet doi khong khoi tao = 0
+long long tong = 0;
+
+for (int i = 0; i < n; i++) {
+    if (a[i] > max_val) max_val = a[i];
+    tong += a[i];
+}
+cout << "Max = " << max_val << ", Tong = " << tong << "\n";
+\end{lstlisting}
+
+\newpage
+\section*{\color{AsianDarkBlue}II. CHUỖI KÝ TỰ \texttt{std::string} CĂN BẢN}
+
+\subsection*{\color{AsianBlue}1. Khai báo chuỗi \& Nhập xuất văn bản}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s1, s2;
+    cin >> s1; // Chi doc 1 tu (dung lai o dau cach hoac Enter)
+    
+    cin.ignore(); // Xoa dau Enter thua truoc khi dung getline
+    getline(cin, s2); // Doc toan bo mot dong van ban co khoang trang
+
+    cout << "Do dai chuoi s2: " << s2.length() << "\n";
+    cout << "Ky tu dau tien: " << s2[0] << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Duyệt từng ký tự và đếm ký tự trong chuỗi}
+\begin{lstlisting}[language=C++]
+// Dem so luong chu cai in hoa trong chuoi
+int dem_hoa = 0;
+for (int i = 0; i < s.length(); i++) {
+    if (s[i] >= 'A' && s[i] <= 'Z') {
+        dem_hoa++;
+    }
+}
+cout << "So chu hoa: " << dem_hoa << "\n";
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}III. BÀI TẬP TỰ LUYỆN TẠI NHÀ}
+\begin{enumerate}
+    \setlength{\itemsep}{2pt}
+    \small
+    \item \textbf{Bài 3.1:} Nhập mảng $N$ số nguyên. Tính và in ra trung bình cộng của các số dương trong mảng.
+    \item \textbf{Bài 3.2:} Nhập mảng $N$ số nguyên. Đếm xem có bao nhiêu phần tử chia hết cho 5 nhưng không chia hết cho 2.
+    \item \textbf{Bài 3.3:} Nhập một chuỗi văn bản $S$. Đếm xem trong chuỗi có bao nhiêu ký tự chữ số (\texttt{'0'} đến \texttt{'9'}).
+    \item \textbf{Bài 3.4:} Nhập một chuỗi $S$. Hãy in ra chuỗi đó theo thứ tự đảo ngược từ ký tự cuối về ký tự đầu.
+\end{enumerate}
+
+\end{document}

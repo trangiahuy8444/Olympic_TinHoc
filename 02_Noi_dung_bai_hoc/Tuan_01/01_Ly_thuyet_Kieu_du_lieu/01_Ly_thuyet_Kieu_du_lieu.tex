@@ -1,0 +1,201 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=17mm, right=17mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Lý thuyết: Kiểu dữ liệu C++} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}CHUYÊN ĐỀ 01: BIẾN, Ô NHỚ VÀ HỆ THỐNG KIỂU DỮ LIỆU C++}\\[2pt]
+    {\small\textit{Tài liệu lý thuyết trọng tâm dành cho học sinh bắt đầu học lập trình thi đấu}}
+\end{center}
+
+\vspace{-1mm}
+\section*{\color{AsianDarkBlue}\normalsize 1. Bản chất của Biến và Bộ nhớ Máy tính (RAM)}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item \textbf{Bộ nhớ RAM:} Là một dãy vô số các ``ô nhớ'', mỗi ô nhớ lưu trữ đúng \textbf{1 Byte} ($= 8$ Bit, mỗi bit là 0 hoặc 1). Mỗi ô nhớ đều có một địa chỉ duy nhất.
+    \item \textbf{Biến (Variable):} Là một cái tên đại diện cho một vùng ô nhớ trong RAM để lưu trữ dữ liệu. Khi chương trình chạy, giá trị bên trong ô nhớ có thể thay đổi được.
+    \item \textbf{Cú pháp khai báo biến:} \texttt{<Kiểu\_dữ\_liệu> <Tên\_biến> = <Giá\_trị\_khởi\_tạo>;}
+    \begin{itemize}
+        \item Ví dụ: \texttt{int tuoi = 16; long long tong = 0; double diem = 9.5;}
+        \item \textbf{Quy tắc sống còn:} Luôn khởi tạo giá trị ban đầu cho biến (đặc biệt biến tính tổng \texttt{tong = 0}, biến tính tích \texttt{tich = 1}), nếu không biến sẽ nhận ``giá trị rác'' ngẫu nhiên trong bộ nhớ.
+    \end{itemize}
+\end{itemize}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 2. Bảng Tra cứu Hệ thống Kiểu Dữ liệu Căn bản trong C++}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lp{2.2cm}cp{4.6cm}p{4.5cm}@{}}
+\toprule
+\textbf{Kiểu} & \textbf{Ý nghĩa} & \textbf{Bộ nhớ} & \textbf{Miền giá trị} & \textbf{Ứng dụng chuẩn Olympic} \\
+\midrule
+\texttt{bool} & Giá trị logic & 1 Byte & \texttt{true} (1) hoặc \texttt{false} (0) & Đánh dấu cờ hiệu, trạng thái \\
+\texttt{char} & Ký tự đơn & 1 Byte & Mã ASCII (\texttt{'A'}, \texttt{'a'}, \texttt{'0'}...) & Xử lý chữ cái, mã ký tự \\
+\texttt{int} & Số nguyên & 4 Byte & $-2 \cdot 10^9$ đến $2 \cdot 10^9$ ($\pm 2^{31}-1$) & Đếm, chỉ số mảng, số $\le 10^9$ \\
+\texttt{long long} & Số nguyên lớn & \textbf{8 Byte} & \textbf{$-9 \cdot 10^{18}$ đến $9 \cdot 10^{18}$} ($\pm 2^{63}-1$) & \textbf{Bắt buộc cho tổng, tích, diện tích} \\
+\texttt{float} & Số thực đơn & 4 Byte & Đúng 6--7 chữ số thập phân & Ít dùng trong thi đấu \\
+\texttt{double} & Số thực kép & \textbf{8 Byte} & Đúng 15--16 chữ số thập phân & \textbf{Chuẩn 100\% cho số thực Olympic} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 3. Bẫy Tử huyệt trong Thi đấu: Tràn Số Nguyên (Integer Overflow)}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item \textbf{Hiện tượng tràn số:} Kiểu \texttt{int} chỉ chứa được tối đa $+2\,147\,483\,647$ ($\approx 2 \cdot 10^9$). Nếu tính vượt giới hạn này, máy tính sẽ bị ``quay vòng'' thành \textbf{số âm kỳ lạ} (ví dụ: $2 \cdot 10^9 + 10^9 = -1\,294\,967\,296$).
+    \item \textbf{Hậu quả:} Chương trình không báo lỗi biên dịch, vẫn chạy nhưng toàn bộ bài nộp bị \textbf{0 điểm}!
+    \item \textbf{Quy tắc nằm lòng Olympic:}
+    \begin{itemize}
+        \item Bất kỳ biến nào dùng để \textbf{tính tổng} của dãy số $\implies$ Bắt buộc khai báo \texttt{long long}.
+        \item Bất kỳ phép nhân nào (diện tích HCN, thể tích, tích 2 số $\ge 10^5$) $\implies$ Bắt buộc dùng \texttt{long long}.
+    \end{itemize}
+\end{itemize}
+
+\vspace{-1mm}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1mm,title=\textbf{\footnotesize BẪY ÉP KIỂU KHI NHÂN HAI SỐ KIỂU INT TRONG C++}]
+\footnotesize
+Cho hai biến \texttt{int a = 1000000;} và \texttt{int b = 1000000;} ($10^6$).\\
+Nếu viết: \texttt{long long res = a * b;} $\implies$ \textbf{VẪN BỊ TRÀN SỐ VÀ RA KẾT QUẢ SAI!}\\
+\textit{Giải thích:} C++ tính \texttt{a * b} theo kiểu \texttt{int} trước (ra kết quả âm), rồi mới gán vào biến \texttt{res}.\\
+$\implies$ \textbf{Cách viết chuẩn chính xác:} \texttt{long long res = 1LL * a * b;} (Thêm \texttt{1LL} để ép nhân kiểu 64-bit).
+\end{tcolorbox}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\normalsize 4. Phép toán Số học \& Bẫy Phép chia Số nguyên trong C++}
+\subsection*{\color{AsianBlue}\small a) Các phép toán cơ bản}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item Cộng (\texttt{+}), Trừ (\texttt{-}), Nhân (\texttt{*}).
+    \item \textbf{Phép chia lấy phần nguyên (\texttt{/}):}
+    \begin{itemize}
+        \item Nếu cả tử và mẫu là số nguyên: \texttt{7 / 2} cho kết quả là \textbf{\texttt{3}} (bỏ sạch phần thập phân!).
+        \item Muốn ra số thực $3.5$: Ít nhất một toán hạng phải là số thực: \texttt{7.0 / 2} hoặc \texttt{(double)a / b}.
+    \end{itemize}
+    \item \textbf{Phép chia lấy phần dư (\texttt{\%}):} Chỉ dùng cho số nguyên. Ví dụ: \texttt{7 \% 2 = 1}, \texttt{14 \% 5 = 4}.
+    \item \textbf{Ứng dụng kinh điển của phép \texttt{\%} và \texttt{/}}:
+    \begin{itemize}
+        \item Kiểm tra chẵn lẻ: \texttt{n \% 2 == 0} (chẵn), \texttt{n \% 2 != 0} (lẻ).
+        \item Tách chữ số hàng đơn vị: \texttt{n \% 10} (lấy chữ số cuối), \texttt{n / 10} (bỏ chữ số cuối).
+        \item Đổi đơn vị thời gian: Tổng số giây $T \implies$ Giờ: \texttt{T / 3600}, Phút: \texttt{(T \% 3600) / 60}, Giây: \texttt{T \% 60}.
+    \end{itemize}
+    \item \textbf{Toán tử viết gọn:} \texttt{x++} (tăng 1), \texttt{x--} (giảm 1), \texttt{tong += a} ($tong = tong + a$), \texttt{tich *= a}.
+\end{itemize}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 5. Kiểu Số thực (\texttt{double}) \& Kỹ thuật In Định dạng Thập phân}
+Trong đề thi Olympic, các bài toán thường yêu cầu: \textit{``In kết quả làm tròn đúng 2 chữ số thập phân''}. Bắt buộc dùng thư viện \texttt{<iomanip>}:
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <iomanip> // Bat buoc de dung fixed va setprecision
+using namespace std;
+
+int main() {
+    double diem_toan = 9.0, diem_tin = 8.5;
+    double dtb = (diem_toan + diem_tin) / 2.0;
+
+    // In dung 2 chu so sau dau phay thap phan
+    cout << fixed << setprecision(2) << dtb << "\n"; // In ra: 8.75
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 6. Kiểu Ký tự (\texttt{char}) \& Bảng mã ASCII Căn bản}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item Mỗi ký tự đặt trong dấu nháy đơn \texttt{'...'}. Ví dụ: \texttt{'A'}, \texttt{'z'}, \texttt{'9'}.
+    \item Thực chất mỗi ký tự là một số nguyên từ 0 đến 255 theo bảng mã ASCII:
+    \begin{itemize}
+        \item Ký tự chữ số \texttt{'0'} có mã ASCII là \textbf{48}, \texttt{'1'} là 49... Đổi ký tự số sang số nguyên: \texttt{int so = c - '0';}
+        \item Chữ cái in hoa \texttt{'A'} có mã \textbf{65}, \texttt{'B'} là 66... Chữ thường \texttt{'a'} có mã \textbf{97}.
+        \item Chuyển từ chữ hoa sang chữ thường: \texttt{char thuong = hoa + 32;}.
+    \end{itemize}
+\end{itemize}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 7. Quy tắc Đặt tên Biến \& Khai báo Hằng số (\texttt{const})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \small
+    \item \textbf{Quy tắc đặt tên biến chuẩn:} Tên biến bắt đầu bằng chữ cái hoặc dấu gạch dưới \texttt{\_}, không chứa dấu cách, không trùng từ khóa C++ (\texttt{int, long, return...}). C++ \textbf{phân biệt hoa thường} (\texttt{Tong} khác \texttt{tong}).
+    \item \textbf{Đặt tên có ý nghĩa:} Dùng \texttt{tong, chu\_vi, dien\_tich, max\_val} thay vì các ký tự vô nghĩa \texttt{a1, a2, x, y, z}.
+    \item \textbf{Khai báo hằng số (\texttt{const}):} Dùng cho các giá trị cố định không đổi:
+    \begin{itemize}
+        \item Số Pi: \texttt{const double PI = 3.141592653589793;}
+        \item Giá trị vô cùng lớn: \texttt{const long long INF = 1e18;}
+    \end{itemize}
+\end{itemize}
+
+\end{document}

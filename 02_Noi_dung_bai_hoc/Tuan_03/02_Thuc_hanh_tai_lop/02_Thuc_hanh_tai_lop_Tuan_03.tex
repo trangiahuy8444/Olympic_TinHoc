@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Thực hành Tuần 03} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}PHIẾU THỰC HÀNH TẠI LỚP -- TUẦN 03}\\[3pt]
+    {\large\textbf{\color{AsianBlue}HÀM, TRUYỀN THAM CHIẾU \& MẢNG ĐẾM TẦN SỐ}}\\[2pt]
+    \textit{\small Dành cho thời lượng thực hành trực tiếp trên Code::Blocks (30 -- 45 phút) $\vert$ Bấm F9 để Build \& Run}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU THỰC HÀNH \& KỸ THUẬT CỐT LÕI}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Module hóa bằng hàm:} Tách nhỏ chương trình, phân biệt hàm \texttt{void} vs hàm có kiểu trả về.
+    \item \textbf{Bản chất tham chiếu (\texttt{\&}):} Nắm chắc cơ chế ô nhớ RAM để viết hàm thay đổi trực tiếp biến gốc (\texttt{my\_swap}).
+    \item \textbf{Đột phá mảng đếm tần số $O(N)$:} Thay thế 2 vòng lặp lồng nhau $O(N^2)$ (TLE) bằng kỹ thuật \texttt{cnt[x]++} tức thì.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}Bài 1: Viết hàm tính lũy thừa \& Kiểm tra số nguyên tố}
+\textbf{Đề bài:} Viết chương trình gồm 2 hàm độc lập:
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item Hàm \texttt{long long power(long long a, int b)} tính $a^b$ ($a \ge 1, 0 \le b \le 18, a^b \le 10^{18}$).
+    \item Hàm \texttt{bool is\_prime(long long n)} kiểm tra số nguyên tố trong độ phức tạp $O(\sqrt{n})$.
+\end{enumerate}
+Trong hàm \texttt{main()}, nhập số nguyên dương $x$ ($1 \le x \le 10^{12}$). In ra \texttt{YES} nếu $x$ là số nguyên tố, ngược lại in \texttt{NO}.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input (Bàn phím)} & \textbf{Output (Màn hình)} \\ \hline
+\texttt{999999999989} & \texttt{YES} \\ \hline
+\texttt{1000000000000} & \texttt{NO} \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 2: Viết hàm tự hoán đổi \& Kiểm chứng tham chiếu \texttt{\&}}
+\textbf{Đề bài:} Viết hàm \texttt{void my\_swap(long long \&u, long long \&v)} hoán đổi giá trị 2 biến. Nhập vào 2 số nguyên $A, B$ ($|A|, |B| \le 10^{18}$). Gọi hàm \texttt{my\_swap(A, B)} và in ra giá trị của $A, B$ sau khi hoán đổi.\\
+\textbf{Lưu ý sư phạm:} Hãy thử bỏ dấu \texttt{\&} ở tham số để thấy giá trị $A, B$ ngoài \texttt{main()} không hề thay đổi!\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input} & \textbf{Output} \\ \hline
+\texttt{100 200} & \texttt{200 100} \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}Bài 3: Cài đặt Mảng đếm tần số trực tiếp $O(N)$}
+\textbf{Đề bài:} Cho mảng $A$ gồm $N$ số nguyên không âm ($1 \le N \le 10^5, 0 \le A_i \le 10^6$). Hãy đếm số lần xuất hiện của từng giá trị trong mảng và in ra theo định dạng: \texttt{Giá\_trị: Số\_lần} theo thứ tự giá trị tăng dần (chỉ in các số có xuất hiện ít nhất 1 lần).\\
+\textbf{Khung thuật toán chuẩn phòng thi:}
+\begin{lstlisting}[language=C++]
+const int MAX_VAL = 1000005;
+int cnt[MAX_VAL]; // Mang dem toan cuc tren vung BSS (tu dong = 0)
+
+for (int i = 0; i < n; i++) {
+    int x; cin >> x;
+    cnt[x]++; // Chi so la gia tri, noi dung la so lan xuat hien
+}
+\end{lstlisting}
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input} & \textbf{Output} \\ \hline
+\texttt{7} & \texttt{2: 1} \\
+\texttt{5 2 8 5 9 2 5} & \texttt{5: 3} \\
+& \texttt{8: 1} \\
+& \texttt{9: 1} \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 4: Thực hành tệp Olympic: Đếm phần tử phân biệt (UNIQUE)}
+\textbf{Quy cách tệp phòng thi:} Đọc từ tệp \texttt{UNIQUE.INP}, ghi kết quả ra tệp \texttt{UNIQUE.OUT}.\\
+\textbf{Đề bài:} Cho dãy gồm $N$ số nguyên ($1 \le N \le 10^5, 0 \le A_i \le 10^6$). Hãy đếm xem trong dãy có bao nhiêu giá trị phân biệt (khác nhau đôi một).\\
+\textbf{Độ phức tạp yêu cầu:} $O(N)$ thời gian, $O(\max(A_i))$ bộ nhớ. Tuyệt đối không dùng 2 vòng for $O(N^2)$ vì sẽ bị loại TLE ngay lập tức!\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Tệp UNIQUE.INP} & \textbf{Tệp UNIQUE.OUT} \\ \hline
+\texttt{6} & \texttt{4} \\
+\texttt{10 20 10 30 20 50} & \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

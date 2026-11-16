@@ -1,0 +1,134 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=18mm, left=20mm, right=20mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Định nghĩa hệ màu chuẩn theo Brand Identity của Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1 - Xanh logo chính
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493 - Xanh navy chữ Asian School
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} % Nền box nhẹ nhàng
+
+% Cấu hình Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Kế hoạch Đào tạo Olympic 11} (2026--2027)}
+\rfoot{\color{gray}\small Trang \thepage}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG VỚI LOGO TRƯỜNG
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.5cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.2cm}
+{\color{AsianBlue}\hrule height 1.8pt}
+\vspace{0.3cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}KẾ HOẠCH CHI TIẾT HUẤN LUYỆN ĐỘI TUYỂN OLYMPIC TIN HỌC 11}\\[6pt]
+    {\large\textbf{\color{AsianBlue}NĂM HỌC 2026 -- 2027}}\\[4pt]
+    \textit{(Lộ trình 28 tuần từ 08/09/2026 đến kỳ thi Olympic Tháng 4/2027)}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,title=\textbf{THÔNG TIN CHUNG}]
+\begin{itemize}
+    \item \textbf{Đơn vị đào tạo:} Trường Quốc tế Á Châu (The Asian International School).
+    \item \textbf{Đối tượng học sinh:} Học sinh khối 11 bắt đầu học và sử dụng trực tiếp C++ thi đấu.
+    \item \textbf{Thời gian huấn luyện:} Từ \textbf{08/09/2026} đến kỳ thi Olympic (tháng 04/2027).
+    \item \textbf{Thời lượng học tập:}
+    \begin{itemize}
+        \item \textit{Trên lớp:} 01 buổi/tuần (90 phút/buổi).
+        \item \textit{Tự học \& làm bài tại nhà:} Hoàn thành đầy đủ phiếu bài tập hàng tuần (học sinh chủ động sắp xếp thời gian hợp lý).
+    \end{itemize}
+    \item \textbf{Mục tiêu điểm số kỳ vọng (Thang điểm 20):}
+    \begin{itemize}
+        \item Bài 1: Đạt \textbf{6.0 / 6.0 điểm} (Ăn trọn điểm bài dễ/trung bình).
+        \item Bài 2: Đạt tối thiểu \textbf{4.0 -- 5.0 / 7.0 điểm} (Ăn trọn subtask cơ bản/trung bình của Quy hoạch động / Toán).
+        \item Bài 3: Đạt tối thiểu \textbf{2.0 -- 3.0 / 7.0 điểm} (Ăn subtask vét cạn / cấu trúc dữ liệu cơ bản).
+        \item \textbf{Tổng điểm kỳ vọng:} \textbf{12.0 -- 15.0 / 20.0 điểm} (Tranh giải Nhì / Ba cấp Thành phố).
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. Mô hình giảng dạy (90 phút trên lớp)}
+\begin{itemize}
+    \item \textbf{15 phút đầu:} Review \& Code Audit -- Sửa bài tập về nhà tuần trước, kiểm tra lỗi cú pháp và bẫy tràn số.
+    \item \textbf{45 phút giữa:} Chuyên đề trọng tâm -- Giới thiệu kiến thức mới, phân tích template code C++ chuẩn.
+    \item \textbf{30 phút cuối:} Luyện tư duy \& Thực hành -- Học sinh code bài tập trên máy, hướng dẫn phiếu bài tập về nhà.
+\end{itemize}
+
+\section*{\color{AsianDarkBlue}II. Lộ trình 28 tuần phân theo 5 giai đoạn}
+
+\subsection*{\color{AsianBlue}Giai đoạn 1: C++ Căn bản \& Xây dựng tư duy nền tảng (Tuần 1 -- Tuần 8)}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \item \textbf{Tuần 1 (08/09 -- 14/09):} Khởi động đội tuyển, Cài đặt Code::Blocks \& Cú pháp C++ cốt lõi (\texttt{int}, \texttt{long long}, bẫy tràn số, \texttt{cin/cout}, \texttt{if/else}, \texttt{for}, vào ra tệp \texttt{.INP}/\texttt{.OUT}).
+    \item \textbf{Tuần 2 (15/09 -- 21/09):} Vòng lặp lồng nhau \& Kỹ thuật Mảng 1 chiều toàn diện (nhập/xuất, tìm Min/Max, tính tổng/tích, đếm số chẵn/lẻ/nguyên tố, đảo mảng).
+    \item \textbf{Tuần 3 (22/09 -- 28/09):} Xây dựng Hàm (\texttt{function}), Tham chiếu (\texttt{\&}) \& Kỹ thuật Mảng đếm tần số (Counting Array / Mảng đánh dấu) -- bước ngoặt tối ưu $O(N)$ thay vì $O(N^2)$.
+    \item \textbf{Tuần 4 (29/09 -- 05/10):} Xử lý Ký tự (\texttt{char}) \& Xâu ký tự (\texttt{std::string}): Bảng mã ASCII, các hàm ký tự, đếm từ, xâu đối xứng (Palindrome), nén xâu (trọng tâm ăn trọn Bài 1 đề thi).
+    \item \textbf{Tuần 5 (06/10 -- 12/10):} Số học căn bản: Ước số, kiểm tra nguyên tố $O(\sqrt{N})$, Euclid GCD/LCM, Sàng nguyên tố Eratosthenes, tách chữ số số lớn.
+    \item \textbf{Tuần 6 (13/10 -- 19/10):} Kỹ thuật Tiền xử lý: Mảng cộng dồn (Prefix Sum 1D tính tổng đoạn $O(1)$) \& Mảng hiệu (Difference Array cập nhật đoạn $O(1)$).
+    \item \textbf{Tuần 7 (20/10 -- 26/10):} Sắp xếp \texttt{std::sort}, Mảng động \texttt{std::vector} \& Kỹ thuật Hai con trỏ (Two Pointers / Sliding Window). Giải bài \textbf{NGHE NHẠC} (Olympic 2024--2025).
+    \item \textbf{Tuần 8 (27/10 -- 02/11):} Tìm kiếm nhị phân căn bản (\texttt{lower\_bound}, \texttt{binary\_search}) \& \textbf{Mini-Contest 1} -- Thi thử 120 phút tổng kết Giai đoạn 1.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}Giai đoạn 2: Cấu trúc dữ liệu C++ STL nâng cao \& Tìm kiếm (Tuần 9 -- Tuần 13)}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \item \textbf{Tuần 9 (03/11 -- 09/11):} Cấu trúc nâng cao: \texttt{pair}, \texttt{struct}, hàm so sánh tùy biến (Custom Comparator) trong \texttt{std::sort}.
+    \item \textbf{Tuần 10 (10/11 -- 16/11):} Cấu trúc Tập hợp \& Ánh xạ: \texttt{std::set}, \texttt{std::map}. Ứng dụng mô phỏng và đếm phân phối (Bài toán \textbf{ROBOT}).
+    \item \textbf{Tuần 11 (17/11 -- 23/11):} Hàng đợi ưu tiên (\texttt{priority\_queue}), Ngăn xếp (\texttt{stack}), Hàng đợi hai đầu (\texttt{deque}).
+    \item \textbf{Tuần 12 (24/11 -- 30/11):} Kỹ thuật Chặt nhị phân kết quả (Binary Search on Answer) -- chìa khóa ăn điểm trọn vẹn Bài 2 Olympic.
+    \item \textbf{Tuần 13 (01/12 -- 07/12):} Đệ quy căn bản \& Thuật toán Quay lui (Backtracking) sinh tập con, sinh hoán vị vét cạn subtask.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}Giai đoạn 3: Trọng tâm Quy hoạch động (DP) (Tuần 14 -- Tuần 19)}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \item \textbf{Tuần 14 (08/12 -- 14/12):} Nhập môn Quy hoạch động: Bảng phương án, bài toán Bậc thang, Đổi tiền (Coin Change).
+    \item \textbf{Tuần 15 (15/12 -- 21/12):} Dãy con tăng dài nhất (LIS): Từ $O(N^2)$ lên $O(N \log N)$, truy vết phương án.
+    \item \textbf{Tuần 16 (22/12 -- 28/12):} Bài toán Balo (Knapsack 0/1 và Unbounded): Tối ưu không gian nhớ mảng 1D.
+    \item \textbf{Tuần 17 (29/12 -- 04/01):} Quy hoạch động trên Lưới / Ma trận: Giải bài toán \textbf{LOCO} (Olympic 30/4 năm 2023).
+    \item \textbf{Tuần 18 (05/01 -- 11/01):} Quy hoạch động Phân đoạn: Chọn $K$ đoạn không giao nhau. Giải bài \textbf{THU HOẠCH} (Olympic 2025--2026).
+    \item \textbf{Tuần 19 (12/01 -- 18/01):} Quy hoạch động Xâu ký tự: Xâu con chung dài nhất (LCS), Xâu đối xứng \& \textbf{Mini-Contest 2 (Chuyên đề DP)}.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}Giai đoạn 4: Lý thuyết Đồ thị cơ bản (Tuần 20 -- Tuần 23)}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \item \textbf{Tuần 20 (19/01 -- 25/01):} Biểu diễn đồ thị bằng Danh sách kề, thuật toán duyệt BFS và DFS, đếm thành phần liên thông.
+    \item \textbf{Tuần 21 (26/01 -- 01/02):} Ứng dụng BFS/DFS: Kiểm tra chu trình, đồ thị hai phía. Phân tích bài \textbf{SLTPLT} (Olympic 30/4 năm 2023).
+    \item \textbf{Tuần 22 (02/02 -- 08/02):} Cấu trúc Disjoint Set Union (DSU) \& Thuật toán Kruskal tìm Cây khung nhỏ nhất (MST).
+    \item \textbf{Tuần 23 (09/02 -- 15/02):} Đường đi ngắn nhất Dijkstra với \texttt{priority\_queue} trong $O((V+E)\log V)$ \& \textbf{Mini-Contest 3 (Tổng kết Đồ thị)}.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}Giai đoạn 5: Luyện đề thực chiến \& Tâm lý phòng thi (Tuần 24 -- Tuần 28)}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \item \textbf{Tuần 24 -- 25:} Luyện giải bộ đề Olympic các năm trước (120 phút / 3 bài).
+    \item \textbf{Tuần 26 -- 27:} Rèn luyện kỹ thuật kiểm thử (Stress Test bằng script tự sinh test ngẫu nhiên).
+    \item \textbf{Tuần 28 (Sát ngày thi):} Tổng duyệt chiến thuật phân bổ thời gian: 40 phút Bài 1 (trọn 6đ), 50 phút Bài 2 (ăn 5-6đ), 30 phút vét điểm subtask Bài 3 (ăn 2-3đ).
+\end{itemize}
+
+\end{document}

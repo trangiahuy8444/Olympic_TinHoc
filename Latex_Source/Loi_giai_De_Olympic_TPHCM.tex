@@ -1,0 +1,405 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=18mm, left=20mm, right=20mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textbf{Tuyển tập Lời giải Đề thi Olympic 11 TP.HCM}}
+\lhead{Đội tuyển Olympic Tin học 11}
+\rfoot{Trang \thepage}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.96}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{blue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    tabsize=4,
+    frame=single
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries TUYỂN TẬP LỜI GIẢI CHI TIẾT ĐỀ THI OLYMPIC TIN HỌC 11}\\[4pt]
+    {\large\textbf{KHU VỰC THÀNH PHỐ HỒ CHÍ MINH (2024 -- 2026)}}\\[4pt]
+    \textit{Phân tích thuật toán tối ưu \& Mã nguồn C++ chuẩn AC 100\% điểm số}
+\end{center}
+
+\vspace{0.4cm}
+
+\tableofcontents
+
+\newpage
+
+\section{ĐỀ THI NĂM HỌC 2024 -- 2025}
+
+\subsection{Bài 1: NGHE NHẠC (6.0 điểm)}
+\textbf{File nộp:} \texttt{NGHENHAC.*} $\vert$ \textbf{Input:} \texttt{NGHENHAC.INP} $\vert$ \textbf{Output:} \texttt{NGHENHAC.OUT}
+
+\paragraph{1. Đề bài tóm tắt}
+An có $K$ phút rảnh rỗi và danh sách $N$ bài hát, bài thứ $i$ dài $m_i$ phút ($1 \le N \le 10^5, 1 \le K \le 10^9, 1 \le m_i \le 10^4$). Hãy tìm một \textbf{dãy liên tiếp} các bài hát sao cho số lượng bài hát là nhiều nhất và tổng thời lượng không vượt quá $K$.
+\begin{itemize}
+    \item Subtask 1 (60\% số điểm): $N \le 10^3$.
+    \item Subtask 2 (40\% số điểm): $N \le 10^5$.
+\end{itemize}
+
+\paragraph{2. Phân tích thuật toán}
+Sử dụng kỹ thuật \textbf{Hai con trỏ (Two Pointers)}:
+\begin{itemize}
+    \item Duy trì cửa sổ trượt $[left, right]$ và biến tổng thời gian \texttt{current\_sum}.
+    \item Khi mở rộng $right$, nếu tổng thời gian vượt quá $K$, ta tăng $left$ để co ngắn cửa sổ.
+    \item Độ phức tạp: $O(N)$ thời gian, $O(1)$ bộ nhớ phụ $\implies$ Đạt tối đa 6.0/6.0 điểm.
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("NGHENHAC.INP", "r", stdin);
+    freopen("NGHENHAC.OUT", "w", stdout);
+    #endif
+
+    int n;
+    long long k;
+    if (!(cin >> n >> k)) return 0;
+
+    vector<long long> m(n);
+    for (int i = 0; i < n; i++) cin >> m[i];
+
+    int left = 0, ans = 0;
+    long long current_sum = 0;
+
+    for (int right = 0; right < n; right++) {
+        current_sum += m[right];
+        while (current_sum > k && left <= right) {
+            current_sum -= m[left];
+            left++;
+        }
+        ans = max(ans, right - left + 1);
+    }
+
+    cout << ans << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Bài 2: HỌC TOÁN (7.0 điểm)}
+\textbf{File nộp:} \texttt{HOCTOAN.*} $\vert$ \textbf{Input:} \texttt{HOCTOAN.INP} $\vert$ \textbf{Output:} \texttt{HOCTOAN.OUT}
+
+\paragraph{1. Đề bài tóm tắt}
+Cho hai số nguyên dương $a, b$ ($1 \le a < b \le 10^4$). Tìm hai số nguyên dương $x, y$ sao cho:
+1. $\gcd(x, y) = a$
+2. $\text{lcm}(x, y) = b$
+3. Tổng $x + y$ nhỏ nhất. Dòng 1 ghi $x + y$, dòng 2 ghi $x, y$ ($x \le y$, chọn $x$ nhỏ nhất nếu trùng). Nếu không tìm được in $-1$.
+
+\paragraph{2. Phân tích toán học \& Thuật toán}
+Ta có đẳng thức cơ bản: $x \cdot y = \gcd(x, y) \cdot \text{lcm}(x, y) = a \cdot b$.
+Đặt $x = a \cdot u, y = a \cdot v$ với $\gcd(u, v) = 1$. Khi đó:
+\[
+u \cdot v = \frac{b}{a}
+\]
+Điều kiện cần là $b$ phải chia hết cho $a$. Đặt $P = b / a$. Ta chỉ cần duyệt ước $u$ của $P$ từ $\lfloor\sqrt{P}\rfloor$ giảm dần về $1$. Cặp $(u, v)$ đầu tiên thỏa mãn $\gcd(u, v) = 1$ sẽ cho tổng $u + v$ nhỏ nhất. Độ phức tạp $O(\sqrt{b/a})$.
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+long long gcd_func(long long a, long long b) {
+    while (b) { a %= b; swap(a, b); }
+    return a;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("HOCTOAN.INP", "r", stdin);
+    freopen("HOCTOAN.OUT", "w", stdout);
+    #endif
+
+    long long a, b;
+    if (!(cin >> a >> b)) return 0;
+
+    if (b % a != 0) {
+        cout << -1 << "\n";
+        return 0;
+    }
+
+    long long P = b / a;
+    long long best_u = -1, best_v = -1;
+
+    for (long long u = sqrt(P); u >= 1; u--) {
+        if (P % u == 0) {
+            long long v = P / u;
+            if (gcd_func(u, v) == 1) {
+                best_u = u;
+                best_v = v;
+                break;
+            }
+        }
+    }
+
+    if (best_u == -1) cout << -1 << "\n";
+    else {
+        cout << a * (best_u + best_v) << "\n";
+        cout << a * best_u << " " << a * best_v << "\n";
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Bài 3: ROBOT (7.0 điểm)}
+\textbf{File nộp:} \texttt{ROBOT.*} $\vert$ \textbf{Input:} \texttt{ROBOT.INP} $\vert$ \textbf{Output:} \texttt{ROBOT.OUT}
+
+\paragraph{1. Đề bài tóm tắt}
+Bảng ô vuông kích thước $M \times N$ ($2 \le M, N \le 10^5$). Robot 1 đi từ $(1, 1)$ đến $(M, N)$ theo các lệnh \texttt{D} (xuống) và \texttt{R} (phải). Robot 2 đi từ $(M, N)$ về $(1, 1)$ theo các lệnh \texttt{U} (lên) và \texttt{L} (trái). Hãy đếm số ô mà cả hai robot cùng đi qua.
+
+\paragraph{2. Phân tích thuật toán}
+Kích thước bảng có thể lên đến $10^{10}$ ô nên tuyệt đối không được khai báo mảng 2 chiều. Mỗi robot chỉ đi tối đa $(M - 1) + (N - 1) \le 2 \cdot 10^5$ bước. Ta chỉ việc mô phỏng và lưu vết tọa độ vào \texttt{std::set<pair<int, int>>}. Độ phức tạp: $O((M + N) \log(M + N))$.
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <string>
+#include <set>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("ROBOT.INP", "r", stdin);
+    freopen("ROBOT.OUT", "w", stdout);
+    #endif
+
+    int m, n;
+    if (!(cin >> m >> n)) return 0;
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    set<pair<int, int>> v1;
+    int r = 1, c = 1;
+    v1.insert({r, c});
+    for (char ch : s1) {
+        if (ch == 'D') r++;
+        else if (ch == 'R') c++;
+        v1.insert({r, c});
+    }
+
+    set<pair<int, int>> common;
+    r = m; c = n;
+    if (v1.count({r, c})) common.insert({r, c});
+    for (char ch : s2) {
+        if (ch == 'U') r--;
+        else if (ch == 'L') c--;
+        if (v1.count({r, c})) common.insert({r, c});
+    }
+
+    cout << common.size() << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+
+\section{ĐỀ THI NĂM HỌC 2025 -- 2026}
+
+\subsection{Câu 1: DI TRUYỀN (6.0 điểm)}
+\textbf{File nộp:} \texttt{DNA.*} $\vert$ \textbf{Input:} \texttt{DNA.INP} $\vert$ \textbf{Output:} \texttt{DNA.OUT}
+
+\paragraph{1. Đề bài tóm tắt}
+Cho $N$ chuỗi DNA ($1 \le N \le 10, |S| \le 10^5$). Một chuỗi là bất thường (đánh dấu 1, ngược lại 0) nếu thỏa ít nhất 1 trong 3 điều kiện:
+\begin{enumerate}
+    \item Có ít hơn 3 loại nucleotide khác nhau.
+    \item Có ít nhất một loại chỉ xuất hiện đúng 1 lần.
+    \item Khoảng cách giữa 2 nucleotide cùng loại liên tiếp lớn hơn ngưỡng $K$.
+\end{enumerate}
+Chuyển chuỗi nhị phân $N$ ký tự kết quả sang hệ thập phân và in ra.
+
+\paragraph{2. Mã nguồn C++ hoàn chỉnh}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+bool is_abnormal(const string &s, int k) {
+    map<char, int> freq, last_pos;
+    for (int i = 0; i < (int)s.size(); i++) {
+        char c = s[i];
+        freq[c]++;
+        if (last_pos.count(c) && (i - last_pos[c]) > k) return true;
+        last_pos[c] = i;
+    }
+    if (freq.size() < 3) return true;
+    for (auto &p : freq) if (p.second == 1) return true;
+    return false;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("DNA.INP", "r", stdin);
+    freopen("DNA.OUT", "w", stdout);
+    #endif
+
+    int n, k;
+    if (!(cin >> n >> k)) return 0;
+    long long ans = 0;
+    for (int i = 0; i < n; i++) {
+        string s; cin >> s;
+        ans = ans * 2 + (is_abnormal(s, k) ? 1 : 0);
+    }
+    cout << ans << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Câu 2: THU HOẠCH (7.0 điểm)}
+\textbf{File nộp:} \texttt{THUHOACH.*} $\vert$ \textbf{Input:} \texttt{THUHOACH.INP} $\vert$ \textbf{Output:} \texttt{THUHOACH.OUT}
+
+\paragraph{1. Phân tích Quy hoạch động}
+Cho $N$ thửa ruộng ($N \le 5000$). Cần chọn $K$ đoạn không giao nhau, mỗi đoạn độ dài đúng $L$ để tổng lớn nhất ($K \times L \le N$).
+\begin{itemize}
+    \item Mảng tiền tố tính tổng đoạn độ dài $L$: $val[i] = P[i] - P[i - L]$.
+    \item Bảng phương án: $dp[i][j]$ là tổng lớn nhất khi xét đến thửa $i$ và chọn $j$ máy gặt:
+    \[
+    dp[i][j] = \max(dp[i - 1][j], dp[i - L][j - 1] + val[i])
+    \]
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+const long long INF = 1e18;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("THUHOACH.INP", "r", stdin);
+    freopen("THUHOACH.OUT", "w", stdout);
+    #endif
+
+    int n, k, L;
+    if (!(cin >> n >> k >> L)) return 0;
+
+    vector<long long> pref(n + 1, 0), val(n + 1, 0);
+    for (int i = 1; i <= n; i++) {
+        long long w; cin >> w;
+        pref[i] = pref[i - 1] + w;
+    }
+    for (int i = L; i <= n; i++) val[i] = pref[i] - pref[i - L];
+
+    vector<vector<long long>> dp(n + 1, vector<long long>(k + 1, -INF));
+    for (int i = 0; i <= n; i++) dp[i][0] = 0;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= k; j++) {
+            dp[i][j] = dp[i - 1][j];
+            if (i >= L && dp[i - L][j - 1] != -INF) {
+                dp[i][j] = max(dp[i][j], dp[i - L][j - 1] + val[i]);
+            }
+        }
+    }
+
+    cout << dp[n][k] << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Câu 3: BỘ SƯU TẬP (7.0 điểm)}
+\textbf{File nộp:} \texttt{SUUTAP.*} $\vert$ \textbf{Input:} \texttt{SUUTAP.INP} $\vert$ \textbf{Output:} \texttt{SUUTAP.OUT}
+
+\paragraph{1. Đề bài tóm tắt}
+Cho dãy $N$ viên đá ($N \le 10^5$), viên thứ $i$ có mã màu $C_i$ ($1 \le C_i \le 10^9$). Tìm độ dài đoạn liên tiếp ngắn nhất chứa ít nhất $K$ màu khác nhau.
+
+\paragraph{2. Mã nguồn C++ Hai con trỏ + Bảng băm}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("SUUTAP.INP", "r", stdin);
+    freopen("SUUTAP.OUT", "w", stdout);
+    #endif
+
+    int n, k;
+    if (!(cin >> n >> k)) return 0;
+    vector<int> c(n);
+    for (int i = 0; i < n; i++) cin >> c[i];
+
+    map<int, int> freq;
+    int left = 0, min_len = 1e9;
+
+    for (int right = 0; right < n; right++) {
+        freq[c[right]]++;
+        while ((int)freq.size() >= k) {
+            min_len = min(min_len, right - left + 1);
+            freq[c[left]]--;
+            if (freq[c[left]] == 0) freq.erase(c[left]);
+            left++;
+        }
+    }
+
+    if (min_len > n) cout << -1 << "\n";
+    else cout << min_len << "\n";
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

@@ -1,0 +1,181 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% He mau Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Cẩm nang Tự học C++ từ A-Z}
+\rhead{\color{AsianDarkBlue}\small\textbf{Tập 01: Nhập môn, Biến \& Toán tử}}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER DAU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{TÀI LIỆU TỰ HỌC C++ TỪ A ĐẾN Z CHO HỌC SINH}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}CẨM NANG TỰ HỌC C++ TỪ A ĐẾN Z -- TẬP 01}\\[3pt]
+    {\large\textbf{\color{AsianBlue}NHẬP MÔN, BIẾN, CÁC KIỂU DỮ LIỆU \& TOÁN TỬ CĂN BẢN}}\\[2pt]
+    \textit{\small Dành riêng cho học sinh Đội tuyển Olympic Tin học 11 tự học và thực hành tại nhà}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{HƯỚNG DẪN TỰ HỌC TẠI NHÀ TRÊN CODE::BLOCKS}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Bước 1:} Đọc kỹ phần giải thích lý thuyết và hiểu bản chất từng dòng lệnh.
+    \item \textbf{Bước 2:} Mở \textbf{Code::Blocks}, nhấn \texttt{Ctrl+Shift+N} (tạo file mới), nhấn \texttt{Ctrl+S} (lưu file \texttt{.cpp}). Gõ lại từng dòng mã nguồn mẫu (không copy-paste để quen tay).
+    \item \textbf{Bước 3:} Nhấn phím \textbf{F9} (\textit{Build \& Run}) để xem kết quả xuất hiện trên màn hình console màu đen.
+    \item \textbf{Bước 4:} Tự hoàn thành các bài tập tự luyện cuối mỗi phần.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. CHƯƠNG TRÌNH C++ ĐẦU TIÊN \& CÂU LỆNH \texttt{cout}}
+
+\subsection*{\color{AsianBlue}1. Cấu trúc khung sườn của một file mã nguồn C++}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Chao mung cac ban den voi Asian School!\n";
+    return 0;
+}
+\end{lstlisting}
+
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item \texttt{\#include <iostream>}: Khai báo thư viện vào/ra dữ liệu chuẩn (\textit{Input/Output Stream}).
+    \item \texttt{using namespace std;}: Sử dụng không gian tên chuẩn để viết trực tiếp \texttt{cout, cin}.
+    \item \texttt{int main() \{ ... \}}: Hàm chính của chương trình, nơi máy tính bắt đầu thực thi.
+    \item \texttt{cout << "..." << "\textbackslash n";}: Lệnh in dữ liệu ra màn hình. Ký tự \texttt{\textbackslash n} dùng để xuống dòng.
+    \item Dấu chấm phẩy \texttt{;} ở cuối mỗi lệnh đơn là \textbf{bắt buộc} trong C++.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}2. In biểu thức tính toán trực tiếp}
+\begin{lstlisting}[language=C++]
+cout << "Tong 123 + 456 = " << 123 + 456 << "\n";
+cout << "Tich 25 * 4 = " << 25 * 4 << "\n";
+\end{lstlisting}
+\textit{Quy tắc:} Muốn in chữ thì để trong dấu nháy kép \texttt{" "}; muốn máy tính tính ra kết quả số thì \textbf{không} dùng dấu nháy kép.
+
+\newpage
+\section*{\color{AsianDarkBlue}II. BIẾN \& CÁC KIỂU DỮ LIỆU CƠ SỞ}
+
+\begin{center}
+\small
+\begin{tabular}{llcl}
+\toprule
+\textbf{Kiểu dữ liệu} & \textbf{Ý nghĩa} & \textbf{Bộ nhớ} & \textbf{Phạm vi lưu trữ an toàn} \\
+\midrule
+\texttt{int} & Số nguyên thông thường & 4 bytes & Tối đa $\approx 2 \times 10^9$ (2 tỷ) \\
+\texttt{long long} & Số nguyên rất lớn & 8 bytes & Tối đa $\approx 9 \times 10^{18}$ (9 tỷ tỷ) \\
+\texttt{double} & Số thực (thập phân) & 8 bytes & Độ chính xác 15 chữ số thập phân \\
+\texttt{char} & Một ký tự đơn lẻ & 1 byte & Đặt trong dấu nháy đơn \texttt{'A'} \\
+\texttt{bool} & Giá trị logic đúng/sai & 1 byte & Chỉ nhận \texttt{true} (1) hoặc \texttt{false} (0) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{\color{AsianBlue}Ví dụ khai báo và sử dụng biến:}
+\begin{lstlisting}[language=C++]
+int a = 15, b = 7;
+int tong = a + b;
+long long tien = 5000000000LL; // So rat lon can chu LL o cuoi
+double ban_kinh = 3.5;
+double dien_tich = 3.14159 * ban_kinh * ban_kinh;
+char hang = 'A';
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}III. NHẬP DỮ LIỆU VỚI \texttt{cin} \& CÁC TOÁN TỬ SỐ HỌC}
+
+\subsection*{\color{AsianBlue}1. Nhập dữ liệu từ bàn phím với \texttt{cin >>}}
+\begin{lstlisting}[language=C++]
+int a, b;
+cin >> a >> b; // Nguoi dung go 2 so cach nhau boi dau cach hoac Enter
+cout << "Tong 2 so: " << a + b << "\n";
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Phân biệt phép chia nguyên \texttt{/} và chia dư \texttt{\%}}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item \textbf{Chia nguyên \texttt{a / b}:} Giữa 2 số nguyên sẽ trả về phần nguyên (ví dụ: \texttt{5 / 2 = 2}). Muốn ra \texttt{2.5} phải viết \texttt{5.0 / 2} hoặc \texttt{(double)a / b}.
+    \item \textbf{Chia lấy dư \texttt{a \% b}:} Trả về số dư (ví dụ: \texttt{7 \% 3 = 1}; \texttt{2026 \% 10 = 6} giúp lấy chữ số hàng đơn vị).
+\end{itemize}
+
+\subsection*{\color{AsianBlue}3. Kỹ thuật hoán đổi 2 biến (Swap)}
+\begin{lstlisting}[language=C++]
+int a = 10, b = 20;
+int temp = a; // Cat a vao bien tam
+a = b;        // Chep b vao a
+b = temp;     // Lay temp tra cho b -> a = 20, b = 10
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}IV. BÀI TẬP TỰ LUYỆN TẠI NHÀ}
+\begin{enumerate}
+    \setlength{\itemsep}{2pt}
+    \small
+    \item \textbf{Bài 1.1:} Viết chương trình nhập vào 2 số nguyên dương $a, b$ ($1 \le a, b \le 10^6$). In ra chu vi và diện tích hình chữ nhật (chú ý kiểu \texttt{long long} cho diện tích).
+    \item \textbf{Bài 1.2:} Nhập vào số giây $T$. Đổi sang \texttt{Giờ : Phút : Giây} bằng các phép toán \texttt{/} và \texttt{\%}.
+    \item \textbf{Bài 1.3:} Nhập vào số nguyên dương $N$ có 3 chữ số (ví dụ: 358). Tính và in ra tổng 3 chữ số của $N$ ($3 + 5 + 8 = 16$).
+\end{enumerate}
+
+\end{document}

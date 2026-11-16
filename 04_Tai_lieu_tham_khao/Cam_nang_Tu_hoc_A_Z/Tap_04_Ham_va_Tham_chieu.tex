@@ -1,0 +1,181 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% He mau Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Cẩm nang Tự học C++ từ A-Z}
+\rhead{\color{AsianDarkBlue}\small\textbf{Tập 04: Hàm \& Truyền tham chiếu}}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER DAU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{TÀI LIỆU TỰ HỌC C++ TỪ A ĐẾN Z CHO HỌC SINH}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}CẨM NANG TỰ HỌC C++ TỪ A ĐẾN Z -- TẬP 04}\\[3pt]
+    {\large\textbf{\color{AsianBlue}HÀM (FUNCTIONS), TRUYỀN THAM SỐ \& THAM CHIẾU \texttt{\&}}}\\[2pt]
+    \textit{\small Dành riêng cho học sinh Đội tuyển Olympic Tin học 11 tự học và thực hành tại nhà}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU TỰ HỌC TẬP 04}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Hiểu lý do phải viết hàm: Module hóa chương trình, chia bài toán lớn thành các hàm nhỏ độc lập và tái sử dụng.
+    \item Nắm chắc cấu trúc hàm tổng quát: Phân biệt hàm thủ tục \texttt{void} và hàm có giá trị trả về (\texttt{return}).
+    \item Bản chất bộ nhớ RAM: Phân biệt sâu sắc giữa truyền tham trị (\textit{pass-by-value}) và truyền tham chiếu (\textit{pass-by-reference} \texttt{\&}).
+    \item Cài đặt thành thạo hàm hoán đổi 2 số \texttt{my\_swap} và các hàm logic toán học chuẩn thi đấu.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}I. HÀM CĂN BẢN TRONG C++}
+
+\subsection*{\color{AsianBlue}1. Cấu trúc hàm tổng quát \& Hàm \texttt{void}}
+Khi viết code, ta không nên dồn toàn bộ xử lý vào hàm \texttt{main()}. Việc tách nhỏ thành các hàm giúp code trong sáng, dễ đọc và dễ tìm lỗi.
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Ham void: Thuc hien cong viec ma khong tra ve gia tri
+void say_hello(string name) {
+    cout << "Xin chao ban: " << name << "!\n";
+}
+
+int main() {
+    say_hello("Gia Huy"); // Goi ham
+    say_hello("Minh Tri");
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Hàm có giá trị trả về (\texttt{return})}
+Hàm có kiểu trả về (như \texttt{long long}, \texttt{bool}, \texttt{double}) bắt buộc phải có lệnh \texttt{return} để trả kết quả tính toán về nơi gọi hàm.
+\begin{lstlisting}[language=C++]
+// Ham tinh binh phuong cua mot so nguyen
+long long binh_phuong(long long x) {
+    return x * x;
+}
+
+// Ham kiem tra mot so nguyen duong co phai so nguyen to hay khong
+bool is_prime(long long n) {
+    if (n < 2) return false;
+    for (long long i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+\end{lstlisting}
+
+\newpage
+\section*{\color{AsianDarkBlue}II. BẢN CHẤT TRUYỀN THAM TRỊ VS. THAM CHIẾU \texttt{\&}}
+
+\subsection*{\color{AsianBlue}1. Phân biệt cơ chế hoạt động trên bộ nhớ RAM}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Truyền tham trị (Pass-by-value):} Máy tính tạo ra một bản sao hoàn toàn mới trên ngăn xếp Stack. Mọi thay đổi bên trong hàm chỉ tác động lên bản sao, biến gốc bên ngoài \texttt{main()} giữ nguyên.
+    \item \textbf{Truyền tham chiếu (Pass-by-reference \texttt{\&}):} Hàm nhận trực tiếp địa chỉ ô nhớ của biến gốc. Mọi thay đổi đối với tham số bên trong hàm sẽ làm thay đổi trực tiếp giá trị của biến gốc bên ngoài.
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+void tang_tham_tri(int x) {
+    x = x + 1; // Chi tang ban sao, bien goc khong doi
+}
+
+void tang_tham_chieu(int &x) { // Co dau &
+    x = x + 1; // Tac dong truc tiep vao bien goc ngoai main
+}
+
+int main() {
+    int a = 10;
+    tang_tham_tri(a);
+    cout << "Sau tham tri: " << a << "\n";     // In ra: 10
+    
+    tang_tham_chieu(a);
+    cout << "Sau tham chieu: " << a << "\n";   // In ra: 11
+    return 0;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}2. Ứng dụng kinh điển: Hàm tự hoán đổi 2 số (\texttt{my\_swap})}
+Trong thuật toán sắp xếp hoặc xử lý mảng, ta cần hoán đổi giá trị hai biến. Bắt buộc phải dùng tham chiếu \texttt{\&}:
+\begin{lstlisting}[language=C++]
+void my_swap(long long &u, long long &v) {
+    long long temp = u;
+    u = v;
+    v = temp;
+}
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}III. BÀI TẬP TỰ LUYỆN TẠI NHÀ}
+\begin{enumerate}
+    \setlength{\itemsep}{2pt}
+    \small
+    \item \textbf{Bài 4.1:} Viết hàm \texttt{long long tim\_max(long long a, long long b, long long c)} trả về giá trị lớn nhất trong 3 số nguyên.
+    \item \textbf{Bài 4.2:} Viết hàm \texttt{bool is\_prime(long long n)} kiểm tra số nguyên tố. Trong hàm \texttt{main()}, nhập mảng $N$ số nguyên và dùng hàm trên để đếm xem có bao nhiêu số nguyên tố.
+    \item \textbf{Bài 4.3:} Viết hàm \texttt{long long tong\_uoc(long long n)} tính tổng tất cả các ước số nguyên dương của $N$ trong độ phức tạp $O(\sqrt{N})$.
+    \item \textbf{Bài 4.4:} Viết hàm \texttt{void sap\_xep\_3\_so(long long \&a, long long \&b, long long \&c)} sử dụng hàm \texttt{my\_swap} để sắp xếp 3 biến theo thứ tự tăng dần.
+\end{enumerate}
+
+\end{document}

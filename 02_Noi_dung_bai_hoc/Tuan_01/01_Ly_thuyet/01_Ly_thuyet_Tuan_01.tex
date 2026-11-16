@@ -1,0 +1,369 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Lý thuyết Tuần 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}TÀI LIỆU LÝ THUYẾT TUẦN 01}\\[3pt]
+    {\normalsize\textbf{\color{AsianBlue}NHẬP MÔN C++ THI ĐẤU \& TƯ DUY NỀN TẢNG TỪ GỐC}}\\[2pt]
+    \textit{\small Bản chất biến nhớ RAM, kiểu dữ liệu, toán tử, rẽ nhánh và vòng lặp}
+\end{center}
+
+\vspace{-0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\footnotesize MỤC TIÊU BÀI HỌC CỐT LÕI}]
+\footnotesize
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Định hướng \& Giải thưởng:} Nắm vững thể lệ kỳ thi Olympic 11 TP.HCM, cơ cấu giải và phổ điểm mục tiêu.
+    \item \textbf{Tư duy biến nhớ \& Máy tính:} Hiểu bản chất vùng nhớ RAM, tại sao C++ bắt buộc khai báo kiểu; khắc phục triệt để bẫy tràn số nguyên (\textit{integer overflow}) và bẫy chia nguyên.
+    \item \textbf{Làm chủ cú pháp C++:} Lệnh nhập/xuất \texttt{cin}, \texttt{cout}, cấu trúc rẽ nhánh \texttt{if/else}, vòng lặp \texttt{for} kèm bảng chạy từng bước (\textit{dry run}).
+    \item \textbf{Thực hành Code::Blocks:} Làm chủ phím tắt \texttt{F9}, cấu hình cờ \texttt{-std=c++17}, đọc xuất tệp \texttt{.INP} / \texttt{.OUT}.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\normalsize 1. Thông tin Kỳ thi \& Phổ điểm chuẩn Olympic 11 TP.HCM}
+\vspace{-0.1cm}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item \textbf{Thời gian \& Quy cách:} Thi vào đầu tháng 04/2027 (120 phút). Đề thi gồm \textbf{3 bài toán} (thang 20 điểm: 6đ -- 7đ -- 7đ). Chấm tự động qua tệp \texttt{<TENBAI>.INP} và \texttt{<TENBAI>.OUT}.
+    \item \textbf{Tỷ lệ trao giải:} Chiếm 50\% -- 60\% thí sinh dự thi:
+\end{itemize}
+
+\vspace{-0.2cm}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lcp{8.5cm}@{}}
+\toprule
+\textbf{Hạng giải} & \textbf{Điểm chuẩn} & \textbf{Chiến lược làm bài phòng thi} \\
+\midrule
+\textbf{Huy chương Vàng} & 16.0 -- 20.0 đ & Trọn vẹn Bài 1 (6đ) + Bài 2 (7đ) + Ăn 3--4đ subtask Bài 3 \\
+\textbf{Huy chương Bạc} & 13.0 -- 15.5 đ & Trọn vẹn Bài 1 (6đ) + Ăn 5--6đ Bài 2 + Ăn 1--2đ subtask Bài 3 \\
+\textbf{Huy chương Đồng} & 10.0 -- 12.5 đ & Trọn vẹn Bài 1 (6đ) + Ăn 4--5đ subtask cơ bản Bài 2 \\
+\textbf{Khuyến khích} & 8.0 -- 9.5 đ & Trọn vẹn Bài 1 (6đ) + Ăn 2--3đ subtask vét cạn Bài 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{-0.1cm}
+\begin{tcolorbox}[colback=white,colframe=AsianDarkBlue,arc=1mm,boxrule=0.5pt]
+\footnotesize\textbf{Mục tiêu chiến lược của Đội tuyển Asian School:} Vùng điểm \textbf{12.0 -- 15.0 điểm} để nắm chắc \textbf{Huy chương Bạc / Đồng}. Thuật toán vét cạn vẫn ăn được 30\% -- 60\% số điểm của mỗi bài!
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\normalsize 2. Vì sao C++ là vũ khí số 1 trong Lập trình thi đấu?}
+\vspace{-0.1cm}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item \textbf{Tốc độ thực thi vượt trội:} C++ biên dịch trực tiếp sang mã máy nhị phân, xử lý được $\approx 10^8$ phép tính/giây (nhanh hơn Python 10 -- 100 lần), triệt tiêu nguy cơ quá thời gian (\textbf{TLE}).
+    \item \textbf{Thư viện chuẩn STL cực mạnh:} Tích hợp sẵn \texttt{std::sort}, \texttt{std::vector}, tìm kiếm nhị phân tối ưu.
+    \item \textbf{Môi trường Code::Blocks:} IDE chuẩn mực được cài đặt sẵn trên máy thi chính thức của Sở GD\&ĐT.
+\end{itemize}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\normalsize 3. Bản chất Biến nhớ \& Tư duy Máy tính từ con số 0}
+
+\subsection*{\color{AsianBlue}\small a) Biến nhớ trong RAM là gì?}
+Khi máy tính chạy chương trình, mọi dữ liệu được lưu trên bộ nhớ tạm thời \textbf{RAM}. RAM gồm hàng tỷ ô nhớ.\\
+\textbf{Hình ảnh ẩn dụ:} Hãy tưởng tượng một \textbf{Biến} giống như một \textbf{Chiếc hộp có nhãn}:
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item \textbf{Kiểu dữ liệu:} Hình dạng/kích cỡ chiếc hộp (chỉ đựng số nguyên, chỉ đựng số thực, hay ký tự).
+    \item \textbf{Tên biến:} Nhãn dán bên ngoài hộp để lập trình viên gọi tên (\texttt{tuoi}, \texttt{tong}, \texttt{dem}).
+    \item \textbf{Giá trị:} Đồ vật cất vào bên trong chiếc hộp.
+\end{itemize}
+
+\subsection*{\color{AsianBlue}\small b) Cú pháp khai báo \& Bẫy \textquotedblleft Giá trị rác\textquotedblright\ (Garbage Value)}
+Trong C++, bạn bắt buộc phải khai báo kiểu dữ liệu cho biến trước khi sử dụng:
+\begin{lstlisting}[language=C++]
+int tuoi = 16;          // Hop chua so nguyen, gia tri 16
+double diem = 8.5;      // Hop chua so thap phan
+char hang = 'A';        // Hop chua 1 ky tu (trong dau nhay don)
+bool da_nop = true;     // Hop chua gia tri logic: dung (true) hoac sai (false)
+\end{lstlisting}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1mm,title=\textbf{\footnotesize BẪY NGUY HIỂM: GIÁ TRỊ RÁC (UNINITIALIZED VARIABLE)}]
+\footnotesize
+Nếu bạn chỉ khai báo \texttt{int tong;} mà không gán giá trị, biến sẽ chứa một giá trị rác ngẫu nhiên trong RAM (ví dụ: \texttt{-858993460}). Phép tính \texttt{tong = tong + 5;} sẽ cho kết quả sai hoàn toàn!\\
+$\implies$ \textbf{Quy tắc sống còn:} Luôn khởi tạo \texttt{long long tong = 0;} và \texttt{int dem = 0;}.
+\end{tcolorbox}
+
+\subsection*{\color{AsianBlue}\small c) Các kiểu dữ liệu cốt lõi \& Bẫy tràn số nguyên (Overflow)}
+\begin{center}
+\small
+\begin{tabular}{@{}llcp{6.5cm}@{}}
+\toprule
+\textbf{Kiểu} & \textbf{Kích cỡ} & \textbf{Khoảng giá trị} & \textbf{Ứng dụng trong lập trình thi đấu} \\
+\midrule
+\texttt{int} & 4 Bytes & $-2 \cdot 10^9 \to 2 \cdot 10^9$ & Biến đếm, chỉ số mảng, số lượng $N \le 10^6$. \\
+\texttt{long long} & 8 Bytes & $-9 \cdot 10^{18} \to 9 \cdot 10^{18}$ & \textbf{Bắt buộc cho Tổng, Tích, Diện tích}. \\
+\texttt{double} & 8 Bytes & Số thực chính xác cao & Điểm số, khoảng cách, diện tích hình tròn. \\
+\texttt{char} & 1 Byte & 1 ký tự ASCII & Bảng chữ cái (\texttt{'A'}, \texttt{'z'}, \texttt{'0'}). \\
+\texttt{bool} & 1 Byte & \texttt{true} (1) / \texttt{false} (0) & Cờ hiệu kiểm tra điều kiện. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+\textbf{Mổ xẻ bẫy tràn số khi nhân:}
+\begin{lstlisting}[language=C++]
+int a = 1000000, b = 1000000;
+long long s = a * b;          // SAI! a * b bi tran kieu int thanh so am truoc khi gan vao s!
+long long dung = 1LL * a * b; // DUNG! 1LL ep toan bo phep nhan tinh tren kieu 64-bit.
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}\normalsize 4. Các toán tử số học \& Bẫy chia nguyên}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \small
+    \item \textbf{Chia nguyên (\texttt{/}) vs Chia dư (\texttt{\%}):}
+    \begin{itemize}
+        \item \texttt{7 / 2 = 3}: Vì cả 7 và 2 là số nguyên nên C++ vứt bỏ phần thập phân! Muốn ra số thực: \texttt{7.0 / 2 = 3.5} hoặc \texttt{(double)a / b}.
+        \item \texttt{7 \% 2 = 1}: Phép chia lấy dư (chỉ dùng cho số nguyên).
+    \end{itemize}
+    \item \textbf{Ứng dụng kinh điển:}
+    \begin{itemize}
+        \item Kiểm tra chẵn lẻ: \texttt{if (n \% 2 == 0)} là số chẵn; \texttt{if (n \% 2 != 0)} là số lẻ.
+        \item Tách chữ số hàng đơn vị: \texttt{n \% 10} lấy chữ số cuối; \texttt{n / 10} xóa bỏ chữ số cuối.
+    \end{itemize}
+    \item \textbf{Phép toán rút gọn:} \texttt{x++} (tăng 1), \texttt{x--} (giảm 1), \texttt{tong += a} (cộng dồn), \texttt{tich *= a}.
+\end{itemize}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\normalsize 5. Nhập / Xuất chuẩn mực trong C++}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \small
+    \item \textbf{Xuất dữ liệu (\texttt{cout <<}):} Dấu \texttt{<<} đẩy dữ liệu ra màn hình. Dùng \texttt{\textbackslash n} để xuống dòng (nhanh hơn \texttt{endl}).
+    \item \textbf{Nhập dữ liệu (\texttt{cin >>}):} Dấu \texttt{>>} hút dữ liệu từ bàn phím vào biến, tự động bỏ qua dấu cách và dấu xuống dòng. Nhập nhiều biến: \texttt{cin >> a >> b >> c;}.
+    \item \textbf{In số thập phân chính xác:} Dùng \texttt{<iomanip>}: \texttt{cout << fixed << setprecision(2) << x;}.
+\end{itemize}
+
+\section*{\color{AsianDarkBlue}\normalsize 6. Cấu trúc rẽ nhánh \texttt{if / else} \& Tư duy Logic}
+
+\subsection*{\color{AsianBlue}\small a) Toán tử so sánh \& Phép toán logic}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \small
+    \item So sánh: \texttt{==} (so sánh bằng, \textbf{tuyệt đối không viết nhầm thành 1 dấu =}), \texttt{!=} (khác), \texttt{>}, \texttt{>=}, \texttt{<}, \texttt{<=}.
+    \item Logic: \texttt{\&\&} (VÀ -- đồng thời đúng), \texttt{||} (HOẶC -- ít nhất một điều kiện đúng), \texttt{!} (PHỦ ĐỊNH).
+\end{itemize}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1mm,title=\textbf{\footnotesize BẪY TOÁN HỌC TRONG C++: ĐIỀU KIỆN KẸP GIỮA}]
+\footnotesize
+Trong toán ta viết: $1 \le x \le 10$. Trong C++, viết \texttt{if (1 <= x <= 10)} là \textbf{HOÀN TOÀN SAI}!\\
+(Máy tính tính \texttt{1 <= x} ra 0 hoặc 1, sau đó so sánh tiếp với 10 $\implies$ luôn đúng).\\
+$\implies$ \textbf{Cách viết chuẩn:} \texttt{if (1 <= x \&\& x <= 10)}.
+\end{tcolorbox}
+
+\subsection*{\color{AsianBlue}\small b) Khung rẽ nhánh mẫu}
+\begin{lstlisting}[language=C++]
+if (diem >= 8.0) {
+    cout << "GIOI\n";
+} else if (diem >= 6.5) {
+    cout << "KHA\n";
+} else if (diem >= 5.0) {
+    cout << "TRUNG BINH\n";
+} else {
+    cout << "YEU\n";
+}
+\end{lstlisting}
+
+\section*{\color{AsianDarkBlue}\normalsize 7. Vòng lặp \texttt{for} \& Kỹ thuật Chạy từng bước bằng tay (Dry Run)}
+\subsection*{\color{AsianBlue}\small a) Cơ chế hoạt động của vòng \texttt{for}}
+Cú pháp: \texttt{for (Khởi\_tạo ; Điều\_kiện\_lặp ; Bước\_nhảy) \{ Thân vòng lặp \}}
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \small
+    \item Thực hiện \texttt{Khởi\_tạo} duy nhất 1 lần ở đầu.
+    \item Kiểm tra \texttt{Điều\_kiện\_lặp}: Đúng $\to$ thực hiện thân vòng lặp. Sai $\to$ thoát ngay.
+    \item Chạy xong thân vòng lặp $\to$ thực hiện \texttt{Bước\_nhảy} (\texttt{i++}) $\to$ quay lại kiểm tra điều kiện.
+\end{enumerate}
+
+\subsection*{\color{AsianBlue}\small b) Bảng Trace Dry Run: Tính tổng $S = 1 + 2 + 3 + 4$}
+\begin{lstlisting}[language=C++]
+long long S = 0;
+for (int i = 1; i <= 4; i++) {
+    S += i;
+}
+cout << S << "\n";
+\end{lstlisting}
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}ccccccc@{}}
+\toprule
+\textbf{Vòng} & \textbf{Biến $i$} & \textbf{Điều kiện $i \le 4$} & \textbf{$S$ trước cộng} & \textbf{Lệnh $S = S + i$} & \textbf{$S$ sau cộng} & \textbf{Bước nhảy $i$++} \\
+\midrule
+Khởi tạo & - & - & - & $S = 0$ & 0 & $i = 1$ \\
+1 & 1 & $1 \le 4$ (\textbf{Đúng}) & 0 & $S = 0 + 1$ & \textbf{1} & $i$ tăng lên 2 \\
+2 & 2 & $2 \le 4$ (\textbf{Đúng}) & 1 & $S = 1 + 2$ & \textbf{3} & $i$ tăng lên 3 \\
+3 & 3 & $3 \le 4$ (\textbf{Đúng}) & 3 & $S = 3 + 3$ & \textbf{6} & $i$ tăng lên 4 \\
+4 & 4 & $4 \le 4$ (\textbf{Đúng}) & 6 & $S = 6 + 4$ & \textbf{10} & $i$ tăng lên 5 \\
+Thoát & 5 & $5 \le 4$ (\textbf{Sai!}) & 10 & \textit{Không chạy} & \textbf{10} & Dừng vòng lặp \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\normalsize 8. Hướng dẫn Kỹ thuật Đọc/Ghi Tệp thi đấu: Từ Cơ bản đến Nâng cao (Tệp \texttt{.INP} / \texttt{.OUT})}
+
+Trong kỳ thi Olympic Tin học, quy định bắt buộc 100\% các bài thi phải đọc dữ liệu từ tệp \texttt{TEN\_BAI.INP} và xuất ra tệp \texttt{TEN\_BAI.OUT}. Nếu in ra màn hình hoặc đọc sai tên tệp, bài thi sẽ nhận \textbf{0 điểm}.
+
+\vspace{-1mm}
+\subsection*{\color{AsianBlue}\footnotesize Cấp độ 1 (Cơ bản): Chuyển hướng luồng dữ liệu bằng \texttt{freopen}}
+Cơ chế của hàm \texttt{freopen} trong \texttt{<cstdio>} là \textbf{bẻ hướng dòng dữ liệu}:
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \footnotesize
+    \item \texttt{freopen("TONG.INP", "r", stdin);} $\implies$ Đọc từ file thay vì bàn phím.
+    \item \texttt{freopen("TONG.OUT", "w", stdout);} $\implies$ Ghi vào file thay vì màn hình. Lệnh \texttt{cin}, \texttt{cout} \textbf{giữ nguyên 100\%}.
+\end{itemize}
+
+\vspace{-2mm}
+\subsection*{\color{AsianBlue}\footnotesize Cấp độ 2 (Trung cấp): Tự động nhận diện tệp thông minh bằng \texttt{if (fopen)}}
+Dùng \texttt{if (fopen("TONG.INP", "r"))} trước \texttt{freopen}. Có file $\to$ đọc file; không có file $\to$ nhập bàn phím. Học sinh \textbf{không cần sửa hay đóng/mở comment} khi nộp thi hay test ở nhà.
+
+\vspace{-2mm}
+\subsection*{\color{AsianBlue}\footnotesize Cấp độ 3 (Nâng cao): Đọc đến hết tệp (EOF) \& Tối ưu tốc độ Fast I/O}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \footnotesize
+    \item \textbf{Đọc hết tệp (EOF):} Khi không cho trước số phần tử $N$, dùng vòng lặp: \texttt{while (cin >> x) \{ ... \}}.
+    \item \textbf{Tối ưu Fast I/O:} Thêm \texttt{ios\_base::sync\_with\_stdio(false); cin.tie(NULL);} và dùng \texttt{"\textbackslash n"} (tránh TLE).
+\end{itemize}
+
+\vspace{-1mm}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{\color{AsianDarkBlue}\footnotesize Code mẫu 1: Cấp độ 1 (Cơ bản cố định)}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize,numbers=none,aboveskip=1mm,belowskip=1mm]
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int main() {
+    freopen("TONG.INP", "r", stdin);
+    freopen("TONG.OUT", "w", stdout);
+    long long a, b;
+    if (cin >> a >> b) {
+        cout << a + b << "\n";
+    }
+    return 0;
+}
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\textbf{\color{AsianDarkBlue}\footnotesize Code mẫu 2: Chuẩn Olympic (Tự động + EOF)}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize,numbers=none,aboveskip=1mm,belowskip=1mm]
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    if (fopen("TONG.INP", "r")) {
+        freopen("TONG.INP", "r", stdin);
+        freopen("TONG.OUT", "w", stdout);
+    }
+    long long a, tong = 0;
+    while (cin >> a) tong += a;
+    cout << tong << "\n";
+    return 0;
+}
+\end{lstlisting}
+\end{minipage}
+
+\vspace{-2mm}
+\section*{\color{AsianDarkBlue}\normalsize 9. Bảng chẩn đoán lỗi thường gặp trên Code::Blocks cho học sinh mới}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}p{4.2cm}p{4.5cm}p{7.3cm}@{}}
+\toprule
+\textbf{Thông báo lỗi trên màn hình} & \textbf{Nguyên nhân thực tế} & \textbf{Cách xử lý ngay lập tức} \\
+\midrule
+\texttt{error: expected ';' before...} & Quên dấu \texttt{;} ở cuối dòng liền trước. & Nhìn lên dòng phía trên và thêm \texttt{;}. \\
+\addlinespace[2pt]
+\texttt{error: 'x' was not declared...} & Biến \texttt{x} chưa khai báo, hoặc sai hoa/thường. & Khai báo kiểu (\texttt{int x;}) trước khi dùng. \\
+\addlinespace[2pt]
+\texttt{error: redefinition of 'int x'} & Khai báo biến \texttt{x} hai lần trong một hàm. & Bỏ chữ \texttt{int} ở lần gán thứ hai. \\
+\addlinespace[2pt]
+Kết quả ra số âm (ví dụ \texttt{-2147483648}) & Tràn số nguyên kiểu \texttt{int} ($> 2 \cdot 10^9$). & Đổi sang kiểu \texttt{long long}, ép kiểu \texttt{1LL * a * b}. \\
+\addlinespace[2pt]
+Cửa sổ đen console treo đứng & Vòng lặp vô tận (quên \texttt{i++} hoặc sai điều kiện). & Bấm \texttt{Ctrl + C} tắt cửa sổ, sửa biến lặp. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

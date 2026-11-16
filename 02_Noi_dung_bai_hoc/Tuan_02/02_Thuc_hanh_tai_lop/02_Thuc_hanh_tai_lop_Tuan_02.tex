@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Hệ màu Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Thực hành Tuần 02} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,
+    numbersep=6pt,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.2cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}PHIẾU THỰC HÀNH TẠI LỚP -- TUẦN 02}\\[3pt]
+    {\large\textbf{\color{AsianBlue}KỸ THUẬT MẢNG 1 CHIỀU \& CẤU HÌNH TỆP PHÒNG THI}}\\[2pt]
+    \textit{\small Dành cho thời lượng thực hành trực tiếp trên Code::Blocks (30 -- 45 phút) $\vert$ Bấm F9 để Build \& Run}
+\end{center}
+
+\vspace{0.1cm}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{MỤC TIÊU THỰC HÀNH \& CẠM BẪY CẦN TRÁNH}]
+\small
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Mục tiêu:} Thuần thục thao tác khai báo mảng tĩnh, nhập xuất mảng chỉ số \texttt{0}-based, tìm Max/Min và đảo mảng.
+    \item \textbf{Cạm bẫy Stack Overflow:} Khi $N \ge 10^5$, luôn khai báo mảng tĩnh \textbf{toàn cục ngoài hàm \texttt{main()}}.
+    \item \textbf{Bẫy khởi tạo Max/Min:} Luôn khởi tạo \texttt{max\_val = a[0]} (hoặc $-2 \cdot 10^{18}$), tuyệt đối không gán bằng \texttt{0}.
+    \item \textbf{Cấu hình tệp:} Dùng hàm \texttt{freopen} để đọc từ tệp \texttt{.INP} và xuất ra tệp \texttt{.OUT}.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{\color{AsianDarkBlue}Bài 1: Nhập xuất mảng \& Tính trung bình cộng số dương}
+\textbf{Đề bài:} Cho mảng $A$ gồm $N$ số nguyên ($1 \le N \le 10^5, |A_i| \le 10^9$). Hãy tính và in ra trung bình cộng của các số dương ($A_i > 0$) trong mảng, định dạng lấy 2 chữ số thập phân sau dấu phẩy. Nếu mảng không có số dương nào, in ra \texttt{-1}.\\
+\textbf{Gợi ý kỹ thuật:} Biến tổng các số dương dùng kiểu \texttt{long long}, biến đếm số lượng dương kiểu \texttt{int}. Khi chia phải ép kiểu: \texttt{(double)tong / dem}.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input (Bàn phím)} & \textbf{Output (Màn hình)} \\ \hline
+\texttt{5} & \texttt{6.00} \\
+\texttt{-3 4 8 -1 6} & \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 2: Tìm Max, Min và vị trí đầu tiên xuất hiện}
+\textbf{Đề bài:} Cho mảng $A$ gồm $N$ số nguyên ($1 \le N \le 10^5, |A_i| \le 10^9$). Hãy tìm giá trị lớn nhất ($Max$), vị trí chỉ số $1$-based đầu tiên của $Max$, giá trị nhỏ nhất ($Min$) và vị trí $1$-based đầu tiên của $Min$.\\
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input} & \textbf{Output} \\ \hline
+\texttt{6} & \texttt{Max: 9 tai vi tri 3} \\
+\texttt{2 5 9 1 9 -4} & \texttt{Min: -4 tai vi tri 6} \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}Bài 3: Đảo ngược mảng tại chỗ (Two Pointers In-place)}
+\textbf{Đề bài:} Cho mảng $A$ gồm $N$ phần tử ($1 \le N \le 10^5$). Hãy đảo ngược thứ tự các phần tử của mảng $A$ mà \textbf{không dùng thêm bất kỳ mảng phụ nào} (tối ưu bộ nhớ $O(1)$ phụ trợ).\\
+\textbf{Khung thuật toán chuẩn (Two Pointers):}
+\begin{lstlisting}[language=C++]
+// Dao nguoc mang bang cach hoan doi doi xung
+for (int i = 0; i < n / 2; i++) {
+    swap(a[i], a[n - 1 - i]);
+}
+\end{lstlisting}
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Input} & \textbf{Output} \\ \hline
+\texttt{5} & \texttt{10 8 6 4 2} \\
+\texttt{2 4 6 8 10} & \\ \hline
+\end{tabular}
+\end{table}
+
+\section*{\color{AsianDarkBlue}Bài 4: Thực hành đọc xuất tệp chuẩn Olympic (DAO.INP / DAO.OUT)}
+\textbf{Quy cách tệp phòng thi:}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Tệp đầu vào: \texttt{DAO.INP}
+    \item Tệp kết quả: \texttt{DAO.OUT}
+\end{itemize}
+\textbf{Đề bài:} Đọc từ tệp \texttt{DAO.INP} gồm số nguyên $N$ ($1 \le N \le 10^5$) và $N$ số nguyên của mảng $A$. Đảo ngược toàn bộ mảng và ghi ra tệp \texttt{DAO.OUT} trên một dòng duy nhất, mỗi phần tử cách nhau một dấu cách.\\
+\textbf{Hướng dẫn thao tác trên Code::Blocks:}
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item Mở Code::Blocks, nhấn \texttt{Ctrl+Shift+N} tạo tệp \texttt{DAO.cpp} và lưu vào thư mục bài làm.
+    \item Tạo tệp văn bản \texttt{DAO.INP} nằm cùng thư mục với file \texttt{DAO.cpp}.
+    \item Dùng cặp lệnh \texttt{freopen} chuyển hướng luồng và nhấn \texttt{F9} chạy chương trình.
+\end{enumerate}
+\textbf{Bảng testcase mẫu:}
+\begin{table}[h!]
+\centering\small
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+\textbf{Tệp DAO.INP} & \textbf{Tệp DAO.OUT} \\ \hline
+\texttt{6} & \texttt{60 50 40 30 20 10} \\
+\texttt{10 20 30 40 50 60} & \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

@@ -1,0 +1,206 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=17mm, right=17mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{array}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Thực hành Buổi 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG THEO CHUẨN ASIAN SCHOOL
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}PHIẾU BÀI TẬP THỰC HÀNH TẠI LỚP -- BUỔI 01}\\[2pt]
+    {\small\textit{Chủ đề: Cài đặt Code::Blocks, Kiểu dữ liệu \& Đọc/Ghi tệp .INP / .OUT}}
+\end{center}
+
+\vspace{0.1cm}
+
+\noindent\textbf{\color{red!80!black}\footnotesize QUY ĐỊNH BẮT BUỘC TRONG GIỜ THỰC HÀNH:}
+\footnotesize
+100\% các bài làm phải tạo tệp \texttt{.INP} và \texttt{.OUT} cùng thư mục với mã nguồn. Sử dụng lệnh \texttt{freopen} ở đầu hàm \texttt{main()}. Chú ý phân tích giới hạn dữ liệu để chọn kiểu \texttt{long long} tránh bẫy tràn số.
+
+\vspace{-1mm}
+% BÀI 1
+\subsection*{\color{AsianDarkBlue}\small Bài 1: TỔNG HAI SỐ NGUYÊN (Tên file: \texttt{TONG2.cpp} | Tệp: \texttt{TONG2.INP} / \texttt{TONG2.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho hai số nguyên $A$ và $B$. Hãy tính tổng $S = A + B$.
+    \item \textbf{Dữ liệu vào (\texttt{TONG2.INP}):} Một dòng duy nhất chứa hai số nguyên $A, B$ cách nhau một dấu cách.
+    \item \textbf{Kết quả ra (\texttt{TONG2.OUT}):} Ghi ra một số nguyên duy nhất là giá trị tổng $S$.
+    \item \textbf{Ràng buộc:} $-10^9 \le A, B \le 10^9$.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{TONG2.INP}} & \textbf{\texttt{TONG2.OUT}} \\
+\hline
+\texttt{15 25} & \texttt{40} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 2
+\subsection*{\color{AsianDarkBlue}\small Bài 2: HÌNH CHỮ NHẬT (Tên file: \texttt{HCN.cpp} | Tệp: \texttt{HCN.INP} / \texttt{HCN.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Một khu vườn hình chữ nhật có chiều dài $a$ và chiều rộng $b$. Hãy tính chu vi và diện tích khu vườn.
+    \item \textbf{Dữ liệu vào (\texttt{HCN.INP}):} Chứa hai số nguyên dương $a, b$ ($a \ge b$).
+    \item \textbf{Kết quả ra (\texttt{HCN.OUT}):} Dòng 1 ghi chu vi; Dòng 2 ghi diện tích khu vườn.
+    \item \textbf{Ràng buộc \& Gợi ý:} $1 \le a, b \le 10^6$. Diện tích có thể lên tới $10^{12} \implies$ \textbf{Bắt buộc dùng \texttt{long long}}!
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{HCN.INP}} & \textbf{\texttt{HCN.OUT}} \\
+\hline
+\texttt{1000000 500000} & \texttt{3000000} \\
+& \texttt{500000000000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 3
+\subsection*{\color{AsianDarkBlue}\small Bài 3: CHIA PHẦN KẸO (Tên file: \texttt{CHIAKEO.cpp} | Tệp: \texttt{CHIAKEO.INP} / \texttt{CHIAKEO.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cô giáo có $N$ cái kẹo muốn chia đều cho $K$ bạn học sinh trong lớp. Phần kẹo còn dư sẽ giữ lại cho buổi liên hoan sau. Hãy tính số kẹo mỗi bạn nhận được và số kẹo còn dư.
+    \item \textbf{Dữ liệu vào (\texttt{CHIAKEO.INP}):} Gồm hai số nguyên dương $N$ và $K$ ($1 \le N, K \le 10^9$).
+    \item \textbf{Kết quả ra (\texttt{CHIAKEO.OUT}):} Ghi ra hai số nguyên cách nhau một dấu cách: số kẹo mỗi bạn nhận được và số kẹo còn dư.
+    \item \textbf{Gợi ý:} Luyện tập phép chia lấy phần nguyên (\texttt{/}) và phép chia lấy phần dư (\texttt{\%}).
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{CHIAKEO.INP}} & \textbf{\texttt{CHIAKEO.OUT}} \\
+\hline
+\texttt{25 4} & \texttt{6 1} \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+% BÀI 4
+\subsection*{\color{AsianDarkBlue}\small Bài 4: DIỆN TÍCH TAM GIÁC (Tên file: \texttt{TAMGIAC.cpp} | Tệp: \texttt{TAMGIAC.INP} / \texttt{TAMGIAC.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho tam giác có cạnh đáy độ dài $a$ và chiều cao tương ứng $h$. Tính diện tích tam giác theo công thức: $S = \frac{a \times h}{2}$.
+    \item \textbf{Dữ liệu vào (\texttt{TAMGIAC.INP}):} Chứa hai số thực $a, h$ ($0 < a, h \le 10^4$).
+    \item \textbf{Kết quả ra (\texttt{TAMGIAC.OUT}):} In ra diện tích $S$ làm tròn đúng \textbf{2 chữ số thập phân}.
+    \item \textbf{Gợi ý:} Dùng kiểu \texttt{double} và cú pháp: \texttt{cout << fixed << setprecision(2) << S << "\textbackslash n";}.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{TAMGIAC.INP}} & \textbf{\texttt{TAMGIAC.OUT}} \\
+\hline
+\texttt{7.5 4.2} & \texttt{15.75} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 5
+\subsection*{\color{AsianDarkBlue}\small Bài 5: ĐỔI ĐƠN VỊ THỜI GIAN (Tên file: \texttt{THOIGIAN.cpp} | Tệp: \texttt{THOIGIAN.INP} / \texttt{THOIGIAN.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho một số nguyên dương $T$ đại diện cho tổng số giây đã trôi qua trong một ngày. Hãy đổi $T$ sang định dạng gồm Giờ, Phút, Giây theo chuẩn: \texttt{H M S}.
+    \item \textbf{Dữ liệu vào (\texttt{THOIGIAN.INP}):} Một số nguyên dương $T$ ($1 \le T \le 86400$).
+    \item \textbf{Kết quả ra (\texttt{THOIGIAN.OUT}):} In ra 3 số nguyên cách nhau một dấu cách: Số giờ, số phút và số giây tương ứng.
+    \item \textbf{Gợi ý toán học:} $1\text{ giờ} = 3600\text{ giây}, 1\text{ phút} = 60\text{ giây}$. Giờ = \texttt{T / 3600}, Phút = \texttt{(T \% 3600) / 60}, Giây = \texttt{T \% 60}.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{THOIGIAN.INP}} & \textbf{\texttt{THOIGIAN.OUT}} \\
+\hline
+\texttt{3725} & \texttt{1 2 5} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 6
+\subsection*{\color{AsianDarkBlue}\small Bài 6: TÍCH BA SỐ NGUYÊN (Tên file: \texttt{TICH3SO.cpp} | Tệp: \texttt{TICH3SO.INP} / \texttt{TICH3SO.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho 3 số nguyên dương $A, B, C$. Hãy tính tích $P = A \times B \times C$.
+    \item \textbf{Dữ liệu vào (\texttt{TICH3SO.INP}):} Một dòng chứa ba số nguyên $A, B, C$ cách nhau một dấu cách.
+    \item \textbf{Kết quả ra (\texttt{TICH3SO.OUT}):} Ghi ra một số nguyên duy nhất là giá trị tích $P$.
+    \item \textbf{Ràng buộc \& Cảnh báo bẫy thi đấu:} $1 \le A, B, C \le 10^6$. Tích có thể lên tới $10^{18}$!\\
+    $\implies$ Bắt buộc dùng kiểu \texttt{long long} và ép kiểu: \texttt{long long P = 1LL * A * B * C;}.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{TICH3SO.INP}} & \textbf{\texttt{TICH3SO.OUT}} \\
+\hline
+\texttt{1000000 1000000 1000000} & \texttt{1000000000000000000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-1mm}
+\begin{tcolorbox}[colback=AsianBlue!5!white,colframe=AsianDarkBlue,arc=1mm,title=\textbf{\footnotesize LƯU Ý DÀNH CHO HỌC SINH SAU KHI LÀM XONG 6 BÀI TẬP}]
+\footnotesize
+- Hãy luôn đối chiếu kết quả trong file \texttt{.OUT} với đề bài trước khi chuyển sang bài kế tiếp.\\
+- Kiểm tra xem thư mục của mình có đầy đủ cặp file \texttt{.cpp}, \texttt{.INP} và \texttt{.OUT} cho mỗi bài hay chưa.
+\end{tcolorbox}
+
+\end{document}

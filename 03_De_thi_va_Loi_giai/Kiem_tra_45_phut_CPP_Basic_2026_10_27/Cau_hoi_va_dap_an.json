@@ -1,0 +1,226 @@
+[
+  [
+    "Lệnh nào hiển thị đúng dòng chữ C++ ra màn hình?",
+    "",
+    [
+      "cin >> \"C++\";",
+      "cout >> \"C++\";",
+      "cout << \"C++\";",
+      "print(\"C++\");"
+    ],
+    "C",
+    "cout dùng toán tử << để xuất dữ liệu.",
+    1,
+    "002, 003"
+  ],
+  [
+    "Kiểu dữ liệu nào phù hợp để lưu giá trị 8.75 và giữ phần thập phân?",
+    "",
+    [
+      "int",
+      "double",
+      "char",
+      "bool"
+    ],
+    "B",
+    "double lưu số thực.",
+    2,
+    "016"
+  ],
+  [
+    "Đã khai báo int a, b; Lệnh nào nhập lần lượt hai số nguyên vào a và b?",
+    "",
+    [
+      "cin << a << b;",
+      "cout >> a >> b;",
+      "cin >> a, b;",
+      "cin >> a >> b;"
+    ],
+    "D",
+    "Mỗi biến nhập dùng một toán tử >>.",
+    3,
+    "023, 025"
+  ],
+  [
+    "Đoạn lệnh sau in ra kết quả nào?",
+    "int a = 17, b = 5; cout << a / b << \" \" << a % b;",
+    [
+      "3 2",
+      "3.4 2",
+      "2 3",
+      "3 0"
+    ],
+    "A",
+    "Chia nguyên được 3, phần dư là 2.",
+    3,
+    "027, 028"
+  ],
+  [
+    "Điều kiện nào kiểm tra số nguyên x thuộc đoạn từ 0 đến 10, kể cả hai đầu?",
+    "",
+    [
+      "x >= 0 || x <= 10",
+      "x >= 0 && x <= 10",
+      "0 < x && x < 10",
+      "x <= 0 && x >= 10"
+    ],
+    "B",
+    "Hai bất đẳng thức phải đồng thời đúng.",
+    4,
+    "037, 039"
+  ],
+  [
+    "Đoạn lệnh sau in ra giá trị nào?",
+    "int x = 2;\nswitch (x) { case 1: cout << 10; break; case 2: cout << 20; break; default: cout << 0; }",
+    [
+      "0",
+      "10",
+      "20",
+      "1020"
+    ],
+    "C",
+    "x bằng 2 nên thực hiện case 2 rồi break.",
+    4,
+    "042"
+  ],
+  [
+    "Giá trị của s được in ra là bao nhiêu?",
+    "int s = 0; for (int i = 2; i <= 6; i += 2) s += i; cout << s;",
+    [
+      "12",
+      "6",
+      "8",
+      "20"
+    ],
+    "A",
+    "s = 2 + 4 + 6 = 12.",
+    5,
+    "043, 046"
+  ],
+  [
+    "Giá trị của dem được in ra là bao nhiêu?",
+    "int n = 20, dem = 0; while (n > 1) { n /= 2; dem++; } cout << dem;",
+    [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "D",
+    "n lần lượt trở thành 10, 5, 2, 1: bốn lượt lặp.",
+    6,
+    "051"
+  ],
+  [
+    "Đoạn lệnh sau in ra giá trị nào?",
+    "int x = 5, dem = 0; do { dem++; } while (x < 0); cout << dem;",
+    [
+      "0",
+      "1",
+      "5",
+      "Lặp vô hạn"
+    ],
+    "B",
+    "do-while thực hiện thân vòng lặp ít nhất một lần.",
+    6,
+    "057"
+  ],
+  [
+    "Đoạn lệnh sau in ra giá trị nào?",
+    "int a[3] = {4, 7, 2}; cout << a[1];",
+    [
+      "2",
+      "4",
+      "7",
+      "3"
+    ],
+    "C",
+    "Chỉ số mảng bắt đầu từ 0, a[1] bằng 7.",
+    7,
+    "059"
+  ],
+  [
+    "Với int a[2][3]; cách truy cập nào nằm trong phạm vi hợp lệ?",
+    "",
+    [
+      "a[1][2]",
+      "a[2][1]",
+      "a[1][3]",
+      "a[2][3]"
+    ],
+    "A",
+    "Chỉ số hàng là 0..1; chỉ số cột là 0..2.",
+    7,
+    "067"
+  ],
+  [
+    "Đoạn lệnh sau in ra ký tự nào?",
+    "string s = \"Basic\"; cout << s[2];",
+    [
+      "B",
+      "a",
+      "i",
+      "s"
+    ],
+    "D",
+    "Ký tự ở chỉ số 2 là s.",
+    8,
+    "069, 070"
+  ],
+  [
+    "Điều kiện nào kiểm tra ký tự c là chữ cái in hoa tiếng Anh?",
+    "",
+    [
+      "c >= 'A' && c <= 'Z'",
+      "c >= 'a' && c <= 'z'",
+      "c >= 'A' || c <= 'Z'",
+      "c >= '0' && c <= '9'"
+    ],
+    "A",
+    "Chữ in hoa nằm trong đoạn A..Z.",
+    8,
+    "074"
+  ],
+  [
+    "Cho hàm dưới đây. Lệnh cout << f(3); in ra giá trị nào?",
+    "int f(int x) { return x * 2 + 1; }",
+    [
+      "3",
+      "6",
+      "7",
+      "9"
+    ],
+    "C",
+    "Thay x = 3, được 3 * 2 + 1 = 7.",
+    9,
+    "079, 082"
+  ],
+  [
+    "Từ khóa nào khai báo kiểu trả về của hàm không trả về giá trị?",
+    "",
+    [
+      "int",
+      "return",
+      "string",
+      "void"
+    ],
+    "D",
+    "void chỉ hàm không trả về giá trị.",
+    9,
+    "077, 082"
+  ],
+  [
+    "Cho hàm đệ quy dưới đây. Lệnh cout << tong(3); in ra giá trị nào?",
+    "int tong(int n) { if (n == 0) return 0; return n + tong(n - 1); }",
+    [
+      "3",
+      "6",
+      "9",
+      "Lặp vô hạn"
+    ],
+    "B",
+    "tong(3) = 3 + 2 + 1 + 0 = 6; dừng tại n = 0.",
+    10,
+    "087, 088"
+  ]
+]

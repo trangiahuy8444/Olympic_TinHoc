@@ -1,0 +1,276 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=16mm, left=18mm, right=18mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Định nghĩa hệ màu chuẩn theo Brand Identity của Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1 - Xanh logo chính
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493 - Xanh navy chữ Asian School
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} % Nền box nhẹ nhàng
+
+% Cấu hình Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Vì sao chọn C++ trong Tin học Olympic} -- Đội tuyển 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+% Cấu hình code listing
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{codeC}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=none,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+
+\lstdefinestyle{codePy}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{orange!80!black}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{teal},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=none,
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{orange!50!gray},
+    showstringspaces=false
+}
+
+\lstset{style=codeC}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG VỚI LOGO TRƯỜNG
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.45cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.15cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.25cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}VÌ SAO C++ LÀ LỰA CHỌN SỐ 1 TRONG THI ĐẤU OLYMPIC?}\\[3pt]
+    {\normalsize\textbf{\color{AsianBlue}TÀI LIỆU ĐỌC CHUYÊN SÂU \& ĐỊNH HƯỚNG DÀNH CHO HỌC SINH KHỐI 11}}\\[2pt]
+    \textit{\small Phân tích lợi thế cạnh tranh, ví dụ đối chiếu thực tế và chiến lược bứt phá kỳ thi}
+\end{center}
+
+\vspace{0.1cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=2mm,title=\textbf{LỜI MỞ ĐẦU TỪ BAN HUẤN LUYỆN}]
+\small
+Mặc dù \textbf{Python} sở hữu cú pháp ngắn gọn, dễ tiếp cận và trực quan, \textbf{C++} vẫn là lựa chọn ưu tiên hàng đầu và gần như tuyệt đối trong \textbf{Lập trình thi đấu (Competitive Programming)} cũng như các kỳ thi Học sinh giỏi Tin học, Olympic Tin học từ cấp Thành phố đến Quốc gia (VOI) và Quốc tế (IOI). Việc chuyển đổi và làm chủ C++ ngay từ đầu năm học lớp 11 là bước ngoặt quyết định giúp các em tối ưu điểm số và mở rộng cơ hội đoạt giải cao.
+\end{tcolorbox}
+
+\vspace{0.1cm}
+
+\section*{\color{AsianDarkBlue}\large I. 5 Lợi thế vượt trội của C++ trong phòng thi}
+
+\begin{enumerate}
+    \setlength{\itemsep}{3pt}
+    \item \textbf{Tốc độ thực thi tối ưu thời gian (Hạn chế tối đa lỗi TLE):}
+    \begin{itemize}
+        \item C++ được biên dịch trực tiếp sang mã máy (\textit{Machine Code}), cho tốc độ nhanh hơn Python từ \textbf{10 đến 100 lần}.
+        \item Các bài toán thi đấu quy định thời gian khắt khe (thường là \textbf{1.0 giây} cho khoảng $10^8$ phép tính). Với cùng thuật toán độ phức tạp $O(N \log N)$ hay $O(N)$, C++ chạy mượt mà trong $0.05 - 0.1$s, trong khi Python rất dễ dính lỗi \textbf{TLE (Time Limit Exceeded)}.
+    \end{itemize}
+
+    \item \textbf{Thư viện chuẩn STL (Standard Template Library) cực mạnh:}
+    \begin{itemize}
+        \item C++ STL tích hợp sẵn các cấu trúc dữ liệu và thuật toán được tối ưu hóa tối đa: \texttt{vector}, \texttt{set}, \texttt{map}, \texttt{priority\_queue}, \texttt{lower\_bound}, \texttt{upper\_bound}, \texttt{next\_permutation}...
+        \item Sử dụng STL giúp học sinh tiết kiệm thời gian cài đặt trong phòng thi mà vẫn đảm bảo tốc độ tiệm cận phần cứng.
+    \end{itemize}
+
+    \item \textbf{Tiêu chuẩn thiết kế bộ test của các kỳ thi lớn:}
+    \begin{itemize}
+        \item Ban giám khảo các kỳ thi như HSG Thành phố, Olympic 30/4, Quốc gia (VOI) đều lấy \textbf{mã nguồn C++ làm mốc quy chuẩn} để thiết kế giới hạn thời gian cho test case.
+        \item Dù một số hệ thống có nhân đôi thời gian cho Python, overhead thông dịch vẫn khiến Python trượt các \textit{max test}.
+    \end{itemize}
+
+    \item \textbf{Quản lý bộ nhớ và thao tác bit ở cấp độ phần cứng:}
+    \begin{itemize}
+        \item C++ không tốn tài nguyên cho bộ thu gom rác (\textit{Garbage Collection}) ngầm, lượng RAM tiêu thụ cực thấp, tránh lỗi \textbf{MLE}.
+        \item Hỗ trợ các hàm bitwise nội tại như \texttt{\_\_builtin\_popcount}, \texttt{\_\_builtin\_ctz} thực thi chỉ trong \textbf{1 chu kỳ CPU}, mang lại lợi thế áp đảo trong các bài toán Quy hoạch động trạng thái (\textit{Bitmask DP}).
+    \end{itemize}
+
+    \item \textbf{Kiểm soát kiểu dữ liệu và mảng dữ liệu chính xác:}
+    \begin{itemize}
+        \item Các kiểu định cỡ rõ ràng (\texttt{int}, \texttt{long long}, \texttt{\_\_int128}) giúp học sinh chủ động kiểm soát bộ nhớ, khai báo mảng tĩnh siêu nhanh và dự đoán chính xác hiện tượng tràn số.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\large II. 4 Ví dụ minh họa thực tế (Đối chiếu C++ vs. Python)}
+
+\subsection*{\color{AsianBlue}\normalsize Ví dụ 1: Tốc độ vòng lặp và xử lý $10^8$ phép tính}
+\textbf{Bài toán:} Duyệt qua $10^8$ ($100$ triệu) phần tử và tính tổng các số từ $0$ đến $10^8 - 1$. Giới hạn thời gian: \textbf{1.0 giây}.
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{\color{AsianDarkBlue}C++ (Biên dịch trực tiếp mã máy):}
+\begin{lstlisting}[style=codeC,language=C++]
+long long sum = 0;
+for (int i = 0; i < 100000000; ++i) {
+    sum += i;
+}
+\end{lstlisting}
+$\to$ \textbf{Thời gian:} \textbf{0.03 -- 0.08 giây}\\
+$\to$ \textbf{Kết quả:} \textbf{\color{green!70!black}ACCEPTED (Tuyệt đối)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{\color{orange!80!black}Python 3 (Thông dịch CPython):}
+\begin{lstlisting}[style=codePy,language=Python]
+total = 0
+for i in range(100000000):
+    total += i
+\end{lstlisting}
+$\to$ \textbf{Thời gian:} \textbf{3.5 -- 5.0 giây}\\
+$\to$ \textbf{Kết quả:} \textbf{\color{red!80!black}TLE (Quá thời gian - 0 điểm)}
+\end{minipage}
+
+\vspace{0.25cm}
+
+\subsection*{\color{AsianBlue}\normalsize Ví dụ 2: Cấu trúc dữ liệu tự cân bằng (\texttt{std::set} / Cây Đỏ Đen)}
+\textbf{Bài toán:} Cho tập hợp $S$. Thực hiện $10^5$ thao tác: Vừa chèn phần tử mới vào $S$, vừa tìm phần tử nhỏ nhất $\ge X$ trong $S$.
+
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{C++:} Dùng \texttt{std::set} (cài đặt bằng Cây Đỏ Đen - Red-Black Tree):
+\begin{lstlisting}[style=codeC,language=C++]
+set<int> S;
+S.insert(val);                  // O(log N)
+auto it = S.lower_bound(X);     // O(log N) -> Chay 10^5 thao tac mat < 0.1s => ACCEPTED
+\end{lstlisting}
+    \item \textbf{Python:} Kiểu \texttt{set} của Python là Hash Table không có thứ tự $\to$ \textbf{Không hỗ trợ \texttt{lower\_bound}}. Nếu dùng \texttt{list} rồi chèn/sắp xếp sẽ tốn $O(N^2) \to$ \textbf{TLE}. Hệ thống thi HSG/Olympic cũng \textbf{không có thư viện ngoài \texttt{sortedcontainers}}.
+\end{itemize}
+
+\vspace{0.15cm}
+
+\subsection*{\color{AsianBlue}\normalsize Ví dụ 3: Đệ quy sâu (Duyệt cây / đồ thị lớn với $N = 2 \times 10^5$ đỉnh)}
+\textbf{Bài toán:} Duyệt đồ thị/cây có $N = 2 \times 10^5$ đỉnh bằng thuật toán DFS.
+
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Python:} Giới hạn đệ quy mặc định là $1000$. Dù dùng \texttt{sys.setrecursionlimit(300000)}, mỗi tầng đệ quy của Python lưu rất nhiều dữ liệu khung hàm $\to$ Dễ dính lỗi \textbf{MLE (Memory Limit Exceeded)} hoặc sập ngăn xếp (\textit{Stack Overflow}).
+    \item \textbf{C++:} C++ tối ưu khung ngăn xếp cực nhẹ. Đệ quy $2 \times 10^5$ tầng chạy mượt mà trong \textbf{vài mili-giây} với dung lượng RAM không đáng kể.
+\end{itemize}
+
+\vspace{0.15cm}
+
+\subsection*{\color{AsianBlue}\normalsize Ví dụ 4: Thao tác đếm bit trong Quy hoạch động trạng thái (Bitmask DP)}
+\textbf{Bài toán:} Đếm số lượng bit 1 của một số nguyên $x$ trong vòng lặp $2^{20}$ trạng thái.
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{\color{AsianDarkBlue}C++ (Lệnh phần cứng vi xử lý CPU):}
+\begin{lstlisting}[style=codeC,language=C++]
+// Chay trong 1 chu ky CPU (lenh POPCNT):
+int cnt = __builtin_popcount(x);
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{\color{orange!80!black}Python (Chuyển đổi chuỗi tốn kém):}
+\begin{lstlisting}[style=codePy,language=Python]
+# Phai chuyen so x sang chuoi (String) roi dem:
+cnt = bin(x).count('1')
+\end{lstlisting}
+\end{minipage}
+
+\newpage
+
+\section*{\color{AsianDarkBlue}\large III. Lời khuyên \& Chiến lược bứt phá cho Khối 11}
+
+Lớp 11 được coi là \textbf{"thời điểm vàng"} của học sinh đội tuyển Tin học. Đây là lúc các em đã có tư duy thuật toán nền tảng vững vàng và bắt đầu chinh phục các chủ đề nâng cao để săn giải cấp Thành phố và Khu vực.
+
+\subsection*{\color{AsianBlue}\normalsize 1. Bốn chuyên đề cốt lõi cần làm chủ ở khối 11 (bằng C++)}
+\begin{enumerate}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{Cấu trúc Dữ liệu Nâng cao:}
+    \begin{itemize}
+        \item C++ STL chuyên sâu: \texttt{vector}, \texttt{pair}, \texttt{priority\_queue}, \texttt{set}, \texttt{map}.
+        \item Cây Phân đoạn (Segment Tree / IT), Cây Fenwick (BIT), Cấu trúc tập hợp rời rạc (DSU).
+    \end{itemize}
+    \item \textbf{Thuật toán Đồ thị (Graph Theory):}
+    \begin{itemize}
+        \item Duyệt BFS, DFS, đường đi ngắn nhất Dijkstra, Cây khung nhỏ nhất (Kruskal/Prim), Tổ tiên chung thấp nhất (LCA).
+    \end{itemize}
+    \item \textbf{Quy hoạch động (Dynamic Programming - DP):}
+    \begin{itemize}
+        \item DP cơ bản (Dãy con tăng dài nhất, Cái túi), DP trên đoạn, DP Bitmask, DP trên cây (Tree DP), DP Chữ số (Digit DP).
+    \end{itemize}
+    \item \textbf{Toán học \& Toán rời rạc:}
+    \begin{itemize}
+        \item Sàng Eratosthenes, Lũy thừa nhị phân nhanh, Thuật toán Euclid mở rộng, Nghịch đảo mô-đun (Modular Inverse).
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{\color{AsianBlue}\normalsize 2. Ba mẹo chuyển đổi nhanh từ Python sang C++ trong thi đấu}
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=2mm,title=\textbf{BÍ KÍP BỎ TÚI KHI LẬP TRÌNH C++ THI ĐẤU}]
+\begin{itemize}
+    \setlength{\itemsep}{3pt}
+    \item \textbf{Dùng tệp thư viện tổng hợp:} Đầu chương trình chỉ cần:
+\begin{lstlisting}[style=codeC,language=C++]
+#include <bits/stdc++.h>
+using namespace std;
+\end{lstlisting}
+    \item \textbf{Kích hoạt bộ tăng tốc Vào/Ra (Fast I/O):} Đặt 2 dòng này đầu hàm \texttt{main()} để tốc độ đọc/ghi dữ liệu tăng vọt:
+\begin{lstlisting}[style=codeC,language=C++]
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+\end{lstlisting}
+    \item \textbf{Dùng \texttt{long long} và \texttt{1LL} tránh tràn số:} Khi bài toán có phép nhân hoặc tính tổng của các số $\ge 10^5$, hãy dùng kiểu \texttt{long long} và ép kiểu \texttt{1LL * a * b}.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{\color{AsianBlue}\normalsize 3. Hai nền tảng luyện tập khuyến nghị hàng ngày}
+\begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \item \textbf{VNOJ (VNOI Online Judge):} Nền tảng số 1 cho học sinh giỏi Tin học Việt Nam. Mục \textbf{VNOI Wiki} là kho tài liệu lý thuyết thuật toán chuẩn hóa tốt nhất hiện nay.
+    \item \textbf{Codeforces:} Nền tảng thi đấu quốc tế. Hãy đặt mục tiêu đạt mức \textbf{Div. 2 (Rating 1300 -- 1600)} trong năm học lớp 11 để rèn luyện phản xạ cài đặt C++ cực nhanh và chuẩn xác.
+\end{itemize}
+
+\vspace{0.3cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Chúc các bạn học sinh đội tuyển Olympic Tin học 11 Trường Quốc tế Á Châu học tập hứng khởi và gặt hái thành tích cao!}}
+\end{center}
+
+\end{document}

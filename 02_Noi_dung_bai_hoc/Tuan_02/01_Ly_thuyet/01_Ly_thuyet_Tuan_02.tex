@@ -1,0 +1,340 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=15mm, right=15mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Dinh nghia he mau chuan Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{Lý thuyết Tuần 02} -- Olympic Tin học 11}
+\rfoot{\color{gray}\small Trang \thepage\ / 4}
+
+% Cau hinh listings
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{RGB}{248, 250, 252}
+
+\lstdefinestyle{asianstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{AsianDarkBlue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red!70!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{AsianBlue!40},
+    showstringspaces=false
+}
+\lstset{style=asianstyle}
+
+\begin{document}
+
+% ==================== TRANG 1 ====================
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.4cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{10pt}{12pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{9pt}{11pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\Large\bfseries\color{AsianDarkBlue}TÀI LIỆU LÝ THUYẾT TUẦN 02}\\[2pt]
+    {\large\textbf{\color{AsianBlue}VÒNG LẶP LỒNG NHAU, VÒNG LẶP WHILE \& MẢNG 1 CHIỀU TOÀN DIỆN}}\\[2pt]
+    \textit{\small Bản chất ô nhớ RAM, cấu trúc mảng liên tiếp, cạm bẫy Stack Overflow và vòng lặp while}
+\end{center}
+
+\vspace{-0.1cm}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\small MỤC TIÊU BÀI HỌC CỐT LÕI}]
+\footnotesize
+\begin{enumerate}
+    \setlength{\itemsep}{0.5pt}
+    \item \textbf{Bản chất máy tính:} Hiểu cơ chế cấp phát ô nhớ liên tục trên RAM và tốc độ truy xuất tức thì $O(1)$.
+    \item \textbf{Cạm bẫy bộ nhớ:} Phân biệt vùng nhớ Stack (cục bộ $\approx 1$MB) và Data segment (toàn cục $\approx$ GB) để triệt tiêu lỗi \textit{Stack Overflow}.
+    \item \textbf{Kỹ thuật điều khiển:} Nắm vững vòng lặp \texttt{while} (tách chữ số) và vòng lặp lồng nhau (\texttt{nested loops}) với bảng Dry Run.
+    \item \textbf{5 Thao tác mảng:} Nhập/Xuất chuẩn \texttt{freopen}, Tìm Min/Max (tránh bẫy âm), Tính tổng chống tràn số, Đếm điều kiện, Đảo mảng.
+    \item \textbf{Công cụ Code::Blocks:} Làm chủ cửa sổ \textbf{Watches} và \textbf{Breakpoint} để theo dõi trực quan từng ô nhớ mảng khi chạy.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{-0.15cm}
+\section*{\color{AsianDarkBlue}\normalsize 1. Vì sao phải dùng mảng? (Tư duy lưu trữ hàng loạt)}
+\vspace{-0.2cm}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Vấn đề:} Giả sử bài toán yêu cầu: \textit{Nhập điểm của 30 học sinh, in ra những bạn có điểm lớn hơn điểm trung bình cả lớp}.
+    \item \textbf{Sự bất lực của biến đơn:} Nếu dùng biến đơn \texttt{d1, d2, ..., d30}, ta phải viết hàng chục lệnh \texttt{cin} và \texttt{if}. Nếu $N = 100.000$, cách này hoàn toàn bất khả thi. Để tính điểm trung bình ta cần đọc hết dãy, nhưng để in các số lớn hơn trung bình, ta phải \textbf{ghi nhớ lại từng số đã nhập}. Biến đơn ghi đè giá trị sau mỗi bước lặp sẽ làm mất dữ liệu.
+    \item $\Longrightarrow$ Ta cần \textbf{Mảng (Array)}: Gom hàng trăm nghìn biến cùng kiểu dữ liệu vào một tên gọi duy nhất.
+\end{itemize}
+
+\vspace{-0.25cm}
+\section*{\color{AsianDarkBlue}\normalsize 2. Bản chất Mảng 1 chiều trên bộ nhớ RAM}
+\vspace{-0.2cm}
+\begin{itemize}
+    \setlength{\itemsep}{1.5pt}
+    \footnotesize
+    \item \textbf{Cấp phát liên tục (Contiguous Memory):} Khi khai báo \texttt{int a[5];}, hệ điều hành cấp phát ngay $5 \times 4 = 20$ bytes bộ nhớ nằm \textbf{liền kề nhau không đứt đoạn} trên thanh RAM.
+    \item \textbf{Công thức tính địa chỉ tức thì:} $\text{Address}(a[i]) = \text{Address}(a[0]) + i \times \text{sizeof(kiểu dữ liệu)}$.
+    \item \textbf{Độ phức tạp $O(1)$:} Nhờ công thức số học trên, máy tính chỉ mất đúng 1 phép cộng và 1 phép nhân bit để tìm ra địa chỉ ô nhớ cần đọc. Do đó, thao tác \texttt{a[i]} diễn ra tức thì trong $O(1)$.
+\end{itemize}
+
+\begin{center}
+\footnotesize
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Chỉ số (Index)} & \texttt{a[0]} & \texttt{a[1]} & \texttt{a[2]} & \texttt{a[3]} & \texttt{a[4]} \\
+\hline
+\textbf{Giá trị ô nhớ} & 12 & 45 & 7 & 89 & 23 \\
+\hline
+\textbf{Địa chỉ RAM minh họa} & \texttt{0x1000} & \texttt{0x1004} & \texttt{0x1008} & \texttt{0x100C} & \texttt{0x1010} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-0.15cm}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Chỉ số 0-based vs 1-based:} Chuẩn C++ đánh chỉ số từ $0$ đến $N - 1$. Tuy nhiên trong Lập trình thi đấu, đề bài thường cho $1 \le i \le N$. Do đó, ta luôn khai báo mảng dư ra (\texttt{const int MAXN = 100005; int a[MAXN];}) và thao tác từ \texttt{a[1]} đến \texttt{a[n]} (bỏ qua \texttt{a[0]}).
+\end{itemize}
+
+\newpage
+% ==================== TRANG 2 ====================
+\section*{\color{AsianDarkBlue}\normalsize 3. Hai cạm bẫy bộ nhớ kinh điển trong Olympic}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1.5mm,title=\textbf{\small CẠM BẪY 1: TRUY XUẤT NGOÀI BIÊN MẢNG (OUT OF BOUNDS)}]
+\footnotesize
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item Mảng khai báo \texttt{int a[5];} chỉ có các ô hợp lệ từ \texttt{a[0]} đến \texttt{a[4]}.
+    \item Nếu viết \texttt{a[5] = 100;} hoặc \texttt{a[-1] = 50;}: Khác với Python báo lỗi \texttt{IndexError}, C++ \textbf{không hề kiểm tra giới hạn mảng}! Lệnh sẽ ghi đè lên ô nhớ của biến khác hoặc vùng nhớ hệ thống.
+    \item \textbf{Hậu quả:} Dữ liệu bị sai lệch bí ẩn hoặc chương trình sập với mã lỗi \texttt{Process returned -1073741819 (0xC0000005)} (\textit{Segmentation Fault}).
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.15cm}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,arc=1.5mm,title=\textbf{\small CẠM BẪY 2: TRÀN BỘ NHỚ NGĂN XẾP (STACK OVERFLOW)}]
+\footnotesize
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Bộ nhớ Stack (cục bộ):} Dành cho biến bên trong hàm \texttt{main()}, dung lượng chỉ $\approx 1$MB. Nếu khai báo \texttt{int a[1000000];} ($\approx 4$MB) trong \texttt{main()}, chương trình sẽ sập ngay khi vừa bật!
+    \item \textbf{Bộ nhớ Data/BSS (toàn cục):} Nằm ngoài tất cả các hàm, kích thước bằng toàn bộ RAM còn trống (hàng GB). Khai báo ngoài \texttt{main()} chứa an toàn $10^7$ phần tử và \textbf{tự động khởi tạo bằng 0}.
+    \item $\Longrightarrow$ \textbf{Quy tắc vàng:} Trong thi đấu, \textbf{luôn khai báo mảng kích thước lớn ở ngoài hàm \texttt{main()}}!
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\normalsize 4. Vòng lặp While \& Kỹ thuật Tách chữ số}
+\vspace{-0.2cm}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Khi nào dùng \texttt{while}:} Dùng khi chưa biết trước số lần lặp, vòng lặp tiếp tục khi điều kiện còn thỏa mãn.
+    \item \textbf{Kỹ thuật "Mổ xẻ số nguyên" bằng \texttt{\% 10} và \texttt{/ 10}:} Lấy chữ số hàng đơn vị bằng \texttt{n \% 10}, sau đó rút gọn số đi 1 chữ số bằng \texttt{n /= 10}.
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+// Tinh tong cac chu so cua so nguyen duong N
+long long n = 2026, temp = n;
+int tong_cs = 0;
+while (temp > 0) {
+    int cs = temp % 10;   // Lay chu so hang don vi
+    tong_cs += cs;        // Cong don vao tong
+    temp /= 10;           // Rut gon so: 2026 -> 202 -> 20 -> 2 -> 0 (Dung!)
+}
+// Ket qua tong_cs = 10
+\end{lstlisting}
+
+\vspace{-0.25cm}
+\section*{\color{AsianDarkBlue}\normalsize 5. Vòng lặp lồng nhau (Nested Loops) \& Bảng Dry Run}
+\vspace{-0.2cm}
+\begin{itemize}
+    \setlength{\itemsep}{1pt}
+    \footnotesize
+    \item \textbf{Nguyên lý Kim phút - Kim giây:} Với mỗi \textbf{một nấc} của vòng ngoài (\texttt{i}), vòng trong (\texttt{j}) phải quay \textbf{trọn vẹn một vòng}.
+    \item \textbf{Đánh giá thời gian thực thi ($O(N^2)$):} Vòng ngoài $N$ lần, vòng trong $N$ lần $\implies$ $N^2$ phép tính. Nếu $N = 10^5 \implies N^2 = 10^{10} > 10^8 \implies$ \textbf{TLE chắc chắn!} Phải chú ý điều này trong bài thi.
+\end{itemize}
+
+\vspace{-0.1cm}
+\begin{center}
+\footnotesize
+\textbf{Bảng chạy tay (Dry Run) in hình chữ nhật sao $3 \times 4$:}
+\vspace{0.1cm}
+
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Vòng ngoài ($i$)} & \textbf{Vòng trong ($j$)} & \textbf{Điều kiện $j \le 4$} & \textbf{Hành động in} & \textbf{Màn hình hiển thị} \\
+\midrule
+$i = 1$ & $j = 1, 2, 3, 4$ & Đúng & In \texttt{*} & \texttt{****} \\
+        & $j = 5$          & Sai $\rightarrow$ Thoát & In \texttt{\textbackslash n} & Xuống dòng 1 \\
+$i = 2$ & $j = 1, 2, 3, 4$ & Đúng & In \texttt{*} & \texttt{****} (Dòng 2) \\
+$i = 3$ & $j = 1, 2, 3, 4$ & Đúng & In \texttt{*} & \texttt{****} (Dòng 3) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+% ==================== TRANG 3 ====================
+\section*{\color{AsianDarkBlue}\normalsize 6. 5 Kỹ thuật cốt lõi trên Mảng 1 chiều trong phòng thi}
+
+\subsection*{\color{AsianBlue}\small Kỹ thuật 1: Nhập và xuất mảng chuẩn I/O}
+\begin{lstlisting}[language=C++]
+int n;
+cin >> n;
+for (int i = 1; i <= n; i++) cin >> a[i];
+
+// Xuat mang: Cac phan tu cach nhau 1 dau cach, cuoi mang xuong dong
+for (int i = 1; i <= n; i++) {
+    cout << a[i] << (i == n ? "" : " ");
+}
+cout << "\n";
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small Kỹ thuật 2: Tìm Max, Min kèm vị trí (Tránh bẫy khởi tạo số âm)}
+\begin{lstlisting}[language=C++]
+long long max_val = a[1], min_val = a[1];
+int pos_max = 1, pos_min = 1;
+for (int i = 2; i <= n; i++) {
+    if (a[i] > max_val) { max_val = a[i]; pos_max = i; }
+    if (a[i] < min_val) { min_val = a[i]; pos_min = i; }
+}
+// LUU Y: Tuyet doi khong khoi tao max_val = 0 vi neu day toan so am se sai hoan toan!
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small Kỹ thuật 3: Tính tổng mảng chống tràn số}
+\begin{lstlisting}[language=C++]
+long long tong = 0; // Bat buoc long long vi 10^5 phan tu co the dat tong 10^14
+for (int i = 1; i <= n; i++) tong += a[i];
+double trung_binh = (double)tong / n;
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small Kỹ thuật 4: Đếm phần tử thỏa mãn điều kiện}
+\begin{lstlisting}[language=C++]
+int dem_chan = 0;
+for (int i = 1; i <= n; i++) {
+    if (a[i] % 2 == 0) dem_chan++;
+}
+\end{lstlisting}
+
+\subsection*{\color{AsianBlue}\small Kỹ thuật 5: Đảo ngược mảng bằng 2 con trỏ đối xứng}
+\begin{lstlisting}[language=C++]
+// Hoan doi doi xung dau - cuoi khong ton them bo nho mang phu
+for (int i = 1; i <= n / 2; i++) {
+    swap(a[i], a[n - i + 1]);
+}
+\end{lstlisting}
+
+\vspace{-0.2cm}
+\section*{\color{AsianDarkBlue}\normalsize 7. Hướng dẫn theo dõi mảng trực quan trên Code::Blocks}
+
+\begin{tcolorbox}[colback=AsianLightBlue,colframe=AsianBlue,arc=1.5mm,title=\textbf{\small 4 BƯỚC DEBUG \& XEM Ô NHỚ MẢNG (WATCHES)}]
+\footnotesize
+\begin{enumerate}
+    \setlength{\itemsep}{1pt}
+    \item \textbf{Đặt điểm dừng (Breakpoint):} Nhấp chuột trái vào dải lề cạnh số dòng lệnh bên trong vòng lặp \texttt{for} (ví dụ dòng \texttt{if (a[i] > max\_val)}). Một chấm tròn đỏ sẽ xuất hiện.
+    \item \textbf{Bắt đầu Debug:} Nhấn phím \textbf{F8} (menu \textit{Debug $\rightarrow$ Start / Continue}). Chương trình sẽ chạy và tạm dừng ngay tại chấm đỏ.
+    \item \textbf{Mở cửa sổ theo dõi:} Chọn menu \textit{Debug $\rightarrow$ Debugging windows $\rightarrow$ Watches}. Cửa sổ hiện ra danh sách các biến.
+    \item \textbf{Quan sát trực quan:} Mở rộng biến mảng \texttt{a}, bạn sẽ nhìn thấy trực tiếp từng ô nhớ \texttt{a[1], a[2], ...}. Nhấn \textbf{F7} (\textit{Next line}) để chạy từng lệnh một, giá trị biến thay đổi sẽ đổi màu đỏ.
+\end{enumerate}
+\end{tcolorbox}
+
+\newpage
+% ==================== TRANG 4 ====================
+\section*{\color{AsianDarkBlue}\normalsize 8. Bài tập thực hành tổng hợp chuẩn phòng thi}
+
+\begin{tcolorbox}[colback=white,colframe=AsianDarkBlue,arc=1.5mm,title=\textbf{\small BÀI TOÁN: THỐNG KÊ DÃY SỐ (THONGKE.INP / THONGKE.OUT)}]
+\footnotesize
+\textbf{Đề bài:} Cho tệp \texttt{THONGKE.INP} gồm dòng 1 chứa số nguyên $N$ ($1 \le N \le 10^5$), dòng 2 chứa $N$ số nguyên $A_1, A_2, \dots, A_N$ ($-10^9 \le A_i \le 10^9$).\\
+\textbf{Yêu cầu:} Ghi ra tệp \texttt{THONGKE.OUT}:
+Dòng 1: Giá trị lớn nhất và vị trí đầu tiên; Dòng 2: Tổng các số chẵn; Dòng 3: Số lượng phần tử bằng $A_1$; Dòng 4: Dãy số in đảo ngược.
+\end{tcolorbox}
+
+\subsection*{\color{AsianBlue}\small Mã nguồn C++17 hoàn chỉnh chuẩn thi đấu Olympic:}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+// Mang toan cuc tren vung Data segment (chua thoai mai 10^5 phan tu)
+const int MAXN = 100005;
+long long a[MAXN];
+
+int main() {
+    // Luong vao ra chuan tep Olympic
+    freopen("THONGKE.INP", "r", stdin);
+    freopen("THONGKE.OUT", "w", stdout);
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    if (!(cin >> n)) return 0;
+
+    for (int i = 1; i <= n; i++) cin >> a[i];
+
+    // 1. Tim Max va vi tri dau tien dat Max
+    long long max_val = a[1];
+    int pos_max = 1;
+    for (int i = 2; i <= n; i++) {
+        if (a[i] > max_val) {
+            max_val = a[i];
+            pos_max = i;
+        }
+    }
+    cout << max_val << " " << pos_max << "\n";
+
+    // 2. Tong chan (long long) & 3. Dem so phan tu bang a[1]
+    long long tong_chan = 0;
+    int dem_bang_a1 = 0;
+    for (int i = 1; i <= n; i++) {
+        if (a[i] % 2 == 0) tong_chan += a[i];
+        if (a[i] == a[1]) dem_bang_a1++;
+    }
+    cout << tong_chan << "\n" << dem_bang_a1 << "\n";
+
+    // 4. Dao nguoc mang va xuat ra man hinh
+    for (int i = 1; i <= n / 2; i++) swap(a[i], a[n - i + 1]);
+    for (int i = 1; i <= n; i++) cout << a[i] << (i == n ? "" : " ");
+    cout << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+\vspace{0.1cm}
+\begin{center}
+    \textit{\color{AsianDarkBlue}\textbf{Ghi nhớ: Vòng lặp là đôi chân, Mảng là kho chứa. Làm chủ hai công cụ này là chìa khóa mở cánh cửa thuật toán!}}
+\end{center}
+
+\end{document}

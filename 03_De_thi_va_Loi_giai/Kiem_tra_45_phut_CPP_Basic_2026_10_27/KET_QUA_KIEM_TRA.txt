@@ -1,0 +1,3 @@
+BAI1: 8 fixed + 100 randomized cases passed
+BAI2: 8 fixed + 100 randomized cases passed
+9 executable MC snippets matched answer key; all 16 keys present; 10 sections covered

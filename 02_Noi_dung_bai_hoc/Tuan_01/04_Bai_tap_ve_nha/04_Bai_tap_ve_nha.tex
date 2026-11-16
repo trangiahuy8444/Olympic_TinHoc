@@ -1,0 +1,204 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, top=14mm, bottom=14mm, left=17mm, right=17mm, includehead, headheight=26pt, headsep=6mm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{array}
+
+% Hệ màu Brand Identity Asian School
+\definecolor{AsianBlue}{RGB}{2, 103, 177}       % #0267b1
+\definecolor{AsianDarkBlue}{RGB}{26, 84, 147}   % #1a5493
+\definecolor{AsianLightBlue}{RGB}{238, 246, 252} 
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{AsianBlue}\leaders\hrule height \headrulewidth\hfill}}
+\lhead{\color{AsianDarkBlue}\small\textbf{Trường Quốc tế Á Châu} -- Asian School}
+\rhead{\color{AsianDarkBlue}\small\textbf{BTVN Buổi 01} -- Olympic 11}
+\rfoot{\color{gray}\small Trang \thepage}
+
+\begin{document}
+
+% BANNER ĐẦU TRANG THEO CHUẨN ASIAN SCHOOL
+\noindent
+\begin{minipage}[c]{0.38\textwidth}
+    \includegraphics[height=1.35cm]{logo_asian_school.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.58\textwidth}
+    \raggedleft
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries\color{AsianDarkBlue}TRƯỜNG QUỐC TẾ Á CHÂU -- ASIAN SCHOOL}\\[2pt]
+    {\fontsize{8.5pt}{10.5pt}\selectfont\color{gray}TỔ TIN HỌC -- BỘ PHẬN BỒI DƯỠNG NĂNG KHIẾU}\\[2pt]
+    {\fontsize{8.5pt}{10pt}\selectfont\color{AsianBlue}\textbf{ĐỘI TUYỂN OLYMPIC TIN HỌC 11 -- NĂM HỌC 2026--2027}}
+\end{minipage}
+
+\vspace{0.1cm}
+{\color{AsianBlue}\hrule height 1.5pt}
+\vspace{0.15cm}
+
+\begin{center}
+    {\large\bfseries\color{AsianDarkBlue}PHIẾU BÀI TẬP VỀ NHÀ -- BUỔI 01}\\[2pt]
+    {\small\textit{Rèn luyện kỹ năng: Tạo tệp .INP/.OUT, Chọn kiểu dữ liệu \& Tránh tràn số}}
+\end{center}
+
+\vspace{0.1cm}
+
+\noindent\textbf{\color{red!80!black}\footnotesize HƯỚNG DẪN LÀM BÀI TẠI NHÀ:}
+\footnotesize
+Mỗi bài tập lưu một file \texttt{.cpp} riêng trong thư mục bài làm ở nhà. Tự tạo file dữ liệu \texttt{.INP}, chạy chương trình bằng \textbf{F9} và mở kiểm tra file \texttt{.OUT}. Chú ý luôn khai báo \texttt{long long} cho các phép tính số nguyên lớn.
+
+\vspace{-1mm}
+% BÀI 1
+\subsection*{\color{AsianDarkBlue}\small Bài 1: HIỆU HAI SỐ NGUYÊN (Tên file: \texttt{HIEU2.cpp} | Tệp: \texttt{HIEU2.INP} / \texttt{HIEU2.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho hai số nguyên $A$ và $B$. Hãy tính giá trị hiệu $D = A - B$.
+    \item \textbf{Dữ liệu vào (\texttt{HIEU2.INP}):} Một dòng chứa hai số nguyên $A, B$ cách nhau một dấu cách ($-10^9 \le A, B \le 10^9$).
+    \item \textbf{Kết quả ra (\texttt{HIEU2.OUT}):} Ghi ra một số nguyên duy nhất là giá trị của $A - B$.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{HIEU2.INP}} & \textbf{\texttt{HIEU2.OUT}} \\
+\hline
+\texttt{50 120} & \texttt{-70} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 2
+\subsection*{\color{AsianDarkBlue}\small Bài 2: TÍNH TIỀN ĐIỆN (Tên file: \texttt{TIENDIEN.cpp} | Tệp: \texttt{TIENDIEN.INP} / \texttt{TIENDIEN.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Một hộ gia đình sử dụng hết $K$ số điện (kWh) trong một tháng ($1 \le K \le 10^4$). Đơn giá cố định là $2500.5$ đồng/kWh. Ngoài ra gia đình phải chịu thêm $10\%$ tiền thuế VAT. Hãy tính tổng số tiền điện gia đình phải trả.
+    \item \textbf{Dữ liệu vào (\texttt{TIENDIEN.INP}):} Một số nguyên dương $K$.
+    \item \textbf{Kết quả ra (\texttt{TIENDIEN.OUT}):} Ghi ra tổng số tiền điện phải trả, làm tròn đúng \textbf{2 chữ số thập phân}.
+    \item \textbf{Công thức:} $\text{Tien} = K \times 2500.5 \times 1.1$.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{TIENDIEN.INP}} & \textbf{\texttt{TIENDIEN.OUT}} \\
+\hline
+\texttt{150} & \texttt{412582.50} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 3
+\subsection*{\color{AsianDarkBlue}\small Bài 3: HÌNH TRÒN (Tên file: \texttt{HINHTRON.cpp} | Tệp: \texttt{HINHTRON.INP} / \texttt{HINHTRON.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho bán kính $R$ của một hình tròn ($0 < R \le 10^4$, $R$ có thể là số thực). Hãy tính chu vi $C = 2 \times \pi \times R$ và diện tích $S = \pi \times R^2$. Lấy hằng số $\pi = 3.141592653589793$.
+    \item \textbf{Dữ liệu vào (\texttt{HINHTRON.INP}):} Chứa một số thực $R$.
+    \item \textbf{Kết quả ra (\texttt{HINHTRON.OUT}):} Dòng 1 ghi chu vi; Dòng 2 ghi diện tích (làm tròn đúng 2 chữ số thập phân).
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{HINHTRON.INP}} & \textbf{\texttt{HINHTRON.OUT}} \\
+\hline
+\texttt{5.0} & \texttt{31.42} \\
+& \texttt{78.54} \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+% BÀI 4
+\subsection*{\color{AsianDarkBlue}\small Bài 4: TỔNG BA SỐ CỰC LỚN (Tên file: \texttt{TONG3SO.cpp} | Tệp: \texttt{TONG3SO.INP} / \texttt{TONG3SO.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho ba số nguyên $A, B, C$. Hãy tính tổng $S = A + B + C$.
+    \item \textbf{Dữ liệu vào (\texttt{TONG3SO.INP}):} Một dòng chứa ba số nguyên $A, B, C$ ($-10^{17} \le A, B, C \le 10^{17}$).
+    \item \textbf{Kết quả ra (\texttt{TONG3SO.OUT}):} In ra một số nguyên duy nhất là giá trị tổng $S$.
+    \item \textbf{Cảnh báo:} Giới hạn $10^{17}$ vượt xa kiểu \texttt{int} $\implies$ Bắt buộc khai báo \texttt{long long} cho $A, B, C$ và $S$.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{TONG3SO.INP}} & \textbf{\texttt{TONG3SO.OUT}} \\
+\hline
+\texttt{1000000000000000 2000000000000000 3000000000000000} & \texttt{6000000000000000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 5
+\subsection*{\color{AsianDarkBlue}\small Bài 5: TÍNH LƯƠNG THỰC NHẬN (Tên file: \texttt{LUONG.cpp} | Tệp: \texttt{LUONG.INP} / \texttt{LUONG.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Một nhân viên có mức lương cơ bản là $L$ đồng và phụ cấp trách nhiệm là $P$ đồng. Mỗi tháng, nhân viên phải trích $10.5\%$ từ lương cơ bản để đóng các quỹ bảo hiểm xã hội và y tế. Hãy tính tổng số tiền lương thực nhận của nhân viên trong tháng.
+    \item \textbf{Dữ liệu vào (\texttt{LUONG.INP}):} Gồm hai số nguyên $L$ và $P$ ($10^6 \le L \le 10^8$, $0 \le P \le 10^7$).
+    \item \textbf{Kết quả ra (\texttt{LUONG.OUT}):} Ghi ra số tiền lương thực nhận, làm tròn đúng \textbf{2 chữ số thập phân}.
+    \item \textbf{Công thức:} $\text{Thực nhận} = L + P - (L \times 0.105)$.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{LUONG.INP}} & \textbf{\texttt{LUONG.OUT}} \\
+\hline
+\texttt{15000000 2000000} & \texttt{15425000.00} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-2mm}
+% BÀI 6
+\subsection*{\color{AsianDarkBlue}\small Bài 6: HOÁN ĐỔI HAI BIẾN (Tên file: \texttt{HOANDOI.cpp} | Tệp: \texttt{HOANDOI.INP} / \texttt{HOANDOI.OUT})}
+\begin{itemize}
+    \setlength{\itemsep}{0.5pt}
+    \footnotesize
+    \item \textbf{Đề bài:} Cho hai số nguyên $A$ và $B$. Hãy hoán đổi giá trị của hai biến cho nhau và in ra giá trị mới của $A$ và $B$ (tương đương in ra $B$ trước, $A$ sau).
+    \item \textbf{Dữ liệu vào (\texttt{HOANDOI.INP}):} Một dòng chứa hai số nguyên $A, B$ ($-10^9 \le A, B \le 10^9$).
+    \item \textbf{Kết quả ra (\texttt{HOANDOI.OUT}):} In ra hai số nguyên sau khi hoán đổi cách nhau một dấu cách.
+    \item \textbf{Kỹ thuật lập trình kinh điển:} Dùng một biến tạm trung gian \texttt{temp}:
+    \texttt{long long temp = a; a = b; b = temp;}.
+\end{itemize}
+\vspace{-2mm}
+\begin{center}
+\footnotesize
+\begin{tabular}{|p{7.8cm}|p{7.8cm}|}
+\hline
+\textbf{\texttt{HOANDOI.INP}} & \textbf{\texttt{HOANDOI.OUT}} \\
+\hline
+\texttt{10 99} & \texttt{99 10} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{-1mm}
+\begin{tcolorbox}[colback=AsianBlue!5!white,colframe=AsianDarkBlue,arc=1mm,title=\textbf{\footnotesize LỜI NHẮC HỌC TẬP VỀ NHÀ}]
+\footnotesize
+- Học sinh tự cài đặt Code::Blocks 20.03 trên máy tính cá nhân theo tài liệu hướng dẫn \texttt{00\_Huong\_dan\_Setup}.\\
+- Hoàn thành đầy đủ 6 bài tập trên và gửi lại file mã nguồn \texttt{.cpp} cho giáo viên trước buổi học tuần sau.
+\end{tcolorbox}
+
+\end{document}
