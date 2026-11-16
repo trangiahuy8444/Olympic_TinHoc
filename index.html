@@ -330,95 +330,422 @@
         </div>
       </div>
 
-      <!-- Quick Anchor Pills -->
+            <!-- Quick Anchor Pills -->
       <div class="flex flex-wrap gap-2 p-3 bg-white border border-slate-200 rounded-2xl shadow-sm text-xs font-semibold">
         <span class="text-slate-400 py-1.5 px-2 flex items-center gap-1">
           <i data-lucide="compass" class="w-4 h-4 text-ahs-primary"></i> Lối tắt chuyên đề:
         </span>
         <a href="#buoi-2-theory" class="px-3 py-1.5 bg-blue-50 text-ahs-primary hover:bg-blue-100 rounded-lg border border-blue-200 transition flex items-center gap-1.5">
-          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Kỹ Thuật
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Code Mẫu
         </a>
         <a href="#buoi-2-sim" class="px-3 py-1.5 bg-amber-50 text-amber-800 hover:bg-amber-100 rounded-lg border border-amber-200 transition flex items-center gap-1.5">
           <i data-lucide="activity" class="w-3.5 h-3.5"></i> 2. Mô Phỏng Mảng Đếm
         </a>
-        <a href="#buoi-2-exercises" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition flex items-center gap-1.5">
-          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 3. Bài Tập Tại Lớp (PAIRSUM, DIFFK)
+        <a href="#buoi-2-quiz" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> 3. Trắc Nghiệm Hiểu Bài
         </a>
-        <a href="#buoi-2-homework" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
-          <i data-lucide="home" class="w-3.5 h-3.5"></i> 4. Bài Tập Về Nhà (PALIN, MAJORITY) & AI Gia Sư
+        <a href="#buoi-2-exercises" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition flex items-center gap-1.5">
+          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 4. Bài Tập Tại Lớp (PAIRSUM, DIFFK)
+        </a>
+        <a href="#buoi-2-homework" class="px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-lg border border-rose-200 transition flex items-center gap-1.5">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> 5. Bài Tập Về Nhà & AI Gia Sư
         </a>
       </div>
 
-      <!-- PHẦN 1 & 2: LÝ THUYẾT VÀ MÔ PHỎNG -->
-      <div id="buoi-2-theory" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Cột Trái: Lý Thuyết Cốt Lõi (5 cột) -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="hash" class="w-5 h-5 text-emerald-600"></i> Bản Chất Mảng Đếm Tần Số
-            </h3>
+      <!-- PHẦN 1: LÝ THUYẾT CỐT LÕI, VÍ DỤ MINH HỌA & CODE MẪU -->
+      <div id="buoi-2-theory" class="space-y-6">
+        <!-- Khối 1: Bản Chất Lý Thuyết & Bảng Ánh Xạ -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">1.1</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="hash" class="w-5 h-5 text-emerald-600"></i> Bản Chất Mảng Đếm Tần Số (Direct Addressing Table)
+              </h3>
+            </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Thay vì dùng 2 vòng lặp lồng nhau $O(N^2)$ để đếm xem giá trị $x$ xuất hiện bao nhiêu lần, ta dùng chính <strong>giá trị $x$ làm chỉ số mảng</strong>:
-              <br><code class="font-mono text-emerald-700 font-bold">cnt[x]++;</code> $\implies$ Thao tác đạt độ phức tạp $O(1)$!
+              Thay vì dùng 2 vòng for lồng nhau $O(N^2)$ để duyệt và đếm số lần xuất hiện của từng phần tử, ta sử dụng chính <strong>giá trị của phần tử làm chỉ số mảng</strong>:
+              <br><code class="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 inline-block mt-1">cnt[x]++;</code> $\implies$ Thao tác kiểm tra hoặc cập nhật đạt độ phức tạp $O(1)$!
             </p>
-            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1.5">
-              <span class="font-bold text-slate-800 block">Kỹ thuật ánh xạ ký tự:</span>
-              <ul class="list-disc list-inside space-y-1 text-slate-600 font-mono">
-                <li>Chữ cái thường: <code>cnt[s[i] - 'a']++</code> (26 ô)</li>
-                <li>Chữ cái hoa: <code>cnt[s[i] - 'A']++</code> (26 ô)</li>
-                <li>Mọi ký tự ASCII: <code>cnt[(unsigned char)s[i]]++</code> (256 ô)</li>
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-2">
+              <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                <i data-lucide="table" class="w-4 h-4 text-ahs-primary"></i> Quy chuẩn ánh xạ mảng đếm theo kiểu dữ liệu:
+              </span>
+              <ul class="space-y-1.5 text-slate-600 font-mono text-[11px]">
+                <li class="flex items-center justify-between p-1.5 bg-white rounded border border-slate-200">
+                  <span>Chữ cái thường ('a'-'z'):</span>
+                  <code class="text-emerald-700 font-bold">cnt[s[i] - 'a']++ (mảng 26 ô)</code>
+                </li>
+                <li class="flex items-center justify-between p-1.5 bg-white rounded border border-slate-200">
+                  <span>Chữ cái hoa ('A'-'Z'):</span>
+                  <code class="text-blue-700 font-bold">cnt[s[i] - 'A']++ (mảng 26 ô)</code>
+                </li>
+                <li class="flex items-center justify-between p-1.5 bg-white rounded border border-slate-200">
+                  <span>Ký tự chữ số ('0'-'9'):</span>
+                  <code class="text-purple-700 font-bold">cnt[s[i] - '0']++ (mảng 10 ô)</code>
+                </li>
+                <li class="flex items-center justify-between p-1.5 bg-white rounded border border-slate-200">
+                  <span>Mọi ký tự mã ASCII:</span>
+                  <code class="text-rose-700 font-bold">cnt[(unsigned char)s[i]]++ (256 ô)</code>
+                </li>
               </ul>
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="type" class="w-5 h-5 text-purple-600"></i> Hàm Xử Lý Xâu Sống Còn
-            </h3>
-            <ul class="text-xs text-slate-600 space-y-2">
-              <li class="flex items-start gap-2">
-                <code class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-indigo-700 font-bold">isalnum(c)</code>
-                <span>Kiểm tra xem $c$ có phải là chữ cái hoặc chữ số hay không.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <code class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-indigo-700 font-bold">tolower(c) / toupper(c)</code>
-                <span>Chuyển đổi ký tự thành chữ thường hoặc chữ hoa.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <code class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-indigo-700 font-bold">getline(cin, s)</code>
-                <span>Đọc cả dòng xâu có khoảng trắng (lưu ý dùng <code>cin.ignore()</code> trước đó).</span>
-              </li>
-            </ul>
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xs">1.2</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="type" class="w-5 h-5 text-purple-600"></i> Hàm Xử Lý Xâu Ký Tự Sống Còn (C++ STL)
+              </h3>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600">
+              <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-2">
+                <code class="font-mono bg-white px-1.5 py-0.5 rounded text-indigo-700 font-bold border border-slate-200">isalnum(c)</code>
+                <div>Kiểm tra xem $c$ có phải là chữ cái (A-Z, a-z) hoặc chữ số (0-9) hay không. Cực kỳ hữu dụng khi lọc bỏ dấu câu, khoảng trắng trong bài toán Xâu đối xứng (PALIN).</div>
+              </div>
+              <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-2">
+                <code class="font-mono bg-white px-1.5 py-0.5 rounded text-indigo-700 font-bold border border-slate-200">tolower(c) / toupper(c)</code>
+                <div>Chuyển đổi ký tự sang chữ in thường hoặc chữ in hoa mà không cần cộng trừ mã ASCII thủ công.</div>
+              </div>
+              <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-2">
+                <code class="font-mono bg-white px-1.5 py-0.5 rounded text-indigo-700 font-bold border border-slate-200">getline(cin, s)</code>
+                <div>Đọc toàn bộ dòng ký tự có chứa khoảng trắng. <strong>Bẫy phòng thi:</strong> Phải gọi <code>cin.ignore()</code> trước nếu phía trên vừa đọc số bằng <code>cin &gt;&gt; n</code>.</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Cột Phải: Mô Phỏng Mảng Đếm Trực Quan (7 cột) -->
-        <div id="buoi-2-sim" class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="cpu" class="w-5 h-5 text-ahs-primary"></i> Mô Phỏng Thuật Toán Mảng Đếm Trực Quan
-            </h3>
-            <span class="text-xs bg-emerald-50 text-emerald-700 font-mono font-bold px-2.5 py-1 rounded-full border border-emerald-200">
-              Interactive Lab
-            </span>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-3">
-            <input type="text" id="sim-counting-input" value="olympic_cplusplus" class="flex-1 px-3 py-2 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-ahs-primary focus:outline-none">
-            <button onclick="runSimCounting()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
-              <i data-lucide="play" class="w-3.5 h-3.5"></i> Đếm Ký Tự
-            </button>
-            <button onclick="resetCountingSim()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">
-              Đặt lại
-            </button>
-          </div>
-
-          <!-- Bảng Trực Quan Mảng Đếm -->
-          <div class="space-y-2 pt-2">
-            <span class="text-xs font-bold text-slate-700 block">Trạng thái mảng đếm tần số:</span>
-            <div id="sim-counting-visual" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 max-h-56 overflow-y-auto custom-scrollbar p-2 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-              <!-- Rendered via JS -->
+        <!-- Khối 2: Ví Dụ Minh Họa Từng Bước (Worked Example) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+            <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-xs">1.3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="eye" class="w-5 h-5 text-amber-600"></i> Ví Dụ Minh Họa Từng Bước: Bài Toán PAIRSUM ($A_i + A_j = K$)
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Duyệt mảng một lượt $O(N)$ kết hợp mảng đếm tần số để đếm số cặp có tổng bằng $K = 8$ trong mảng $A = [3, 5, 2, 5, 4]$</p>
             </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800 font-bold text-[11px] uppercase tracking-wider">
+                <tr>
+                  <th class="p-2.5 border border-slate-200 text-center">Bước ($i$)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">Giá trị $A[i]$</th>
+                  <th class="p-2.5 border border-slate-200 text-center">Target cần tìm ($8 - A[i]$)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">Đã gặp trước đó (<code>cnt[target]</code>)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">Cộng dồn đáp án (<code>ans += cnt</code>)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">Cập nhật mảng đếm (<code>cnt[A[i]]++</code>)</th>
+                  <th class="p-2.5 border border-slate-200">Ý nghĩa sư phạm</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 font-mono text-[11px]">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold text-slate-700">1</td>
+                  <td class="p-2.5 text-center font-bold text-blue-700">3</td>
+                  <td class="p-2.5 text-center font-bold text-emerald-700">8 - 3 = 5</td>
+                  <td class="p-2.5 text-center">cnt[5] = 0</td>
+                  <td class="p-2.5 text-center font-bold">ans = 0</td>
+                  <td class="p-2.5 text-center text-slate-600">cnt[3] = 1</td>
+                  <td class="p-2.5 font-sans text-slate-500">Chưa có số 5 nào xuất hiện trước số 3.</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-emerald-50/40">
+                  <td class="p-2.5 text-center font-bold text-slate-700">2</td>
+                  <td class="p-2.5 text-center font-bold text-blue-700">5</td>
+                  <td class="p-2.5 text-center font-bold text-emerald-700">8 - 5 = 3</td>
+                  <td class="p-2.5 text-center text-emerald-700 font-bold">cnt[3] = 1</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800">ans = 0 + 1 = 1</td>
+                  <td class="p-2.5 text-center text-slate-600">cnt[5] = 1</td>
+                  <td class="p-2.5 font-sans text-emerald-700 font-medium">Ghép được cặp (3, 5) thứ nhất!</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold text-slate-700">3</td>
+                  <td class="p-2.5 text-center font-bold text-blue-700">2</td>
+                  <td class="p-2.5 text-center font-bold text-emerald-700">8 - 2 = 6</td>
+                  <td class="p-2.5 text-center">cnt[6] = 0</td>
+                  <td class="p-2.5 text-center font-bold">ans = 1</td>
+                  <td class="p-2.5 text-center text-slate-600">cnt[2] = 1</td>
+                  <td class="p-2.5 font-sans text-slate-500">Chưa có số 6 nào xuất hiện trước số 2.</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-emerald-50/40">
+                  <td class="p-2.5 text-center font-bold text-slate-700">4</td>
+                  <td class="p-2.5 text-center font-bold text-blue-700">5</td>
+                  <td class="p-2.5 text-center font-bold text-emerald-700">8 - 5 = 3</td>
+                  <td class="p-2.5 text-center text-emerald-700 font-bold">cnt[3] = 1</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800">ans = 1 + 1 = 2</td>
+                  <td class="p-2.5 text-center text-slate-600">cnt[5] = 2</td>
+                  <td class="p-2.5 font-sans text-emerald-700 font-medium">Ghép được cặp (3, 5) thứ hai!</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 text-center font-bold text-slate-700">5</td>
+                  <td class="p-2.5 text-center font-bold text-blue-700">4</td>
+                  <td class="p-2.5 text-center font-bold text-emerald-700">8 - 4 = 4</td>
+                  <td class="p-2.5 text-center">cnt[4] = 0</td>
+                  <td class="p-2.5 text-center font-bold">ans = 2</td>
+                  <td class="p-2.5 text-center text-slate-600">cnt[4] = 1</td>
+                  <td class="p-2.5 font-sans text-slate-500">Số 4 chưa từng xuất hiện trước đó.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 font-medium flex items-center justify-between">
+            <span><strong>Kết luận:</strong> Tìm ra chính xác <strong>2 cặp</strong> chỉ bằng duy nhất 1 lần duyệt mảng. Độ phức tạp: $O(N)$ thời gian, $O(M)$ không gian bộ nhớ.</span>
+            <span class="px-2.5 py-1 bg-emerald-600 text-white font-bold rounded-lg text-[10px]">Tối ưu 100% test</span>
+          </div>
+        </div>
+
+        <!-- Khối 3: Code Mẫu Chuẩn C++ Competitive Programming -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-emerald-600"></i> Code Mẫu 1: Đếm Tần Số & Ký Tự Duy Nhất
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b2-1').innerText); alert('Đã sao chép Code Mẫu 1!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b2-1" class="language-cpp">// Đếm tần số ký tự thường và tìm ký tự xuất hiện 1 lần đầu tiên
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    string s;
+    if (!(cin &gt;&gt; s)) return 0;
+
+    vector&lt;int&gt; cnt(26, 0);
+    // Bước 1: Đếm tần số trong O(N)
+    for (char c : s) {
+        if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') cnt[c - 'a']++;
+    }
+
+    // Bước 2: Tìm ký tự duy nhất xuất hiện đầu tiên
+    char firstUnique = ' ';
+    for (char c : s) {
+        if (c &gt;= 'a' &amp;&amp; c &lt;= 'z' &amp;&amp; cnt[c - 'a'] == 1) {
+            firstUnique = c;
+            break;
+        }
+    }
+
+    if (firstUnique != ' ') 
+        cout &lt;&lt; "Ky tu duy nhat dau tien: " &lt;&lt; firstUnique &lt;&lt; "
+";
+    else 
+        cout &lt;&lt; "Khong co ky tu duy nhat
+";
+    return 0;
+}</code></pre>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-blue-600"></i> Code Mẫu 2: Giải PAIRSUM Trong O(N)
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b2-2').innerText); alert('Đã sao chép Code Mẫu 2!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b2-2" class="language-cpp">// Đếm số cặp A[i] + A[j] = K trong O(N) bằng unordered_map (hoặc mảng tĩnh)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_map&gt;
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n; long long k;
+    if (!(cin &gt;&gt; n &gt;&gt; k)) return 0;
+
+    vector&lt;long long&gt; a(n);
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];
+
+    unordered_map&lt;long long, int&gt; cnt;
+    long long totalPairs = 0;
+
+    for (int i = 0; i &lt; n; i++) {
+        long long target = k - a[i];
+        if (cnt.find(target) != cnt.end()) {
+            totalPairs += cnt[target]; // Cộng dồn số lượng số target đã thấy
+        }
+        cnt[a[i]]++; // Cập nhật số hiện tại vào mảng đếm
+    }
+
+    cout &lt;&lt; totalPairs &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: PHÒNG MÔ PHỎNG THUẬT TOÁN MẢNG ĐẾM TRỰC QUAN -->
+      <div id="buoi-2-sim" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">2</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="cpu" class="w-5 h-5 text-emerald-600"></i> Phòng Mô Phỏng Trực Quan: Mảng Đếm Tần Số & Bảng Mã ASCII
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Nhập xâu ký tự bất kỳ để quan sát thuật toán đếm tần số $O(N)$ tự động phân loại ký tự</p>
+            </div>
+          </div>
+          <span class="text-xs bg-emerald-50 text-emerald-700 font-mono font-bold px-2.5 py-1 rounded-full border border-emerald-200">
+            Interactive Lab
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <input type="text" id="sim-counting-input" value="olympic_cplusplus" placeholder="Nhập chuỗi ký tự bất kỳ..." class="flex-1 px-3.5 py-2 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-ahs-primary focus:outline-none">
+          <button onclick="runSimCounting()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i> Đếm Ký Tự
+          </button>
+          <button onclick="resetCountingSim()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">
+            Đặt lại mẫu
+          </button>
+        </div>
+
+        <!-- Bảng Trực Quan Mảng Đếm -->
+        <div class="space-y-2 pt-1">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+            <span>Trạng thái bảng phân phối tần số:</span>
+            <div class="flex items-center gap-3 text-[11px] font-normal text-slate-500">
+              <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-amber-300 border border-amber-500 inline-block"></span> Tần số cao nhất</span>
+              <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-emerald-200 border border-emerald-400 inline-block"></span> Xuất hiện 1 lần (Unique)</span>
+            </div>
+          </div>
+          <div id="sim-counting-visual" class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2.5 max-h-60 overflow-y-auto custom-scrollbar p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+            <!-- Rendered via JS -->
+          </div>
+          <div id="sim-counting-stats" class="p-3 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-slate-700 flex flex-wrap items-center justify-between gap-2">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 3: BỘ CÂU HỎI TRẮC NGHIỆM TƯƠNG TÁC (QUIZ) -->
+      <div id="buoi-2-quiz" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xs">3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="help-circle" class="w-5 h-5 text-purple-600"></i> Kiểm Tra Hiểu Bài Tức Thì: Mảng Đếm & Xử Lý Xâu
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">3 câu hỏi trắc nghiệm kiểm tra tư duy lập trình thi đấu và độ phức tạp thuật toán</p>
+            </div>
+          </div>
+          <span class="text-xs bg-purple-50 text-purple-700 font-bold px-2.5 py-1 rounded-full border border-purple-200">
+            3 Câu Trắc Nghiệm
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Câu 1 -->
+          <div id="q-b2-1-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ahs-primary">Câu hỏi 1</span>
+                <span id="q-b2-1-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Giả sử xâu ký tự $S$ chỉ chứa các chữ cái tiếng Anh in thường ('a' - 'z'). Mảng đếm tần số cần khai báo kích thước tối thiểu là bao nhiêu phần tử?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b2-1\', 0)" id="q-b2-1-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>10 phần tử</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-1\', 1)" id="q-b2-1-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>26 phần tử</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-1\', 2)" id="q-b2-1-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>256 phần tử</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-1\', 3)" id="q-b2-1-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>100 phần tử</span>
+              </button>
+            </div>
+            <div id="q-b2-1-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 2 -->
+          <div id="q-b2-2-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ahs-primary">Câu hỏi 2</span>
+                <span id="q-b2-2-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Cho xâu ký tự có độ dài $N = 10^5$. Thuật toán đếm tần số mọi ký tự bằng mảng đếm trực tiếp đạt độ phức tạp thời gian là bao nhiêu?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b2-2\', 0)" id="q-b2-2-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>O(N^2)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-2\', 1)" id="q-b2-2-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>O(N)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-2\', 2)" id="q-b2-2-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>O(N log N)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-2\', 3)" id="q-b2-2-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>O(1)</span>
+              </button>
+            </div>
+            <div id="q-b2-2-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 3 -->
+          <div id="q-b2-3-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ahs-primary">Câu hỏi 3</span>
+                <span id="q-b2-3-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Trong C++, để chuyển một ký tự chữ số `c` (ví dụ `'8'`) thành số nguyên có giá trị 8, biểu thức nào sau đây là chuẩn xác?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b2-3\', 0)" id="q-b2-3-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>c - '0'</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-3\', 1)" id="q-b2-3-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>(int)c</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-3\', 2)" id="q-b2-3-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>c - 'a'</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b2-3\', 3)" id="q-b2-3-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>c + 0</span>
+              </button>
+            </div>
+            <div id="q-b2-3-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
           </div>
         </div>
       </div>
@@ -567,7 +894,61 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
           </div>
         </div>
       </div>
-    </section>
+
+        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 2 (INLINE SOCRATIC HELPER) -->
+        <div id="hw-assistant-card-2" class="p-5 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-2xl space-y-3.5">
+          <div class="flex items-center justify-between border-b border-purple-200/60 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-xl bg-purple-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-purple-950 flex items-center gap-1.5">
+                  Trợ Giảng AI Socratic • Hỗ Trợ 2 Bài Về Nhà (PALIN & MAJORITY)
+                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
+                </h4>
+                <p class="text-[11px] text-purple-700">Hướng dẫn tư duy, phân tích bẫy test, giải đáp độ phức tạp (Tuyệt đối không giải hộ)</p>
+              </div>
+            </div>
+            <button onclick="toggleChatbox()" class="text-xs bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
+            </button>
+          </div>
+
+          <!-- Quick suggestion chips -->
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-purple-800 font-bold py-1">Gợi ý nhanh:</span>
+            <button onclick="sendHwAssistantMsg(2, 'Gợi ý thuật toán kiểm tra xâu đối xứng bỏ qua ký tự đặc biệt (PALIN) trong O(N)?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
+              💡 Hướng dẫn bài PALIN
+            </button>
+            <button onclick="sendHwAssistantMsg(2, 'Gợi ý cách tìm phần tử chiếm đa số trong mảng (MAJORITY) bằng mảng đếm tần số?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
+              💡 Hướng dẫn bài MAJORITY
+            </button>
+            <button onclick="sendHwAssistantMsg(2, 'Làm sao để tránh lỗi TLE khi đọc xâu dài 10^6 ký tự?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
+              ⚡ Tránh TLE với xâu 10^6
+            </button>
+          </div>
+
+          <!-- Chat messages stream for buoi 2 -->
+          <div id="hw-chat-messages-2" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-purple-200 space-y-2.5 text-xs">
+            <div class="flex items-start gap-2 text-slate-700">
+              <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+              <div class="p-2.5 bg-purple-50/70 rounded-xl rounded-tl-none border border-purple-100 leading-relaxed">
+                Chào em! Thầy là Trợ Giảng Socratic chuyên hỗ trợ 2 bài tập về nhà <strong>PALIN</strong> và <strong>MAJORITY</strong>. Em đang vướng ở khâu nào? Bấm gợi ý ở trên hoặc gõ câu hỏi vào ô dưới nhé!
+              </div>
+            </div>
+          </div>
+
+          <!-- Input bar for buoi 2 -->
+          <div class="flex items-center gap-2">
+            <input type="text" id="hw-chat-input-2" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(2)" placeholder="Hỏi thầy về cách giải, phân tích test biên bài PALIN, MAJORITY..." class="flex-1 px-3.5 py-2 text-xs border border-purple-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 bg-white">
+            <button onclick="sendHwAssistantMsg(2)" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
+            </button>
+          </div>
+        </div>
+      </div>
+</section>
 
         <section id="content-buoi-3" class="tab-content hidden space-y-6">
       <!-- Banner Chuyên Đề -->
@@ -590,90 +971,393 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
         </div>
       </div>
 
-      <!-- Quick Anchor Pills -->
+            <!-- Quick Anchor Pills -->
       <div class="flex flex-wrap gap-2 p-3 bg-white border border-slate-200 rounded-2xl shadow-sm text-xs font-semibold">
         <span class="text-slate-400 py-1.5 px-2 flex items-center gap-1">
           <i data-lucide="compass" class="w-4 h-4 text-ahs-primary"></i> Lối tắt chuyên đề:
         </span>
         <a href="#buoi-3-theory" class="px-3 py-1.5 bg-blue-50 text-ahs-primary hover:bg-blue-100 rounded-lg border border-blue-200 transition flex items-center gap-1.5">
-          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Kỹ Thuật
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Code Mẫu
         </a>
         <a href="#buoi-3-sim" class="px-3 py-1.5 bg-amber-50 text-amber-800 hover:bg-amber-100 rounded-lg border border-amber-200 transition flex items-center gap-1.5">
           <i data-lucide="activity" class="w-3.5 h-3.5"></i> 2. Mô Phỏng Prefix Sum
         </a>
-        <a href="#buoi-3-exercises" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg border border-indigo-200 transition flex items-center gap-1.5">
-          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 3. Bài Tập Tại Lớp (RANGESUM, MAXSUB)
+        <a href="#buoi-3-quiz" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> 3. Trắc Nghiệm Hiểu Bài
         </a>
-        <a href="#buoi-3-homework" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
-          <i data-lucide="home" class="w-3.5 h-3.5"></i> 4. Bài Tập Về Nhà (DIV3, MINSUB) & AI Gia Sư
+        <a href="#buoi-3-exercises" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg border border-indigo-200 transition flex items-center gap-1.5">
+          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 4. Bài Tập Tại Lớp (RANGESUM, MAXSUB)
+        </a>
+        <a href="#buoi-3-homework" class="px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-lg border border-rose-200 transition flex items-center gap-1.5">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> 5. Bài Tập Về Nhà & AI Gia Sư
         </a>
       </div>
 
-      <!-- PHẦN 1 & 2: LÝ THUYẾT VÀ MÔ PHỎNG -->
-      <div id="buoi-3-theory" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Cột Trái: Lý Thuyết Cốt Lõi (5 cột) -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i> Công Thức Vàng Prefix Sum 1D
-            </h3>
+      <!-- PHẦN 1: LÝ THUYẾT CỐT LÕI, VÍ DỤ MINH HỌA & CODE MẪU -->
+      <div id="buoi-3-theory" class="space-y-6">
+        <!-- Khối 1: Bản Chất Lý Thuyết & Công Thức Vàng -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">1.1</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i> Bản Chất Mảng Cộng Dồn 1D (Prefix Sum)
+              </h3>
+            </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Mảng $P$ lưu tổng các phần tử từ vị trí 1 đến $i$:
-              <br><code class="font-mono text-indigo-700 font-bold">P[0] = 0; P[i] = P[i - 1] + A[i];</code>
+              Mảng cộng dồn $P$ lưu tổng của tất cả các phần tử từ chỉ số 1 đến chỉ số $i$. 
+              <br>Ta khởi tạo $P[0] = 0$ và xây dựng mảng trong $O(N)$ bằng công thức truy hồi:
+              <br><code class="font-mono text-indigo-700 font-bold bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200 inline-block mt-1">P[i] = P[i - 1] + A[i];</code>
             </p>
-            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-xs space-y-1.5">
-              <span class="font-bold text-indigo-900 block">Truy vấn tổng đoạn [L, R] trong O(1):</span>
-              <div class="font-mono font-bold text-indigo-800 text-sm">
-                Sum(L, R) = P[R] - P[L - 1];
+            <div class="p-3.5 bg-indigo-50 border border-indigo-200 rounded-xl text-xs space-y-2 text-indigo-950">
+              <span class="font-bold flex items-center gap-1.5 text-indigo-900">
+                <i data-lucide="zap" class="w-4 h-4 text-indigo-600"></i> Công thức trả lời mọi truy vấn tính tổng đoạn [L, R] trong O(1):
+              </span>
+              <div class="p-2.5 bg-white rounded-lg border border-indigo-200 text-center font-mono font-extrabold text-sm text-indigo-700">
+                Sum(L, R) = P[R] - P[L - 1]
               </div>
-              <p class="text-indigo-700">Lưu ý: Mảng nên dùng <strong>1-based index</strong> để tránh lỗi truy xuất vị trí $P[-1]$ khi $L = 0$.</p>
+              <p class="text-[11px] text-indigo-800 leading-normal">
+                <strong>Quy tắc thi đấu sống còn:</strong> Luôn dùng <strong>1-based index</strong> (chỉ số mảng bắt đầu từ 1). Khi $L = 1$, ta tính $P[1 - 1] = P[0] = 0$ một cách tự nhiên mà không bao giờ bị dính lỗi Runtime Error truy xuất $P[-1]$.
+              </p>
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="grid" class="w-5 h-5 text-blue-600"></i> Mở Rộng: Prefix Sum 2D (Hình Chữ Nhật)
-            </h3>
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs">1.2</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="grid" class="w-5 h-5 text-blue-600"></i> Mở Rộng: Prefix Sum 2D (Ma Trận Hình Chữ Nhật)
+              </h3>
+            </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Tính tổng bảng con từ $(x_1, y_1)$ đến $(x_2, y_2)$ trong $O(1)$:
-              <br><code class="font-mono text-blue-700 font-bold">S = P[x2][y2] - P[x1-1][y2] - P[x2][y1-1] + P[x1-1][y1-1];</code>
+              Cho bảng số $N 	imes M$. Ta muốn tính tổng mọi phần tử trong hình chữ nhật con từ góc trái trên $(x_1, y_1)$ đến góc phải dưới $(x_2, y_2)$ trong đúng $O(1)$ phép tính.
             </p>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-[11px]">1. Công thức xây dựng bảng P[i][j]:</span>
+                <code class="font-mono text-blue-700 font-bold block text-[11px] bg-white p-1.5 rounded border border-slate-200">P[i][j] = P[i-1][j] + P[i][j-1] - P[i-1][j-1] + A[i][j];</code>
+              </div>
+              <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-[11px]">2. Công thức truy vấn O(1) hình chữ nhật:</span>
+                <code class="font-mono text-emerald-700 font-bold block text-[11px] bg-white p-1.5 rounded border border-slate-200">Sum = P[x2][y2] - P[x1-1][y2] - P[x2][y1-1] + P[x1-1][y1-1];</code>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Cột Phải: Mô Phỏng Prefix Sum Trực Quan (7 cột) -->
-        <div id="buoi-3-sim" class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="activity" class="w-5 h-5 text-indigo-600"></i> Mô Phỏng Tính Tổng Đoạn [L, R] Siêu Tốc
-            </h3>
-            <span class="text-xs bg-indigo-50 text-indigo-700 font-mono font-bold px-2.5 py-1 rounded-full border border-indigo-200">
-              O(1) Query Lab
-            </span>
+        <!-- Khối 2: Ví Dụ Minh Họa Từng Bước (Worked Example) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+            <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-xs">1.3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="eye" class="w-5 h-5 text-amber-600"></i> Ví Dụ Minh Họa Từng Bước: Xây Dựng Mảng Cộng Dồn & Truy Vấn Đoạn
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Cho mảng $A = [3, 5, 2, 8, 4, 7, 1, 6]$ gồm $N = 8$ phần tử (1-based index). Tính trước mảng $P$ và truy vấn tổng đoạn $[3, 6]$</p>
+            </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-              <span>L =</span>
-              <input type="number" id="sim-prefix-l" value="2" min="1" max="8" class="w-16 px-2 py-1.5 text-xs font-mono border border-slate-300 rounded-lg">
-            </div>
-            <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-              <span>R =</span>
-              <input type="number" id="sim-prefix-r" value="5" min="1" max="8" class="w-16 px-2 py-1.5 text-xs font-mono border border-slate-300 rounded-lg">
-            </div>
-            <button onclick="queryPrefixSim()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
-              <i data-lucide="zap" class="w-3.5 h-3.5"></i> Tính Tổng
-            </button>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800 font-bold text-[11px] uppercase tracking-wider">
+                <tr>
+                  <th class="p-2.5 border border-slate-200 text-center">Chỉ số ($i$)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">0</th>
+                  <th class="p-2.5 border border-slate-200 text-center">1</th>
+                  <th class="p-2.5 border border-slate-200 text-center">2</th>
+                  <th class="p-2.5 border border-slate-200 text-center bg-blue-50 text-blue-800">3 (L)</th>
+                  <th class="p-2.5 border border-slate-200 text-center bg-blue-50 text-blue-800">4</th>
+                  <th class="p-2.5 border border-slate-200 text-center bg-blue-50 text-blue-800">5</th>
+                  <th class="p-2.5 border border-slate-200 text-center bg-blue-50 text-blue-800">6 (R)</th>
+                  <th class="p-2.5 border border-slate-200 text-center">7</th>
+                  <th class="p-2.5 border border-slate-200 text-center">8</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 font-mono text-[11px]">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-sans font-bold text-slate-700 text-center">Mảng gốc $A[i]$</td>
+                  <td class="p-2.5 text-center text-slate-400">-</td>
+                  <td class="p-2.5 text-center font-bold text-slate-800">3</td>
+                  <td class="p-2.5 text-center font-bold text-slate-800">5</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-50/50">2</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-50/50">8</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-50/50">4</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-50/50">7</td>
+                  <td class="p-2.5 text-center font-bold text-slate-800">1</td>
+                  <td class="p-2.5 text-center font-bold text-slate-800">6</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-indigo-50/30">
+                  <td class="p-2.5 font-sans font-bold text-indigo-900 text-center">Prefix Sum $P[i]$</td>
+                  <td class="p-2.5 text-center font-extrabold text-slate-500">0</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">3</td>
+                  <td class="p-2.5 text-center font-extrabold text-amber-700 bg-amber-100">8 (P[L-1])</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">10</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">18</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">22</td>
+                  <td class="p-2.5 text-center font-extrabold text-indigo-700 bg-indigo-100">29 (P[R])</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">30</td>
+                  <td class="p-2.5 text-center font-bold text-slate-700">36</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="space-y-2 pt-2">
-            <span class="text-xs font-bold text-slate-700 block">Dãy số gốc và Mảng cộng dồn P:</span>
-            <div id="sim-prefix-visual" class="space-y-2 text-xs">
-              <!-- Rendered via JS -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2 text-xs">
+            <div class="font-bold text-slate-800 flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> Thao tác tính tổng đoạn [L = 3, R = 6]:
             </div>
-            <div id="sim-prefix-result" class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-xs font-mono font-bold text-indigo-900">
-              Kết quả: P[5] - P[1] = 23 - 3 = 20
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px]">
+              <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="text-slate-500 block">Cách tính trâu (Vòng lặp For):</span>
+                <code class="font-mono text-slate-800 font-bold block mt-1">Sum = A[3] + A[4] + A[5] + A[6] = 2 + 8 + 4 + 7 = 21</code>
+                <span class="text-rose-600 font-medium text-[10px] mt-0.5 block">Tốn $R - L + 1 = 4$ phép cộng $\implies O(N)$ mỗi truy vấn.</span>
+              </div>
+              <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
+                <span class="text-emerald-900 font-bold block">Cách tính bằng Prefix Sum:</span>
+                <code class="font-mono text-emerald-800 font-extrabold block mt-1">Sum = P[6] - P[3 - 1] = P[6] - P[2] = 29 - 8 = 21</code>
+                <span class="text-emerald-700 font-bold text-[10px] mt-0.5 block">Đúng duy nhất 1 phép trừ $\implies O(1)$ tức thì!</span>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Khối 3: Code Mẫu Chuẩn C++ Competitive Programming -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-indigo-600"></i> Code Mẫu 1: Prefix Sum 1D & Q Truy Vấn O(1)
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b3-1').innerText); alert('Đã sao chép Code Mẫu 1!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b3-1" class="language-cpp">// Prefix Sum 1D chuẩn 1-based index, ép kiểu long long chống tràn số
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n, q;
+    if (!(cin &gt;&gt; n &gt;&gt; q)) return 0;
+
+    vector&lt;long long&gt; a(n + 1), p(n + 1, 0);
+    for (int i = 1; i &lt;= n; i++) {
+        cin &gt;&gt; a[i];
+        p[i] = p[i - 1] + a[i]; // Tiền xử lý O(N)
+    }
+
+    // Trả lời Q truy vấn O(1)
+    while (q--) {
+        int l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        long long sum = p[r] - p[l - 1];
+        cout &lt;&lt; sum &lt;&lt; "
+";
+    }
+    return 0;
+}</code></pre>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-blue-600"></i> Code Mẫu 2: Prefix Sum 2D (Ma Trận Con)
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b3-2').innerText); alert('Đã sao chép Code Mẫu 2!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b3-2" class="language-cpp">// Prefix Sum 2D tính tổng ma trận con trong O(1)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n, m, q;
+    if (!(cin &gt;&gt; n &gt;&gt; m &gt;&gt; q)) return 0;
+
+    vector&lt;vector&lt;long long&gt;&gt; p(n + 1, vector&lt;long long&gt;(m + 1, 0));
+    for (int i = 1; i &lt;= n; i++) {
+        for (int j = 1; j &lt;= m; j++) {
+            long long val; cin &gt;&gt; val;
+            p[i][j] = p[i - 1][j] + p[i][j - 1] - p[i - 1][j - 1] + val;
+        }
+    }
+
+    while (q--) {
+        int x1, y1, x2, y2;
+        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;
+        long long ans = p[x2][y2] - p[x1 - 1][y2] - p[x2][y1 - 1] + p[x1 - 1][y1 - 1];
+        cout &lt;&lt; ans &lt;&lt; "
+";
+    }
+    return 0;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: PHÒNG MÔ PHỎNG PREFIX SUM TRỰC QUAN -->
+      <div id="buoi-3-sim" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">2</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="activity" class="w-5 h-5 text-indigo-600"></i> Phòng Mô Phỏng Trực Quan: Tính Tổng Đoạn [L, R] Siêu Tốc Trong O(1)
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Thay đổi L và R để thấy trực quan cách mảng cộng dồn P triệt tiêu các phần tử bên ngoài đoạn cần tính</p>
+            </div>
+          </div>
+          <span class="text-xs bg-indigo-50 text-indigo-700 font-mono font-bold px-2.5 py-1 rounded-full border border-indigo-200">
+            O(1) Query Lab
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-700">
+            <span>Chỉ số bắt đầu L:</span>
+            <input type="number" id="sim-prefix-l" value="3" min="1" max="8" class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          </div>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-700">
+            <span>Chỉ số kết thúc R:</span>
+            <input type="number" id="sim-prefix-r" value="6" min="1" max="8" class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          </div>
+          <button onclick="queryPrefixSimSession()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+            <i data-lucide="zap" class="w-3.5 h-3.5"></i> Tính Tổng O(1)
+          </button>
+          <span class="text-xs text-slate-400">Giới hạn mẫu: 1 &le; L &le; R &le; 8</span>
+        </div>
+
+        <div class="space-y-3 pt-1">
+          <div id="sim-prefix-visual" class="space-y-3 text-xs">
+            <!-- Rendered via JS -->
+          </div>
+          <div id="sim-prefix-result" class="p-3.5 bg-indigo-50 border border-indigo-200 rounded-xl text-xs font-mono font-bold text-indigo-900">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 3: BỘ CÂU HỎI TRẮC NGHIỆM TƯƠNG TÁC (QUIZ) -->
+      <div id="buoi-3-quiz" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="help-circle" class="w-5 h-5 text-indigo-600"></i> Kiểm Tra Hiểu Bài Tức Thì: Mảng Cộng Dồn
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">3 câu hỏi trắc nghiệm kiểm tra độ hiểu sâu về công thức và bẫy tràn số trong phòng thi</p>
+            </div>
+          </div>
+          <span class="text-xs bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-full border border-indigo-200">
+            3 Câu Trắc Nghiệm
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Câu 1 -->
+          <div id="q-b3-1-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-indigo-700">Câu hỏi 1</span>
+                <span id="q-b3-1-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Với mảng cộng dồn 1-based index $P$, công thức chuẩn xác để tính tổng các phần tử trong đoạn từ chỉ số $L$ đến $R$ là gì?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b3-1\', 0)" id="q-b3-1-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>P[R] - P[L]</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-1\', 1)" id="q-b3-1-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>P[R] - P[L - 1]</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-1\', 2)" id="q-b3-1-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>P[R + 1] - P[L]</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-1\', 3)" id="q-b3-1-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>P[R] + P[L - 1]</span>
+              </button>
+            </div>
+            <div id="q-b3-1-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 2 -->
+          <div id="q-b3-2-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-indigo-700">Câu hỏi 2</span>
+                <span id="q-b3-2-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Cho $N = 10^5$ và $Q = 10^5$ truy vấn. Nếu dùng vòng for duyệt tính tổng mỗi truy vấn, số phép tính xấu nhất là bao nhiêu?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b3-2\', 0)" id="q-b3-2-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>10^5 phép tính</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-2\', 1)" id="q-b3-2-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>10^7 phép tính</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-2\', 2)" id="q-b3-2-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>10^10 phép tính (Dính TLE)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-2\', 3)" id="q-b3-2-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>2 * 10^5 phép tính</span>
+              </button>
+            </div>
+            <div id="q-b3-2-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 3 -->
+          <div id="q-b3-3-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-indigo-700">Câu hỏi 3</span>
+                <span id="q-b3-3-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Tại sao các cao thủ Olympic luôn khởi tạo mảng cộng dồn 1-based index có kích thước $N+1$ với $P[0] = 0$?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b3-3\', 0)" id="q-b3-3-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>Tránh lỗi tràn biên âm P[-1] khi L = 1</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-3\', 1)" id="q-b3-3-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>Để tiết kiệm bộ nhớ RAM</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-3\', 2)" id="q-b3-3-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>Để mảng tự động sắp xếp tăng dần</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b3-3\', 3)" id="q-b3-3-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>Do chuẩn C++ quy định bắt buộc</span>
+              </button>
+            </div>
+            <div id="q-b3-3-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
           </div>
         </div>
       </div>
@@ -831,7 +1515,61 @@ cout &lt;&lt; max_so_far &lt;&lt; "
           </div>
         </div>
       </div>
-    </section>
+
+        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 3 (INLINE SOCRATIC HELPER) -->
+        <div id="hw-assistant-card-3" class="p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl space-y-3.5">
+          <div class="flex items-center justify-between border-b border-indigo-200/60 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-xl bg-indigo-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-indigo-950 flex items-center gap-1.5">
+                  Trợ Giảng AI Socratic • Hỗ Trợ 2 Bài Về Nhà (DIV3 & MINSUB)
+                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
+                </h4>
+                <p class="text-[11px] text-indigo-700">Hướng dẫn tư duy, gợi ý kỹ thuật mảng cộng dồn và Hai con trỏ (Không giải hộ)</p>
+              </div>
+            </div>
+            <button onclick="toggleChatbox()" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
+            </button>
+          </div>
+
+          <!-- Quick suggestion chips -->
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-indigo-900 font-bold py-1">Gợi ý nhanh:</span>
+            <button onclick="sendHwAssistantMsg(3, 'Gợi ý cách dùng mảng cộng dồn và số dư mod 3 để giải bài DIV3 trong O(N)?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
+              💡 Hướng dẫn bài DIV3 (chia hết cho 3)
+            </button>
+            <button onclick="sendHwAssistantMsg(3, 'Gợi ý cách tìm đoạn con ngắn nhất có tổng >= S bằng Two Pointers kết hợp Prefix Sum?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
+              💡 Hướng dẫn bài MINSUB (đoạn ngắn nhất)
+            </button>
+            <button onclick="sendHwAssistantMsg(3, 'Bẫy tràn số long long khi cộng dồn mảng N=10^5, A[i]=10^9 là gì?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
+              ⚠️ Tránh tràn số long long
+            </button>
+          </div>
+
+          <!-- Chat messages stream for buoi 3 -->
+          <div id="hw-chat-messages-3" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-indigo-200 space-y-2.5 text-xs">
+            <div class="flex items-start gap-2 text-slate-700">
+              <div class="w-6 h-6 rounded-md bg-indigo-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+              <div class="p-2.5 bg-indigo-50/70 rounded-xl rounded-tl-none border border-indigo-100 leading-relaxed">
+                Chào em! Thầy là Trợ Giảng Socratic hỗ trợ 2 bài tập về nhà <strong>DIV3</strong> và <strong>MINSUB</strong>. Em cần thầy gợi ý hướng tư duy hay kiểm tra độ phức tạp của bài nào?
+              </div>
+            </div>
+          </div>
+
+          <!-- Input bar for buoi 3 -->
+          <div class="flex items-center gap-2">
+            <input type="text" id="hw-chat-input-3" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(3)" placeholder="Hỏi thầy về thuật toán, kỹ thuật chia dư mod 3, Two Pointers bài MINSUB..." class="flex-1 px-3.5 py-2 text-xs border border-indigo-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600 bg-white">
+            <button onclick="sendHwAssistantMsg(3)" class="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
+            </button>
+          </div>
+        </div>
+      </div>
+</section>
 
         <section id="content-buoi-4" class="tab-content hidden space-y-6">
       <!-- Banner Chuyên Đề -->
@@ -854,97 +1592,414 @@ cout &lt;&lt; max_so_far &lt;&lt; "
         </div>
       </div>
 
-      <!-- Quick Anchor Pills -->
+            <!-- Quick Anchor Pills -->
       <div class="flex flex-wrap gap-2 p-3 bg-white border border-slate-200 rounded-2xl shadow-sm text-xs font-semibold">
         <span class="text-slate-400 py-1.5 px-2 flex items-center gap-1">
           <i data-lucide="compass" class="w-4 h-4 text-ahs-primary"></i> Lối tắt chuyên đề:
         </span>
         <a href="#buoi-4-theory" class="px-3 py-1.5 bg-blue-50 text-ahs-primary hover:bg-blue-100 rounded-lg border border-blue-200 transition flex items-center gap-1.5">
-          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Kỹ Thuật
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> 1. Lý Thuyết & Code Mẫu
         </a>
         <a href="#buoi-4-sim" class="px-3 py-1.5 bg-amber-50 text-amber-800 hover:bg-amber-100 rounded-lg border border-amber-200 transition flex items-center gap-1.5">
           <i data-lucide="activity" class="w-3.5 h-3.5"></i> 2. Mô Phỏng Mảng Hiệu
         </a>
+        <a href="#buoi-4-quiz" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> 3. Trắc Nghiệm Hiểu Bài
+        </a>
         <a href="#buoi-4-exercises" class="px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-lg border border-rose-200 transition flex items-center gap-1.5">
-          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 3. Bài Tập Tại Lớp (DIFFARRAY, SORT_INTERVAL)
+          <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i> 4. Bài Tập Tại Lớp (DIFFARRAY, SORT_INTERVAL)
         </a>
         <a href="#buoi-4-homework" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
-          <i data-lucide="home" class="w-3.5 h-3.5"></i> 4. Bài Tập Về Nhà (RESTAURANT) & AI Gia Sư
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> 5. Bài Tập Về Nhà & AI Gia Sư
         </a>
       </div>
 
-      <!-- PHẦN 1 & 2: LÝ THUYẾT VÀ MÔ PHỎNG -->
-      <div id="buoi-4-theory" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Cột Trái: Lý Thuyết Cốt Lõi (5 cột) -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="git-commit" class="w-5 h-5 text-rose-600"></i> Bản Chất Mảng Hiệu
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Mảng hiệu $D$ được định nghĩa: $D[i] = A[i] - A[i - 1]$.
-              <br>Khi cần cộng thêm giá trị $V$ vào mọi phần tử trong đoạn $[L, R]$, ta chỉ cần thay đổi đúng <strong>2 vị trí biên</strong>:
-            </p>
-            <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs space-y-1 font-mono font-bold text-rose-900">
-              <div>D[L] += V;</div>
-              <div>D[R + 1] -= V;</div>
+      <!-- PHẦN 1: LÝ THUYẾT CỐT LÕI, VÍ DỤ MINH HỌA & CODE MẪU -->
+      <div id="buoi-4-theory" class="space-y-6">
+        <!-- Khối 1: Bản Chất Lý Thuyết Mảng Hiệu & Sắp Xếp Sự Kiện -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 font-bold flex items-center justify-center text-xs">1.1</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="git-commit" class="w-5 h-5 text-rose-600"></i> Bản Chất Mảng Hiệu (Difference Array)
+              </h3>
             </div>
-            <p class="text-xs text-slate-500">
-              Sau khi hoàn thành tất cả $Q$ thao tác, ta tính mảng cộng dồn trên $D$ để thu được mảng $A$ cuối cùng chỉ trong $O(N)$!
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Mảng hiệu $D$ được định nghĩa: $D[i] = A[i] - A[i - 1]$ (với $D[1] = A[1]$).
+              <br>Khi cần cộng thêm giá trị $V$ vào tất cả các phần tử trong đoạn $[L, R]$, thay vì dùng vòng for $O(N)$, ta chỉ cần tác động vào đúng <strong>2 vị trí biên trong $O(1)$</strong>:
             </p>
+            <div class="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs space-y-2 text-rose-950 font-mono">
+              <div class="p-2 bg-white rounded border border-rose-200 text-rose-700 font-extrabold text-center text-xs">
+                D[L] += V; &nbsp;&nbsp;&nbsp;&nbsp; D[R + 1] -= V;
+              </div>
+              <p class="font-sans text-[11px] text-rose-800 leading-normal">
+                <strong>Ý nghĩa sư phạm:</strong> Sau khi hoàn tất tất cả $Q$ thao tác cập nhật, ta tính mảng cộng dồn trên $D$ để khôi phục toàn bộ mảng $A$ cuối cùng chỉ trong đúng 1 lần duyệt $O(N)$!
+                <br>Tổng chi phí thuật toán: $O(Q + N)$ thay vì $O(Q 	imes N)$!
+              </p>
+            </div>
           </div>
 
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="arrow-down-up" class="w-5 h-5 text-amber-600"></i> Hàm So Sánh Tùy Biến (Comparator)
-            </h3>
+          <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-xs">1.2</span>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="arrow-down-up" class="w-5 h-5 text-amber-600"></i> Kỹ Thuật Sắp Xếp Sự Kiện (Event Sorting)
+              </h3>
+            </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Khi sắp xếp struct hoặc pair theo nhiều tiêu chí:
+              Áp dụng cho bài toán đếm số lượng khách đông nhất trong nhà hàng, số phòng họp tối thiểu hoặc số khoảng chồng lấn.
             </p>
-            <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code class="language-cpp">bool cmp(pair&lt;int,int&gt; a, pair&lt;int,int&gt; b) {
-    if (a.first != b.first) return a.first &lt; b.first;
-    return a.second &gt; b.second; // First tang, Second giam
-}</code></pre>
+            <div class="space-y-2 text-xs">
+              <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-[11px]">1. Rời rạc hóa khoảng [Start, End] thành 2 sự kiện:</span>
+                <ul class="list-disc list-inside space-y-0.5 text-slate-600 text-[11px] font-mono">
+                  <li>Khách đến tại <code>Start</code>: Biểu diễn bằng <code>{time = Start, type = +1}</code></li>
+                  <li>Khách rời đi tại <code>End</code>: Biểu diễn bằng <code>{time = End, type = -1}</code></li>
+                </ul>
+              </div>
+              <div class="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 space-y-1">
+                <span class="font-bold block text-[11px]">2. Quy tắc so sánh (Comparator) sống còn:</span>
+                <p class="text-[11px] leading-relaxed">
+                  Sắp xếp theo thời gian tăng dần. <strong>Bẫy điểm trừ phòng thi:</strong> Nếu hai sự kiện có cùng mốc thời gian $t$, sự kiện khách rời đi ($-1$) phải được ưu tiên xử lý trước sự kiện khách đến ($+1$) để tránh đếm trùng người đã rời bàn!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Cột Phải: Mô Phỏng Mảng Hiệu Trực Quan (7 cột) -->
-        <div id="buoi-4-sim" class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="activity" class="w-5 h-5 text-rose-600"></i> Mô Phỏng Cập Nhật Đoạn [L, R] Bằng Mảng Hiệu
-            </h3>
-            <span class="text-xs bg-rose-50 text-rose-700 font-mono font-bold px-2.5 py-1 rounded-full border border-rose-200">
-              O(1) Update Lab
-            </span>
+        <!-- Khối 2: Ví Dụ Minh Họa Từng Bước (Worked Example) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-100 pb-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">1.3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="eye" class="w-5 h-5 text-emerald-600"></i> Ví Dụ Minh Họa Từng Bước: Cập Nhật Mảng Hiệu & Tái Tạo Mảng
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Ban đầu mảng $A$ có $N = 6$ phần tử đều bằng 0. Thực hiện 2 thao tác cập nhật: (1) Cộng 3 vào [2, 5]; (2) Cộng 2 vào [1, 3]</p>
+            </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-              <span>L =</span>
-              <input type="number" id="sim-diff-l" value="2" min="1" max="6" class="w-14 px-2 py-1.5 text-xs font-mono border border-slate-300 rounded-lg">
-            </div>
-            <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-              <span>R =</span>
-              <input type="number" id="sim-diff-r" value="5" min="1" max="6" class="w-14 px-2 py-1.5 text-xs font-mono border border-slate-300 rounded-lg">
-            </div>
-            <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-              <span>V =</span>
-              <input type="number" id="sim-diff-v" value="3" class="w-16 px-2 py-1.5 text-xs font-mono border border-slate-300 rounded-lg">
-            </div>
-            <button onclick="applyDiffSim()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
-              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Áp Dụng
-            </button>
-            <button onclick="resetDiffSim()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">
-              Đặt lại
-            </button>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+              <thead class="bg-slate-100 text-slate-800 font-bold text-[11px] uppercase tracking-wider">
+                <tr>
+                  <th class="p-2.5 border border-slate-200">Trạng Thái / Thao Tác</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 1</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 2</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 3</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 4</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 5</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 6</th>
+                  <th class="p-2.5 border border-slate-200 text-center">i = 7</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 font-mono text-[11px]">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-2.5 font-sans font-medium text-slate-600">Khởi tạo mảng $D$</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center text-slate-400">0</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-rose-50/40">
+                  <td class="p-2.5 font-sans font-medium text-rose-800">Thao tác 1: Cộng +3 vào đoạn [2, 5]</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center font-extrabold text-rose-700 bg-rose-100">+3 (D[2])</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center font-extrabold text-rose-700 bg-rose-100">-3 (D[6])</td>
+                  <td class="p-2.5 text-center text-slate-400">0</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-blue-50/40">
+                  <td class="p-2.5 font-sans font-medium text-blue-800">Thao tác 2: Cộng +2 vào đoạn [1, 3]</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-100">+2 (D[1])</td>
+                  <td class="p-2.5 text-center font-bold text-rose-700">+3</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center font-extrabold text-blue-700 bg-blue-100">-2 (D[4])</td>
+                  <td class="p-2.5 text-center">0</td>
+                  <td class="p-2.5 text-center font-bold text-rose-700">-3</td>
+                  <td class="p-2.5 text-center text-slate-400">0</td>
+                </tr>
+                <tr class="hover:bg-slate-50 bg-emerald-50/60">
+                  <td class="p-2.5 font-sans font-extrabold text-emerald-900">Mảng cuối $A[i] = A[i-1] + D[i]$</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">2</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">5</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">5</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">3</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">3</td>
+                  <td class="p-2.5 text-center font-extrabold text-emerald-800 text-sm">0</td>
+                  <td class="p-2.5 text-center text-slate-400">-</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="space-y-2 pt-2">
-            <span class="text-xs font-bold text-slate-700 block">Trạng thái mảng hiệu D và Mảng tái tạo A:</span>
-            <div id="sim-diff-visual" class="space-y-2 text-xs">
-              <!-- Rendered via JS -->
+          <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-950 font-medium">
+            <strong>Phân tích kết quả:</strong> Vị trí 1 chỉ nhận +2. Vị trí 2 và 3 nằm trong cả hai đoạn nên nhận $3 + 2 = 5$. Vị trí 4 và 5 chỉ nhận +3. Vị trí 6 không nằm trong đoạn nào nên bằng 0. Mỗi thao tác cộng chỉ tốn đúng 2 phép gán $O(1)$!
+          </div>
+        </div>
+
+        <!-- Khối 3: Code Mẫu Chuẩn C++ Competitive Programming -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-rose-600"></i> Code Mẫu 1: Mảng Hiệu 1D Cập Nhật Đoạn O(1)
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b4-1').innerText); alert('Đã sao chép Code Mẫu 1!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
             </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b4-1" class="language-cpp">// Mảng hiệu 1D thực hiện Q truy vấn cập nhật đoạn trong O(N + Q)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n, q;
+    if (!(cin &gt;&gt; n &gt;&gt; q)) return 0;
+
+    vector&lt;long long&gt; d(n + 2, 0); // Kích thước n + 2 để an toàn khi r + 1
+
+    while (q--) {
+        int l, r; long long v;
+        cin &gt;&gt; l &gt;&gt; r &gt;&gt; v;
+        d[l] += v;     // Thao tác 1
+        d[r + 1] -= v; // Thao tác 2
+    }
+
+    // Khôi phục mảng ban đầu bằng Prefix Sum
+    long long cur = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        cur += d[i];
+        cout &lt;&lt; cur &lt;&lt; (i == n ? "" : " ");
+    }
+    cout &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h4 class="text-xs font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="code" class="w-4 h-4 text-amber-600"></i> Code Mẫu 2: Sắp Xếp Sự Kiện (CSES Restaurant)
+              </h4>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('code-b4-2').innerText); alert('Đã sao chép Code Mẫu 2!');" class="text-[11px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-b4-2" class="language-cpp">// Sắp xếp sự kiện CSES Restaurant Customers - O(N log N)
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Event {
+    int time;
+    int type; // +1: Đến, -1: Rời đi
+};
+
+bool cmp(const Event &amp;a, const Event &amp;b) {
+    if (a.time != b.time) return a.time &lt; b.time;
+    return a.type &lt; b.type; // -1 đứng trước +1 nếu cùng thời điểm
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    if (!(cin &gt;&gt; n)) return 0;
+
+    vector&lt;Event&gt; events;
+    for (int i = 0; i &lt; n; i++) {
+        int a, b; cin &gt;&gt; a &gt;&gt; b;
+        events.push_back({a, +1});
+        events.push_back({b, -1});
+    }
+
+    sort(events.begin(), events.end(), cmp);
+
+    int maxCust = 0, curCust = 0;
+    for (const auto &amp;e : events) {
+        curCust += e.type;
+        maxCust = max(maxCust, curCust);
+    }
+
+    cout &lt;&lt; maxCust &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: PHÒNG MÔ PHỎNG MẢNG HIỆU TRỰC QUAN -->
+      <div id="buoi-4-sim" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 font-bold flex items-center justify-center text-xs">2</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="activity" class="w-5 h-5 text-rose-600"></i> Phòng Mô Phỏng Trực Quan: Cập Nhật Đoạn [L, R] Bằng Mảng Hiệu
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Mỗi lần thêm đoạn [L, R] với giá trị V, quan sát 2 vị trí biên D[L] và D[R+1] thay đổi trong O(1)</p>
+            </div>
+          </div>
+          <span class="text-xs bg-rose-50 text-rose-700 font-mono font-bold px-2.5 py-1 rounded-full border border-rose-200">
+            O(1) Update Lab
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+            <span>L =</span>
+            <input type="number" id="sim-diff-l" value="2" min="1" max="6" class="w-14 px-2 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg text-center focus:ring-2 focus:ring-rose-500 focus:outline-none">
+          </div>
+          <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+            <span>R =</span>
+            <input type="number" id="sim-diff-r" value="5" min="1" max="6" class="w-14 px-2 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg text-center focus:ring-2 focus:ring-rose-500 focus:outline-none">
+          </div>
+          <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
+            <span>Cộng V =</span>
+            <input type="number" id="sim-diff-v" value="3" class="w-16 px-2 py-1.5 text-xs font-mono font-bold border border-slate-300 rounded-lg text-center focus:ring-2 focus:ring-rose-500 focus:outline-none">
+          </div>
+          <button onclick="applyDiffSimSession()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Áp Dụng Cập Nhật
+          </button>
+          <button onclick="resetDiffSimSession()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs rounded-xl transition">
+            Đặt lại mảng 0
+          </button>
+        </div>
+
+        <div class="space-y-3 pt-1">
+          <div id="sim-diff-visual" class="space-y-3 text-xs">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 3: BỘ CÂU HỎI TRẮC NGHIỆM TƯƠNG TÁC (QUIZ) -->
+      <div id="buoi-4-quiz" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 font-bold flex items-center justify-center text-xs">3</span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="help-circle" class="w-5 h-5 text-rose-600"></i> Kiểm Tra Hiểu Bài Tức Thì: Mảng Hiệu & Sắp Xếp
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">3 câu hỏi trắc nghiệm kiểm tra độ chuẩn xác về mảng hiệu và hàm so sánh sự kiện</p>
+            </div>
+          </div>
+          <span class="text-xs bg-rose-50 text-rose-700 font-bold px-2.5 py-1 rounded-full border border-rose-200">
+            3 Câu Trắc Nghiệm
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Câu 1 -->
+          <div id="q-b4-1-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-rose-700">Câu hỏi 1</span>
+                <span id="q-b4-1-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Để tăng mọi phần tử trong đoạn $[L, R]$ thêm giá trị $V$ bằng mảng hiệu $D$, hai thao tác $O(1)$ cần thực hiện là gì?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b4-1\', 0)" id="q-b4-1-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>D[L] += V và D[R] -= V</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-1\', 1)" id="q-b4-1-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>D[L] += V và D[R + 1] -= V</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-1\', 2)" id="q-b4-1-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>D[L - 1] += V và D[R] -= V</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-1\', 3)" id="q-b4-1-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>D[L] -= V và D[R + 1] += V</span>
+              </button>
+            </div>
+            <div id="q-b4-1-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 2 -->
+          <div id="q-b4-2-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-rose-700">Câu hỏi 2</span>
+                <span id="q-b4-2-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Cho $Q = 10^5$ thao tác cập nhật đoạn trên mảng $N = 10^5$. Tổng độ phức tạp thời gian khi dùng mảng hiệu là bao nhiêu?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b4-2\', 0)" id="q-b4-2-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>O(N + Q)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-2\', 1)" id="q-b4-2-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>O(Q * N)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-2\', 2)" id="q-b4-2-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>O(N log N)</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-2\', 3)" id="q-b4-2-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>O(1)</span>
+              </button>
+            </div>
+            <div id="q-b4-2-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
+          </div>
+
+          <!-- Câu 3 -->
+          <div id="q-b4-3-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-rose-700">Câu hỏi 3</span>
+                <span id="q-b4-3-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">Chưa chọn</span>
+              </div>
+              <p class="text-xs text-slate-800 font-medium leading-relaxed">
+                Trong bài toán sắp xếp sự kiện CSES Restaurant, nếu khách rời đi lúc $t$ và khách mới đến lúc $t$, sự kiện nào ưu tiên xử lý trước?
+              </p>
+            </div>
+            <div class="space-y-1.5 pt-2">
+              <button onclick="selectQuizOption(\'q-b4-3\', 0)" id="q-b4-3-opt-0" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">A</span>
+                <span>Khách đến (+1) xử lý trước</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-3\', 1)" id="q-b4-3-opt-1" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">B</span>
+                <span>Khách rời đi (-1) xử lý trước</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-3\', 2)" id="q-b4-3-opt-2" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">C</span>
+                <span>Thứ tự nào cũng như nhau</span>
+              </button>
+              <button onclick="selectQuizOption(\'q-b4-3\', 3)" id="q-b4-3-opt-3" class="quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition text-xs flex items-center gap-2">
+                <span class="w-5 h-5 rounded bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">D</span>
+                <span>Bỏ qua không cần xử lý</span>
+              </button>
+            </div>
+            <div id="q-b4-3-exp" class="hidden p-3 rounded-lg text-xs leading-relaxed mt-2"></div>
           </div>
         </div>
       </div>
@@ -1079,7 +2134,61 @@ sort(intervals.begin(), intervals.end(), cmp);</code></pre>
           </button>
         </div>
       </div>
-    </section>
+
+        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 4 (INLINE SOCRATIC HELPER) -->
+        <div id="hw-assistant-card-4" class="p-5 bg-gradient-to-r from-rose-50 to-purple-50 border border-rose-200 rounded-2xl space-y-3.5">
+          <div class="flex items-center justify-between border-b border-rose-200/60 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-xl bg-rose-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-rose-950 flex items-center gap-1.5">
+                  Trợ Giảng AI Socratic • Hỗ Trợ Bài Về Nhà (RESTAURANT)
+                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
+                </h4>
+                <p class="text-[11px] text-rose-700">Hướng dẫn tư duy struct Event, viết hàm so sánh cmp và xử lý mốc thời gian trùng</p>
+              </div>
+            </div>
+            <button onclick="toggleChatbox()" class="text-xs bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
+            </button>
+          </div>
+
+          <!-- Quick suggestion chips -->
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] text-rose-900 font-bold py-1">Gợi ý nhanh:</span>
+            <button onclick="sendHwAssistantMsg(4, 'Gợi ý cách biểu diễn khách đến (+1) và khách rời đi (-1) để sắp xếp sự kiện trong bài RESTAURANT?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
+              💡 Cách khai báo struct Event {time, type}
+            </button>
+            <button onclick="sendHwAssistantMsg(4, 'Tại sao khi time bằng nhau thì sự kiện rời đi (-1) phải đứng trước sự kiện đến (+1)?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
+              💡 Bẫy hai người cùng lúc t
+            </button>
+            <button onclick="sendHwAssistantMsg(4, 'Làm sao giải bài RESTAURANT trong O(N log N) bằng vector và std::sort?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
+              ⚡ Tối ưu thời gian O(N log N)
+            </button>
+          </div>
+
+          <!-- Chat messages stream for buoi 4 -->
+          <div id="hw-chat-messages-4" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-rose-200 space-y-2.5 text-xs">
+            <div class="flex items-start gap-2 text-slate-700">
+              <div class="w-6 h-6 rounded-md bg-rose-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+              <div class="p-2.5 bg-rose-50/70 rounded-xl rounded-tl-none border border-rose-100 leading-relaxed">
+                Chào em! Thầy là Trợ Giảng Socratic hỗ trợ bài toán kinh điển <strong>RESTAURANT (Khách hàng nhà hàng)</strong>. Em cần thầy gợi mở về cách lập sự kiện rời rạc hay quy tắc sắp xếp?
+              </div>
+            </div>
+          </div>
+
+          <!-- Input bar for buoi 4 -->
+          <div class="flex items-center gap-2">
+            <input type="text" id="hw-chat-input-4" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(4)" placeholder="Hỏi thầy về kỹ thuật Event Sorting, hàm cmp bài RESTAURANT..." class="flex-1 px-3.5 py-2 text-xs border border-rose-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-600 bg-white">
+            <button onclick="sendHwAssistantMsg(4)" class="px-4 py-2 bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
+            </button>
+          </div>
+        </div>
+      </div>
+</section>
 
     <section id="content-sim-all" class="tab-content hidden space-y-6">
       <div class="w-full bg-slate-900 rounded-2xl p-6 text-white shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -2661,11 +3770,12 @@ void bfs(int start_node) {
 
       // Trigger KaTeX render for active tab
       setTimeout(() => {
-        if (targetContent) renderMath(targetContent);
-        renderMath();
+        triggerKaTeXAuto();
+        if (tabId === 'buoi-2') runSimCounting();
+        if (tabId === 'buoi-3') queryPrefixSimSession();
+        if (tabId === 'buoi-4') renderDiffVisuals();
+        if (window.lucide) lucide.createIcons();
       }, 50);
-
-      if (window.lucide) lucide.createIcons();
     }
 
     // 2. Chức năng sao chép code
@@ -2752,46 +3862,156 @@ void bfs(int start_node) {
     let countMap = {};
     let countPairsFound = 0;
 
+    function runSimCounting() {
+      const inputEl = document.getElementById('sim-counting-input');
+      const visualEl = document.getElementById('sim-counting-visual');
+      const statsEl = document.getElementById('sim-counting-stats');
+      
+      const rawText = inputEl ? inputEl.value : 'olympic_cplusplus';
+      const text = rawText.length > 0 ? rawText : 'olympic_cplusplus';
+      
+      // Tính tần số ký tự
+      const freq = {};
+      for (let ch of text) {
+        freq[ch] = (freq[ch] || 0) + 1;
+      }
+
+      // Tìm tần số cao nhất và ký tự duy nhất
+      let maxCount = 0;
+      let mostFreqChars = [];
+      let uniqueChars = [];
+      for (let ch in freq) {
+        if (freq[ch] > maxCount) maxCount = freq[ch];
+        if (freq[ch] === 1) uniqueChars.push(ch);
+      }
+      for (let ch in freq) {
+        if (freq[ch] === maxCount && maxCount > 1) mostFreqChars.push(ch);
+      }
+
+      // Ký tự duy nhất xuất hiện đầu tiên
+      let firstUnique = null;
+      for (let ch of text) {
+        if (freq[ch] === 1) {
+          firstUnique = ch;
+          break;
+        }
+      }
+
+      // Render các ô tần số
+      if (visualEl) {
+        let html = '';
+        const sortedKeys = Object.keys(freq).sort();
+        sortedKeys.forEach(ch => {
+          const count = freq[ch];
+          const ascii = ch.charCodeAt(0);
+          const isMax = count === maxCount && maxCount > 1;
+          const isUnique = count === 1;
+          const displayChar = ch === ' ' ? '␣ (space)' : ch;
+
+          html += `
+            <div class="flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all transform hover:scale-105 ${
+              isMax ? 'bg-amber-50 border-amber-300 ring-2 ring-amber-400 text-amber-950 font-extrabold shadow-xs' :
+              isUnique ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-bold' :
+              'bg-white border-slate-200 text-slate-800'
+            }">
+              <span class="text-sm font-mono font-black text-ahs-primary tracking-wider">'${escapeHtml(displayChar)}'</span>
+              <span class="text-[10px] text-slate-400 font-mono">ASCII ${ascii}</span>
+              <div class="mt-1">
+                <span class="px-2 py-0.5 rounded-full text-xs font-mono font-extrabold ${
+                  isMax ? 'bg-amber-200 text-amber-900' : 
+                  isUnique ? 'bg-emerald-200 text-emerald-900' : 
+                  'bg-slate-100 text-slate-700'
+                }">${count} lần</span>
+              </div>
+            </div>
+          `;
+        });
+        visualEl.innerHTML = html;
+      }
+
+      // Render stats banner
+      if (statsEl) {
+        statsEl.innerHTML = `
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-slate-800">Độ dài xâu:</span>
+            <span class="px-2 py-0.5 bg-white border border-blue-200 rounded font-mono font-bold text-blue-700">${text.length} ký tự</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-slate-800">Số ký tự khác nhau:</span>
+            <span class="px-2 py-0.5 bg-white border border-blue-200 rounded font-mono font-bold text-emerald-700">${Object.keys(freq).length} ký tự</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-slate-800">Ký tự nhiều nhất:</span>
+            <span class="px-2 py-0.5 bg-amber-100 text-amber-900 rounded font-mono font-bold">${mostFreqChars.length > 0 ? mostFreqChars.map(c => `'${c}'`).join(', ') + ` (${maxCount} lần)` : 'Đều nhau'}</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-slate-800">Ký tự duy nhất đầu tiên:</span>
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-900 rounded font-mono font-bold">${firstUnique ? `'${firstUnique}'` : 'Không có'}</span>
+          </div>
+        `;
+      }
+
+      // Tương thích ngược với tab cũ sim-all nếu có
+      const cntInputOld = document.getElementById('cnt-arr-input');
+      if (cntInputOld) {
+        try { initCountingSim(); } catch(e) {}
+      }
+    }
+
+    function resetCountingSim() {
+      const inputEl = document.getElementById('sim-counting-input');
+      if (inputEl) inputEl.value = 'olympic_cplusplus';
+      runSimCounting();
+    }
+
     function initCountingSim() {
-      const raw = document.getElementById('cnt-arr-input').value;
+      const rawEl = document.getElementById('cnt-arr-input');
+      if (!rawEl) return;
+      const raw = rawEl.value;
       countData = raw.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
-      countK = parseInt(document.getElementById('cnt-k-input').value) || 8;
+      const kEl = document.getElementById('cnt-k-input');
+      countK = kEl ? parseInt(kEl.value) || 8 : 8;
       countCurIdx = 0;
       countMap = {};
       countPairsFound = 0;
 
-      document.getElementById('cnt-ans-val').innerText = "0";
-      document.getElementById('cnt-step-info').innerText = `Đã nạp mảng ${countData.length} phần tử. Bấm 'Bước Tiếp Theo'.`;
+      const ansVal = document.getElementById('cnt-ans-val');
+      if (ansVal) ansVal.innerText = "0";
+      const stepInfo = document.getElementById('cnt-step-info');
+      if (stepInfo) stepInfo.innerText = `Đã nạp mảng ${countData.length} phần tử. Bấm 'Bước Tiếp Theo'.`;
 
       renderCountingVisuals();
     }
 
     function renderCountingVisuals() {
-      // Render A
       const boxA = document.getElementById('cnt-visual-a');
-      boxA.innerHTML = '';
-      countData.forEach((val, idx) => {
-        const div = document.createElement('div');
-        div.className = `w-12 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold transition-all ${idx === countCurIdx ? 'sim-step-active' : idx < countCurIdx ? 'bg-slate-100 text-slate-500 border-slate-300' : 'bg-white text-slate-800 border-slate-200'}`;
-        div.innerHTML = `<span>${val}</span><span class="text-[10px] text-slate-400">i=${idx}</span>`;
-        boxA.appendChild(div);
-      });
+      if (boxA) {
+        boxA.innerHTML = '';
+        countData.forEach((val, idx) => {
+          const div = document.createElement('div');
+          div.className = `w-12 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold transition-all ${idx === countCurIdx ? 'sim-step-active' : idx < countCurIdx ? 'bg-slate-100 text-slate-500 border-slate-300' : 'bg-white text-slate-800 border-slate-200'}`;
+          div.innerHTML = `<span>${val}</span><span class="text-[10px] text-slate-400">i=${idx}</span>`;
+          boxA.appendChild(div);
+        });
+      }
 
-      // Render Hash
       const boxHash = document.getElementById('cnt-visual-hash');
-      boxHash.innerHTML = '';
-      for (let v = 0; v <= 10; v++) {
-        const count = countMap[v] || 0;
-        const div = document.createElement('div');
-        div.className = `w-14 h-14 flex flex-col items-center justify-center font-mono rounded-xl border text-xs ${count > 0 ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-extrabold' : 'bg-white border-slate-200 text-slate-400'}`;
-        div.innerHTML = `<span class="text-[10px] text-slate-500">cnt[${v}]</span><span class="text-sm">${count}</span>`;
-        boxHash.appendChild(div);
+      if (boxHash) {
+        boxHash.innerHTML = '';
+        for (let v = 0; v <= 10; v++) {
+          const count = countMap[v] || 0;
+          const div = document.createElement('div');
+          div.className = `w-14 h-14 flex flex-col items-center justify-center font-mono rounded-xl border text-xs ${count > 0 ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-extrabold' : 'bg-white border-slate-200 text-slate-400'}`;
+          div.innerHTML = `<span class="text-[10px] text-slate-500">cnt[${v}]</span><span class="text-sm">${count}</span>`;
+          boxHash.appendChild(div);
+        }
       }
     }
 
     function stepCountingSim() {
       if (countCurIdx >= countData.length) {
-        document.getElementById('cnt-step-info').innerText = "Đã duyệt hết mảng! Thuật toán hoàn tất trong O(N).";
+        const stepInfo = document.getElementById('cnt-step-info');
+        if (stepInfo) stepInfo.innerText = "Đã duyệt hết mảng! Thuật toán hoàn tất trong O(N).";
         return;
       }
 
@@ -2799,155 +4019,398 @@ void bfs(int start_node) {
       const target = countK - curVal;
       const matched = countMap[target] || 0;
 
+      const ansVal = document.getElementById('cnt-ans-val');
+      const stepInfo = document.getElementById('cnt-step-info');
+
       if (matched > 0) {
         countPairsFound += matched;
-        document.getElementById('cnt-ans-val').innerText = countPairsFound;
-        document.getElementById('cnt-step-info').innerText = `Bước ${countCurIdx + 1}: Xét A[${countCurIdx}]=${curVal}. Cần tìm target=${target}. Tìm thấy ${matched} số trước đó -> ans += ${matched}`;
+        if (ansVal) ansVal.innerText = countPairsFound;
+        if (stepInfo) stepInfo.innerText = `Bước ${countCurIdx + 1}: Xét A[${countCurIdx}]=${curVal}. Cần tìm target=${target}. Tìm thấy ${matched} số trước đó -> ans += ${matched}`;
       } else {
-        document.getElementById('cnt-step-info').innerText = `Bước ${countCurIdx + 1}: Xét A[${countCurIdx}]=${curVal}. Cần tìm target=${target}. Chưa có số nào trước đó.`;
+        if (stepInfo) stepInfo.innerText = `Bước ${countCurIdx + 1}: Xét A[${countCurIdx}]=${curVal}. Cần tìm target=${target}. Chưa có số nào trước đó.`;
       }
 
-      // Cập nhật countMap
       countMap[curVal] = (countMap[curVal] || 0) + 1;
       countCurIdx++;
-
       renderCountingVisuals();
-    }
-
-    function resetCountingSim() {
-      initCountingSim();
-    }
-
-    function runSimCounting() {
-      showSimSub('sim-count-box');
-      initCountingSim();
     }
 
     // ============================================================
     // MÔ PHỎNG 3: MẢNG CỘNG DỒN (PREFIX SUM)
     // ============================================================
-    let prefArr = [2, -1, 4, 7, 3];
-    let prefSums = [0];
+    const prefSessionA = [0, 3, 5, 2, 8, 4, 7, 1, 6]; // 1-based, 8 elements
+    const prefSessionP = [0, 3, 8, 10, 18, 22, 29, 30, 36];
 
-    function initPrefixSim() {
-      const raw = document.getElementById('pref-arr-input').value;
-      prefArr = raw.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
-      prefSums = [0];
-      for (let i = 0; i < prefArr.length; i++) {
-        prefSums.push(prefSums[i] + prefArr[i]);
-      }
-      renderPrefixVisuals();
-      queryPrefixSim();
-    }
+    function queryPrefixSimSession() {
+      const lEl = document.getElementById('sim-prefix-l');
+      const rEl = document.getElementById('sim-prefix-r');
+      const visualEl = document.getElementById('sim-prefix-visual');
+      const resEl = document.getElementById('sim-prefix-result');
 
-    function renderPrefixVisuals(highlightL = -1, highlightR = -1) {
-      const boxA = document.getElementById('pref-visual-a');
-      boxA.innerHTML = '';
-      prefArr.forEach((val, idx) => {
-        const iOne = idx + 1;
-        const isHighlight = (iOne >= highlightL && iOne <= highlightR);
-        const div = document.createElement('div');
-        div.className = `w-14 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold transition-all ${isHighlight ? 'sim-step-active' : 'bg-white border-slate-200 text-slate-800'}`;
-        div.innerHTML = `<span>${val}</span><span class="text-[10px] text-slate-400">A[${iOne}]</span>`;
-        boxA.appendChild(div);
-      });
+      let L = lEl ? parseInt(lEl.value) || 3 : 3;
+      let R = rEl ? parseInt(rEl.value) || 6 : 6;
 
-      const boxP = document.getElementById('pref-visual-p');
-      boxP.innerHTML = '';
-      prefSums.forEach((val, idx) => {
-        const isKey = (idx === highlightR || idx === highlightL - 1);
-        const div = document.createElement('div');
-        div.className = `w-14 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold transition-all ${isKey ? 'sim-cell-match' : 'bg-purple-50/50 border-purple-200 text-purple-900'}`;
-        div.innerHTML = `<span>${val}</span><span class="text-[10px] text-purple-500">Pref[${idx}]</span>`;
-        boxP.appendChild(div);
-      });
-    }
-
-    function queryPrefixSim() {
-      const L = parseInt(document.getElementById('pref-l').value) || 1;
-      const R = parseInt(document.getElementById('pref-r').value) || prefArr.length;
-
-      if (L < 1 || R > prefArr.length || L > R) {
-        alert("Khoảng [L, R] không hợp lệ!");
+      if (L < 1) L = 1;
+      if (R > 8) R = 8;
+      if (L > R) {
+        alert("L không được lớn hơn R!");
         return;
       }
 
-      const sum = prefSums[R] - prefSums[L - 1];
-      renderPrefixVisuals(L, R);
+      if (lEl) lEl.value = L;
+      if (rEl) rEl.value = R;
 
-      document.getElementById('pref-query-result').innerHTML = `
-        <span>Công thức O(1): <strong>Sum(${L}, ${R}) = Pref[${R}] - Pref[${L - 1}]</strong></span>
-        <span class="text-lg font-extrabold text-purple-700">Kết quả: ${prefSums[R]} - ${prefSums[L - 1]} = ${sum}</span>
-      `;
+      const sum = prefSessionP[R] - prefSessionP[L - 1];
+
+      // Render trực quan dãy A và P
+      if (visualEl) {
+        let aCells = '';
+        for (let i = 1; i <= 8; i++) {
+          const inRange = (i >= L && i <= R);
+          aCells += `
+            <div class="flex-1 flex flex-col items-center justify-center p-2 rounded-xl border font-mono transition-all ${
+              inRange ? 'bg-blue-500 text-white border-blue-600 font-extrabold shadow-sm scale-105' : 'bg-white border-slate-200 text-slate-700'
+            }">
+              <span class="text-xs font-bold">${prefSessionA[i]}</span>
+              <span class="text-[9px] ${inRange ? 'text-blue-100' : 'text-slate-400'}">A[${i}]</span>
+            </div>
+          `;
+        }
+
+        let pCells = '';
+        for (let i = 0; i <= 8; i++) {
+          const isR = (i === R);
+          const isLminus1 = (i === L - 1);
+          pCells += `
+            <div class="flex-1 flex flex-col items-center justify-center p-2 rounded-xl border font-mono transition-all ${
+              isR ? 'bg-indigo-600 text-white border-indigo-700 font-extrabold ring-2 ring-indigo-400 scale-105 shadow-sm' :
+              isLminus1 ? 'bg-amber-500 text-white border-amber-600 font-extrabold ring-2 ring-amber-300 scale-105 shadow-sm' :
+              'bg-purple-50/50 border-purple-200 text-purple-900'
+            }">
+              <span class="text-xs font-bold">${prefSessionP[i]}</span>
+              <span class="text-[9px] ${isR || isLminus1 ? 'text-white' : 'text-purple-500'}">P[${i}]${isR ? ' (R)' : isLminus1 ? ' (L-1)' : ''}</span>
+            </div>
+          `;
+        }
+
+        visualEl.innerHTML = `
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-bold text-slate-700 flex items-center justify-between">
+              <span>Hàng 1: Dãy số ban đầu A[1..8]</span>
+              <span class="text-[10px] text-blue-600 font-semibold">Ô xanh dương: Các phần tử trong đoạn [L, R]</span>
+            </span>
+            <div class="flex items-center gap-1.5">${aCells}</div>
+          </div>
+          <div class="space-y-1.5 pt-1">
+            <span class="text-[11px] font-bold text-purple-900 flex items-center justify-between">
+              <span>Hàng 2: Mảng cộng dồn P[0..8] (P[0] = 0)</span>
+              <span class="text-[10px] text-purple-700 font-semibold">Cam: P[L-1] • Tím: P[R]</span>
+            </span>
+            <div class="flex items-center gap-1.5">${pCells}</div>
+          </div>
+        `;
+      }
+
+      if (resEl) {
+        resEl.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="text-xs text-indigo-800">Công thức O(1): </span>
+              <span class="text-sm font-extrabold text-indigo-950 font-mono">Sum(${L}, ${R}) = P[${R}] - P[${L - 1}]</span>
+            </div>
+            <div class="text-sm font-black text-indigo-700 font-mono bg-white px-3 py-1.5 rounded-lg border border-indigo-200">
+              Kết quả: ${prefSessionP[R]} - ${prefSessionP[L - 1]} = ${sum}
+            </div>
+          </div>
+        `;
+      }
+
+      // Cập nhật tab cũ nếu có
+      if (document.getElementById('pref-arr-input')) {
+        try { queryPrefixSim(); } catch(e) {}
+      }
     }
 
-    function runSimPrefix() {
-      showSimSub('sim-prefix-box');
-      initPrefixSim();
+    function queryPrefixSim() {
+      queryPrefixSimSession();
     }
 
     // ============================================================
     // MÔ PHỎNG 4: MẢNG HIỆU (DIFFERENCE ARRAY)
     // ============================================================
-    let diffArr = [0, 0, 0, 0, 0, 0, 0]; // 1-based index, size 6 + 1
-    let restoredArr = [0, 0, 0, 0, 0, 0];
+    let sessionDiffD = [0, 0, 0, 0, 0, 0, 0]; // 1-based, size 6 + 1
+    let sessionDiffLogs = [];
 
-    function applyDiffSim() {
-      const l = parseInt(document.getElementById('diff-l').value);
-      const r = parseInt(document.getElementById('diff-r').value);
-      const v = parseInt(document.getElementById('diff-v').value);
+    function applyDiffSimSession() {
+      const lEl = document.getElementById('sim-diff-l');
+      const rEl = document.getElementById('sim-diff-r');
+      const vEl = document.getElementById('sim-diff-v');
 
-      if (l < 1 || r > 6 || l > r) {
-        alert("Đoạn [L, R] không hợp lệ!");
+      const L = lEl ? parseInt(lEl.value) || 2 : 2;
+      const R = rEl ? parseInt(rEl.value) || 5 : 5;
+      const V = vEl ? parseInt(vEl.value) || 3 : 3;
+
+      if (L < 1 || R > 6 || L > R) {
+        alert("Đoạn [L, R] không hợp lệ (1 <= L <= R <= 6)!");
         return;
       }
 
-      diffArr[l] += v;
-      if (r + 1 <= 6) diffArr[r + 1] -= v;
+      // Cập nhật mảng hiệu trong O(1)
+      sessionDiffD[L] += V;
+      if (R + 1 <= 6) {
+        sessionDiffD[R + 1] -= V;
+      }
 
+      sessionDiffLogs.unshift(`Cộng ${V >= 0 ? '+' + V : V} vào đoạn [${L}, ${R}] ➔ D[${L}] += ${V}; ${R + 1 <= 6 ? `D[${R + 1}] -= ${V};` : `(R+1 vượt biên 6, bỏ qua)`}`);
       renderDiffVisuals();
     }
 
-    function restoreDiffSim() {
-      let cur = 0;
-      for (let i = 1; i <= 6; i++) {
-        cur += diffArr[i];
-        restoredArr[i - 1] = cur;
-      }
+    function resetDiffSimSession() {
+      sessionDiffD = [0, 0, 0, 0, 0, 0, 0];
+      sessionDiffLogs = [];
       renderDiffVisuals();
     }
 
     function resetDiffSim() {
-      diffArr = [0, 0, 0, 0, 0, 0, 0];
-      restoredArr = [0, 0, 0, 0, 0, 0];
-      renderDiffVisuals();
+      resetDiffSimSession();
+    }
+
+    function applyDiffSim() {
+      applyDiffSimSession();
     }
 
     function renderDiffVisuals() {
-      const boxD = document.getElementById('diff-visual-d');
-      boxD.innerHTML = '';
+      const visualEl = document.getElementById('sim-diff-visual');
+      if (!visualEl) return;
+
+      // Tái tạo mảng A bằng Prefix Sum trên D
+      const restoredA = [0, 0, 0, 0, 0, 0, 0];
+      let cur = 0;
       for (let i = 1; i <= 6; i++) {
-        const div = document.createElement('div');
-        div.className = `w-14 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold ${diffArr[i] !== 0 ? 'bg-rose-50 border-rose-400 text-rose-800' : 'bg-white border-slate-200 text-slate-500'}`;
-        div.innerHTML = `<span>${diffArr[i] >= 0 ? '+' + diffArr[i] : diffArr[i]}</span><span class="text-[10px] text-slate-400">diff[${i}]</span>`;
-        boxD.appendChild(div);
+        cur += sessionDiffD[i];
+        restoredA[i] = cur;
       }
 
-      const boxA = document.getElementById('diff-visual-a');
-      boxA.innerHTML = '';
-      restoredArr.forEach((val, idx) => {
-        const div = document.createElement('div');
-        div.className = `w-14 h-12 flex flex-col items-center justify-center font-mono rounded-xl border text-xs font-bold ${val > 0 ? 'bg-amber-50 border-amber-400 text-amber-900' : 'bg-white border-slate-200 text-slate-700'}`;
-        div.innerHTML = `<span>${val}</span><span class="text-[10px] text-slate-400">A[${idx + 1}]</span>`;
-        boxA.appendChild(div);
-      });
+      let dCells = '';
+      for (let i = 1; i <= 6; i++) {
+        const val = sessionDiffD[i];
+        dCells += `
+          <div class="flex-1 flex flex-col items-center justify-center p-2 rounded-xl border font-mono transition-all ${
+            val !== 0 ? 'bg-rose-50 border-rose-400 text-rose-800 font-extrabold scale-105' : 'bg-white border-slate-200 text-slate-500'
+          }">
+            <span class="text-xs font-bold">${val > 0 ? '+' + val : val}</span>
+            <span class="text-[9px] text-slate-400">D[${i}]</span>
+          </div>
+        `;
+      }
+
+      let aCells = '';
+      for (let i = 1; i <= 6; i++) {
+        const val = restoredA[i];
+        aCells += `
+          <div class="flex-1 flex flex-col items-center justify-center p-2 rounded-xl border font-mono transition-all ${
+            val > 0 ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-extrabold scale-105 shadow-xs' : 'bg-white border-slate-200 text-slate-700'
+          }">
+            <span class="text-xs font-bold">${val}</span>
+            <span class="text-[9px] text-emerald-600">A[${i}]</span>
+          </div>
+        `;
+      }
+
+      let logsHtml = sessionDiffLogs.slice(0, 3).map(log => `<li class="text-[11px] text-slate-600 font-mono">• ${log}</li>`).join('');
+
+      visualEl.innerHTML = `
+        <div class="space-y-1.5">
+          <span class="text-[11px] font-bold text-rose-900 flex items-center justify-between">
+            <span>Hàng 1: Mảng hiệu D[1..6] (Chỉ thay đổi 2 vị trí biên O(1))</span>
+            <span class="text-[10px] text-rose-600 font-semibold">Tác động cực nhanh</span>
+          </span>
+          <div class="flex items-center gap-1.5">${dCells}</div>
+        </div>
+        <div class="space-y-1.5 pt-1">
+          <span class="text-[11px] font-bold text-emerald-900 flex items-center justify-between">
+            <span>Hàng 2: Mảng tái tạo A[1..6] qua Prefix Sum (A[i] = A[i-1] + D[i])</span>
+            <span class="text-[10px] text-emerald-700 font-semibold">Khôi phục O(N)</span>
+          </span>
+          <div class="flex items-center gap-1.5">${aCells}</div>
+        </div>
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+          <span class="text-[11px] font-bold text-slate-700">Nhật ký cập nhật:</span>
+          ${sessionDiffLogs.length > 0 ? `<ul class="space-y-1">${logsHtml}</ul>` : '<div class="text-[11px] text-slate-400 italic font-mono">Chưa có thao tác nào. Hãy nhập L, R, V rồi bấm "Áp Dụng Cập Nhật".</div>'}
+        </div>
+      `;
     }
 
-    function runSimDiff() {
-      showSimSub('sim-diff-box');
-      resetDiffSim();
+    // ============================================================
+    // BỘ CÂU HỎI TRẮC NGHIỆM TƯƠNG TÁC (QUIZ ENGINE)
+    // ============================================================
+    const QUIZ_DATABASE = {
+      'q-b2-1': {
+        correct: 1,
+        exp: "Bảng chữ cái tiếng Anh in thường có đúng 26 ký tự (từ 'a' đến 'z'). Ánh xạ <code>s[i] - 'a'</code> trả về chỉ số từ 0 đến 25, nên mảng chỉ cần tối thiểu 26 phần tử."
+      },
+      'q-b2-2': {
+        correct: 1,
+        exp: "Ta chỉ cần duyệt qua xâu đúng 1 lần (N bước), mỗi ký tự chỉ tốn $O(1)$ để tăng <code>cnt[x]++</code>. Do đó toàn bộ thuật toán đạt $O(N)$ thời gian, hoàn toàn không dính TLE."
+      },
+      'q-b2-3': {
+        correct: 0,
+        exp: "Ký tự '0' có mã ASCII 48. Do các chữ số từ '0'-'9' nằm liên tiếp nhau, nên <code>c - '0'</code> (hoặc <code>c - 48</code>) sẽ ra giá trị số nguyên từ 0 đến 9. Ép kiểu <code>(int)c</code> sẽ ra mã ASCII 56 chứ không phải số 8."
+      },
+      'q-b3-1': {
+        correct: 1,
+        exp: "$P[R]$ là tổng từ $A_1$ đến $A_R$, còn $P[L-1]$ là tổng từ $A_1$ đến $A_{L-1}$. Lấy $P[R] - P[L-1]$ sẽ loại bỏ chính xác các phần tử đứng trước $L$, chỉ còn lại $A_L + \dots + A_R$ trong đúng $O(1)$."
+      },
+      'q-b3-2': {
+        correct: 2,
+        exp: "Mỗi truy vấn vòng for tốn tối đa $O(N) = 10^5$ phép tính. Với $Q = 10^5$, tổng phép tính là $10^5 \times 10^5 = 10^{10}$. Máy tính thi đấu 1 giây chỉ làm được khoảng $10^8$ phép tính nên chắc chắn dính TLE. Dùng Prefix Sum giảm xuống $O(N + Q) = 2 \cdot 10^5$ phép tính."
+      },
+      'q-b3-3': {
+        correct: 0,
+        exp: "Nếu dùng 0-based index, khi $L = 0$ công thức $P[R] - P[L - 1]$ sẽ truy xuất $P[-1]$ gây lỗi tràn biên bộ nhớ. Đánh số từ 1 và đặt $P[0] = 0$ giúp công thức $P[R] - P[L - 1]$ luôn đúng khi $L = 1$."
+      },
+      'q-b4-1': {
+        correct: 1,
+        exp: "Khi cộng dồn từ trái qua, giá trị $+V$ tại $D[L]$ sẽ lan truyền đến mọi vị trí từ $L$ trở đi. Để ngăn tác động này không lan qua khỏi $R$, ta phải trừ đi $V$ tại vị trí $R + 1$ ($D[R + 1] \mathrel{-}= V$)."
+      },
+      'q-b4-2': {
+        correct: 0,
+        exp: "Mỗi thao tác cập nhật chỉ tốn 2 phép gán $O(1)$, $Q$ thao tác tốn $O(Q)$. Bước tái tạo mảng chỉ tốn đúng 1 vòng lặp $O(N)$. Tổng độ phức tạp là $O(N + Q)$, chạy dưới 0.05 giây!"
+      },
+      'q-b4-3': {
+        correct: 1,
+        exp: "Khách rời đi tại thời điểm $t$ tức là bàn đã được giải phóng. Nếu xử lý khách đến trước, số khách đang có mặt sẽ bị tính tăng thêm 1 (dương tính giả) trước khi người cũ rời đi. Vì vậy sự kiện rời đi ($-1$) phải được ưu tiên trước."
+      }
+    };
+
+    function selectQuizOption(qId, selectedIdx) {
+      const data = QUIZ_DATABASE[qId];
+      if (!data) return;
+
+      const correctIdx = data.correct;
+      const explanation = data.exp;
+
+      const card = document.getElementById(qId + '-card');
+      const badge = document.getElementById(qId + '-badge');
+      const expBox = document.getElementById(qId + '-exp');
+      if (!card || !expBox) return;
+
+      const isCorrect = (selectedIdx === correctIdx);
+
+      // Cập nhật giao diện 4 nút lựa chọn
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(qId + '-opt-' + i);
+        if (!btn) continue;
+        const spanIcon = btn.querySelector('span:first-child');
+        
+        if (i === correctIdx) {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border bg-emerald-50 border-emerald-400 text-emerald-950 font-bold ring-1 ring-emerald-300 transition text-xs flex items-center gap-2";
+          if (spanIcon) {
+            spanIcon.className = "w-5 h-5 rounded bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0 text-[10px]";
+            spanIcon.innerText = "✓";
+          }
+        } else if (i === selectedIdx && !isCorrect) {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border bg-rose-50 border-rose-400 text-rose-950 font-medium ring-1 ring-rose-300 transition text-xs flex items-center gap-2";
+          if (spanIcon) {
+            spanIcon.className = "w-5 h-5 rounded bg-rose-600 text-white font-bold flex items-center justify-center shrink-0 text-[10px]";
+            spanIcon.innerText = "✗";
+          }
+        } else {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 opacity-60 transition text-xs flex items-center gap-2";
+        }
+      }
+
+      // Cập nhật huy hiệu trạng thái & hộp giải thích KaTeX
+      expBox.classList.remove('hidden');
+      if (isCorrect) {
+        if (badge) {
+          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300";
+          badge.innerText = "✓ Chính xác";
+        }
+        expBox.className = "p-3 rounded-lg text-xs leading-relaxed mt-2 bg-emerald-50 border border-emerald-200 text-emerald-900";
+        expBox.innerHTML = `<strong>🎉 Hoan hô em! Hoàn toàn chính xác!</strong><div class="mt-1">${explanation}</div>`;
+      } else {
+        if (badge) {
+          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300";
+          badge.innerText = "✗ Chưa đúng";
+        }
+        expBox.className = "p-3 rounded-lg text-xs leading-relaxed mt-2 bg-amber-50 border border-amber-200 text-amber-900";
+        expBox.innerHTML = `<strong>💡 Em lưu ý nhé:</strong><div class="mt-1">${explanation}</div>`;
+      }
+
+      if (window.renderMathInElement) {
+        renderMathInElement(expBox, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+    
+    // ============================================================
+    function selectQuizOption(qId, selectedIdx, correctIdx, explanation) {
+      const card = document.getElementById(qId + '-card');
+      const badge = document.getElementById(qId + '-badge');
+      const expBox = document.getElementById(qId + '-exp');
+      if (!card || !expBox) return;
+
+      const isCorrect = (selectedIdx === correctIdx);
+
+      // Cập nhật giao diện 4 nút lựa chọn
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(qId + '-opt-' + i);
+        if (!btn) continue;
+        const spanIcon = btn.querySelector('span:first-child');
+        
+        if (i === correctIdx) {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border bg-emerald-50 border-emerald-400 text-emerald-950 font-bold ring-1 ring-emerald-300 transition text-xs flex items-center gap-2";
+          if (spanIcon) {
+            spanIcon.className = "w-5 h-5 rounded bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0 text-[10px]";
+            spanIcon.innerText = "✓";
+          }
+        } else if (i === selectedIdx && !isCorrect) {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border bg-rose-50 border-rose-400 text-rose-950 font-medium ring-1 ring-rose-300 transition text-xs flex items-center gap-2";
+          if (spanIcon) {
+            spanIcon.className = "w-5 h-5 rounded bg-rose-600 text-white font-bold flex items-center justify-center shrink-0 text-[10px]";
+            spanIcon.innerText = "✗";
+          }
+        } else {
+          btn.className = "quiz-opt-btn w-full text-left p-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 opacity-60 transition text-xs flex items-center gap-2";
+        }
+      }
+
+      // Cập nhật huy hiệu trạng thái & hộp giải thích KaTeX
+      expBox.classList.remove('hidden');
+      if (isCorrect) {
+        if (badge) {
+          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300";
+          badge.innerText = "✓ Chính xác";
+        }
+        expBox.className = "p-3 rounded-lg text-xs leading-relaxed mt-2 bg-emerald-50 border border-emerald-200 text-emerald-900";
+        expBox.innerHTML = `<strong>🎉 Hoan hô em! Hoàn toàn chính xác!</strong><div class="mt-1">${explanation}</div>`;
+      } else {
+        if (badge) {
+          badge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300";
+          badge.innerText = "✗ Chưa đúng";
+        }
+        expBox.className = "p-3 rounded-lg text-xs leading-relaxed mt-2 bg-amber-50 border border-amber-200 text-amber-900";
+        expBox.innerHTML = `<strong>💡 Em lưu ý nhé:</strong><div class="mt-1">${explanation}</div>`;
+      }
+
+      if (window.renderMathInElement) {
+        renderMathInElement(expBox, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      }
     }
 
+    
     // ============================================================
     // PLAYGROUND: KHO CODE & ENGINE MÔ PHỎNG GIẢ LẬP
     // ============================================================
@@ -3551,24 +5014,22 @@ int main() {
     // -------------------------------------------------------------
     // CHATBOX LOGIC: TRỢ LÝ SƯ PHẠM OLYMPIC (SOCRATIC GUIDE)
     // -------------------------------------------------------------
-    let isChatOpen = false;
-
     function toggleChatbox() {
-      isChatOpen = !isChatOpen;
       const win = document.getElementById("chat-window");
       const btn = document.getElementById("chat-toggle-btn");
-      if (!win || !btn) return;
-      if (isChatOpen) {
+      if (!win) return;
+      const isHidden = win.classList.contains("hidden");
+      if (isHidden) {
         win.classList.remove("hidden");
         win.classList.add("flex");
-        btn.classList.add("hidden");
+        if (btn) btn.classList.add("hidden");
         const inp = document.getElementById("chat-input");
         if (inp) inp.focus();
         scrollChatToBottom();
       } else {
         win.classList.add("hidden");
         win.classList.remove("flex");
-        btn.classList.remove("hidden");
+        if (btn) btn.classList.remove("hidden");
       }
       if (window.lucide) lucide.createIcons();
     }
@@ -3642,7 +5103,7 @@ int main() {
           removeTypingIndicator(typingId);
           const reply = generateInternalSocraticResponse(message);
           appendAssistantMessage(reply);
-        }, 400);
+        }, 300);
       }
     }
 
@@ -3652,7 +5113,7 @@ int main() {
       const div = document.createElement("div");
       div.className = "flex items-start justify-end gap-2";
       div.innerHTML = `
-        <div class="bg-ahs-primary text-white rounded-2xl rounded-tr-none px-3.5 py-2 shadow-sm max-w-[85%] text-xs leading-relaxed">
+        <div class="bg-ahs-primary text-white rounded-2xl rounded-tr-none px-3.5 py-2 shadow-xs max-w-[85%] text-xs leading-relaxed">
           ${escapeHtml(text)}
         </div>
       `;
@@ -3668,10 +5129,10 @@ int main() {
       div.id = id;
       div.className = "flex items-start gap-2.5";
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
+        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
           AHS
         </div>
-        <div class="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-slate-500 shadow-sm flex items-center gap-1.5">
+        <div class="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-slate-500 shadow-xs flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"></span>
           <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.2s]"></span>
           <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]"></span>
@@ -3693,10 +5154,10 @@ int main() {
       const div = document.createElement("div");
       div.className = "flex items-start gap-2.5";
       div.innerHTML = `
-        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
+        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
           AHS
         </div>
-        <div class="bg-white border border-slate-200 rounded-2xl p-3 shadow-sm text-slate-800 space-y-2 max-w-[85%] text-xs leading-relaxed">
+        <div class="bg-white border border-slate-200 rounded-2xl p-3 shadow-xs text-slate-800 space-y-2 max-w-[85%] text-xs leading-relaxed">
           ${formatBotMessage(text)}
         </div>
       `;
@@ -3731,50 +5192,50 @@ int main() {
 
       // 1. Từ chối xin code trực tiếp
       if (q.includes("xin code") || q.includes("cho code") || q.includes("giai ho") || q.includes("giai giup") || q.includes("dap an bai") || q.includes("viet code") || q.includes("giai gium")) {
-        return "🚫 **Thầy không đưa code đáp án trực tiếp được đâu nhé!**\n\nTrong kỳ thi Olympic, mục tiêu là em tự mình tư duy và viết code trong phòng thi. Hãy cùng thầy làm rõ các bước:\n1. Giới hạn dữ liệu $N$ trong đề là bao nhiêu?\n2. Nếu duyệt 2 vòng lặp $O(N^2)$ thì có bị quá 1 giây ($10^8$ phép tính) không?\n3. Kỹ thuật mảng nào phù hợp: **Mảng đếm**, **Mảng cộng dồn**, **Mảng hiệu**, hay **Hai con trỏ**?";
+        return "🚫 **Thầy không đưa code giải sẵn trực tiếp được đâu nhé!**\n\nTrong kỳ thi Olympic, quan trọng nhất là em tự mình hiểu và code trong phòng thi. Hãy cùng thầy làm rõ các bước:\n1. Giới hạn dữ liệu $N$ trong đề là bao nhiêu?\n2. Nếu duyệt 2 vòng for lồng nhau $O(N^2)$ thì có bị quá 1 giây ($10^8$ phép tính) không?\n3. Kỹ thuật mảng nào phù hợp: **Mảng đếm**, **Mảng cộng dồn**, hay **Mảng hiệu**?";
       }
 
-      // 2. TLE
+      // 2. PALIN
+      if (q.includes("palin") || q.includes("doi xung")) {
+        return "💡 **Hướng dẫn bài PALIN (Kiểm tra xâu đối xứng bỏ qua ký tự đặc biệt):**\n\n- Sử dụng kỹ thuật **Hai con trỏ (Two Pointers)**: con trỏ `L = 0` và `R = s.length() - 1`.\n- Trong vòng lặp `while (L < R)`:\n  * Nếu `!isalnum(s[L])`, bỏ qua bằng `L++`.\n  * Nếu `!isalnum(s[R])`, bỏ qua bằng `R--`.\n  * Khi cả hai đều là chữ/số: so sánh `tolower(s[L]) != tolower(s[R])`. Nếu khác nhau $\\implies$ Không đối xứng!\n- Độ phức tạp: $O(N)$ thời gian, $O(1)$ bộ nhớ phụ, ăn trọn 100% test!";
+      }
+
+      // 3. MAJORITY
+      if (q.includes("majority") || q.includes("da so") || q.includes("xuat hien nhieu")) {
+        return "💡 **Hướng dẫn bài MAJORITY (Tìm phần tử chiếm đa số > N/2):**\n\n- Nếu giá trị mảng $A_i \\le 10^6$: Dùng **mảng đếm tần số** `cnt[x]++`.\n- Nếu $A_i$ lên tới $10^9$: Dùng `unordered_map<int, int>` hoặc kỹ thuật **Boyer-Moore Voting Algorithm** cực xịn chỉ tốn $O(1)$ bộ nhớ!\n- Ngay khi thấy một số có tần số $> N/2$, in ra và kết thúc chương trình.";
+      }
+
+      // 4. DIV3
+      if (q.includes("div3") || (q.includes("chia") && q.includes("3"))) {
+        return "💡 **Hướng dẫn bài DIV3 (Đoạn con có tổng chia hết cho 3):**\n\n- Một đoạn $[L, R]$ có tổng chia hết cho 3 khi: $(P[R] - P[L - 1]) \\% 3 == 0 \\iff P[R] \\% 3 == P[L - 1] \\% 3$.\n- **Chiến thuật:** Tính mảng cộng dồn $P$, lấy số dư $P[i] \\% 3$ (chỉ có 3 giá trị 0, 1, 2).\n- Dùng mảng đếm `cnt[rem]`: Mỗi khi gặp một số dư `rem`, số đoạn con kết thúc tại $i$ chính là `cnt[rem]`! Sau đó cập nhật `cnt[rem]++`.\n- Độ phức tạp: $O(N)$ siêu tốc!";
+      }
+
+      // 5. MINSUB
+      if (q.includes("minsub") || q.includes("ngan nhat")) {
+        return "💡 **Hướng dẫn bài MINSUB (Đoạn con ngắn nhất có tổng >= S):**\n\n- Vì các phần tử mảng đều dương, mảng cộng dồn $P$ sẽ **tăng đơn điệu**.\n- Dùng kỹ thuật **Cửa sổ trượt / Hai con trỏ (Two Pointers)**:\n  * Tăng con trỏ `R` để nạp thêm phần tử vào cửa sổ.\n  * Khi tổng $\\ge S$, liên tục co con trỏ `L` để tìm độ dài ngắn nhất: `ans = min(ans, R - L + 1)`.\n- Độ phức tạp: $O(N)$ thời gian, tối ưu tuyệt đối!";
+      }
+
+      // 6. RESTAURANT
+      if (q.includes("restaurant") || q.includes("nha hang") || q.includes("khach") || q.includes("su kien")) {
+        return "💡 **Hướng dẫn bài RESTAURANT (CSES Restaurant Customers):**\n\n- Mỗi khách hàng được tách thành 2 sự kiện: `(a, +1)` (đến) và `(b, -1)` (rời đi).\n- Đưa tất cả vào `vector<pair<int, int>>` và gọi `sort()`.\n- **Bẫy test:** Nếu cùng thời điểm $t$, sự kiện khách rời đi ($-1$) phải đứng trước khách đến ($+1$). Khai báo `pair<int, int>` với `(time, type)` sẽ tự động ưu tiên $-1$ trước $+1$ vì $-1 < +1$!\n- Duyệt qua vector, duy trì biến `curCustomers += event.type` và lấy `maxCustomers`. Độ phức tạp: $O(N \\log N)$.";
+      }
+
+      // 7. TLE
       if (q.includes("tle") || q.includes("thoi gian") || q.includes("cham") || q.includes("qua gio") || q.includes("time limit")) {
-        return "⚡ **Chẩn đoán lỗi Time Limit Exceeded (TLE):**\n\n1. **Quy tắc vàng:** Máy chấm cho 1.0 giây $\\approx 10^8$ phép tính.\n2. Nếu $N = 10^5$, 2 vòng lặp lồng nhau là $O(N^2) = 10^{10}$ phép tính $\\implies$ **Chắc chắn TLE!**\n3. **Cách khắc phục:**\n   - Dùng **Mảng đếm tần số** hoặc **Mảng cộng dồn** để chuyển về $O(N)$.\n   - Thêm `ios_base::sync_with_stdio(0); cin.tie(0);` vào đầu `main()`.\n   - Thay toàn bộ `endl` bằng `\\n`.";
+        return "⚡ **Chẩn đoán lỗi Time Limit Exceeded (TLE):**\n\n1. **Quy tắc vàng:** Máy chấm cho 1.0 giây $\\approx 10^8$ phép tính.\n2. Nếu $N = 10^5$, 2 vòng lặp lồng nhau là $O(N^2) = 10^{10}$ phép tính $\\implies$ **Chắc chắn dính TLE!**\n3. **Cách khắc phục:**\n   - Dùng **Mảng đếm** hoặc **Mảng cộng dồn** để chuyển về $O(N)$.\n   - Thêm `ios_base::sync_with_stdio(0); cin.tie(0);` vào đầu `main()`.\n   - Thay toàn bộ `endl` bằng `\\n`.";
       }
 
-      // 3. Tràn số
+      // 8. Tràn số
       if (q.includes("so am") || q.includes("tran so") || q.includes("overflow") || q.includes("sai ket qua") || q.includes("long long")) {
-        return "⚠️ **Bẫy tràn số nguyên (Tràn 32-bit):**\n\nKhi tính tổng hoặc tích mà kết quả bị âm, chắc chắn em đã bị tràn kiểu `int` (tối đa chỉ đến $2 \\cdot 10^9$).\n\n🔍 **Bẫy kinh điển:**\n`long long ans = a * b;` nhưng $a, b$ là `int`. Máy tính sẽ nhân 2 số `int` ra kết quả bị tràn âm rồi mới gán sang `ans`!\n👉 **Cách sửa:** Luôn ép kiểu trước khi nhân: `1LL * a * b` hoặc `(long long)a * b`.";
+        return "⚠️ **Bẫy tràn số nguyên (Tràn 32-bit):**\n\nKhi tính tổng hoặc tích mà kết quả bị âm, chắc chắn em đã bị tràn kiểu `int` (tối đa chỉ đến $2 \\cdot 10^9$).\n\n🔍 **Bẫy kinh điển:**\n`long long ans = a * b;` nhưng $a, b$ là `int`. Máy tính sẽ nhân 2 số `int` ra kết quả tràn âm rồi mới gán sang `ans`!\n👉 **Cách sửa:** Luôn ép kiểu trước khi nhân: `1LL * a * b` hoặc `(long long)a * b`.";
       }
 
-      // 4. PAIRSUM
-      if (q.includes("pairsum") || (q.includes("dem cap") && q.includes("tong"))) {
-        return "💡 **Hướng dẫn tư duy bài PAIRSUM ($A_i + A_j = K$):**\n\n- Với $N = 10^5$, 2 vòng for duyệt cặp sẽ mất $O(N^2)$ (dính TLE).\n- **Gợi mở:** Khi xét đến số $A_j$, ta cần tìm số nào đã xuất hiện trước đó?\n  * Đó là: `target = K - A_j`.\n  * Làm sao biết trước đó đã có bao nhiêu số bằng `target` trong $O(1)$?\n👉 Hãy dùng **Mảng đếm tần số** `cnt[target]`!";
-      }
-
-      // 5. SUMSEQ
-      if (q.includes("sumseq") || q.includes("cap so cong") || q.includes("tong day")) {
-        return "💡 **Hướng dẫn tư duy bài SUMSEQ ($N \\le 10^9$):**\n\n- Vòng lặp chạy tới $10^9$ sẽ dính TLE. Phải dùng **công thức toán học $O(1)$**.\n- Số lượng số hạng: $n = (B - A)/D + 1$.\n- Phần tử cuối: $Last = A + (n - 1) \\cdot D$.\n- Tổng: $S = n \\cdot (A + Last) / 2$.\n⚠️ Lưu ý: $n \\cdot (A + Last)$ lên tới $2 \\cdot 10^{18}$, chia 2 trước nếu $n$ chẵn để chống tràn `long long`!";
-      }
-
-      // 6. Prefix Sum
-      if (q.includes("prefix") || q.includes("cong don") || q.includes("rangesum")) {
-        return "📌 **Khi nào dùng Mảng cộng dồn (Prefix Sum)?**\n\n- Khi có mảng cố định và nhiều truy vấn $Q$ tính tổng đoạn $[L, R]$.\n- Tính trước $Pref[i] = A_1 + A_2 + \\dots + A_i$ trong $O(N)$.\n- Khi hỏi tổng $[L, R]$, lấy: $Pref[R] - Pref[L - 1]$ trong **$O(1)$**!";
-      }
-
-      // 7. Difference Array
-      if (q.includes("difference") || q.includes("mang hieu") || q.includes("restaurant") || q.includes("dat ban")) {
-        return "📌 **Mảng hiệu (Difference Array):**\n\n- Dùng khi cần cộng $V$ vào cả đoạn $[L, R]$ trong $O(1)$:\n  * `diff[L] += V;`\n  * `diff[R + 1] -= V;`\n- Khôi phục mảng ban đầu bằng cách tính Prefix Sum trên mảng `diff` trong $O(N)$.";
-      }
-
-      // 8. Chiến thuật thi
-      if (q.includes("bai 1") || q.includes("chien thuat") || q.includes("6 diem") || q.includes("doat giai")) {
-        return "🎯 **Chiến thuật ăn 6.0 điểm Bài 1:**\n\n1. Giải quyết xong trong 35-40 phút đầu.\n2. Kiểm tra tên tệp `freopen` chuẩn xác 100%.\n3. Đổi biến tổng/tích sang `long long`.\n4. Thử các test biên: $N = 1$, mảng toàn số âm, mảng toàn số bằng nhau!";
-      }
-
-      return "Thầy đã nghe câu hỏi của em! Để thầy có thể gợi ý chính xác nhất, em hãy cho thầy biết:\n1. Em đang làm **bài tập nào**?\n2. Giới hạn dữ liệu ($N$) trong bài là bao nhiêu?\n3. Code của em đang gặp lỗi gì: **Time Limit (TLE)**, **Sai kết quả (WA)** hay **Ra số âm**?\n\nTrả lời 3 câu này, thầy sẽ cùng em tháo gỡ!";
+      return "Thầy đã nhận được câu hỏi của em! Để thầy hỗ trợ sát nhất với bài em đang làm:\n1. Em đang làm **bài tập nào**?\n2. Giới hạn dữ liệu ($N$) trong bài là bao nhiêu?\n3. Code của em đang gặp lỗi gì: **Time Limit (TLE)**, **Sai kết quả (WA)** hay **Bị tràn số âm**?\n\nBáo thầy 3 thông tin này, thầy sẽ cùng em bẻ khóa thuật toán!";
     }
 
     async function callGeminiSocratic(userQuery, apiKey) {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-      const systemInstruction = "Bạn là Trợ lý Sư phạm Olympic Tin học tại Trường Quốc tế Á Châu (AHS). NGUYÊN TẮC BẮT BUỘC: Socratic Guided Learning. TUYỆT ĐỐI KHÔNG ĐƯA RA CODE ĐÁP ÁN HAY LỜI GIẢI HOÀN CHỈNH. Từ chối khéo léo khi học sinh xin code, gợi mở tư duy, phân tích độ phức tạp O(N), nhắc nhở bẫy tràn số long long và gợi ý kỹ thuật mảng. Dùng tiếng Việt chuẩn mực, ngắn gọn, nhiệt tình.";
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+      const systemInstruction = "Bạn là Trợ lý Sư phạm Olympic Tin học tại Trường Quốc tế Á Châu (AHS). NGUYÊN TẮC: Socratic Guided Learning. TUYỆT ĐỐI KHÔNG ĐƯA RA CODE ĐÁP ÁN HAY LỜI GIẢI HOÀN CHỈNH. Từ chối khéo léo khi học sinh xin code, gợi mở tư duy, phân tích độ phức tạp O(N), nhắc nhở bẫy tràn số long long và gợi ý kỹ thuật mảng. Dùng tiếng Việt chuẩn mực, ngắn gọn, nhiệt tình.";
 
       const payload = {
         contents: [{ role: "user", parts: [{ text: userQuery }] }],
@@ -3792,212 +5253,87 @@ int main() {
       return data.candidates[0].content.parts[0].text;
     }
 
-    // -------------------------------------------------------------
-    // CHATBOX BTVN: GIA SƯ SƯ PHẠM BÀI TẬP VỀ NHÀ (SOCRATIC HOMEWORK)
-    // -------------------------------------------------------------
-    function scrollHwChatToBottom() {
-      const el = document.getElementById("hw-chat-messages");
-      if (el) el.scrollTop = el.scrollHeight;
-    }
+    // ============================================================
+    // IN-PAGE HOMEWORK SOCRATIC ASSISTANT
+    // ============================================================
+    function sendHwAssistantMsg(sessionNum, customPrompt = '') {
+      const inputEl = document.getElementById(`hw-chat-input-${sessionNum}`);
+      const chatMessages = document.getElementById(`hw-chat-messages-${sessionNum}`);
+      if (!chatMessages) return;
 
-    function handleHwChatKeyDown(e) {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        sendHwChatMessage();
-      }
-    }
+      const userText = customPrompt ? customPrompt : (inputEl ? inputEl.value.trim() : '');
+      if (!userText) return;
 
-    function sendHwQuickPrompt(promptText) {
-      const inp = document.getElementById("hw-chat-input");
-      if (inp) {
-        inp.value = promptText;
-        sendHwChatMessage();
-      }
-    }
+      if (inputEl) inputEl.value = '';
 
-    function askHwBot(promptText) {
-      switchTab('baitap-nha');
+      // Append user msg
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex items-start justify-end gap-2 text-slate-800';
+      userDiv.innerHTML = `
+        <div class="p-2.5 bg-ahs-primary text-white rounded-xl rounded-tr-none leading-relaxed text-xs shadow-xs max-w-[85%]">
+          ${escapeHtml(userText)}
+        </div>
+      `;
+      chatMessages.appendChild(userDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Append typing
+      const typingDiv = document.createElement('div');
+      const typingId = `hw-typing-${Date.now()}`;
+      typingDiv.id = typingId;
+      typingDiv.className = 'flex items-start gap-2 text-slate-500';
+      typingDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+        <div class="p-2 bg-slate-100 rounded-xl rounded-tl-none border border-slate-200 text-xs flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]"></span>
+        </div>
+      `;
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
       setTimeout(() => {
-        const inp = document.getElementById("hw-chat-input");
-        if (inp) {
-          inp.value = promptText;
-          sendHwChatMessage();
-          inp.focus();
-        }
-      }, 100);
-    }
-
-    function resetHwChat() {
-      const el = document.getElementById("hw-chat-messages");
-      if (!el) return;
-      el.innerHTML = `
-        <div class="flex items-start gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-purple-700 text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
-            AI
+        typingDiv.remove();
+        const reply = generateInternalSocraticResponse(userText);
+        const botDiv = document.createElement('div');
+        botDiv.className = 'flex items-start gap-2 text-slate-800';
+        botDiv.innerHTML = `
+          <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+          <div class="p-2.5 bg-purple-50/80 rounded-xl rounded-tl-none border border-purple-200 leading-relaxed text-xs max-w-[88%] space-y-1.5">
+            ${formatBotMessage(reply)}
           </div>
-          <div class="bg-white border border-purple-200 rounded-2xl p-3 shadow-sm text-slate-800 space-y-2 max-w-[88%]">
-            <p class="font-bold text-purple-950">👋 Chào em! Thầy là Trợ Giảng AI chuyên hỗ trợ 5 Bài Tập Về Nhà.</p>
-            <p class="leading-relaxed text-[11px] text-slate-600">
-              <strong>Nguyên tắc sư phạm:</strong> Thầy không đưa code giải sẵn. Thầy sẽ phân tích độ phức tạp, gợi mở kỹ thuật mảng và chỉ ra bẫy test để em <strong>tự code thành công</strong>!
-            </p>
-            <p class="text-[10px] text-slate-500 font-semibold pt-1">Bấm nhanh câu hỏi em cần trợ giúp ở bên dưới hoặc gõ câu hỏi vào ô chat!</p>
-          </div>
-        </div>
-      `;
-      if (window.lucide) lucide.createIcons();
-    }
+        `;
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    async function sendHwChatMessage() {
-      const inputEl = document.getElementById("hw-chat-input");
-      if (!inputEl) return;
-      const message = inputEl.value.trim();
-      if (!message) return;
-
-      appendHwUserMessage(message);
-      inputEl.value = "";
-      inputEl.style.height = "auto";
-
-      const typingId = appendHwTypingIndicator();
-
-      const apiKey = localStorage.getItem("ahs_gemini_api_key");
-      if (apiKey) {
-        try {
-          const aiResponse = await callGeminiSocratic("[BÀI TẬP VỀ NHÀ OLYMPIC] " + message, apiKey);
-          removeHwTypingIndicator(typingId);
-          appendHwAssistantMessage(aiResponse);
-        } catch (err) {
-          removeHwTypingIndicator(typingId);
-          const reply = generateHwSocraticResponse(message);
-          appendHwAssistantMessage(reply + "\n\n*(Lưu ý: Không thể kết nối Gemini API, đã chuyển sang Trợ Giảng Socratic Nội bộ)*");
+        if (window.renderMathInElement) {
+          renderMathInElement(botDiv, {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false}
+            ],
+            throwOnError: false
+          });
         }
-      } else {
-        setTimeout(() => {
-          removeHwTypingIndicator(typingId);
-          const reply = generateHwSocraticResponse(message);
-          appendHwAssistantMessage(reply);
-        }, 400);
-      }
+      }, 300);
     }
 
-    function appendHwUserMessage(text) {
-      const container = document.getElementById("hw-chat-messages");
-      if (!container) return;
-      const div = document.createElement("div");
-      div.className = "flex items-start justify-end gap-2";
-      div.innerHTML = `
-        <div class="bg-purple-700 text-white rounded-2xl rounded-tr-none px-3.5 py-2 shadow-sm max-w-[85%] text-xs leading-relaxed">
-          ${escapeHtml(text)}
-        </div>
-      `;
-      container.appendChild(div);
-      scrollHwChatToBottom();
+    function askHwQuestion(promptText) {
+      toggleChatbox();
+      sendQuickPrompt(promptText);
     }
 
-    function appendHwTypingIndicator() {
-      const container = document.getElementById("hw-chat-messages");
-      if (!container) return "hw-typing-dummy";
-      const id = "hw-typing-" + Date.now();
-      const div = document.createElement("div");
-      div.id = id;
-      div.className = "flex items-start gap-2.5";
-      div.innerHTML = `
-        <div class="w-7 h-7 rounded-lg bg-purple-700 text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
-          AI
-        </div>
-        <div class="bg-white border border-purple-200 rounded-2xl px-3 py-2 text-slate-500 shadow-sm flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:0.2s]"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:0.4s]"></span>
-        </div>
-      `;
-      container.appendChild(div);
-      scrollHwChatToBottom();
-      return id;
+    // ============================================================
+    // KHỞI ĐỘNG TẤT CẢ MÔ PHỎNG KHI TẢI TRANG
+    // ============================================================
+    function initAllSimulations() {
+      try { runSimCounting(); } catch (e) {}
+      try { queryPrefixSimSession(); } catch (e) {}
+      try { renderDiffVisuals(); } catch (e) {}
     }
 
-    function removeHwTypingIndicator(id) {
-      const el = document.getElementById(id);
-      if (el) el.remove();
-    }
-
-    function appendHwAssistantMessage(text) {
-      const container = document.getElementById("hw-chat-messages");
-      if (!container) return;
-      const div = document.createElement("div");
-      div.className = "flex items-start gap-2.5";
-      div.innerHTML = `
-        <div class="w-7 h-7 rounded-lg bg-purple-700 text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
-          AI
-        </div>
-        <div class="bg-white border border-purple-200 rounded-2xl p-3 shadow-sm text-slate-800 space-y-2 max-w-[88%] text-xs leading-relaxed">
-          ${formatBotMessage(text)}
-        </div>
-      `;
-      container.appendChild(div);
-      scrollHwChatToBottom();
-      if (window.lucide) lucide.createIcons();
-
-      if (window.renderMathInElement) {
-        renderMathInElement(div, {
-          delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
-          ],
-          throwOnError: false
-        });
-      }
-    }
-
-    function generateHwSocraticResponse(query) {
-      const q = query.toLowerCase();
-
-      // 1. Từ chối cho code trực tiếp
-      if (q.includes("xin code") || q.includes("cho code") || q.includes("giai ho") || q.includes("giai giup") || q.includes("dap an") || q.includes("viet code")) {
-        return "🚫 **Thầy không được phép cung cấp code hoàn chỉnh cho Bài tập về nhà đâu nhé!**\n\nNhiệm vụ của bài tập về nhà là rèn luyện bản lĩnh thi đấu tự lập. Em hãy cùng thầy làm rõ:\n1. Em đang vướng ở **Bài nào** trong 5 bài?\n2. Thuật toán hiện tại của em có độ phức tạp là bao nhiêu ($O(N^2)$ hay $O(N)$)?\n3. Em đang gặp lỗi **TLE**, **Wrong Answer**, hay **Tràn số**?";
-      }
-
-      // 2. PALIN (Bài 1)
-      if (q.includes("palin") || q.includes("xau doi xung") || q.includes("loc ky tu") || q.includes("bai 1")) {
-        return "💡 **Hướng dẫn tư duy Bài 1: PALIN ($|S| \\le 10^5$):**\n\n1. **Bước 1 — Tiền xử lý lọc ký tự:**\n   - Duyệt qua từng ký tự $c$ trong xâu ban đầu.\n   - Dùng hàm `isalnum(c)` để kiểm tra nếu là chữ hoặc số.\n   - Nếu đúng, chuyển về chữ thường bằng `tolower(c)` rồi ghép vào xâu mới `clean`.\n2. **Bước 2 — Kiểm tra đối xứng $O(N)$ bằng Hai con trỏ:**\n   - Đặt `left = 0`, `right = clean.length() - 1`.\n   - Lặp `while (left < right)`: nếu `clean[left] != clean[right]` $\\implies$ in `NO` và dừng.\n   - Ngược lại `left++; right--;`\n   - Nếu duyệt hết mà không sai $\\implies$ in `YES`.\n⚠️ **Bẫy:** Đừng dùng các hàm đảo xâu tạo nhiều bản sao trong vòng lặp vì sẽ tốn bộ nhớ!";
-      }
-
-      // 3. MAJORITY (Bài 2)
-      if (q.includes("majority") || q.includes("da so") || q.includes("phan tu da so") || q.includes("bai 2")) {
-        return "💡 **Hướng dẫn tư duy Bài 2: MAJORITY ($N \\le 10^5$):**\n\n- **Vì sao Subtask 1 dùng 2 vòng for $O(N^2)$ bị TLE ở Subtask 2?**\n  * Với $N = 10^5$, $N^2 = 10^{10}$ phép tính $\\gg 10^8$ (dính TLE 100%).\n- **Hướng giải tối ưu $O(N)$:**\n  1. Vì $A_i \\le 10^6$, em hoàn toàn có thể dùng **Mảng đếm tần số** `cnt[1000005]`.\n  2. Duyệt qua mảng và tăng `cnt[A[i]]++`.\n  3. Duyệt lại mảng một lần nữa, nếu thấy `cnt[A[i]] > N / 2` thì in ra $A_i$ và kết thúc.\n  4. Nếu hết mảng không có ai thỏa mãn $\\implies$ in `-1`.\n💡 *Mẹo nâng cao:* Thuật toán bầu cử **Boyer-Moore Voting** có thể giải bài này với bộ nhớ chỉ $O(1)$!";
-      }
-
-      // 4. DIV3 (Bài 3)
-      if (q.includes("div3") || q.includes("chia het cho 3") || q.includes("doan con chia het") || q.includes("bai 3")) {
-        return "💡 **Hướng dẫn tư duy Bài 3: DIV3 ($N \\le 10^5, A_i \\le 10^9$):**\n\n- **Nhận xét toán học then chốt:**\n  * Tổng đoạn $[L..R]$ là $Pref[R] - Pref[L - 1]$.\n  * $(Pref[R] - Pref[L - 1]) \\;\\vdots\\; 3 \\iff Pref[R] \\equiv Pref[L - 1] \\pmod 3$.\n- **Thuật toán $O(N)$ đếm số dư:**\n  1. Khởi tạo mảng đếm số dư: `cnt_rem[3] = {1, 0, 0}` (vì $Pref[0] = 0$ có số dư 0).\n  2. Tính tổng dồn đồng dư `cur_sum = (cur_sum + A[i]) % 3`.\n  3. Mỗi khi gặp `cur_sum`, nó sẽ tạo với các tiền tố trước đó có cùng số dư thành các đoạn con chia hết cho 3: `ans += cnt_rem[cur_sum]`.\n  4. Sau đó nạp vào mảng đếm: `cnt_rem[cur_sum]++`.\n⚠️ **Bẫy:** Biến `ans` phải dùng kiểu `long long` vì có thể lên tới $N(N+1)/2 \\approx 5 \\cdot 10^9$!";
-      }
-
-      // 5. MINSUB (Bài 4)
-      if (q.includes("minsub") || q.includes("ngan nhat") || q.includes("tong s") || q.includes("bai 4")) {
-        return "💡 **Hướng dẫn tư duy Bài 4: MINSUB ($N \\le 10^5, S \\le 10^{14}$):**\n\n- **Vì sao dùng được Cửa sổ trượt (Two Pointers / Sliding Window)?**\n  * Do tất cả $A_i$ đều là **số nguyên dương** ($A_i > 0$), nên khi mở rộng đoạn con sang phải thì tổng **luôn luôn tăng**.\n- **Kỹ thuật thực hiện $O(N)$:**\n  1. Đặt `left = 0`, `current_sum = 0`, `min_len = 1e9`.\n  2. Cho con trỏ `right` chạy từ `0` đến `N - 1` và cộng dồn: `current_sum += A[right]`.\n  3. Chừng nào `current_sum >= S`, ta cập nhật: `min_len = min(min_len, right - left + 1)` rồi thu hẹp cửa sổ: `current_sum -= A[left++]`.\n  4. Nếu sau vòng lặp `min_len` không đổi $\\implies$ in `-1`, ngược lại in `min_len`.\n⚠️ **Bẫy:** $S$ lên tới $10^{14}$, biến `current_sum` bắt buộc phải là `long long`!";
-      }
-
-      // 6. RESTAURANT (Bài 5)
-      if (q.includes("restaurant") || q.includes("nha hang") || q.includes("dat ban") || q.includes("bai 5")) {
-        return "💡 **Hướng dẫn tư duy Bài 5: RESTAURANT ($N \\le 10^5, R_i \\le 10^6$):**\n\n- **Bản chất bài toán:**\n  * Cần tìm thời điểm $t$ có nhiều khách ngồi ăn cùng lúc nhất.\n  * Mỗi đơn từ $L_i$ đến $R_i$ tương đương việc cộng $+1$ vào toàn bộ khoảng $[L_i, R_i]$.\n- **Kỹ thuật Mảng hiệu (Difference Array) $O(N + \\max R)$:**\n  1. Khai báo mảng hiệu `diff[1000005] = {0}`.\n  2. Với mỗi đơn $(L_i, R_i)$: thực hiện `diff[L_i]++` và `diff[R_i + 1]--` trong $O(1)$!\n  3. Quét một lượt từ $1$ đến $\\max R$ để tính tổng tiền tố (khôi phục số bàn tại từng thời điểm): `cur += diff[t]; ans = max(ans, cur);`.\n  4. Độ phức tạp: $O(N + \\max R)$, chạy trong chớp mắt $0.05$ giây!";
-      }
-
-      // 7. Lỗi chung: TLE / Tràn số
-      if (q.includes("tle") || q.includes("thoi gian") || q.includes("tran so") || q.includes("so am")) {
-        return "⚡ **Chẩn đoán lỗi chung trong 5 bài BTVN:**\n\n1. **Bị TLE:**\n   - Kiểm tra xem có đang lồng 2 vòng `for` không? Bắt buộc chuyển sang $O(N)$ bằng **Mảng đếm**, **Prefix sum**, **Two pointers** hoặc **Mảng hiệu**.\n   - Đã thêm `ios_base::sync_with_stdio(0); cin.tie(0);` chưa?\n   - Thay toàn bộ `endl` thành `\\n`.\n2. **Bị ra số âm (Tràn số):**\n   - Bài 3 (DIV3): `ans` có thể vượt $2 \\cdot 10^9$, bắt buộc `long long ans = 0;`.\n   - Bài 4 (MINSUB): `current_sum` có thể đạt $10^{14}$, phải dùng `long long`!";
-      }
-
-      return "Thầy đã nghe câu hỏi của em! Để thầy có thể gợi mở chính xác nhất cho bài tập về nhà, em hãy cho thầy biết:\n1. Em đang làm **bài nào** trong 5 bài: `PALIN`, `MAJORITY`, `DIV3`, `MINSUB`, hay `RESTAURANT`?\n2. Thuật toán em dự định dùng là gì?\n3. Code của em đang bị lỗi **TLE**, **Sai kết quả (WA)** hay **Tràn số**?\n\nTrả lời thầy, thầy sẽ cùng em phân tích bẫy test!";
-    }
-
-    // Phím tắt bàn phím: F1 mở Sổ tay
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "F1") {
-        e.preventDefault();
-        switchTab("handbook");
-      }
-    });
-
-    // Trigger KaTeX render trên toàn trang nhiều lần để đảm bảo 100% hiển thị
+    
     function triggerKaTeXAuto() {
       renderMath();
       setTimeout(renderMath, 100);
@@ -4026,6 +5362,7 @@ int main() {
     window.addEventListener("load", triggerKaTeXAuto);
     // Chạy kích hoạt tức thì không chờ đợi
     triggerKaTeXAuto();
+    initAllSimulations();
   </script>
 
 </body>
