@@ -7,10 +7,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- KaTeX for Perfect Mathematical Formulas -->
+    <!-- KaTeX for Perfect Mathematical Formulas -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    function renderMath(targetEl) {
+      const el = targetEl || document.body;
+      if (el && typeof renderMathInElement === "function") {
+        try {
+          renderMathInElement(el, {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "\\[", right: "\\]", display: true}
+            ],
+            throwOnError: false,
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+          });
+        } catch (e) {
+          console.warn("KaTeX render error:", e);
+        }
+      }
+    }
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cổng Học Liệu & Mô Phỏng Lập Trình Thi Đấu Olympic C++ | Asian School</title>
@@ -1757,7 +1778,7 @@ void bfs(int start_node) {
   <!-- ==================== JAVASCRIPT LOGIC ==================== -->
   <script>
     // Khởi tạo Lucide Icons
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 
     // 1. Chuyển đổi Navigation Tab
     function switchTab(tabId) {
@@ -1774,18 +1795,9 @@ void bfs(int start_node) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       // Trigger KaTeX render for active tab
       setTimeout(() => {
-        if (window.renderMathInElement) {
-          renderMathInElement(document.body, {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false}
-            ],
-            throwOnError: false,
-            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
-          });
-        }
+        renderMath();
       }, 50);
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     // 2. Chức năng sao chép code
@@ -2458,6 +2470,267 @@ int main() {
       </div>
     </div>
   </div>
+
+
+  <!-- ==================== SCRIPT CHO CHATBOX & MATH ==================== -->
+  <script>
+    // -------------------------------------------------------------
+    // CHATBOX LOGIC: TRỢ LÝ SƯ PHẠM OLYMPIC (SOCRATIC GUIDE)
+    // -------------------------------------------------------------
+    let isChatOpen = false;
+
+    function toggleChatbox() {
+      isChatOpen = !isChatOpen;
+      const win = document.getElementById("chat-window");
+      const btn = document.getElementById("chat-toggle-btn");
+      if (!win || !btn) return;
+      if (isChatOpen) {
+        win.classList.remove("hidden");
+        win.classList.add("flex");
+        btn.classList.add("hidden");
+        const inp = document.getElementById("chat-input");
+        if (inp) inp.focus();
+        scrollChatToBottom();
+      } else {
+        win.classList.add("hidden");
+        win.classList.remove("flex");
+        btn.classList.remove("hidden");
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function toggleApiSettings() {
+      const panel = document.getElementById("chat-settings-panel");
+      if (panel) {
+        panel.classList.toggle("hidden");
+        const savedKey = localStorage.getItem("ahs_gemini_api_key");
+        if (savedKey) document.getElementById("gemini-api-key").value = savedKey;
+      }
+    }
+
+    function saveApiKey() {
+      const key = document.getElementById("gemini-api-key").value.trim();
+      if (key) {
+        localStorage.setItem("ahs_gemini_api_key", key);
+        alert("Đã lưu API Key! Hệ thống chuyển sang AI Socratic Trực Tuyến.");
+      } else {
+        localStorage.removeItem("ahs_gemini_api_key");
+        alert("Đã xóa API Key. Sử dụng chế độ Trợ lý Socratic Nội bộ.");
+      }
+      document.getElementById("chat-settings-panel").classList.add("hidden");
+    }
+
+    function scrollChatToBottom() {
+      const container = document.getElementById("chat-messages");
+      if (container) container.scrollTop = container.scrollHeight;
+    }
+
+    function handleChatKeyDown(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendChatMessage();
+      }
+    }
+
+    function sendQuickPrompt(promptText) {
+      const inp = document.getElementById("chat-input");
+      if (inp) {
+        inp.value = promptText;
+        sendChatMessage();
+      }
+    }
+
+    async function sendChatMessage() {
+      const inputEl = document.getElementById("chat-input");
+      if (!inputEl) return;
+      const message = inputEl.value.trim();
+      if (!message) return;
+
+      appendUserMessage(message);
+      inputEl.value = "";
+      inputEl.style.height = "auto";
+
+      const typingId = appendTypingIndicator();
+
+      const apiKey = localStorage.getItem("ahs_gemini_api_key");
+      if (apiKey) {
+        try {
+          const aiResponse = await callGeminiSocratic(message, apiKey);
+          removeTypingIndicator(typingId);
+          appendAssistantMessage(aiResponse);
+        } catch (err) {
+          removeTypingIndicator(typingId);
+          const fallbackResp = generateInternalSocraticResponse(message);
+          appendAssistantMessage(fallbackResp + "\n\n*(Lưu ý: Không thể kết nối Gemini API, đã chuyển sang Trợ lý Socratic Nội bộ)*");
+        }
+      } else {
+        setTimeout(() => {
+          removeTypingIndicator(typingId);
+          const reply = generateInternalSocraticResponse(message);
+          appendAssistantMessage(reply);
+        }, 400);
+      }
+    }
+
+    function appendUserMessage(text) {
+      const container = document.getElementById("chat-messages");
+      if (!container) return;
+      const div = document.createElement("div");
+      div.className = "flex items-start justify-end gap-2";
+      div.innerHTML = `
+        <div class="bg-ahs-primary text-white rounded-2xl rounded-tr-none px-3.5 py-2 shadow-sm max-w-[85%] text-xs leading-relaxed">
+          ${escapeHtml(text)}
+        </div>
+      `;
+      container.appendChild(div);
+      scrollChatToBottom();
+    }
+
+    function appendTypingIndicator() {
+      const container = document.getElementById("chat-messages");
+      if (!container) return "typing-dummy";
+      const id = "typing-" + Date.now();
+      const div = document.createElement("div");
+      div.id = id;
+      div.className = "flex items-start gap-2.5";
+      div.innerHTML = `
+        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
+          AHS
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl px-3 py-2 text-slate-500 shadow-sm flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]"></span>
+        </div>
+      `;
+      container.appendChild(div);
+      scrollChatToBottom();
+      return id;
+    }
+
+    function removeTypingIndicator(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function appendAssistantMessage(text) {
+      const container = document.getElementById("chat-messages");
+      if (!container) return;
+      const div = document.createElement("div");
+      div.className = "flex items-start gap-2.5";
+      div.innerHTML = `
+        <div class="w-7 h-7 rounded-lg bg-ahs-primary text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-sm">
+          AHS
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-3 shadow-sm text-slate-800 space-y-2 max-w-[85%] text-xs leading-relaxed">
+          ${formatBotMessage(text)}
+        </div>
+      `;
+      container.appendChild(div);
+      scrollChatToBottom();
+      if (window.lucide) lucide.createIcons();
+
+      if (window.renderMathInElement) {
+        renderMathInElement(div, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function formatBotMessage(str) {
+      return str
+        .replace(/\n/g, "<br>")
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/`(.*?)`/g, "<code class=\"bg-slate-100 text-blue-700 px-1 py-0.5 rounded font-mono font-bold\">$1</code>");
+    }
+
+    function generateInternalSocraticResponse(userQuery) {
+      const q = userQuery.toLowerCase();
+
+      // 1. Từ chối xin code trực tiếp
+      if (q.includes("xin code") || q.includes("cho code") || q.includes("giai ho") || q.includes("giai giup") || q.includes("dap an bai") || q.includes("viet code") || q.includes("giai gium")) {
+        return "🚫 **Thầy không đưa code đáp án trực tiếp được đâu nhé!**\n\nTrong kỳ thi Olympic, mục tiêu là em tự mình tư duy và viết code trong phòng thi. Hãy cùng thầy làm rõ các bước:\n1. Giới hạn dữ liệu $N$ trong đề là bao nhiêu?\n2. Nếu duyệt 2 vòng lặp $O(N^2)$ thì có bị quá 1 giây ($10^8$ phép tính) không?\n3. Kỹ thuật mảng nào phù hợp: **Mảng đếm**, **Mảng cộng dồn**, **Mảng hiệu**, hay **Hai con trỏ**?";
+      }
+
+      // 2. TLE
+      if (q.includes("tle") || q.includes("thoi gian") || q.includes("cham") || q.includes("qua gio") || q.includes("time limit")) {
+        return "⚡ **Chẩn đoán lỗi Time Limit Exceeded (TLE):**\n\n1. **Quy tắc vàng:** Máy chấm cho 1.0 giây $\\approx 10^8$ phép tính.\n2. Nếu $N = 10^5$, 2 vòng lặp lồng nhau là $O(N^2) = 10^{10}$ phép tính $\\implies$ **Chắc chắn TLE!**\n3. **Cách khắc phục:**\n   - Dùng **Mảng đếm tần số** hoặc **Mảng cộng dồn** để chuyển về $O(N)$.\n   - Thêm `ios_base::sync_with_stdio(0); cin.tie(0);` vào đầu `main()`.\n   - Thay toàn bộ `endl` bằng `\\n`.";
+      }
+
+      // 3. Tràn số
+      if (q.includes("so am") || q.includes("tran so") || q.includes("overflow") || q.includes("sai ket qua") || q.includes("long long")) {
+        return "⚠️ **Bẫy tràn số nguyên (Tràn 32-bit):**\n\nKhi tính tổng hoặc tích mà kết quả bị âm, chắc chắn em đã bị tràn kiểu `int` (tối đa chỉ đến $2 \\cdot 10^9$).\n\n🔍 **Bẫy kinh điển:**\n`long long ans = a * b;` nhưng $a, b$ là `int`. Máy tính sẽ nhân 2 số `int` ra kết quả bị tràn âm rồi mới gán sang `ans`!\n👉 **Cách sửa:** Luôn ép kiểu trước khi nhân: `1LL * a * b` hoặc `(long long)a * b`.";
+      }
+
+      // 4. PAIRSUM
+      if (q.includes("pairsum") || (q.includes("dem cap") && q.includes("tong"))) {
+        return "💡 **Hướng dẫn tư duy bài PAIRSUM ($A_i + A_j = K$):**\n\n- Với $N = 10^5$, 2 vòng for duyệt cặp sẽ mất $O(N^2)$ (dính TLE).\n- **Gợi mở:** Khi xét đến số $A_j$, ta cần tìm số nào đã xuất hiện trước đó?\n  * Đó là: `target = K - A_j`.\n  * Làm sao biết trước đó đã có bao nhiêu số bằng `target` trong $O(1)$?\n👉 Hãy dùng **Mảng đếm tần số** `cnt[target]`!";
+      }
+
+      // 5. SUMSEQ
+      if (q.includes("sumseq") || q.includes("cap so cong") || q.includes("tong day")) {
+        return "💡 **Hướng dẫn tư duy bài SUMSEQ ($N \\le 10^9$):**\n\n- Vòng lặp chạy tới $10^9$ sẽ dính TLE. Phải dùng **công thức toán học $O(1)$**.\n- Số lượng số hạng: $n = (B - A)/D + 1$.\n- Phần tử cuối: $Last = A + (n - 1) \\cdot D$.\n- Tổng: $S = n \\cdot (A + Last) / 2$.\n⚠️ Lưu ý: $n \\cdot (A + Last)$ lên tới $2 \\cdot 10^{18}$, chia 2 trước nếu $n$ chẵn để chống tràn `long long`!";
+      }
+
+      // 6. Prefix Sum
+      if (q.includes("prefix") || q.includes("cong don") || q.includes("rangesum")) {
+        return "📌 **Khi nào dùng Mảng cộng dồn (Prefix Sum)?**\n\n- Khi có mảng cố định và nhiều truy vấn $Q$ tính tổng đoạn $[L, R]$.\n- Tính trước $Pref[i] = A_1 + A_2 + \\dots + A_i$ trong $O(N)$.\n- Khi hỏi tổng $[L, R]$, lấy: $Pref[R] - Pref[L - 1]$ trong **$O(1)$**!";
+      }
+
+      // 7. Difference Array
+      if (q.includes("difference") || q.includes("mang hieu") || q.includes("restaurant") || q.includes("dat ban")) {
+        return "📌 **Mảng hiệu (Difference Array):**\n\n- Dùng khi cần cộng $V$ vào cả đoạn $[L, R]$ trong $O(1)$:\n  * `diff[L] += V;`\n  * `diff[R + 1] -= V;`\n- Khôi phục mảng ban đầu bằng cách tính Prefix Sum trên mảng `diff` trong $O(N)$.";
+      }
+
+      // 8. Chiến thuật thi
+      if (q.includes("bai 1") || q.includes("chien thuat") || q.includes("6 diem") || q.includes("doat giai")) {
+        return "🎯 **Chiến thuật ăn 6.0 điểm Bài 1:**\n\n1. Giải quyết xong trong 35-40 phút đầu.\n2. Kiểm tra tên tệp `freopen` chuẩn xác 100%.\n3. Đổi biến tổng/tích sang `long long`.\n4. Thử các test biên: $N = 1$, mảng toàn số âm, mảng toàn số bằng nhau!";
+      }
+
+      return "Thầy đã nghe câu hỏi của em! Để thầy có thể gợi ý chính xác nhất, em hãy cho thầy biết:\n1. Em đang làm **bài tập nào**?\n2. Giới hạn dữ liệu ($N$) trong bài là bao nhiêu?\n3. Code của em đang gặp lỗi gì: **Time Limit (TLE)**, **Sai kết quả (WA)** hay **Ra số âm**?\n\nTrả lời 3 câu này, thầy sẽ cùng em tháo gỡ!";
+    }
+
+    async function callGeminiSocratic(userQuery, apiKey) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      const systemInstruction = "Bạn là Trợ lý Sư phạm Olympic Tin học tại Trường Quốc tế Á Châu (AHS). NGUYÊN TẮC BẮT BUỘC: Socratic Guided Learning. TUYỆT ĐỐI KHÔNG ĐƯA RA CODE ĐÁP ÁN HAY LỜI GIẢI HOÀN CHỈNH. Từ chối khéo léo khi học sinh xin code, gợi mở tư duy, phân tích độ phức tạp O(N), nhắc nhở bẫy tràn số long long và gợi ý kỹ thuật mảng. Dùng tiếng Việt chuẩn mực, ngắn gọn, nhiệt tình.";
+
+      const payload = {
+        contents: [{ role: "user", parts: [{ text: userQuery }] }],
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        generationConfig: { temperature: 0.6, maxOutputTokens: 800 }
+      };
+
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!resp.ok) throw new Error("HTTP error " + resp.status);
+      const data = await resp.json();
+      return data.candidates[0].content.parts[0].text;
+    }
+
+    // Trigger KaTeX render trên toàn trang nhiều lần để đảm bảo 100% hiển thị
+    window.addEventListener("DOMContentLoaded", () => {
+      renderMath();
+      setTimeout(renderMath, 300);
+      setTimeout(renderMath, 800);
+      setTimeout(renderMath, 1500);
+    });
+
+    window.addEventListener("load", () => {
+      renderMath();
+      setTimeout(renderMath, 500);
+    });
+  </script>
 
 </body>
 </html>
