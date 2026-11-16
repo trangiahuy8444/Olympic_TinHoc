@@ -2,6 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <!-- Google Fonts: Inter & JetBrains Mono (Ho tro Tieng Viet chuan) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2596,6 +2599,7 @@ int main() {
       resetDiffSim();
       updateSimComplexity(100000);
       testOverflow();
+      renderMath();
     });
   </script>
 
@@ -2964,17 +2968,22 @@ int main() {
     });
 
     // Trigger KaTeX render trên toàn trang nhiều lần để đảm bảo 100% hiển thị
-    window.addEventListener("DOMContentLoaded", () => {
+    function triggerKaTeXAuto() {
       renderMath();
+      setTimeout(renderMath, 100);
       setTimeout(renderMath, 300);
-      setTimeout(renderMath, 800);
-      setTimeout(renderMath, 1500);
-    });
+      setTimeout(renderMath, 600);
+      setTimeout(renderMath, 1200);
+    }
 
-    window.addEventListener("load", () => {
-      renderMath();
-      setTimeout(renderMath, 500);
-    });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", triggerKaTeXAuto);
+    } else {
+      triggerKaTeXAuto();
+    }
+    window.addEventListener("load", triggerKaTeXAuto);
+    // Chạy kích hoạt tức thì không chờ đợi
+    triggerKaTeXAuto();
   </script>
 
 </body>
