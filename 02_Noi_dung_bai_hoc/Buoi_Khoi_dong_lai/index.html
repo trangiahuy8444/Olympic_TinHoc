@@ -124,7 +124,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col w-full antialiased">
+<body class="h-screen flex flex-col w-full antialiased overflow-hidden">
 
   <!-- ==================== HEADER (FULL WIDTH) ==================== -->
     <!-- ==================== HEADER (SLIM & PROFESSIONAL) ==================== -->
@@ -303,7 +303,7 @@
     </aside>
 
     <!-- ==================== MAIN CONTENT (EDGE-TO-EDGE) ==================== -->
-    <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto">
+    <main id="main-content" class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto h-[calc(100vh-61px)] custom-scrollbar">
 
 
     <!-- ============================================================ -->
@@ -947,7 +947,6 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
             </button>
           </div>
         </div>
-      </div>
 </section>
 
         <section id="content-buoi-3" class="tab-content hidden space-y-6">
@@ -1568,7 +1567,6 @@ cout &lt;&lt; max_so_far &lt;&lt; "
             </button>
           </div>
         </div>
-      </div>
 </section>
 
         <section id="content-buoi-4" class="tab-content hidden space-y-6">
@@ -2187,7 +2185,6 @@ sort(intervals.begin(), intervals.end(), cmp);</code></pre>
             </button>
           </div>
         </div>
-      </div>
 </section>
 
     <section id="content-sim-all" class="tab-content hidden space-y-6">
@@ -3642,8 +3639,14 @@ void bfs(int start_node) {
     function jumpToExercise(tabId) {
       switchTab(tabId);
       setTimeout(() => {
+        const mainEl = document.getElementById('main-content');
         const el = document.getElementById(tabId + '-exercises');
-        if (el) {
+        if (mainEl && el) {
+          mainEl.scrollTo({
+            top: el.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        } else if (el) {
           el.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
@@ -4133,6 +4136,14 @@ void bfs(int start_node) {
 
     function queryPrefixSim() {
       queryPrefixSimSession();
+    }
+
+    function initPrefixSim() {
+      queryPrefixSimSession();
+    }
+
+    function renderMath() {
+      triggerKaTeXAuto();
     }
 
     // ============================================================
@@ -4838,21 +4849,29 @@ int main() {
 
     function onSelectProblem(probKey) {
       const p = PROBLEM_DATABASE[probKey] || PROBLEM_DATABASE.SUMSEQ;
-      document.getElementById('playground-filename').innerText = p.fileCpp;
-      document.getElementById('label-inp-file').innerText = p.fileInp;
-      document.getElementById('label-out-file').innerText = p.fileOut;
-      document.getElementById('playground-input').value = p.defaultInput;
-      
-      const codeArea = document.getElementById('playground-code-area');
-      codeArea.textContent = p.code;
-      
-      document.getElementById('stat-complexity').innerText = p.complexity;
-      document.getElementById('playground-output').innerText = "(Chờ chạy mô phỏng)";
-      document.getElementById('badge-exec-status').className = "text-xs font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600";
-      document.getElementById('badge-exec-status').innerText = "Sẵn sàng";
+      const fn = document.getElementById('playground-filename');
+      if (fn) fn.innerText = p.fileCpp;
+      const lip = document.getElementById('label-inp-file');
+      if (lip) lip.innerText = p.fileInp;
+      const lop = document.getElementById('label-out-file');
+      if (lop) lop.innerText = p.fileOut;
+      const pin = document.getElementById('playground-input');
+      if (pin) pin.value = p.defaultInput;
 
-      if (window.Prism) {
-        Prism.highlightElement(codeArea);
+      const codeArea = document.getElementById('playground-code-area');
+      if (codeArea) {
+        codeArea.textContent = p.code;
+        if (window.Prism) Prism.highlightElement(codeArea);
+      }
+
+      const sc = document.getElementById('stat-complexity');
+      if (sc) sc.innerText = p.complexity;
+      const po = document.getElementById('playground-output');
+      if (po) po.innerText = "(Chờ chạy mô phỏng)";
+      const bes = document.getElementById('badge-exec-status');
+      if (bes) {
+        bes.className = "text-xs font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600";
+        bes.innerText = "Sẵn sàng";
       }
     }
 
@@ -4889,13 +4908,13 @@ int main() {
 
     // Khởi tạo mặc định khi tải trang
     window.addEventListener('DOMContentLoaded', () => {
-      onSelectProblem('SUMSEQ');
-      initCountingSim();
-      initPrefixSim();
-      resetDiffSim();
-      updateSimComplexity(100000);
-      testOverflow();
-      renderMath();
+      try { onSelectProblem('SUMSEQ'); } catch(e) {}
+      try { initCountingSim(); } catch(e) {}
+      try { initPrefixSim(); } catch(e) {}
+      try { resetDiffSim(); } catch(e) {}
+      try { updateSimComplexity(100000); } catch(e) {}
+      try { testOverflow(); } catch(e) {}
+      try { renderMath(); } catch(e) {}
     });
   </script>
 
