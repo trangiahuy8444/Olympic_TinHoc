@@ -139,7 +139,7 @@ pair<int, int> p = {10, 20};
 int x = p.first;
 int y = p.second;
 
-vector<pair<int, int>> points = {{1, 2}, {0, 5}, {1, 1}};
+vector<pair<int, int>> points = { {1, 2}, {0, 5}, {1, 1} };
 sort(points.begin(), points.end()); // C++ tự động so sánh first rồi đến second!
 ```
 
