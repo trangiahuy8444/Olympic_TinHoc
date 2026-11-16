@@ -127,315 +127,194 @@
 <body class="min-h-screen flex flex-col w-full antialiased">
 
   <!-- ==================== HEADER (FULL WIDTH) ==================== -->
-  <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
-      <!-- Logo & Tiêu đề -->
+    <!-- ==================== HEADER (SLIM & PROFESSIONAL) ==================== -->
+  <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+    <div class="w-full px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+      <!-- Bên Trái: Nút Toggle Menu + Logo + Tiêu đề -->
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 bg-ahs-primary rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-inner tracking-wider shrink-0">
+        <!-- Nút Toggle Sidebar -->
+        <button onclick="toggleSidebar()" id="btn-toggle-sidebar" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 active:bg-slate-200 transition flex items-center justify-center border border-slate-200 shadow-2xs" title="Đóng / Mở menu điều hướng (Sidebar)">
+          <i data-lucide="menu" class="w-5 h-5 text-slate-700"></i>
+        </button>
+
+        <div class="w-10 h-10 bg-ahs-primary rounded-xl flex items-center justify-center text-white font-extrabold text-lg shadow-inner tracking-wider shrink-0">
           AHS
         </div>
         <div>
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-ahs-primary bg-ahs-light px-2.5 py-0.5 rounded-full border border-blue-200">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-ahs-primary bg-ahs-light px-2 py-0.5 rounded-full border border-blue-200">
               Asian School • Tổ Tin Học
             </span>
-            <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+            <span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1 hidden sm:flex">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Giai Đoạn Tăng Tốc 2026–2027
             </span>
           </div>
-          <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">
-            Cổng Học Liệu Tương Tác & Mô Phỏng Thuật Toán Olympic C++
+          <h1 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight truncate max-w-xs sm:max-w-md md:max-w-xl">
+            Cổng Học Liệu Tương Tác & Lập Trình Thi Đấu Olympic C++
           </h1>
         </div>
       </div>
 
-      <!-- Quick Action Badges: TRUY CẬP NHANH BTVN, BÀI TẬP LỚP, SỔ TAY -->
-      <div class="flex items-center gap-2 flex-wrap">
-        <button onclick="switchTab('baitap-nha')" title="Xem Bài tập về nhà & Chatbox Gia sư AI" class="flex items-center gap-1.5 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-sm transition border border-purple-400 transform hover:scale-105 active:scale-95">
-          <i data-lucide="home" class="w-4 h-4"></i>
-          <span>🏠 BTVN & Gia Sư AI</span>
-        </button>
-        <button onclick="switchTab('baitap-lop')" title="Xem Phiếu bài tập thực hành tại lớp" class="flex items-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-sm transition border border-blue-400">
-          <i data-lucide="clipboard-list" class="w-4 h-4"></i>
-          <span>📝 Bài Tập Tại Lớp</span>
-        </button>
-        <button onclick="switchTab('handbook')" title="Mở nhanh Sổ tay Tra Cứu (Phím F1)" class="flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-sm transition border border-emerald-400">
+      <!-- Bên Phải: Nhóm nút chức năng nhanh (Gom nhóm gọn gàng) -->
+      <div class="flex items-center gap-2">
+        <!-- Nút Sổ Tay & Bảng Công Thức (Gộp chung) -->
+        <button onclick="switchTab('handbook')" title="Mở Sổ tay Tra Cứu & Bảng Công Thức (Phím F1)" class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-emerald-500">
           <i data-lucide="book-open" class="w-4 h-4"></i>
-          <span>📖 Sổ Tay Tra Cứu</span>
-          <span class="bg-white/20 text-[10px] px-1 py-0.2 rounded font-mono hidden sm:inline">F1</span>
+          <span class="hidden md:inline">Sổ Tay & Công Thức</span>
+          <span class="md:hidden">Sổ Tay</span>
+          <span class="bg-white/20 text-[10px] px-1 py-0.2 rounded font-mono hidden lg:inline">F1</span>
         </button>
-        <button onclick="switchTab('formula')" title="Tra cứu công thức và mẹo thi" class="flex items-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-sm transition border border-indigo-400">
-          <i data-lucide="calculator" class="w-4 h-4"></i>
-          <span>Bảng Công Thức</span>
-        </button>
-        <button onclick="switchTab('playground')" class="flex items-center gap-1.5 px-3 py-2 bg-ahs-primary hover:bg-ahs-dark text-white font-bold text-xs sm:text-sm rounded-xl shadow-sm transition">
+        <!-- Nút Playground -->
+        <button onclick="switchTab('playground')" title="Mở Playground chạy code C++ & File .INP/.OUT" class="flex items-center gap-1.5 px-3 py-1.5 bg-ahs-primary hover:bg-ahs-dark text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition">
           <i data-lucide="terminal" class="w-4 h-4"></i>
-          <span>Playground C++</span>
+          <span class="hidden md:inline">Playground C++</span>
+        </button>
+        <!-- Nút BTVN & AI -->
+        <button onclick="switchTab('baitap-nha')" title="Xem Bài tập về nhà & Hỏi Gia Sư AI Socratic" class="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-purple-400">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+          <span class="hidden lg:inline">Gia Sư AI</span>
         </button>
       </div>
     </div>
-
-    <!-- Main Navigation Bar (Clean & Organized, Three-Group Segment) -->
-    <nav class="w-full px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200 py-1.5 flex items-center justify-between overflow-x-auto custom-scrollbar gap-2">
-      <!-- Nhóm 1: 4 Buổi Học Trọng Tâm -->
-      <div class="flex items-center gap-1 shrink-0">
-        <span class="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider px-1.5 hidden xl:inline">Lộ Trình:</span>
-        <button onclick="switchTab('buoi-1')" id="tab-buoi-1" class="nav-tab active flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-700 hover:text-ahs-primary whitespace-nowrap transition">
-          <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Buổi 1: I/O & TLE
-        </button>
-        <button onclick="switchTab('buoi-2')" id="tab-buoi-2" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-700 hover:text-ahs-primary whitespace-nowrap transition">
-          <i data-lucide="hash" class="w-3.5 h-3.5"></i> Buổi 2: Mảng Đếm
-        </button>
-        <button onclick="switchTab('buoi-3')" id="tab-buoi-3" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-700 hover:text-ahs-primary whitespace-nowrap transition">
-          <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> Buổi 3: Prefix Sum
-        </button>
-        <button onclick="switchTab('buoi-4')" id="tab-buoi-4" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-700 hover:text-ahs-primary whitespace-nowrap transition">
-          <i data-lucide="git-commit" class="w-3.5 h-3.5"></i> Buổi 4: Mảng Hiệu
-        </button>
-      </div>
-
-      <div class="h-4 w-px bg-slate-300 shrink-0 hidden sm:block"></div>
-
-      <!-- Nhóm 2: Bài Tập Thực Hành & Về Nhà (Có Chatbox AI) -->
-      <div class="flex items-center gap-1 shrink-0">
-        <button onclick="switchTab('baitap-lop')" id="tab-baitap-lop" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg text-blue-800 bg-blue-50/80 hover:bg-blue-100 border border-blue-200 whitespace-nowrap transition">
-          <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-blue-600"></i> Bài Tập Tại Lớp (4)
-        </button>
-        <button onclick="switchTab('baitap-nha')" id="tab-baitap-nha" class="nav-tab flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-300 whitespace-nowrap transition shadow-xs">
-          <i data-lucide="home" class="w-3.5 h-3.5 text-purple-600"></i> BTVN & AI Gia Sư (5)
-          <span class="bg-purple-600 text-white text-[9px] px-1 py-0.2 rounded font-mono font-bold">HOT</span>
-        </button>
-      </div>
-
-      <div class="h-4 w-px bg-slate-300 shrink-0 hidden sm:block"></div>
-
-      <!-- Nhóm 3: Kho Tài Nguyên & Công Cụ (Nổi Bật) -->
-      <div class="flex items-center gap-1 shrink-0">
-        <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 whitespace-nowrap transition shadow-xs">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-600"></i> Sổ Tay (Handbook)
-        </button>
-        <button onclick="switchTab('formula')" id="tab-formula" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 whitespace-nowrap transition">
-          <i data-lucide="calculator" class="w-3.5 h-3.5 text-indigo-600"></i> Bảng Công Thức
-        </button>
-        <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-amber-800 bg-amber-50/70 hover:bg-amber-100 whitespace-nowrap transition">
-          <i data-lucide="activity" class="w-3.5 h-3.5 text-amber-600"></i> Mô Phỏng (4)
-        </button>
-        <button onclick="switchTab('playground')" id="tab-playground" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-blue-800 bg-blue-50/70 hover:bg-blue-100 whitespace-nowrap transition">
-          <i data-lucide="code-2" class="w-3.5 h-3.5 text-blue-600"></i> Playground C++
-        </button>
-        <button onclick="switchTab('kehoach')" id="tab-kehoach" class="nav-tab flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-700 hover:text-ahs-primary whitespace-nowrap transition">
-          <i data-lucide="trophy" class="w-3.5 h-3.5 text-emerald-600"></i> Kế Hoạch Thi Đấu
-        </button>
-      </div>
-    </nav>
   </header>
 
-  <!-- ==================== MAIN CONTENT (EDGE-TO-EDGE) ==================== -->
-  <main class="w-full flex-1 px-4 sm:px-6 lg:px-8 py-6">
+  <!-- ==================== BODY WRAPPER: SIDEBAR + MAIN CONTENT ==================== -->
+  <div class="w-full flex-1 flex relative">
+    
+    <!-- BACKDROP CHO MOBILE -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-30 hidden md:hidden transition-opacity"></div>
 
-    <!-- ============================================================ -->
-    <!-- TAB 1: BUỔI 1: CHUẨN HÓA CP, VÀO RA TỆP & TRÁNH TLE / TRÀN SỐ -->
-    <!-- ============================================================ -->
-    <section id="content-buoi-1" class="tab-content block space-y-6">
-      <!-- Banner Buổi 1 -->
-      <div class="w-full bg-gradient-to-r from-ahs-primary to-blue-700 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold tracking-wide uppercase mb-2">
-            Khởi Động Lại • Buổi 01
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Chuyển Giao Lập Trình Thi Đấu: Cấu Trúc File, Độ Phức Tạp & Tránh Tràn Số
-          </h2>
-          <p class="text-blue-100 text-sm sm:text-base mt-1 max-w-4xl">
-            Bước chuyển mình từ "học cú pháp trên Codelearn" sang "thi đấu giải": Kiểm soát 1 giây $10^8$ phép tính, làm quen với <code>freopen</code> và loại bỏ 100% bẫy tràn số nguyên.
-          </p>
-        </div>
-        <button onclick="runSimComplexity()" class="shrink-0 px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-sm rounded-xl shadow transition flex items-center gap-2">
-          <i data-lucide="gauge" class="w-4 h-4"></i> Thử nghiệm Đo TLE & Tràn số
+    <!-- ==================== SIDEBAR NAVIGATION DỌC ==================== -->
+    <aside id="main-sidebar" class="w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 transition-all duration-300 ease-in-out z-40 fixed md:sticky top-0 md:top-[61px] h-screen md:h-[calc(100vh-61px)] overflow-y-auto custom-scrollbar shadow-lg md:shadow-none -translate-x-full md:translate-x-0">
+      
+      <!-- Sidebar Header -->
+      <div class="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <i data-lucide="compass" class="w-3.5 h-3.5 text-ahs-primary"></i> Danh Mục Học Vụ
+        </span>
+        <!-- Nút đóng trên mobile / thu gọn trên desktop -->
+        <button onclick="toggleSidebar()" class="p-1 hover:bg-slate-200 text-slate-400 hover:text-slate-700 rounded-lg transition" title="Đóng menu">
+          <i data-lucide="x" class="w-4 h-4 md:hidden"></i>
+          <i data-lucide="chevrons-left" class="w-4 h-4 hidden md:block"></i>
         </button>
       </div>
 
-      <!-- 3 Cột Nội Dung Chính -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Cột Trái: Lý Thuyết Trọng Tâm (5 cột) -->
-        <div class="lg:col-span-5 space-y-6">
-          <!-- Card 1: Template Vàng -->
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                <i data-lucide="code" class="w-5 h-5 text-ahs-primary"></i> Template C++ Chuẩn Phòng Thi
-              </h3>
-              <button onclick="copyCode('snippet-template')" class="text-xs px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-md border border-slate-300 transition flex items-center gap-1">
-                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
-              </button>
-            </div>
-            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-xs font-mono overflow-x-auto"><code id="snippet-template" class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-void solve() {
-    long long n;
-    if (!(cin &gt;&gt; n)) return;
-    cout &lt;&lt; n &lt;&lt; "\n";
-}
-
-int main() {
-    // 1. Tang toc I/O (Tranh TLE khi N >= 10^5)
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    // 2. Doc ghi tep thi Olympic
-    // freopen("BAITHI.INP", "r", stdin);
-    // freopen("BAITHI.OUT", "w", stdout);
-
-    solve();
-    return 0;
-}</code></pre>
-            <div class="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 space-y-1">
-              <p class="font-bold flex items-center gap-1.5"><i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i> Hai điều cấm kỵ:</p>
-              <ul class="list-disc list-inside space-y-0.5 text-amber-800">
-                <li>Tuyệt đối <strong>không</strong> dùng <code>endl</code> (dùng <code>\n</code>).</li>
-                <li><strong>Không</strong> in câu chữ thừa: <code>"Nhap n: "</code> (Sẽ bị 0 điểm).</li>
-              </ul>
-            </div>
+      <!-- NAV GROUPS -->
+      <nav class="flex-1 p-3 space-y-5">
+        
+        <!-- NHÓM 1: BÀI HỌC CHUYÊN ĐỀ -->
+        <div>
+          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-500"></i> Bài Học Chuyên Đề
           </div>
-
-          <!-- Card 2: Quy Tắc Bắt Buộc Về Độ Phức Tạp -->
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="timer" class="w-5 h-5 text-emerald-600"></i> Quy Tắc Vàng: 1 Giây $\approx 10^8$ Phép Tính
-            </h3>
-            <div class="overflow-x-auto">
-              <table class="w-full text-xs text-left border-collapse">
-                <thead>
-                  <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
-                    <th class="p-2 font-bold">Giới hạn $N$</th>
-                    <th class="p-2 font-bold">Độ phức tạp</th>
-                    <th class="p-2 font-bold">Thuật toán</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                  <tr><td class="p-2 font-mono text-purple-700">$N \le 20$</td><td class="p-2 font-mono">$O(2^N)$</td><td class="p-2">Quay lui, vét cạn</td></tr>
-                  <tr><td class="p-2 font-mono text-rose-700">$N \le 2000$</td><td class="p-2 font-mono">$O(N^2)$</td><td class="p-2">2 vòng for, DP 2 chiều</td></tr>
-                  <tr class="bg-blue-50/50"><td class="p-2 font-mono text-blue-700 font-bold">$N \le 10^5$</td><td class="p-2 font-mono font-bold text-blue-700">$O(N \log N)$</td><td class="p-2 font-medium">Sắp xếp, Nhị phân</td></tr>
-                  <tr class="bg-emerald-50/50"><td class="p-2 font-mono text-emerald-700 font-bold">$N \le 10^6$</td><td class="p-2 font-mono font-bold text-emerald-700">$O(N)$</td><td class="p-2 font-medium">Mảng cộng dồn, Mảng đếm</td></tr>
-                  <tr><td class="p-2 font-mono text-slate-700">$N \ge 10^9$</td><td class="p-2 font-mono">$O(1), O(\log N)$</td><td class="p-2">Toán học, Luỹ thừa</td></tr>
-                </tbody>
-              </table>
-            </div>
+          <div class="space-y-1">
+            <button onclick="switchTab('buoi-2')" id="tab-buoi-2" class="nav-tab active w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <span class="w-6 h-6 rounded-lg bg-blue-100 text-ahs-primary font-bold flex items-center justify-center text-xs shrink-0">B2</span>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Buổi 2: Mảng Đếm & Xâu</div>
+                <div class="text-[10px] text-slate-500 truncate">Tần số & Tối ưu ký tự</div>
+              </div>
+            </button>
+            <button onclick="switchTab('buoi-3')" id="tab-buoi-3" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs shrink-0">B3</span>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Buổi 3: Mảng Cộng Dồn</div>
+                <div class="text-[10px] text-slate-500 truncate">Prefix Sum 1D / 2D</div>
+              </div>
+            </button>
+            <button onclick="switchTab('buoi-4')" id="tab-buoi-4" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <span class="w-6 h-6 rounded-lg bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xs shrink-0">B4</span>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Buổi 4: Mảng Hiệu & Sort</div>
+                <div class="text-[10px] text-slate-500 truncate">Difference Array & Sắp xếp</div>
+              </div>
+            </button>
           </div>
         </div>
 
-        <!-- Cột Phải: Bài Tập Thực Hành & Code Mẫu (7 cột) -->
-        <div class="lg:col-span-7 space-y-6">
-          <!-- Bài Thực Hành 1: SUMSEQ -->
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
-              <div>
-                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">Bài 1 • Thực hành</span>
-                <h4 class="text-base font-bold text-slate-900 mt-1">SUMSEQ — Tính Tổng Dãy Số Lớn ($N \le 10^9$)</h4>
-              </div>
-              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Tệp: SUMSEQ.INP / OUT</span>
-            </div>
-            
-            <p class="text-sm text-slate-700">
-              Cho ba số nguyên dương $A, B, D$ ($A \le B \le 10^9, D \le 10^5$). Dãy số cấp số cộng gồm các phần tử: $A, A + D, A + 2D, \dots \le B$. Tính tổng tất cả phần tử không vượt quá $B$.
-            </p>
-
-            <div class="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                <span class="text-slate-500 font-bold block mb-1">SUMSEQ.INP:</span>
-                3 15 4
-              </div>
-              <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-emerald-900">
-                <span class="text-emerald-700 font-bold block mb-1">SUMSEQ.OUT:</span>
-                36
-              </div>
-            </div>
-
-            <!-- Code Mẫu $O(1)$ -->
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold text-slate-700 flex items-center gap-1">
-                  <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i> Thuật toán $O(1)$ tránh TLE & Tràn số:
-                </span>
-                <button onclick="copyCode('code-sumseq')" class="text-xs text-blue-600 hover:underline">Sao chép code</button>
-              </div>
-              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-xs font-mono overflow-x-auto"><code id="code-sumseq" class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    long long A, B, D;
-    if (!(cin &gt;&gt; A &gt;&gt; B &gt;&gt; D)) return 0;
-
-    if (A &gt; B) { cout &lt;&lt; 0 &lt;&lt; "\n"; return 0; }
-
-    long long n = (B - A) / D + 1;
-    long long last = A + (n - 1) * D;
-
-    // Tinh n * (A + last) / 2 bang cach chia truoc de chong tran so
-    long long ans;
-    if (n % 2 == 0) ans = (n / 2) * (A + last);
-    else ans = n * ((A + last) / 2);
-
-    cout &lt;&lt; ans &lt;&lt; "\n";
-    return 0;
-}</code></pre>
-            </div>
-            <div class="flex justify-end">
-              <button onclick="loadToPlayground('SUMSEQ')" class="text-xs font-bold px-3 py-1.5 bg-blue-50 text-ahs-primary hover:bg-blue-100 rounded-lg border border-blue-200 transition flex items-center gap-1.5">
-                <i data-lucide="play" class="w-3.5 h-3.5"></i> Nạp bài này vào Playground để chạy thử
-              </button>
-            </div>
+        <!-- NHÓM 2: LUYỆN TẬP & THỰC HÀNH -->
+        <div>
+          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-purple-500"></i> Luyện Tập & Thực Hành
           </div>
-
-          <!-- Bài Thực Hành 2: PAIRPROD -->
-          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
-              <div>
-                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">Bài 2 • Thực hành</span>
-                <h4 class="text-base font-bold text-slate-900 mt-1">PAIRPROD — Tích Lớn Nhất Của 2 Số ($N \le 10^5, A_i \le 10^9$)</h4>
+          <div class="space-y-1">
+            <button onclick="switchTab('baitap-lop')" id="tab-baitap-lop" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="clipboard-list" class="w-4 h-4 text-blue-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Bài Tập Tại Lớp</div>
+                <div class="text-[10px] text-slate-500 truncate">4 Bài thực hành kèm Test</div>
               </div>
-              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Tệp: PAIRPROD.INP / OUT</span>
-            </div>
-            
-            <p class="text-sm text-slate-700">
-              Cho mảng $N$ số nguyên dương. Tìm tích lớn nhất của 2 phần tử bất kỳ. Chú ý: $A_i$ lên tới $10^9$, tích có thể đạt $10^{18}$, nếu dùng kiểu <code>int</code> sẽ bị âm!
-            </p>
-
-            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-xs font-mono overflow-x-auto"><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int n;
-    if (!(cin &gt;&gt; n)) return 0;
-    vector&lt;long long&gt; a(n);
-    for (int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];
-
-    sort(a.begin(), a.end());
-    // Tich lon nhat cua 2 so duong lon nhat o cuoi mang
-    long long ans = a[n - 1] * a[n - 2];
-    cout &lt;&lt; ans &lt;&lt; "\n";
-    return 0;
-}</code></pre>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">4</span>
+            </button>
+            <button onclick="switchTab('baitap-nha')" id="tab-baitap-nha" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="home" class="w-4 h-4 text-purple-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">BTVN & AI Gia Sư</div>
+                <div class="text-[10px] text-slate-500 truncate">5 Bài + Chatbox Socratic</div>
+              </div>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-600 text-white animate-pulse">AI</span>
+            </button>
+            <button onclick="switchTab('playground')" id="tab-playground" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="terminal" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Playground C++</div>
+                <div class="text-[10px] text-slate-500 truncate">Mô phỏng file .INP/.OUT</div>
+              </div>
+            </button>
+            <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="activity" class="w-4 h-4 text-amber-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Phòng Mô Phỏng</div>
+                <div class="text-[10px] text-slate-500 truncate">4 Thuật toán trực quan</div>
+              </div>
+            </button>
           </div>
+        </div>
+
+        <!-- NHÓM 3: SỔ TAY, CÔNG THỨC & CHIẾN LƯỢC -->
+        <div>
+          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="book-marked" class="w-3.5 h-3.5 text-emerald-500"></i> Tra Cứu & Chiến Lược
+          </div>
+          <div class="space-y-1">
+            <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="book-open" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Sổ Tay & Bảng Công Thức</div>
+                <div class="text-[10px] text-slate-500 truncate">Toàn bộ Buổi 1 + 24 Công thức</div>
+              </div>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">F1</span>
+            </button>
+            <button onclick="switchTab('kehoach')" id="tab-kehoach" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="trophy" class="w-4 h-4 text-amber-500 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Kế Hoạch Thi Đấu</div>
+                <div class="text-[10px] text-slate-500 truncate">Lộ trình & Mục tiêu giải TP</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-3.5 border-t border-slate-200 bg-slate-50/70">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span class="text-[11px] font-semibold text-slate-600">Đội Tuyển Tin Học 2026–2027</span>
         </div>
       </div>
-    </section>
+
+    </aside>
+
+    <!-- ==================== MAIN CONTENT (EDGE-TO-EDGE) ==================== -->
+    <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto">
+
 
     <!-- ============================================================ -->
     <!-- TAB 2: BUỔI 2: MẢNG ĐẾM TẦN SỐ & XỬ LÝ XÂU KÝ TỰ             -->
     <!-- ============================================================ -->
-    <section id="content-buoi-2" class="tab-content hidden space-y-6">
+    <section id="content-buoi-2" class="tab-content block space-y-6">
       <div class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold tracking-wide uppercase mb-2">
@@ -1698,25 +1577,28 @@ int main() {
           <i data-lucide="compass" class="w-4 h-4 text-ahs-primary"></i> Tra cứu nhanh:
         </span>
         <a href="#hb-buoi1-template" class="px-3 py-1.5 bg-blue-50 text-ahs-primary hover:bg-blue-100 rounded-lg border border-blue-200 transition flex items-center gap-1.5">
-          <i data-lucide="code" class="w-3.5 h-3.5"></i> 1. Template C++ & Fast I/O
+          <i data-lucide="code" class="w-3.5 h-3.5"></i> 1. Template & Fast I/O
         </a>
         <a href="#hb-buoi1-freopen" class="px-3 py-1.5 bg-amber-50 text-amber-800 hover:bg-amber-100 rounded-lg border border-amber-200 transition flex items-center gap-1.5">
-          <i data-lucide="file-text" class="w-3.5 h-3.5"></i> 2. Kỹ Thuật Vào/Ra Tệp & Lỗi Bị 0 Điểm
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i> 2. Vào/Ra Tệp & Lỗi 0đ
         </a>
         <a href="#hb-overflow" class="px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-lg border border-rose-200 transition flex items-center gap-1.5">
-          <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> 3. Cẩm Nang Chống Tràn Số (Overflow)
+          <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> 3. Chống Tràn Số (Overflow)
         </a>
         <a href="#hb-complexity" class="px-3 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg border border-emerald-200 transition flex items-center gap-1.5">
-          <i data-lucide="gauge" class="w-3.5 h-3.5"></i> 4. Quy Tắc Vàng 1s $\approx 10^8$ Phép Tính
+          <i data-lucide="gauge" class="w-3.5 h-3.5"></i> 4. Quy Tắc Vàng 1s $10^8$ ops
         </a>
         <a href="#hb-classics" class="px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-lg border border-indigo-200 transition flex items-center gap-1.5">
-          <i data-lucide="award" class="w-3.5 h-3.5"></i> 5. Bài Mẫu Buổi 1 ($O(1)$ & Chống Tràn)
+          <i data-lucide="award" class="w-3.5 h-3.5"></i> 5. Bài Mẫu $O(1)$ Buổi 1
         </a>
-        <a href="#hb-stl" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
-          <i data-lucide="cpu" class="w-3.5 h-3.5"></i> 6. Bảng Tra Cứu C++ STL
+        <a href="#hb-formulas-compendium" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg border border-purple-200 transition flex items-center gap-1.5">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i> 6. Tra Cứu 24+ Công Thức
+        </a>
+        <a href="#hb-stl" class="px-3 py-1.5 bg-cyan-50 text-cyan-800 hover:bg-cyan-100 rounded-lg border border-cyan-200 transition flex items-center gap-1.5">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i> 7. Tra Cứu C++ STL
         </a>
         <a href="#hb-subtask" class="px-3 py-1.5 bg-teal-50 text-teal-800 hover:bg-teal-100 rounded-lg border border-teal-200 transition flex items-center gap-1.5">
-          <i data-lucide="target" class="w-3.5 h-3.5"></i> 7. Chiến Lược Ăn Điểm Subtask
+          <i data-lucide="target" class="w-3.5 h-3.5"></i> 8. Chiến Thuật Subtask
         </a>
       </div>
 
@@ -2071,335 +1953,19 @@ cout &lt;&lt; ans &lt;&lt; "
         </div>
       </div>
 
-      <!-- MỤC 6: BẢNG TRA CỨU C++ STL THƯỜNG DÙNG TRONG THI ĐẤU -->
-      <div id="hb-stl" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-          <span class="w-7 h-7 rounded-lg bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-sm">6</span>
-          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i data-lucide="cpu" class="w-5 h-5 text-purple-600"></i> Bảng Tra Cứu C++ STL Cốt Lõi Cho Lập Trình Thi Đấu
-          </h3>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
-            <thead class="bg-slate-100 text-slate-800 font-bold">
-              <tr>
-                <th class="p-3">Hàm / Cấu Trúc Dữ Liệu</th>
-                <th class="p-3">Thư Viện C++</th>
-                <th class="p-3">Độ Phức Tạp</th>
-                <th class="p-3">Mục Đích & Ứng Dụng Trong Bài Thi</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr>
-                <td class="p-3 font-mono font-bold text-blue-700">std::vector&lt;T&gt;</td>
-                <td class="p-3 font-mono">&lt;vector&gt;</td>
-                <td class="p-3 font-mono">$O(1)$ push/access</td>
-                <td class="p-3">Mảng động co giãn kích thước linh hoạt, an toàn bộ nhớ hơn mảng tĩnh C.</td>
-              </tr>
-              <tr class="bg-blue-50/30">
-                <td class="p-3 font-mono font-bold text-blue-700">sort(a.begin(), a.end())</td>
-                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
-                <td class="p-3 font-mono">$O(N \log N)$</td>
-                <td class="p-3">Sắp xếp dãy số tăng dần (Introsort: QuickSort + HeapSort + InsertionSort).</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono font-bold text-blue-700">lower_bound(a.begin(), a.end(), x)</td>
-                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
-                <td class="p-3 font-mono">$O(\log N)$</td>
-                <td class="p-3">Tìm vị trí phần tử đầu tiên $\ge x$ trên mảng <strong>đã sắp xếp</strong>.</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono font-bold text-blue-700">upper_bound(a.begin(), a.end(), x)</td>
-                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
-                <td class="p-3 font-mono">$O(\log N)$</td>
-                <td class="p-3">Tìm vị trí phần tử đầu tiên $&gt; x$ trên mảng <strong>đã sắp xếp</strong>.</td>
-              </tr>
-              <tr class="bg-purple-50/30">
-                <td class="p-3 font-mono font-bold text-purple-700">std::set&lt;T&gt;</td>
-                <td class="p-3 font-mono">&lt;set&gt;</td>
-                <td class="p-3 font-mono">$O(\log N)$</td>
-                <td class="p-3">Tập hợp loại bỏ phần tử trùng lặp và tự động sắp xếp theo thứ tự tăng dần (Red-Black Tree).</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono font-bold text-purple-700">std::map&lt;Key, Val&gt;</td>
-                <td class="p-3 font-mono">&lt;map&gt;</td>
-                <td class="p-3 font-mono">$O(\log N)$</td>
-                <td class="p-3">Bảng ánh xạ từ Khóa sang Giá trị (Đếm tần số số lớn, từ điển xâu ký tự).</td>
-              </tr>
-              <tr class="bg-emerald-50/30">
-                <td class="p-3 font-mono font-bold text-emerald-700">std::unordered_map&lt;Key, Val&gt;</td>
-                <td class="p-3 font-mono">&lt;unordered_map&gt;</td>
-                <td class="p-3 font-mono">$O(1)$ trung bình</td>
-                <td class="p-3">Bảng băm (Hash Table) tra cứu siêu tốc khi cần tối ưu thời gian dưới 1 giây.</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono font-bold text-indigo-700">priority_queue&lt;T&gt;</td>
-                <td class="p-3 font-mono">&lt;queue&gt;</td>
-                <td class="p-3 font-mono">$O(\log N)$</td>
-                <td class="p-3">Hàng đợi ưu tiên (Max-Heap mặc định, hoặc Min-Heap với greater&lt;T&gt;), ứng dụng Dijkstra.</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono font-bold text-slate-700">__gcd(a, b)</td>
-                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
-                <td class="p-3 font-mono">$O(\log(\min(a,b)))$</td>
-                <td class="p-3">Thuật toán Euclid tìm ước chung lớn nhất của 2 số nguyên.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- MỤC 7: CHIẾN THUẬT PHÂN BỔ THỜI GIAN & ĂN ĐIỂM SUBTASK (ĐOẠT GIẢI) -->
-      <div id="hb-subtask" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-          <span class="w-7 h-7 rounded-lg bg-teal-100 text-teal-800 font-bold flex items-center justify-center text-sm">7</span>
-          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i data-lucide="target" class="w-5 h-5 text-teal-600"></i> Chiến Thuật Phân Bổ Thời Gian & Bí Kíp Ăn Trọn Điểm Subtask (180 Phút)
-          </h3>
-        </div>
-
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Kỳ thi Học sinh giỏi Tin học được chấm theo cơ chế <strong>chấm điểm Subtask độc lập</strong>. Bạn không cần phải giải toàn bộ bài 3 bằng thuật toán siêu khó mới có giải! Bí quyết của thủ khoa là <em>"Ăn trọn điểm bài dễ, vét sạch điểm bài khó"</em>.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
-          <!-- Giai đoạn 1 -->
-          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-            <span class="font-bold text-slate-900 flex items-center gap-1.5">
-              <i data-lucide="clock" class="w-4 h-4 text-slate-500"></i> 15 Phút Đầu
-            </span>
-            <p class="text-slate-600 leading-relaxed">
-              Đọc lướt <strong>TOÀN BỘ 3-4 bài thi</strong>. Đọc kỹ phần bảng Subtask của từng bài để phân loại: bài nào giải được trọn vẹn, bài nào chỉ làm vét cạn.
-            </p>
-          </div>
-
-          <!-- Giai đoạn 2 -->
-          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
-            <span class="font-bold text-emerald-900 flex items-center gap-1.5">
-              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> 45 Phút: Bài 1
-            </span>
-            <p class="text-emerald-800 leading-relaxed">
-              Giải quyết dứt điểm Bài 1. Chú ý bẫy tràn số và Fast I/O $\to$ <strong>Cầm chắc 6.0 điểm trọn vẹn</strong> trong tay!
-            </p>
-          </div>
-
-          <!-- Giai đoạn 3 -->
-          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2">
-            <span class="font-bold text-blue-900 flex items-center gap-1.5">
-              <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i> 60 Phút: Bài 2
-            </span>
-            <p class="text-blue-800 leading-relaxed">
-              Giải Subtask 1 bằng $O(N^2)$ hoặc Prefix Sum / Sắp xếp để ăn Subtask 2 $\to$ <strong>Ăn thêm 4.0 - 5.0 điểm</strong>!
-            </p>
-          </div>
-
-          <!-- Giai đoạn 4 -->
-          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
-            <span class="font-bold text-amber-900 flex items-center gap-1.5">
-              <i data-lucide="crosshair" class="w-4 h-4 text-amber-600"></i> 45 Phút: Vét cạn Bài 3
-            </span>
-            <p class="text-amber-800 leading-relaxed">
-              Không bỏ giấy trắng! Dùng vòng for hoặc quay lui vét cạn $N \le 20$ của Subtask 1 $\to$ <strong>Ăn thêm 2.0 - 3.0 điểm</strong>!
-            </p>
-          </div>
-        </div>
-
-        <!-- Bảng tính điểm đoạt giải -->
-        <div class="p-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <!-- MỤC 6: BẢNG TRA CỨU CÔNG THỨC TOÁN & MẪU THUẬT TOÁN OLYMPIC (24+ CÔNG THỨC) -->
+      <div id="hb-formulas-compendium" class="space-y-4 pt-2">
+        <div class="flex items-center gap-2 border-b border-slate-200 pb-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center text-sm">6</span>
           <div>
-            <span class="font-extrabold text-emerald-900 text-sm flex items-center gap-2">
-              <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i> Tổng Điểm Dự Kiến Khi Làm Theo Chiến Thuật:
-            </span>
-            <p class="text-emerald-800 mt-1">
-              Bài 1 ($6.0$) + Bài 2 ($5.0$) + Vét cạn Bài 3 ($3.0$) = <strong class="text-emerald-900 text-sm">14.0 / 20.0 Điểm</strong>
-            </p>
-          </div>
-          <span class="shrink-0 px-4 py-2 bg-emerald-600 text-white font-extrabold rounded-xl shadow">
-            🎉 ĐOẠT GIẢI HỌC SINH GIỎI THÀNH PHỐ!
-          </span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================ -->
-    <section id="content-kehoach" class="tab-content hidden space-y-6">
-      <div class="w-full bg-gradient-to-r from-emerald-800 via-teal-800 to-ahs-primary rounded-2xl p-6 sm:p-8 text-white shadow-lg space-y-3">
-        <div class="flex items-center gap-2">
-          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase tracking-wider rounded-full shadow-sm">
-            Kế Hoạch Tác Chiến Đỉnh Cao
-          </span>
-          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
-            Đích Đến: Giải Nhất • Giải Nhì • Giải Ba Cấp Thành Phố
-          </span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          Lộ Trình Bứt Phá Huy Chương Olympic & Cẩm Nang Săn Điểm Subtask
-        </h2>
-        <p class="text-emerald-100 text-sm sm:text-base max-w-4xl leading-relaxed">
-          Kỳ thi Olympic Tin học Thành phố và Olympic 30/4 không dành cho người giải toán ngẫu hứng. Đây là cuộc chiến của <strong>Chiến thuật phân bổ thời gian</strong>, <strong>Kỹ năng bóc tách Subtask</strong> và <strong>Kỷ luật không để mất điểm ngớ ngẩn</strong>.
-        </p>
-      </div>
-
-      <!-- 4 Trụ Cột Thành Công -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-blue-100 text-ahs-primary flex items-center justify-center font-bold">1</div>
-          <h4 class="font-bold text-slate-900 text-base">Bài 1: Ăn Trọn 6.0 Điểm</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Dạng bài: Xâu ký tự, mảng, prefix sum, two pointers. <strong>Mục tiêu: Đạt tuyệt đối 6.0 / 6.0 điểm</strong> trong 35-40 phút đầu. Mất điểm bài 1 đồng nghĩa cơ hội đoạt giải giảm 80%!
-          </p>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">2</div>
-          <h4 class="font-bold text-slate-900 text-base">Bài 2: Ăn 4.0 – 6.0 Điểm</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Dạng bài: Chặt nhị phân kết quả, Quy hoạch động (DP), Tham lam. <strong>Mục tiêu: Ăn chắc subtask 1 và 2</strong>. Nếu giải tối ưu được subtask 3 sẽ tiến thẳng vào nhóm Giải Nhì / Giải Nhất.
-          </p>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">3</div>
-          <h4 class="font-bold text-slate-900 text-base">Bài 3: Vét Cạn 2.0 – 3.0 Điểm</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Dạng bài: Phân loại cao thủ (Đồ thị, DP nâng cao, hình học). <strong>Chiến thuật: Dành 20 phút viết thuật toán vét cạn chính xác cho Subtask 1</strong> ($N \le 20$). Bỏ túi 2-3 điểm quý như vàng!
-          </p>
-        </div>
-
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">4</div>
-          <h4 class="font-bold text-slate-900 text-base">Tổng: 13.0 – 16.0 Điểm</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Với 12.5 - 14.5 điểm, học sinh nắm chắc trong tay <strong>Giải Nhì hoặc Giải Ba Thành phố</strong>. Trên 15.5 điểm là cánh cửa chạm tay vào <strong>Giải Nhất</strong>!
-          </p>
-        </div>
-      </div>
-
-      <!-- Lịch Trình Tác Chiến 18 Tuần -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <i data-lucide="calendar" class="w-5 h-5 text-ahs-primary"></i> Lộ Trình Huấn Luyện 18 Tuần (Tháng 11/2026 – Tháng 04/2027)
-        </h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-            <span class="font-bold text-blue-700 uppercase tracking-wider block">Chặng 1: Nền tảng CP</span>
-            <span class="text-slate-500 font-semibold block">Buổi 1 – 5 (Tháng 11 & 12)</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-700">
-              <li>Chuẩn hóa template, freopen, Fast I/O.</li>
-              <li>Mảng đếm tần số $O(N)$.</li>
-              <li>Prefix Sum 1D & 2D.</li>
-              <li>Difference Array & Two Pointers.</li>
-              <li class="font-bold text-blue-800">Mini-Test 1 (60 phút).</li>
-            </ul>
-          </div>
-
-          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-            <span class="font-bold text-emerald-700 uppercase tracking-wider block">Chặng 2: Cấu trúc & Nhị phân</span>
-            <span class="text-slate-500 font-semibold block">Buổi 6 – 9 (Tháng 12 & 01)</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-700">
-              <li>Chặt nhị phân kết quả (Binary Search Answer).</li>
-              <li>Cấu trúc STL: vector, pair, set, map.</li>
-              <li>Priority Queue (Hàng đợi ưu tiên).</li>
-              <li>Số học: Sàng Eratosthenes, GCD, modulo.</li>
-              <li class="font-bold text-emerald-800">Mini-Test 2 (90 phút).</li>
-            </ul>
-          </div>
-
-          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-            <span class="font-bold text-purple-700 uppercase tracking-wider block">Chặng 3: Đột phá DP</span>
-            <span class="text-slate-500 font-semibold block">Buổi 10 – 14 (Tháng 02 & 03)</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-700">
-              <li>Nhập môn DP: Bậc thang, Đổi tiền.</li>
-              <li>Dãy con tăng dài nhất (LIS) & truy vết.</li>
-              <li>Bài toán Balo (Knapsack 0/1, nén mảng).</li>
-              <li>DP trên ma trận lưới & DP phân đoạn.</li>
-              <li class="font-bold text-purple-800">Mini-Test 3 (Chuyên đề DP).</li>
-            </ul>
-          </div>
-
-          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-            <span class="font-bold text-rose-700 uppercase tracking-wider block">Chặng 4: Luyện đề 120 phút</span>
-            <span class="text-slate-500 font-semibold block">Buổi 15 – 18 (Tháng 03 & 04)</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-700">
-              <li>Quay lui (Backtracking) vét cạn subtask 3.</li>
-              <li>Đồ thị: Biểu diễn, BFS, DFS đếm liên thông.</li>
-              <li>Thi thử Mock Contest 1 (Đề thật 120p).</li>
-              <li>Thi thử Mock Contest 2 & Chốt chiến thuật.</li>
-              <li class="font-bold text-rose-800">Lên đường săn giải!</li>
-            </ul>
+            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <i data-lucide="calculator" class="w-5 h-5 text-indigo-600"></i> Tra Cứu Nhanh Công Thức Toán & Mẫu Thuật Toán Cốt Lõi (24+ Công Thức)
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">Tìm kiếm thời gian thực theo từ khóa hoặc phân loại chuyên đề</p>
           </div>
         </div>
-      </div>
 
-      <!-- 5 Sai Lầm Khiến Học Sinh Trượt Giải -->
-      <div class="bg-amber-50 rounded-2xl border border-amber-200 p-6 space-y-3 text-xs text-amber-950">
-        <h3 class="text-base font-bold text-amber-900 flex items-center gap-2">
-          <i data-lucide="alert-octagon" class="w-5 h-5 text-amber-600"></i> 5 Sai Lầm "Chết Người" Khiến Thí Sinh Giỏi Vẫn Trượt Giải
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800">
-          <div class="p-3 bg-white rounded-xl border border-amber-200">
-            <strong>1. Sai tên tệp vào / ra:</strong> Đề yêu cầu <code>SUMSEQ.INP</code> nhưng gõ nhầm <code>sumseq.inp</code> hoặc viết hoa thường sai $	o$ Máy chấm tự động coi là 0 điểm toàn bài!
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-amber-200">
-            <strong>2. Quên ép kiểu tràn số:</strong> Khai báo <code>long long ans = a * b;</code> trong khi $a, b$ là kiểu <code>int</code> $	o$ Tràn số trước khi gán, ra kết quả âm!
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-amber-200">
-            <strong>3. Sa đà vào Bài 3:</strong> Ngồi cắn bút 60 phút ở Bài 3 khó mà không chịu kiểm tra kỹ Bài 1 và vét điểm Subtask 1 $	o$ Bỏ lỡ 8-10 điểm dễ!
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-amber-200">
-            <strong>4. Dùng lệnh endl và không dùng Fast I/O:</strong> Khi in ra $10^5$ dòng, <code>endl</code> kích hoạt flush bộ đệm liên tục làm bài bị dính TLE dù thuật toán đúng!
-          </div>
-        </div>
-      </div>
-
-      <!-- Các Nền Tảng Luyện Tập Bổ Trợ -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
-        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-          <i data-lucide="globe" class="w-5 h-5 text-blue-600"></i> Các Nền Tảng Tự Luyện Online Khuyến Nghị
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <a href="https://vnoi.info" target="_blank" class="p-3 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-xl transition block">
-            <span class="font-bold text-blue-700 block">VNOI (vnoi.info)</span>
-            <span class="text-slate-500 mt-1 block">Kho đề Olympic Việt Nam, kỳ thi VNOI Cup và diễn đàn thuật toán hàng đầu.</span>
-          </a>
-          <a href="https://cses.fi/problemset/" target="_blank" class="p-3 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-xl transition block">
-            <span class="font-bold text-emerald-700 block">CSES Problem Set</span>
-            <span class="text-slate-500 mt-1 block">Bộ 300 bài toán kinh điển chuẩn quốc tế từ mảng, sắp xếp đến DP và đồ thị.</span>
-          </a>
-          <a href="https://lqdoj.com" target="_blank" class="p-3 bg-slate-50 hover:bg-purple-50 border border-slate-200 hover:border-purple-300 rounded-xl transition block">
-            <span class="font-bold text-purple-700 block">LQDOJ (lqdoj.com)</span>
-            <span class="text-slate-500 mt-1 block">Hệ thống chấm thi phổ biến nhất tại các trường chuyên và kỳ thi HSG cấp Tỉnh/Thành phố.</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- TAB: TRA CỨU CÔNG THỨC & KIẾN THỨC CỐT LÕI (CHEAT SHEET)      -->
-    <!-- ============================================================ -->
-    <section id="content-formula" class="tab-content hidden space-y-6">
-      <!-- Banner -->
-      <div class="w-full bg-gradient-to-r from-indigo-900 via-blue-900 to-ahs-primary rounded-2xl p-6 sm:p-8 text-white shadow-lg space-y-3">
-        <div class="flex items-center gap-2">
-          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase tracking-wider rounded-full shadow-sm">
-            Quick Reference • Tra Cứu 1 Giây
-          </span>
-          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
-            Dành cho Học sinh Phòng Lab & Đội Tuyển
-          </span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          Cẩm Nang Tra Cứu Công Thức & Mẫu Thuật Toán C++ Cốt Lõi
-        </h2>
-        <p class="text-indigo-100 text-sm sm:text-base max-w-4xl leading-relaxed">
-          Nơi học sinh mở nhanh khi làm bài trên Code::Blocks để tra cứu công thức toán, dãy số, sàng số nguyên tố, mảng cộng dồn, chặt nhị phân, quy hoạch động và các hàm mẫu C++ STL chuẩn.
-        </p>
-      </div>
-
-      <!-- Live Search & Filters -->
+        <!-- Live Search & Filters -->
       <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
         <div class="relative w-full">
           <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
@@ -2775,17 +2341,328 @@ void bfs(int start_node) {
           </div>
           <h4 class="font-bold text-slate-900 text-base">Quy Tắc Ép Kiểu Chống Tràn Số</h4>
           <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
-            <li><code>int</code>: $-2 \cdot 10^9 	o +2 \cdot 10^9$ (Tối đa $2^{31} - 1$).</li>
-            <li><code>long long</code>: $-9 \cdot 10^{18} 	o +9 \cdot 10^{18}$ (Tối đa $2^{63} - 1$).</li>
+            <li><code>int</code>: $-2 \cdot 10^9 \\to  +2 \cdot 10^9$ (Tối đa $2^{31} - 1$).</li>
+            <li><code>long long</code>: $-9 \cdot 10^{18} \\to  +9 \cdot 10^{18}$ (Tối đa $2^{63} - 1$).</li>
             <li>Luôn viết: <code>long long tich = 1LL * a * b;</code></li>
             <li>In số thực 2 chữ số: <code>cout &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; x;</code></li>
           </ul>
         </div>
 
       </div>
+      </div>
+
+<!-- MỤC 7: BẢNG TRA CỨU C++ STL THƯỜNG DÙNG TRONG THI ĐẤU -->
+      <div id="hb-stl" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <span class="w-7 h-7 rounded-lg bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-sm">7</span>
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i data-lucide="cpu" class="w-5 h-5 text-purple-600"></i> Bảng Tra Cứu C++ STL Cốt Lõi Cho Lập Trình Thi Đấu
+          </h3>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+            <thead class="bg-slate-100 text-slate-800 font-bold">
+              <tr>
+                <th class="p-3">Hàm / Cấu Trúc Dữ Liệu</th>
+                <th class="p-3">Thư Viện C++</th>
+                <th class="p-3">Độ Phức Tạp</th>
+                <th class="p-3">Mục Đích & Ứng Dụng Trong Bài Thi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="p-3 font-mono font-bold text-blue-700">std::vector&lt;T&gt;</td>
+                <td class="p-3 font-mono">&lt;vector&gt;</td>
+                <td class="p-3 font-mono">$O(1)$ push/access</td>
+                <td class="p-3">Mảng động co giãn kích thước linh hoạt, an toàn bộ nhớ hơn mảng tĩnh C.</td>
+              </tr>
+              <tr class="bg-blue-50/30">
+                <td class="p-3 font-mono font-bold text-blue-700">sort(a.begin(), a.end())</td>
+                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
+                <td class="p-3 font-mono">$O(N \log N)$</td>
+                <td class="p-3">Sắp xếp dãy số tăng dần (Introsort: QuickSort + HeapSort + InsertionSort).</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono font-bold text-blue-700">lower_bound(a.begin(), a.end(), x)</td>
+                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
+                <td class="p-3 font-mono">$O(\log N)$</td>
+                <td class="p-3">Tìm vị trí phần tử đầu tiên $\ge x$ trên mảng <strong>đã sắp xếp</strong>.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono font-bold text-blue-700">upper_bound(a.begin(), a.end(), x)</td>
+                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
+                <td class="p-3 font-mono">$O(\log N)$</td>
+                <td class="p-3">Tìm vị trí phần tử đầu tiên $&gt; x$ trên mảng <strong>đã sắp xếp</strong>.</td>
+              </tr>
+              <tr class="bg-purple-50/30">
+                <td class="p-3 font-mono font-bold text-purple-700">std::set&lt;T&gt;</td>
+                <td class="p-3 font-mono">&lt;set&gt;</td>
+                <td class="p-3 font-mono">$O(\log N)$</td>
+                <td class="p-3">Tập hợp loại bỏ phần tử trùng lặp và tự động sắp xếp theo thứ tự tăng dần (Red-Black Tree).</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono font-bold text-purple-700">std::map&lt;Key, Val&gt;</td>
+                <td class="p-3 font-mono">&lt;map&gt;</td>
+                <td class="p-3 font-mono">$O(\log N)$</td>
+                <td class="p-3">Bảng ánh xạ từ Khóa sang Giá trị (Đếm tần số số lớn, từ điển xâu ký tự).</td>
+              </tr>
+              <tr class="bg-emerald-50/30">
+                <td class="p-3 font-mono font-bold text-emerald-700">std::unordered_map&lt;Key, Val&gt;</td>
+                <td class="p-3 font-mono">&lt;unordered_map&gt;</td>
+                <td class="p-3 font-mono">$O(1)$ trung bình</td>
+                <td class="p-3">Bảng băm (Hash Table) tra cứu siêu tốc khi cần tối ưu thời gian dưới 1 giây.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono font-bold text-indigo-700">priority_queue&lt;T&gt;</td>
+                <td class="p-3 font-mono">&lt;queue&gt;</td>
+                <td class="p-3 font-mono">$O(\log N)$</td>
+                <td class="p-3">Hàng đợi ưu tiên (Max-Heap mặc định, hoặc Min-Heap với greater&lt;T&gt;), ứng dụng Dijkstra.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono font-bold text-slate-700">__gcd(a, b)</td>
+                <td class="p-3 font-mono">&lt;algorithm&gt;</td>
+                <td class="p-3 font-mono">$O(\log(\min(a,b)))$</td>
+                <td class="p-3">Thuật toán Euclid tìm ước chung lớn nhất của 2 số nguyên.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- MỤC 8: CHIẾN THUẬT PHÂN BỔ THỜI GIAN & ĂN ĐIỂM SUBTASK (ĐOẠT GIẢI) -->
+      <div id="hb-subtask" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+          <span class="w-7 h-7 rounded-lg bg-teal-100 text-teal-800 font-bold flex items-center justify-center text-sm">8</span>
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <i data-lucide="target" class="w-5 h-5 text-teal-600"></i> Chiến Thuật Phân Bổ Thời Gian & Bí Kíp Ăn Trọn Điểm Subtask (180 Phút)
+          </h3>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Kỳ thi Học sinh giỏi Tin học được chấm theo cơ chế <strong>chấm điểm Subtask độc lập</strong>. Bạn không cần phải giải toàn bộ bài 3 bằng thuật toán siêu khó mới có giải! Bí quyết của thủ khoa là <em>"Ăn trọn điểm bài dễ, vét sạch điểm bài khó"</em>.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+          <!-- Giai đoạn 1 -->
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="font-bold text-slate-900 flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-4 h-4 text-slate-500"></i> 15 Phút Đầu
+            </span>
+            <p class="text-slate-600 leading-relaxed">
+              Đọc lướt <strong>TOÀN BỘ 3-4 bài thi</strong>. Đọc kỹ phần bảng Subtask của từng bài để phân loại: bài nào giải được trọn vẹn, bài nào chỉ làm vét cạn.
+            </p>
+          </div>
+
+          <!-- Giai đoạn 2 -->
+          <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
+            <span class="font-bold text-emerald-900 flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i> 45 Phút: Bài 1
+            </span>
+            <p class="text-emerald-800 leading-relaxed">
+              Giải quyết dứt điểm Bài 1. Chú ý bẫy tràn số và Fast I/O $\to$ <strong>Cầm chắc 6.0 điểm trọn vẹn</strong> trong tay!
+            </p>
+          </div>
+
+          <!-- Giai đoạn 3 -->
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2">
+            <span class="font-bold text-blue-900 flex items-center gap-1.5">
+              <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i> 60 Phút: Bài 2
+            </span>
+            <p class="text-blue-800 leading-relaxed">
+              Giải Subtask 1 bằng $O(N^2)$ hoặc Prefix Sum / Sắp xếp để ăn Subtask 2 $\to$ <strong>Ăn thêm 4.0 - 5.0 điểm</strong>!
+            </p>
+          </div>
+
+          <!-- Giai đoạn 4 -->
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+            <span class="font-bold text-amber-900 flex items-center gap-1.5">
+              <i data-lucide="crosshair" class="w-4 h-4 text-amber-600"></i> 45 Phút: Vét cạn Bài 3
+            </span>
+            <p class="text-amber-800 leading-relaxed">
+              Không bỏ giấy trắng! Dùng vòng for hoặc quay lui vét cạn $N \le 20$ của Subtask 1 $\to$ <strong>Ăn thêm 2.0 - 3.0 điểm</strong>!
+            </p>
+          </div>
+        </div>
+
+        <!-- Bảng tính điểm đoạt giải -->
+        <div class="p-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <div>
+            <span class="font-extrabold text-emerald-900 text-sm flex items-center gap-2">
+              <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i> Tổng Điểm Dự Kiến Khi Làm Theo Chiến Thuật:
+            </span>
+            <p class="text-emerald-800 mt-1">
+              Bài 1 ($6.0$) + Bài 2 ($5.0$) + Vét cạn Bài 3 ($3.0$) = <strong class="text-emerald-900 text-sm">14.0 / 20.0 Điểm</strong>
+            </p>
+          </div>
+          <span class="shrink-0 px-4 py-2 bg-emerald-600 text-white font-extrabold rounded-xl shadow">
+            🎉 ĐOẠT GIẢI HỌC SINH GIỎI THÀNH PHỐ!
+          </span>
+        </div>
+      </div>
     </section>
 
+
+    <!-- ============================================================ -->
+    <section id="content-kehoach" class="tab-content hidden space-y-6">
+      <div class="w-full bg-gradient-to-r from-emerald-800 via-teal-800 to-ahs-primary rounded-2xl p-6 sm:p-8 text-white shadow-lg space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase tracking-wider rounded-full shadow-sm">
+            Kế Hoạch Tác Chiến Đỉnh Cao
+          </span>
+          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+            Đích Đến: Giải Nhất • Giải Nhì • Giải Ba Cấp Thành Phố
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          Lộ Trình Bứt Phá Huy Chương Olympic & Cẩm Nang Săn Điểm Subtask
+        </h2>
+        <p class="text-emerald-100 text-sm sm:text-base max-w-4xl leading-relaxed">
+          Kỳ thi Olympic Tin học Thành phố và Olympic 30/4 không dành cho người giải toán ngẫu hứng. Đây là cuộc chiến của <strong>Chiến thuật phân bổ thời gian</strong>, <strong>Kỹ năng bóc tách Subtask</strong> và <strong>Kỷ luật không để mất điểm ngớ ngẩn</strong>.
+        </p>
+      </div>
+
+      <!-- 4 Trụ Cột Thành Công -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-ahs-primary flex items-center justify-center font-bold">1</div>
+          <h4 class="font-bold text-slate-900 text-base">Bài 1: Ăn Trọn 6.0 Điểm</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dạng bài: Xâu ký tự, mảng, prefix sum, two pointers. <strong>Mục tiêu: Đạt tuyệt đối 6.0 / 6.0 điểm</strong> trong 35-40 phút đầu. Mất điểm bài 1 đồng nghĩa cơ hội đoạt giải giảm 80%!
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">2</div>
+          <h4 class="font-bold text-slate-900 text-base">Bài 2: Ăn 4.0 – 6.0 Điểm</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dạng bài: Chặt nhị phân kết quả, Quy hoạch động (DP), Tham lam. <strong>Mục tiêu: Ăn chắc subtask 1 và 2</strong>. Nếu giải tối ưu được subtask 3 sẽ tiến thẳng vào nhóm Giải Nhì / Giải Nhất.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">3</div>
+          <h4 class="font-bold text-slate-900 text-base">Bài 3: Vét Cạn 2.0 – 3.0 Điểm</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dạng bài: Phân loại cao thủ (Đồ thị, DP nâng cao, hình học). <strong>Chiến thuật: Dành 20 phút viết thuật toán vét cạn chính xác cho Subtask 1</strong> ($N \le 20$). Bỏ túi 2-3 điểm quý như vàng!
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">4</div>
+          <h4 class="font-bold text-slate-900 text-base">Tổng: 13.0 – 16.0 Điểm</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Với 12.5 - 14.5 điểm, học sinh nắm chắc trong tay <strong>Giải Nhì hoặc Giải Ba Thành phố</strong>. Trên 15.5 điểm là cánh cửa chạm tay vào <strong>Giải Nhất</strong>!
+          </p>
+        </div>
+      </div>
+
+      <!-- Lịch Trình Tác Chiến 18 Tuần -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <i data-lucide="calendar" class="w-5 h-5 text-ahs-primary"></i> Lộ Trình Huấn Luyện 18 Tuần (Tháng 11/2026 – Tháng 04/2027)
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="font-bold text-blue-700 uppercase tracking-wider block">Chặng 1: Nền tảng CP</span>
+            <span class="text-slate-500 font-semibold block">Buổi 1 – 5 (Tháng 11 & 12)</span>
+            <ul class="list-disc list-inside space-y-1 text-slate-700">
+              <li>Chuẩn hóa template, freopen, Fast I/O.</li>
+              <li>Mảng đếm tần số $O(N)$.</li>
+              <li>Prefix Sum 1D & 2D.</li>
+              <li>Difference Array & Two Pointers.</li>
+              <li class="font-bold text-blue-800">Mini-Test 1 (60 phút).</li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="font-bold text-emerald-700 uppercase tracking-wider block">Chặng 2: Cấu trúc & Nhị phân</span>
+            <span class="text-slate-500 font-semibold block">Buổi 6 – 9 (Tháng 12 & 01)</span>
+            <ul class="list-disc list-inside space-y-1 text-slate-700">
+              <li>Chặt nhị phân kết quả (Binary Search Answer).</li>
+              <li>Cấu trúc STL: vector, pair, set, map.</li>
+              <li>Priority Queue (Hàng đợi ưu tiên).</li>
+              <li>Số học: Sàng Eratosthenes, GCD, modulo.</li>
+              <li class="font-bold text-emerald-800">Mini-Test 2 (90 phút).</li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="font-bold text-purple-700 uppercase tracking-wider block">Chặng 3: Đột phá DP</span>
+            <span class="text-slate-500 font-semibold block">Buổi 10 – 14 (Tháng 02 & 03)</span>
+            <ul class="list-disc list-inside space-y-1 text-slate-700">
+              <li>Nhập môn DP: Bậc thang, Đổi tiền.</li>
+              <li>Dãy con tăng dài nhất (LIS) & truy vết.</li>
+              <li>Bài toán Balo (Knapsack 0/1, nén mảng).</li>
+              <li>DP trên ma trận lưới & DP phân đoạn.</li>
+              <li class="font-bold text-purple-800">Mini-Test 3 (Chuyên đề DP).</li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+            <span class="font-bold text-rose-700 uppercase tracking-wider block">Chặng 4: Luyện đề 120 phút</span>
+            <span class="text-slate-500 font-semibold block">Buổi 15 – 18 (Tháng 03 & 04)</span>
+            <ul class="list-disc list-inside space-y-1 text-slate-700">
+              <li>Quay lui (Backtracking) vét cạn subtask 3.</li>
+              <li>Đồ thị: Biểu diễn, BFS, DFS đếm liên thông.</li>
+              <li>Thi thử Mock Contest 1 (Đề thật 120p).</li>
+              <li>Thi thử Mock Contest 2 & Chốt chiến thuật.</li>
+              <li class="font-bold text-rose-800">Lên đường săn giải!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Sai Lầm Khiến Học Sinh Trượt Giải -->
+      <div class="bg-amber-50 rounded-2xl border border-amber-200 p-6 space-y-3 text-xs text-amber-950">
+        <h3 class="text-base font-bold text-amber-900 flex items-center gap-2">
+          <i data-lucide="alert-octagon" class="w-5 h-5 text-amber-600"></i> 5 Sai Lầm "Chết Người" Khiến Thí Sinh Giỏi Vẫn Trượt Giải
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-800">
+          <div class="p-3 bg-white rounded-xl border border-amber-200">
+            <strong>1. Sai tên tệp vào / ra:</strong> Đề yêu cầu <code>SUMSEQ.INP</code> nhưng gõ nhầm <code>sumseq.inp</code> hoặc viết hoa thường sai $	o$ Máy chấm tự động coi là 0 điểm toàn bài!
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-amber-200">
+            <strong>2. Quên ép kiểu tràn số:</strong> Khai báo <code>long long ans = a * b;</code> trong khi $a, b$ là kiểu <code>int</code> $	o$ Tràn số trước khi gán, ra kết quả âm!
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-amber-200">
+            <strong>3. Sa đà vào Bài 3:</strong> Ngồi cắn bút 60 phút ở Bài 3 khó mà không chịu kiểm tra kỹ Bài 1 và vét điểm Subtask 1 $	o$ Bỏ lỡ 8-10 điểm dễ!
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-amber-200">
+            <strong>4. Dùng lệnh endl và không dùng Fast I/O:</strong> Khi in ra $10^5$ dòng, <code>endl</code> kích hoạt flush bộ đệm liên tục làm bài bị dính TLE dù thuật toán đúng!
+          </div>
+        </div>
+      </div>
+
+      <!-- Các Nền Tảng Luyện Tập Bổ Trợ -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <i data-lucide="globe" class="w-5 h-5 text-blue-600"></i> Các Nền Tảng Tự Luyện Online Khuyến Nghị
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <a href="https://vnoi.info" target="_blank" class="p-3 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-xl transition block">
+            <span class="font-bold text-blue-700 block">VNOI (vnoi.info)</span>
+            <span class="text-slate-500 mt-1 block">Kho đề Olympic Việt Nam, kỳ thi VNOI Cup và diễn đàn thuật toán hàng đầu.</span>
+          </a>
+          <a href="https://cses.fi/problemset/" target="_blank" class="p-3 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-xl transition block">
+            <span class="font-bold text-emerald-700 block">CSES Problem Set</span>
+            <span class="text-slate-500 mt-1 block">Bộ 300 bài toán kinh điển chuẩn quốc tế từ mảng, sắp xếp đến DP và đồ thị.</span>
+          </a>
+          <a href="https://lqdoj.com" target="_blank" class="p-3 bg-slate-50 hover:bg-purple-50 border border-slate-200 hover:border-purple-300 rounded-xl transition block">
+            <span class="font-bold text-purple-700 block">LQDOJ (lqdoj.com)</span>
+            <span class="text-slate-500 mt-1 block">Hệ thống chấm thi phổ biến nhất tại các trường chuyên và kỳ thi HSG cấp Tỉnh/Thành phố.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TAB: TRA CỨU CÔNG THỨC & KIẾN THỨC CỐT LÕI (CHEAT SHEET)      -->
+    
+
   </main>
+  </div>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="w-full bg-white border-t border-slate-200 py-4 px-4 sm:px-6 lg:px-8 mt-auto">
@@ -2803,20 +2680,113 @@ void bfs(int start_node) {
     if (window.lucide) lucide.createIcons();
 
     // 1. Chuyển đổi Navigation Tab
+    // ==========================================
+    // SIDEBAR NAVIGATION DỌC & TOGGLE
+    // ==========================================
+    function toggleSidebar(forceState) {
+      const sidebar = document.getElementById('main-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!sidebar) return;
+
+      const isDesktop = window.innerWidth >= 768;
+      if (isDesktop) {
+        const isClosed = sidebar.classList.contains('md:-ml-72');
+        const shouldOpen = typeof forceState === 'boolean' ? forceState : isClosed;
+        if (shouldOpen) {
+          sidebar.classList.remove('md:-ml-72');
+        } else {
+          sidebar.classList.add('md:-ml-72');
+        }
+      } else {
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        const shouldOpen = typeof forceState === 'boolean' ? forceState : isClosed;
+        if (shouldOpen) {
+          sidebar.classList.remove('-translate-x-full');
+          if (backdrop) backdrop.classList.remove('hidden');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          if (backdrop) backdrop.classList.add('hidden');
+        }
+      }
+    }
+
+    // ==========================================
+    // BỘ LỌC CÔNG THỨC TOÁN & THUẬT TOÁN (HANDBOOK)
+    // ==========================================
+    let currentFormulaCategory = 'all';
+
+    function filterFormulaCategory(cat) {
+      currentFormulaCategory = cat;
+      document.querySelectorAll('.btn-filter-cat').forEach(btn => {
+        btn.classList.remove('bg-slate-800', 'text-white', 'active');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      if (window.event && window.event.target) {
+        const btn = window.event.target.closest('button');
+        if (btn) {
+          btn.classList.remove('bg-slate-100', 'text-slate-700');
+          btn.classList.add('bg-slate-800', 'text-white', 'active');
+        }
+      }
+      applyFormulaFilters();
+    }
+
+    function filterFormulas(query) {
+      applyFormulaFilters();
+    }
+
+    function applyFormulaFilters() {
+      const inputEl = document.getElementById('formula-search-input');
+      const query = inputEl ? inputEl.value.toLowerCase().trim() : '';
+      const cards = document.querySelectorAll('.formula-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat') || '';
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const textContent = card.textContent.toLowerCase();
+
+        const matchCat = (currentFormulaCategory === 'all' || cardCat === currentFormulaCategory);
+        const matchQuery = !query || keywords.includes(query) || textContent.includes(query);
+
+        if (matchCat && matchQuery) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
     function switchTab(tabId) {
+      // Điều hướng tương thích ngược (Redirects)
+      if (tabId === 'buoi-1') tabId = 'handbook';
+      if (tabId === 'formula') tabId = 'handbook';
+
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(el => {
+        el.classList.remove('active', 'bg-blue-50', 'text-ahs-primary', 'border-blue-200');
+      });
 
       const targetContent = document.getElementById('content-' + tabId);
       const targetTab = document.getElementById('tab-' + tabId);
 
       if (targetContent) targetContent.classList.remove('hidden');
-      if (targetTab) targetTab.classList.add('active');
+      if (targetTab) {
+        targetTab.classList.add('active', 'bg-blue-50', 'text-ahs-primary', 'border-blue-200');
+      }
 
       // Tự động cuộn mượt lên đầu
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Đóng sidebar trên mobile sau khi chọn tab
+      if (window.innerWidth < 768) {
+        toggleSidebar(false);
+      }
+
       // Trigger KaTeX render for active tab
       setTimeout(() => {
+        if (targetContent) renderMath(targetContent);
         renderMath();
       }, 50);
 
