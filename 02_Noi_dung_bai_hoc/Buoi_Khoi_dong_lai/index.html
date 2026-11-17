@@ -157,6 +157,12 @@
 
       <!-- Bên Phải: Nhóm nút chức năng nhanh (Gom nhóm gọn gàng) -->
       <div class="flex items-center gap-2">
+        
+        <!-- Nút Kỳ Thi & Đề Mẫu (Mới) -->
+        <button onclick="switchTab('olympic-info')" id="btn-topbar-olympic" title="Thông tin kỳ thi & Đề thi mẫu các năm" class="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-extrabold text-xs sm:text-sm rounded-xl shadow-xs transition border border-amber-400">
+          <i data-lucide="award" class="w-4 h-4"></i>
+          <span>Kỳ Thi &amp; Đề Mẫu</span>
+        </button>
         <!-- Nút Sổ Tay & Bảng Công Thức (Gộp chung) -->
         <button onclick="switchTab('handbook')" title="Mở Sổ tay Tra Cứu & Bảng Công Thức (Phím F1)" class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-emerald-500">
           <i data-lucide="book-open" class="w-4 h-4"></i>
@@ -194,97 +200,143 @@
       </div>
 
       <!-- NAV GROUPS -->
-      <nav class="flex-1 p-3 space-y-5">
+      <!-- NAV GROUPS -->
+      <nav class="flex-1 p-3 space-y-4">
         
-        <!-- NHÓM 1: BÀI HỌC CHUYÊN ĐỀ (Không ghi buổi số, chỉ ghi tên) -->
+        <!-- NỔI BẬT: THÔNG TIN KỲ THI & KHO ĐỀ THI MẪU -->
         <div>
-          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-500"></i> Chuyên Đề Bài Học
+          <button onclick="switchTab('olympic-info')" id="tab-olympic-info" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2.5 text-xs sm:text-sm font-extrabold rounded-xl text-amber-950 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-300 hover:border-amber-500 hover:shadow-xs transition text-left">
+            <div class="w-8 h-8 rounded-lg bg-amber-500 text-slate-900 flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="award" class="w-4 h-4"></i>
+            </div>
+            <div class="flex-1 truncate">
+              <div class="font-extrabold text-slate-900 truncate flex items-center gap-1.5">
+                Kỳ Thi Olympic 11 <span class="px-1.5 py-0.2 bg-amber-500 text-slate-900 text-[9px] font-black rounded-full uppercase">HOT</span>
+              </div>
+              <div class="text-[10px] text-amber-800 truncate font-semibold">Quy chế &amp; Đề mẫu các năm</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- CHẶNG 1: NỀN TẢNG THI ĐẤU & CÁC KỸ THUẬT TIỀN XỬ LÝ (TUẦN 1 - 6) -->
+        <div class="space-y-1">
+          <div class="px-2 py-1 text-[11px] font-black uppercase tracking-wider text-ahs-primary flex items-center justify-between bg-blue-50/80 rounded-lg border border-blue-200">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="flag" class="w-3.5 h-3.5 text-ahs-primary"></i> Chặng 1: Nền Tảng (6 Tuần)
+            </span>
+            <span class="px-1.5 py-0.2 text-[9px] bg-ahs-primary text-white rounded font-mono font-bold">Tuần 1-6</span>
           </div>
-          <div class="space-y-1">
-            <button onclick="switchTab('buoi-2')" id="tab-buoi-2" class="nav-tab active w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="hash" class="w-4 h-4 text-blue-600 shrink-0"></i>
+          
+          <div class="space-y-1 pt-1">
+            <button onclick="switchTab('chuyen-de-1')" id="tab-chuyen-de-1" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="terminal" class="w-4 h-4 text-blue-600 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Mảng Đếm & Xử Lý Xâu</div>
-                <div class="text-[10px] text-slate-500 truncate">Lý thuyết, Mô phỏng & Bài tập</div>
+                <div class="font-bold text-slate-900 truncate">1. Cú Pháp C++17 &amp; Bẫy Tràn Số</div>
+                <div class="text-[10px] text-slate-500 truncate">Fast I/O, freopen, bẫy 1LL*a*b</div>
               </div>
             </button>
-            <button onclick="switchTab('buoi-3')" id="tab-buoi-3" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="calculator" class="w-4 h-4 text-indigo-600 shrink-0"></i>
+
+            <button onclick="switchTab('buoi-2')" id="tab-buoi-2" class="nav-tab active w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="hash" class="w-4 h-4 text-emerald-600 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Mảng Cộng Dồn (Prefix Sum)</div>
-                <div class="text-[10px] text-slate-500 truncate">Tiền xử lý 1D, 2D & Bài tập</div>
+                <div class="font-bold text-slate-900 truncate">2. Mảng Đếm Tần Số (Counting)</div>
+                <div class="text-[10px] text-slate-500 truncate">Direct Addressing, tối ưu O(1)</div>
               </div>
             </button>
-            <button onclick="switchTab('buoi-4')" id="tab-buoi-4" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="git-commit" class="w-4 h-4 text-teal-600 shrink-0"></i>
+
+            <button onclick="switchTab('chuyen-de-3')" id="tab-chuyen-de-3" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="type" class="w-4 h-4 text-indigo-600 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Mảng Hiệu & Sắp Xếp</div>
-                <div class="text-[10px] text-slate-500 truncate">Difference Array & Sắp xếp</div>
+                <div class="font-bold text-slate-900 truncate">3. Xử Lý Xâu Ký Tự (string)</div>
+                <div class="text-[10px] text-slate-500 truncate">ASCII, Palindrome, Đề thi DNA</div>
+              </div>
+            </button>
+
+            <button onclick="switchTab('chuyen-de-4')" id="tab-chuyen-de-4" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="binary" class="w-4 h-4 text-amber-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">4. Số Học Thi Đấu (Number Theory)</div>
+                <div class="text-[10px] text-slate-500 truncate">Nguyên tố, Sàng Eratosthenes, GCD</div>
+              </div>
+            </button>
+
+            <button onclick="switchTab('buoi-3')" id="tab-buoi-3" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="calculator" class="w-4 h-4 text-teal-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">5. Mảng Cộng Dồn (Prefix Sum)</div>
+                <div class="text-[10px] text-slate-500 truncate">Tính tổng đoạn O(1) &amp; Mảng hiệu</div>
+              </div>
+            </button>
+
+            <button onclick="switchTab('chuyen-de-6')" id="tab-chuyen-de-6" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="git-merge" class="w-4 h-4 text-rose-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">6. Sắp Xếp &amp; Hai Con Trỏ</div>
+                <div class="text-[10px] text-slate-500 truncate">Two Pointers, Đề Nghe Nhạc</div>
               </div>
             </button>
           </div>
         </div>
 
-        <!-- NHÓM 2: BÀI TẬP PHÂN THEO TỪNG BUỔI (LỚP & VỀ NHÀ) -->
+        <!-- NHÓM 2: BÀI TẬP PHÂN THEO TỪNG CHUYÊN ĐỀ -->
         <div>
-          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <div class="px-2 mb-1 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
             <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-purple-500"></i> Bài Tập Từng Chuyên Đề
           </div>
           <div class="space-y-1">
-            <button onclick="jumpToExercise('buoi-2')" class="w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="check-square" class="w-4 h-4 text-blue-600 shrink-0"></i>
-              <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Bài Tập: Mảng Đếm & Xâu</div>
-                <div class="text-[10px] text-slate-500 truncate">Tại lớp (2) + Về nhà (2)</div>
-              </div>
-              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">4 bài</span>
+            <button onclick="switchTab('chuyen-de-1')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Cú pháp &amp; Bẫy</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-blue-100 text-blue-800">4 bài</span>
             </button>
-            <button onclick="jumpToExercise('buoi-3')" class="w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="check-square" class="w-4 h-4 text-indigo-600 shrink-0"></i>
-              <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Bài Tập: Mảng Cộng Dồn</div>
-                <div class="text-[10px] text-slate-500 truncate">Tại lớp (2) + Về nhà (2)</div>
-              </div>
-              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-800">4 bài</span>
+            <button onclick="jumpToExercise('buoi-2')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Mảng Đếm &amp; Xâu</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-emerald-100 text-emerald-800">4 bài</span>
             </button>
-            <button onclick="jumpToExercise('buoi-4')" class="w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="check-square" class="w-4 h-4 text-teal-600 shrink-0"></i>
-              <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Bài Tập: Mảng Hiệu & Sort</div>
-                <div class="text-[10px] text-slate-500 truncate">Tại lớp (2) + Về nhà (1)</div>
-              </div>
-              <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-100 text-teal-800">3 bài</span>
+            <button onclick="switchTab('chuyen-de-3')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Xử Lý Xâu (DNA)</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-indigo-100 text-indigo-800">4 bài</span>
+            </button>
+            <button onclick="switchTab('chuyen-de-4')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Số Học (Học Toán)</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-100 text-amber-800">4 bài</span>
+            </button>
+            <button onclick="jumpToExercise('buoi-3')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Mảng Cộng Dồn</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-teal-100 text-teal-800">4 bài</span>
+            </button>
+            <button onclick="switchTab('chuyen-de-6')" class="w-full flex items-center justify-between px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition">
+              <span>Bài tập: Hai Con Trỏ (Nghe Nhạc)</span>
+              <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-rose-100 text-rose-800">4 bài</span>
             </button>
           </div>
         </div>
 
         <!-- NHÓM 3: SỔ TAY, CÔNG THỨC & CÔNG CỤ -->
         <div>
-          <div class="px-2 mb-1.5 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-            <i data-lucide="book-marked" class="w-3.5 h-3.5 text-emerald-500"></i> Tra Cứu & Chiến Lược
+          <div class="px-2 mb-1 text-[11px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="book-marked" class="w-3.5 h-3.5 text-emerald-500"></i> Tra Cứu &amp; Chiến Lược
           </div>
           <div class="space-y-1">
-            <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+            <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="book-open" class="w-4 h-4 text-emerald-600 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Sổ Tay & Bảng Công Thức</div>
+                <div class="font-bold text-slate-900 truncate">Sổ Tay &amp; Bảng Công Thức</div>
                 <div class="text-[10px] text-slate-500 truncate">Nền Tảng Thi Đấu + Mảng/Xâu + 24 CT</div>
               </div>
-              <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">F1</span>
+              <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">F1</span>
             </button>
-            <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+            <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="activity" class="w-4 h-4 text-amber-600 shrink-0"></i>
               <div class="flex-1 truncate">
                 <div class="font-bold text-slate-900 truncate">Phòng Mô Phỏng Trực Quan</div>
                 <div class="text-[10px] text-slate-500 truncate">4 Thuật toán chạy tương tác</div>
               </div>
             </button>
-            <button onclick="switchTab('kehoach')" id="tab-kehoach" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="trophy" class="w-4 h-4 text-amber-500 shrink-0"></i>
+            <button onclick="switchTab('kehoach')" id="tab-kehoach" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="calendar" class="w-4 h-4 text-indigo-500 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Kế Hoạch Thi Đấu</div>
-                <div class="text-[10px] text-slate-500 truncate">Lộ trình & Mục tiêu giải TP</div>
+                <div class="font-bold text-slate-900 truncate">Lộ Trình Đào Tạo 20 Tuần</div>
+                <div class="text-[10px] text-slate-500 truncate">Kế hoạch chi tiết đến 19/03/2027</div>
               </div>
             </button>
           </div>
@@ -309,7 +361,777 @@
     <!-- ============================================================ -->
     <!-- TAB 2: BUỔI 2: MẢNG ĐẾM TẦN SỐ & XỬ LÝ XÂU KÝ TỰ             -->
     <!-- ============================================================ -->
-        <section id="content-buoi-2" class="tab-content block space-y-6">
+        
+
+    <!-- ============================================================== -->
+    <!-- TAB NỔI BẬT: THÔNG TIN KỲ THI OLYMPIC & KHO ĐỀ THI MẪU CÁC NĂM -->
+    <!-- ============================================================== -->
+    <section id="content-olympic-info" class="tab-content hidden space-y-8 animate-fadeIn">
+      
+      <!-- HERO BANNER KỲ THI OLYMPIC TP.HCM -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-600 via-orange-600 to-ahs-primary p-6 sm:p-10 text-white shadow-xl">
+        <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+          <i data-lucide="award" class="w-96 h-96"></i>
+        </div>
+        <div class="relative z-10 space-y-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase tracking-wider rounded-full shadow-xs flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Căn Cứ Kế Hoạch 9762/KH-SGDĐT TP.HCM
+            </span>
+            <span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white font-bold text-xs rounded-full border border-white/30">
+              Đội Tuyển Tin Học Khối 11 • Asian School
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+            Kỳ Thi Olympic Tin Học C++ Khối 11 TP. Hồ Chí Minh
+          </h2>
+          <p class="text-amber-100 text-xs sm:text-sm max-w-3xl leading-relaxed">
+            Học tập và tranh tài theo định hướng <strong>Chương trình GDPT 2018</strong>. Bài thi 120 phút trên máy tính với 3 bài toán (20 điểm) đánh giá năng lực tư duy thuật toán, kỹ năng tối ưu độ phức tạp và khả năng bóc tách subtask để đạt giải cao.
+          </p>
+          
+          <!-- THÔNG SỐ VÀNG CẦN NHỚ -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/10 text-center">
+              <div class="text-[11px] text-amber-200 font-medium">Ngày Thi Chính Thức</div>
+              <div class="text-base sm:text-lg font-black text-amber-300">19/03/2027</div>
+              <div class="text-[10px] text-white/70">Bắt đầu tính giờ: 08g00</div>
+            </div>
+            <div class="bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/10 text-center">
+              <div class="text-[11px] text-amber-200 font-medium">Thời Gian Thi</div>
+              <div class="text-base sm:text-lg font-black text-white">120 Phút</div>
+              <div class="text-[10px] text-white/70">Lập trình máy vi tính</div>
+            </div>
+            <div class="bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/10 text-center">
+              <div class="text-[11px] text-amber-200 font-medium">Cơ Cấu Điểm Số</div>
+              <div class="text-base sm:text-lg font-black text-amber-300">3 Bài / 20.0 Điểm</div>
+              <div class="text-[10px] text-white/70">Bài 1: 6đ • Bài 2: 7đ • Bài 3: 7đ</div>
+            </div>
+            <div class="bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/10 text-center">
+              <div class="text-[11px] text-amber-200 font-medium">Mục Tiêu Đội Tuyển</div>
+              <div class="text-base sm:text-lg font-black text-emerald-300">14.0 – 16.0 Đ</div>
+              <div class="text-[10px] text-white/70">Khung Giải Nhì • Giải Ba TP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHIẾN THUẬT PHÂN BỔ 120 PHÚT & BẢN ĐỒ GIẢI THƯỞNG -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Cột 1: Chiến thuật 120 phút -->
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-amber-600"></i> Chiến Thuật Vàng Phân Bổ 120 Phút Phòng Thi
+            </h3>
+            <span class="text-[11px] font-bold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+              Quy tắc sống còn
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3.5 bg-blue-50/60 border border-blue-200 rounded-xl flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                01
+              </div>
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-blue-950 flex items-center gap-2">
+                  <span>10 phút đầu (00:00 - 00:10): Đọc kỹ đề & Nhận diện bài dễ</span>
+                  <span class="text-[10px] font-mono bg-blue-200/80 text-blue-900 px-1.5 py-0.2 rounded font-bold">10p</span>
+                </div>
+                <p class="text-[11px] text-blue-800 leading-relaxed">
+                  Đọc lướt qua cả 3 bài toán, quan sát kỹ giới hạn dữ liệu ($N$). Xác định ngay Bài 1 (thường là bài xử lý xâu, mảng, prefix sum hoặc hai con trỏ dễ ăn trọn điểm).
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3.5 bg-emerald-50/60 border border-emerald-200 rounded-xl flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                02
+              </div>
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-emerald-950 flex items-center gap-2">
+                  <span>35 phút tiếp theo (00:10 - 00:45): Ăn trọn 6.0/6.0 điểm Bài 1</span>
+                  <span class="text-[10px] font-mono bg-emerald-200/80 text-emerald-900 px-1.5 py-0.2 rounded font-bold">35p • 6.0đ</span>
+                </div>
+                <p class="text-[11px] text-emerald-800 leading-relaxed">
+                  Cài đặt cẩn thận, chú ý bẫy tràn số (dùng `long long`), Fast I/O và `freopen`. Kiểm tra test ví dụ và test biên ($N = 1$, giá trị âm, xâu rỗng). Chắc chắn bỏ túi <strong>6.0 điểm</strong>!
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3.5 bg-purple-50/60 border border-purple-200 rounded-xl flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                03
+              </div>
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-purple-950 flex items-center gap-2">
+                  <span>45 phút giữa (00:45 - 01:30): Quyết đấu Bài 2 (Quy hoạch động / Toán)</span>
+                  <span class="text-[10px] font-mono bg-purple-200/80 text-purple-900 px-1.5 py-0.2 rounded font-bold">45p • 5-7đ</span>
+                </div>
+                <p class="text-[11px] text-purple-800 leading-relaxed">
+                  Bài 2 thường là Quy hoạch động hoặc Tìm kiếm nhị phân kết quả. Thiết lập bảng phương án $dp$, công thức truy hồi và tối ưu mảng 1 chiều. Mục tiêu đạt trọn <strong>7.0 điểm</strong> hoặc tối thiểu <strong>5.0 điểm</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3.5 bg-amber-50/60 border border-amber-200 rounded-xl flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                04
+              </div>
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-amber-950 flex items-center gap-2">
+                  <span>30 phút cuối (01:30 - 02:00): Vét cạn Subtask hoặc giải trọn Bài 3</span>
+                  <span class="text-[10px] font-mono bg-amber-200/80 text-amber-900 px-1.5 py-0.2 rounded font-bold">30p • 3-5đ</span>
+                </div>
+                <p class="text-[11px] text-amber-800 leading-relaxed">
+                  Nếu nghĩ ra thuật tối ưu: Code ngay với `std::set` hoặc Hai con trỏ. Nếu bài quá khó: <strong>Tuyệt đối không bỏ trắng!</strong> Hãy viết thuật vét cạn $O(N^2)$ hoặc quay lui trong 15 phút để bỏ túi <strong>2.0 – 3.0 điểm Subtask 1</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột 2: Phổ điểm & Tiêu chuẩn kỹ thuật -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Phổ điểm xét giải -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-3.5">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+              <i data-lucide="award" class="w-4 h-4 text-amber-500"></i> Phổ Điểm Xét Giải Olympic TP.HCM
+            </h3>
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="font-bold text-amber-950">Giải Nhất (Huy chương Vàng)</span>
+                </div>
+                <span class="font-mono font-black text-amber-900 bg-amber-200 px-2 py-0.5 rounded">≥ 16.0 Điểm</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-blue-50 rounded-xl border border-blue-200 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                  <span class="font-bold text-blue-950">Giải Nhì (Huy chương Bạc)</span>
+                </div>
+                <span class="font-mono font-black text-blue-900 bg-blue-200 px-2 py-0.5 rounded">13.0 – 15.5 Điểm</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                  <span class="font-bold text-emerald-950">Giải Ba (Huy chương Đồng)</span>
+                </div>
+                <span class="font-mono font-black text-emerald-900 bg-emerald-200 px-2 py-0.5 rounded">10.0 – 12.5 Điểm</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-slate-300"></span>
+                  <span class="font-semibold text-slate-700">Không Đạt Giải</span>
+                </div>
+                <span class="font-mono font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded">&lt; 10.0 Điểm</span>
+              </div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl text-[11px] text-slate-600 border border-slate-200 leading-relaxed">
+              💡 <strong>Chiến lược chắc chắn có giải:</strong> Ăn trọn Bài 1 (6đ) + Ăn 70% Bài 2 (5đ) + Vét cạn Subtask 1 Bài 3 (3đ) = <strong>14.0 Điểm</strong> $\implies$ <strong>Chắc chắn đạt Giải Nhì / Ba!</strong>
+            </div>
+          </div>
+
+          <!-- Quy chuẩn Kỹ thuật nộp bài -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-3">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+              <i data-lucide="settings" class="w-4 h-4 text-slate-600"></i> Quy Chuẩn Phòng Thi Máy Vi Tính
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span><strong>Môi trường:</strong> Code::Blocks 20.03, GCC MinGW 64-bit, cờ biên dịch <code>-std=c++17</code>.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span><strong>File vào/ra:</strong> Đọc từ <code>NAME.INP</code>, xuất ra <code>NAME.OUT</code> qua <code>freopen</code>.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span><strong>Quy cách nộp:</strong> Mã nguồn <code>NAME.CPP</code>, tên file phải viết hoa đúng theo đề bài.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5"></i>
+                <span><strong>Giới hạn thời gian:</strong> 1.0 giây / test ($pprox 10^8$ phép tính cơ bản). Bộ nhớ: 256 MB.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- KHO ĐỀ THI MẪU & LỜI GIẢI CHI TIẾT CÁC NĂM -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
+        
+        <!-- Header Kho đề thi -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">Thư Viện Khảo Thí Chính Thức</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Đề Thi Olympic C++ Các Năm Trước & Lời Giải Chi Tiết
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-500">
+              Đề thi chính thức của Sở GD&ĐT TP.HCM và Kỳ thi Olympic 30/4 kèm mã nguồn chuẩn C++ ăn trọn 100% điểm (20/20).
+            </p>
+          </div>
+
+          <!-- Nút chọn năm thi -->
+          <div class="flex items-center gap-1.5 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+            <button onclick="selectExamYear('2024-2025')" id="btn-exam-2024-2025" class="px-3.5 py-1.5 text-xs font-extrabold rounded-xl transition bg-white text-ahs-primary shadow-xs">
+              2024 – 2025
+            </button>
+            <button onclick="selectExamYear('2025-2026')" id="btn-exam-2025-2026" class="px-3.5 py-1.5 text-xs font-bold rounded-xl transition text-slate-600 hover:text-slate-900">
+              2025 – 2026
+            </button>
+            <button onclick="selectExamYear('2023')" id="btn-exam-2023" class="px-3.5 py-1.5 text-xs font-bold rounded-xl transition text-slate-600 hover:text-slate-900">
+              Olympic 30/4
+            </button>
+          </div>
+        </div>
+
+        <!-- NỘI DUNG ĐỀ 1: NĂM HỌC 2024 - 2025 -->
+        <div id="exam-year-2024-2025" class="exam-panel space-y-6">
+          <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-2 font-bold text-blue-950">
+              <i data-lucide="file-text" class="w-4 h-4 text-ahs-primary"></i>
+              <span>Kỳ Thi Olympic 11 TP. Hồ Chí Minh Năm Học 2024–2025</span>
+              <span class="px-2 py-0.5 rounded bg-blue-200/80 text-blue-900 font-mono text-[10px]">120 Phút • 3 Bài</span>
+            </div>
+            <div class="text-blue-800 font-semibold">Tỉ lệ đạt điểm tối đa: 20.0 / 20.0 điểm</div>
+          </div>
+
+          <!-- BÀI 1: NGHE NHẠC (6.0 ĐIỂM) -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-emerald-600 text-white font-mono font-bold text-xs rounded-lg">BÀI 1 (6.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">NGHE NHẠC (NGHENHAC.CPP)</h4>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold text-slate-500">Dạng bài:</span>
+                <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[11px] font-bold rounded-md">Hai Con Trỏ (Two Pointers)</span>
+                <span class="px-2 py-0.5 bg-purple-100 text-purple-800 text-[11px] font-bold rounded-md">Cửa Sổ Trượt</span>
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+              <p><strong>Tóm tắt đề:</strong> An có $K$ phút rảnh và danh sách $N$ bài hát, bài thứ $i$ dài $m_i$ phút ($1 \le N \le 10^5, 1 \le K \le 10^9, 1 \le m_i \le 10^4$). Hãy tìm một <strong>dãy liên tiếp</strong> các bài hát sao cho số lượng bài hát nhiều nhất và tổng thời lượng $\le K$.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 bg-white border border-slate-200 rounded-xl">
+                <div>
+                  <span class="font-bold text-slate-900">Subtask 1 (60% số điểm - 3.6đ):</span> $N \le 10^3$. Duyệt 2 vòng for $O(N^2)$ vẫn kịp giờ.
+                </div>
+                <div>
+                  <span class="font-bold text-slate-900">Subtask 2 (40% số điểm - 2.4đ):</span> $N \le 10^5$. Bắt buộc dùng <strong>Hai con trỏ</strong> đạt $O(N)$ thời gian, $O(1)$ bộ nhớ!
+                </div>
+              </div>
+            </div>
+
+            <!-- Thuật toán & Mã nguồn -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
+                <span>Mã nguồn chuẩn C++17 ăn trọn 6.0/6.0 điểm:</span>
+                <button onclick="copyCode('code-nghenhac')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-nghenhac">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("NGHENHAC.INP", "r", stdin);
+    freopen("NGHENHAC.OUT", "w", stdout);
+    #endif
+
+    int n;
+    long long k;
+    if (!(cin &gt;&gt; n &gt;&gt; k)) return 0;
+
+    vector&lt;long long&gt; m(n);
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; m[i];
+
+    int left = 0, ans = 0;
+    long long current_sum = 0;
+
+    // Kỹ thuật Hai Con Trỏ (Sliding Window) chạy trong O(N)
+    for (int right = 0; right &lt; n; right++) {
+        current_sum += m[right];
+        while (current_sum &gt; k && left &lt;= right) {
+            current_sum -= m[left];
+            left++;
+        }
+        ans = max(ans, right - left + 1);
+    }
+
+    cout &lt;&lt; ans &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- BÀI 2: HỌC TOÁN (7.0 ĐIỂM) -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-blue-600 text-white font-mono font-bold text-xs rounded-lg">BÀI 2 (7.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">HỌC TOÁN (HOCTOAN.CPP)</h4>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold text-slate-500">Dạng bài:</span>
+                <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[11px] font-bold rounded-md">Số Học (Number Theory)</span>
+                <span class="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-[11px] font-bold rounded-md">GCD & LCM</span>
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+              <p><strong>Tóm tắt đề:</strong> Cho hai số $a, b$ ($1 \le a &lt; b \le 10^4$). Tìm hai số $x, y$ sao cho $\gcd(x, y) = a$, $\text{lcm}(x, y) = b$ và tổng $x + y$ nhỏ nhất.</p>
+              <p><strong>Phân tích toán học:</strong> Ta có $x \cdot y = \gcd(x, y) \cdot \text{lcm}(x, y) = a \cdot b$. Đặt $x = a \cdot u$ và $y = a \cdot v$ với $\gcd(u, v) = 1$. Khi đó $u \cdot v = b / a$. Duyệt $u$ từ $\lfloor\sqrt{b/a}\rfloor$ giảm dần về 1, độ phức tạp chỉ mất $O(\sqrt{b/a})$!</p>
+            </div>
+
+            <!-- Code bài 2 -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
+                <span>Mã nguồn chuẩn C++17 ăn trọn 7.0/7.0 điểm:</span>
+                <button onclick="copyCode('code-hoctoan')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-hoctoan">#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("HOCTOAN.INP", "r", stdin);
+    freopen("HOCTOAN.OUT", "w", stdout);
+    #endif
+
+    long long a, b;
+    if (!(cin &gt;&gt; a &gt;&gt; b)) return 0;
+
+    if (b % a != 0) {
+        cout &lt;&lt; -1 &lt;&lt; "
+";
+        return 0;
+    }
+
+    long long P = b / a;
+    long long best_u = -1, best_v = -1;
+
+    // Duyệt từ căn bậc 2 giảm dần để tổng x + y nhỏ nhất
+    for (long long u = sqrt(P); u &gt;= 1; u--) {
+        if (P % u == 0) {
+            long long v = P / u;
+            if (std::gcd(u, v) == 1) {
+                best_u = u;
+                best_v = v;
+                break;
+            }
+        }
+    }
+
+    long long x = a * best_u;
+    long long y = a * best_v;
+    if (x &gt; y) swap(x, y);
+
+    cout &lt;&lt; (x + y) &lt;&lt; "
+";
+    cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- BÀI 3: ROBOT (7.0 ĐIỂM) -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-purple-600 text-white font-mono font-bold text-xs rounded-lg">BÀI 3 (7.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">ROBOT (ROBOT.CPP)</h4>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold text-slate-500">Dạng bài:</span>
+                <span class="px-2 py-0.5 bg-rose-100 text-rose-800 text-[11px] font-bold rounded-md">Mô Phỏng Không Gian Lớn</span>
+                <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[11px] font-bold rounded-md">std::set &amp; pair</span>
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+              <p><strong>Tóm tắt đề:</strong> Bảng $M \times N$ ($2 \le M, N \le 10^5$). Robot 1 đi từ $(1, 1) \to (M, N)$ theo lệnh `D` (xuống) và `R` (phải). Robot 2 đi từ $(M, N) \to (1, 1)$ theo `U` (lên) và `L` (trái). Đếm số ô mà cả 2 robot cùng đi qua.</p>
+              <p><strong>Bẫy kinh điển:</strong> Kích thước bảng $10^5 \times 10^5 = 10^{10}$ ô $\implies$ <strong>Không thể tạo mảng 2 chiều!</strong> Nhưng mỗi robot chỉ đi tối đa $(M-1) + (N-1) \le 2 \cdot 10^5$ bước. Dùng <code>std::set&lt;pair&lt;int, int&gt;&gt;</code> lưu các tọa độ robot 1 đi qua trong $O((M+N) \log(M+N))$, chạy chỉ mất 0.15s!</p>
+            </div>
+
+            <!-- Code bài 3 -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
+                <span>Mã nguồn chuẩn C++17 ăn trọn 7.0/7.0 điểm:</span>
+                <button onclick="copyCode('code-robot')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-robot">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;set&gt;
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("ROBOT.INP", "r", stdin);
+    freopen("ROBOT.OUT", "w", stdout);
+    #endif
+
+    int m, n;
+    if (!(cin &gt;&gt; m &gt;&gt; n)) return 0;
+
+    string s1, s2;
+    cin &gt;&gt; s1 &gt;&gt; s2;
+
+    // Lưu vết đường đi Robot 1
+    set&lt;pair&lt;int, int&gt;&gt; path1;
+    int r = 1, c = 1;
+    path1.insert({r, c});
+
+    for (char cmd : s1) {
+        if (cmd == 'D') r++;
+        else if (cmd == 'R') c++;
+        path1.insert({r, c});
+    }
+
+    // Mô phỏng Robot 2 và đếm số ô trùng nhau
+    set&lt;pair&lt;int, int&gt;&gt; common_cells;
+    r = m; c = n;
+    if (path1.count({r, c})) common_cells.insert({r, c});
+
+    for (char cmd : s2) {
+        if (cmd == 'U') r--;
+        else if (cmd == 'L') c--;
+        if (path1.count({r, c})) {
+            common_cells.insert({r, c});
+        }
+    }
+
+    cout &lt;&lt; common_cells.size() &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- NỘI DUNG ĐỀ 2: NĂM HỌC 2025 - 2026 -->
+        <div id="exam-year-2025-2026" class="exam-panel hidden space-y-6">
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-2 font-bold text-purple-950">
+              <i data-lucide="file-text" class="w-4 h-4 text-purple-700"></i>
+              <span>Kỳ Thi Olympic 11 TP. Hồ Chí Minh Năm Học 2025–2026</span>
+              <span class="px-2 py-0.5 rounded bg-purple-200/80 text-purple-900 font-mono text-[10px]">120 Phút • 3 Bài</span>
+            </div>
+            <div class="text-purple-800 font-semibold">Tỉ lệ đạt điểm tối đa: 20.0 / 20.0 điểm</div>
+          </div>
+
+          <!-- CÂU 1: DI TRUYỀN (DNA) -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-emerald-600 text-white font-mono font-bold text-xs rounded-lg">CÂU 1 (6.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">DI TRUYỀN (DNA.CPP)</h4>
+              </div>
+              <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-[11px] font-bold rounded-md">Xử Lý Xâu &amp; Bảng Vị Trí</span>
+            </div>
+            <div class="text-xs text-slate-700 leading-relaxed space-y-1">
+              <p><strong>Tóm tắt đề:</strong> $N \le 10$ chuỗi DNA độ dài $\le 10^5$. Một chuỗi là bất thường nếu: (1) Ít hơn 3 loại ký tự, (2) Có ký tự chỉ xuất hiện 1 lần, hoặc (3) Khoảng cách giữa 2 ký tự cùng loại liên tiếp $> K$. Tạo chuỗi nhị phân và đổi sang hệ thập phân.</p>
+              <p><strong>Thuật toán:</strong> Duyệt chuỗi trong $O(|S|)$, lưu vị trí gần nhất `last_pos[c]`. Đổi nhị phân sang thập phân bằng công thức $ans = ans \times 2 + bit$. Độ phức tạp: $O(N \cdot |S|)$ cực nhanh!</p>
+            </div>
+            <!-- Code DNA -->
+            <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+
+using namespace std;
+
+bool is_abnormal(const string &s, int k) {
+    map&lt;char, int&gt; freq, last_pos;
+    for (int i = 0; i &lt; (int)s.size(); i++) {
+        char c = s[i];
+        freq[c]++;
+        if (last_pos.count(c) && (i - last_pos[c]) &gt; k) return true;
+        last_pos[c] = i;
+    }
+    if (freq.size() &lt; 3) return true;
+    for (auto &p : freq) if (p.second == 1) return true;
+    return false;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    #ifndef ONLINE_JUDGE
+    freopen("DNA.INP", "r", stdin); freopen("DNA.OUT", "w", stdout);
+    #endif
+    int n, k; cin &gt;&gt; n &gt;&gt; k;
+    long long decimal_ans = 0;
+    for (int i = 0; i &lt; n; i++) {
+        string s; cin &gt;&gt; s;
+        decimal_ans = decimal_ans * 2 + (is_abnormal(s, k) ? 1 : 0);
+    }
+    cout &lt;&lt; decimal_ans &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+          </div>
+
+          <!-- CÂU 2: THU HOẠCH -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-blue-600 text-white font-mono font-bold text-xs rounded-lg">CÂU 2 (7.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">THU HOẠCH (THUHOACH.CPP)</h4>
+              </div>
+              <span class="px-2 py-0.5 bg-purple-100 text-purple-800 text-[11px] font-bold rounded-md">Quy Hoạch Động (DP) + Prefix Sum</span>
+            </div>
+            <div class="text-xs text-slate-700 leading-relaxed space-y-1">
+              <p><strong>Tóm tắt đề:</strong> $N \le 5000$ thửa ruộng. Chọn $K$ máy gặt, mỗi máy gặt $L$ thửa liên tiếp ($K \times L \le N$) không đè lên nhau để tổng giá trị lớn nhất.</p>
+              <p><strong>Thuật toán:</strong> Mảng cộng dồn $P[i]$ tính tổng đoạn $L$. Bảng phương án: $dp[i][j] = \max(dp[i-1][j], dp[i-L][j-1] + val[i])$ với $val[i] = P[i] - P[i-L]$. Độ phức tạp: $O(N \cdot K) \le 2.5 \cdot 10^7$ phép tính, chạy trong 0.08s!</p>
+            </div>
+            <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>// Công thức Quy Hoạch Động chuẩn Olympic C++
+dp[i][j] = max(dp[i - 1][j], dp[i - L][j - 1] + (P[i] - P[i - L]));
+// Khởi tạo bảng dp với -INF vì trọng số thửa ruộng có thể âm!</code></pre>
+          </div>
+
+          <!-- CÂU 3: BỘ SƯU TẬP -->
+          <div class="border border-slate-200 rounded-2xl p-5 space-y-3.5 bg-slate-50/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 bg-purple-600 text-white font-mono font-bold text-xs rounded-lg">CÂU 3 (7.0Đ)</span>
+                <h4 class="font-extrabold text-sm text-slate-900">BỘ SƯU TẬP (SUUTAP.CPP)</h4>
+              </div>
+              <span class="px-2 py-0.5 bg-teal-100 text-teal-800 text-[11px] font-bold rounded-md">Hai Con Trỏ + std::map</span>
+            </div>
+            <div class="text-xs text-slate-700 leading-relaxed space-y-1">
+              <p><strong>Tóm tắt đề:</strong> Dãy $N \le 10^5$ viên đá có mã màu $C_i \le 10^9$. Tìm đoạn liên tiếp ngắn nhất chứa ít nhất $K$ màu khác nhau.</p>
+              <p><strong>Thuật toán:</strong> Vì $C_i \le 10^9$, dùng <code>map&lt;int, int&gt; freq</code> đếm số lượng màu trong cửa sổ. Tăng `right` nạp màu. Khi `freq.size() &gt;= k`, cập nhật `min_len` và tăng `left` để thu hẹp. Độ phức tạp $O(N \log K)$!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NỘI DUNG ĐỀ 3: OLYMPIC 30/4 -->
+        <div id="exam-year-2023" class="exam-panel hidden space-y-6">
+          <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-2 font-bold text-teal-950">
+              <i data-lucide="file-text" class="w-4 h-4 text-teal-700"></i>
+              <span>Kỳ Thi Olympic Truyền Thống 30/4 Khối 11 (Năm 2023)</span>
+              <span class="px-2 py-0.5 rounded bg-teal-200/80 text-teal-900 font-mono text-[10px]">180 Phút • 3 Bài</span>
+            </div>
+            <div class="text-teal-800 font-semibold">Đề thi nâng cao khu vực phía Nam</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl space-y-2">
+              <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold rounded">BÀI TOÁN LOCO</span>
+              <h5 class="font-bold text-xs text-slate-900">Quy Hoạch Động Trên Ma Trận (Grid DP)</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Đoàn tàu di chuyển trên lưới với chi phí năng lượng thay đổi. Tối ưu hóa bảng phương án 2 chiều và kỹ thuật giảm chiều không gian.
+              </p>
+            </div>
+            <div class="p-4 bg-white border border-slate-200 rounded-2xl space-y-2">
+              <span class="px-2 py-0.5 bg-indigo-100 text-indigo-900 text-[10px] font-bold rounded">BÀI TOÁN SLTPLT</span>
+              <h5 class="font-bold text-xs text-slate-900">Đồ Thị: Đếm Số Thành Phần Liên Thông (BFS/DFS)</h5>
+              <p class="text-[11px] text-slate-600 leading-relaxed">
+                Biểu diễn đồ thị bằng danh sách kề `vector<int> adj[]`, duyệt BFS tìm vùng liên thông và kỹ thuật mảng đánh dấu `visited[]`.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+    
+
+    <!-- ============================================================== -->
+    <!-- CHUYÊN ĐỀ 1: CÚ PHÁP C++17, FAST I/O & BẪY PHÒNG THI -->
+    <!-- ============================================================== -->
+    <section id="content-chuyen-de-1" class="tab-content hidden space-y-8 animate-fadeIn">
+      
+      <!-- HERO BANNER -->
+      <div class="rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
+            Chặng 1 • Chuyên Đề 1
+          </span>
+          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+            Nền Tảng Thi Đấu &amp; Cú Pháp Cốt Lõi
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+          Cú Pháp C++17, Tăng Tốc Nhập Xuất (Fast I/O) &amp; Bẫy Phòng Thi Kinh Điển
+        </h2>
+        <p class="text-blue-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
+          Hơn 40% học sinh mất điểm oan trong kỳ thi Olympic không phải vì thuật toán sai, mà vì <strong>tràn số âm</strong>, <strong>chậm I/O dẫn đến Time Limit Exceeded (TLE)</strong> và <strong>quên cấu hình freopen vào/ra tệp</strong>.
+        </p>
+      </div>
+
+      <!-- LÝ THUYẾT VÀ BẪY KINH ĐIỂN -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="code" class="w-4 h-4 text-ahs-primary"></i> Template Chuẩn Thi Đấu Olympic C++17
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Mỗi bài thi Olympic đều yêu cầu đọc từ tệp <code>NAME.INP</code> và xuất ra <code>NAME.OUT</code>. Đoạn mã dưới đây là bộ khung bắt buộc phải có trong mọi bài làm:
+          </p>
+          <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+int main() {
+    // 1. TĂNG TỐC NHẬP XUẤT (FAST I/O)
+    // Tách luồng C++ khỏi C standard stdio, tăng tốc gấp 10 lần
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // 2. VÀO RA TỆP QUA FREOPEN
+    #ifndef ONLINE_JUDGE
+    freopen("BAILAM.INP", "r", stdin);
+    freopen("BAILAM.OUT", "w", stdout);
+    #endif
+
+    // Code xử lý chính...
+    return 0;
+}</code></pre>
+        </div>
+
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-600"></i> 3 Bẫy Tử Thần &amp; Bí Kíp Khắc Phục
+          </h3>
+          <div class="space-y-3 text-xs text-slate-700">
+            <div class="p-3 bg-rose-50 rounded-xl border border-rose-200 space-y-1">
+              <div class="font-bold text-rose-950 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-rose-500"></span> 1. Bẫy tràn số tích: a * b
+              </div>
+              <p class="text-[11px] text-rose-800">
+                Dù khai báo <code>long long ans = a * b;</code>, nhưng nếu $a, b$ là <code>int</code>, phép nhân được tính trên thanh ghi 32-bit rồi mới gán vào <code>ans</code> $\implies$ <strong>Kết quả bị tràn số âm!</strong><br>
+                💡 <strong>Khắc phục:</strong> Ép kiểu ngay lập tức: <code>1LL * a * b</code> hoặc khai báo $a, b$ là <code>long long</code>.
+              </p>
+            </div>
+
+            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 space-y-1">
+              <div class="font-bold text-amber-950 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 2. Phép chia nguyên làm tròn lên
+              </div>
+              <p class="text-[11px] text-amber-800">
+                Cần tính $\lceil a / b ceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
+                💡 <strong>Công thức chuẩn thi đấu:</strong> <code>(a + b - 1) / b</code> với số nguyên dương.
+              </p>
+            </div>
+
+            <div class="p-3 bg-blue-50 rounded-xl border border-blue-200 space-y-1">
+              <div class="font-bold text-blue-950 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 3. Bẫy endl làm tràn bộ đệm (Buffer Flush)
+              </div>
+              <p class="text-[11px] text-blue-800">
+                Lệnh <code>cout &lt;&lt; endl;</code> vừa xuống dòng vừa xóa bộ đệm (flush), gây chậm 50 lần khi in ra $10^5$ dòng.<br>
+                💡 <strong>Quy tắc thi đấu:</strong> Luôn dùng <code>cout &lt;&lt; "
+";</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2">
+              <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-600"></i> Bài Tập Thực Hành Tại Lớp (2 Bài)
+            </h4>
+            <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Hoàn thành 30p</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-900">
+                <span>Bài 1: TÍCH LỚN (OVERFLOW)</span>
+                <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">OVERFLOW.CPP</span>
+              </div>
+              <p class="text-slate-600 text-[11px]">
+                Cho 3 số nguyên $A, B, C$ ($1 \le A, B, C \le 10^9$). Hãy tính giá trị $P = (A 	imes B) \% C$. In ra $P$. Lưu ý $A 	imes B$ có thể lên đến $10^{18}$, phải dùng <code>1LL * A * B</code>!
+              </p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-900">
+                <span>Bài 2: CHIA PHÒNG KHÁCH SẠN (CEILDIV)</span>
+                <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">CEILDIV.CPP</span>
+              </div>
+              <p class="text-slate-600 text-[11px]">
+                Đoàn có $N$ vận động viên ($1 \le N \le 10^{12}$). Mỗi phòng chứa tối đa $K$ người ($1 \le K \le 10^9$). Hỏi cần thuê ít nhất bao nhiêu phòng? Áp dụng công thức làm tròn lên <code>(N + K - 1) / K</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2">
+              <i data-lucide="home" class="w-4 h-4 text-purple-600"></i> Bài Tập Về Nhà &amp; AI Gia Sư Socratic
+            </h4>
+            <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">3 - 4 Tiếng</span>
+          </div>
+
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-purple-950">
+              <span>BTVN: RÚT GỌN PHÂN SỐ (REDUCE.CPP)</span>
+              <span class="text-[10px] bg-purple-200 px-2 py-0.5 rounded font-mono">Olympic Warm-up</span>
+            </div>
+            <p class="text-xs text-purple-900 leading-relaxed">
+              Cho tử số $A$ và mẫu số $B$ ($1 \le A, B \le 10^{12}$). Rút gọn phân số $A/B$ về dạng tối giản bằng cách chia cả tử và mẫu cho $\gcd(A, B)$ dùng hàm <code>std::gcd</code> trong thư viện <code>&lt;numeric&gt;</code>.
+            </p>
+            <div class="pt-2 border-t border-purple-200/60 flex items-center justify-between">
+              <span class="text-[11px] text-purple-700 italic">Bí ý tưởng giải bài này?</span>
+              <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em cách rút gọn phân số số lớn bằng std::gcd trong C++ với ạ!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Hỏi Gia Sư AI
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+    
+
+    <section id="content-buoi-2" class="tab-content block space-y-6">
       <!-- Banner Chuyên Đề -->
       <div class="w-full bg-gradient-to-r from-emerald-600 via-teal-700 to-cyan-800 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -949,7 +1771,236 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
         </div>
 </section>
 
-        <section id="content-buoi-3" class="tab-content hidden space-y-6">
+        
+    <!-- ============================================================== -->
+    <!-- CHUYÊN ĐỀ 3: KỸ THUẬT XỬ LÝ XÂU KÝ TỰ (STRING) & BẢNG MÃ ASCII -->
+    <!-- ============================================================== -->
+    <section id="content-chuyen-de-3" class="tab-content hidden space-y-8 animate-fadeIn">
+      
+      <!-- HERO BANNER -->
+      <div class="rounded-3xl bg-gradient-to-r from-indigo-700 via-purple-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
+            Chặng 1 • Chuyên Đề 3
+          </span>
+          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+            Kỹ Thuật Xâu Ký Tự Chuẩn Olympic
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+          Kỹ Thuật Xử Lý Xâu Ký Tự (std::string) &amp; Bảng Mã ASCII
+        </h2>
+        <p class="text-indigo-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
+          Bài 1 trong đề thi Olympic TP.HCM thường xuyên xoay quanh xử lý ký tự, xâu đối xứng (Palindrome), đếm phân phối ký tự và giải mã chuỗi gen DNA.
+        </p>
+      </div>
+
+      <!-- WORKED EXAMPLE: ĐỀ THI OLYMPIC THẬT 2025-2026 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 bg-purple-600 text-white font-mono font-bold text-xs rounded-lg">WORKED EXAMPLE</span>
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900">Giải Mã Bài Toán DI TRUYỀN (Đề Thi Thật Olympic 11 TP.HCM 2025–2026)</h3>
+          </div>
+          <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+            Trọn vẹn 6.0 Điểm
+          </span>
+        </div>
+
+        <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+          <p>
+            <strong>Đề bài tóm tắt:</strong> Cho chuỗi DNA gồm các ký tự <code>A, T, G, C</code>. Kiểm tra chuỗi bất thường nếu: (1) Có ít hơn 3 loại ký tự khác nhau, (2) Có ký tự chỉ xuất hiện đúng 1 lần, hoặc (3) Khoảng cách giữa 2 ký tự cùng loại liên tiếp vượt quá ngưỡng $K$.
+          </p>
+          <p>
+            <strong>Bí kíp tư duy:</strong> Dùng một mảng lưu vị trí xuất hiện cuối cùng <code>last_pos[c]</code>. Khi gặp ký tự $c$ tại vị trí $i$, khoảng cách là $i - last\_pos[c]$. Thao tác duyệt 1 lượt đạt $O(|S|)$!
+          </p>
+        </div>
+
+        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+
+using namespace std;
+
+bool is_abnormal(const string &s, int k) {
+    map&lt;char, int&gt; freq;
+    map&lt;char, int&gt; last_pos;
+
+    for (int i = 0; i &lt; (int)s.size(); i++) {
+        char c = s[i];
+        freq[c]++;
+        if (last_pos.count(c)) {
+            if ((i - last_pos[c]) &gt; k) return true; // Điều kiện 3: Khoảng cách &gt; K
+        }
+        last_pos[c] = i;
+    }
+    if (freq.size() &lt; 3) return true; // Điều kiện 1: Ít hơn 3 loại
+    for (auto &p : freq) {
+        if (p.second == 1) return true; // Điều kiện 2: Có loại chỉ xuất hiện 1 lần
+    }
+    return false;
+}</code></pre>
+      </div>
+
+      <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-600"></i> Bài Tập Thực Hành Tại Lớp
+          </h4>
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 1: XÂU ĐỐI XỨNG DÀI NHẤT (PALIN_LEN)</span>
+              <p class="text-slate-600 text-[11px]">Kiểm tra và tìm chuỗi con đối xứng sau khi đã loại bỏ khoảng trắng và chuyển về chữ thường.</p>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 2: TRÍCH XUẤT SỐ (EXTRACT_NUM)</span>
+              <p class="text-slate-600 text-[11px]">Cho xâu ký tự hỗn hợp chữ và số. Tìm số nguyên lớn nhất xuất hiện trong xâu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="home" class="w-4 h-4 text-purple-600"></i> Bài Tập Về Nhà &amp; Gia Sư AI
+          </h4>
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-3 text-xs">
+            <div class="font-bold text-purple-950">BTVN: NÉN XÂU KÝ TỰ (COMPRESS.CPP)</div>
+            <p class="text-purple-900 leading-relaxed text-[11px]">
+              Nén xâu theo định dạng Run-Length Encoding: <code>"AAABBBCCCC"</code> $	o$ <code>"A3B3C4"</code>.
+            </p>
+            <div class="pt-2 border-t border-purple-200/60 flex items-center justify-between">
+              <span class="text-[11px] text-purple-700 italic">Cần hướng dẫn Socratic?</span>
+              <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em thuật toán nén xâu Run-Length trong C++ với ạ!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Hỏi Gia Sư AI
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
+
+    <!-- ============================================================== -->
+    <!-- CHUYÊN ĐỀ 4: SỐ HỌC THI ĐẤU (NUMBER THEORY FOR CP) -->
+    <!-- ============================================================== -->
+    <section id="content-chuyen-de-4" class="tab-content hidden space-y-8 animate-fadeIn">
+      
+      <!-- HERO BANNER -->
+      <div class="rounded-3xl bg-gradient-to-r from-amber-600 via-orange-600 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 bg-amber-300 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
+            Chặng 1 • Chuyên Đề 4
+          </span>
+          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+            Số Học Thi Đấu (Number Theory)
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+          Số Nguyên Tố, Sàng Eratosthenes &amp; Thuật Toán Euclid GCD/LCM
+        </h2>
+        <p class="text-amber-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
+          Làm chủ kỹ thuật kiểm tra số nguyên tố $O(\sqrt{N})$, sàng mảng lớn $10^7$ trong $O(N \log \log N)$ và ứng dụng tính chất $x \cdot y = \gcd(x, y) \cdot 	ext{lcm}(x, y)$.
+        </p>
+      </div>
+
+      <!-- WORKED EXAMPLE: BÀI TOÁN HỌC TOÁN OLYMPIC 2024-2025 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 bg-amber-500 text-slate-900 font-mono font-bold text-xs rounded-lg">WORKED EXAMPLE</span>
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900">Giải Mã Bài Toán HỌC TOÁN (Đề Thi Thật Olympic 11 TP.HCM 2024–2025)</h3>
+          </div>
+          <span class="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+            Trọn vẹn 7.0 Điểm
+          </span>
+        </div>
+
+        <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+          <p>
+            <strong>Đề bài tóm tắt:</strong> Cho hai số $a, b$. Tìm $x, y$ sao cho $\gcd(x, y) = a$, $	ext{lcm}(x, y) = b$ và tổng $x + y$ nhỏ nhất.
+          </p>
+          <p>
+            <strong>Phương pháp tối ưu:</strong> Ta biết $x \cdot y = a \cdot b$. Đặt $x = a \cdot u, y = a \cdot v \implies u \cdot v = b/a$ với $\gcd(u, v) = 1$. Duyệt $u$ từ $\lfloor\sqrt{b/a}floor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tính!
+          </p>
+        </div>
+
+        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    long long a, b;
+    if (!(cin &gt;&gt; a &gt;&gt; b)) return 0;
+    if (b % a != 0) { cout &lt;&lt; -1 &lt;&lt; "
+"; return 0; }
+
+    long long P = b / a;
+    long long best_u = -1, best_v = -1;
+
+    for (long long u = sqrt(P); u &gt;= 1; u--) {
+        if (P % u == 0) {
+            long long v = P / u;
+            if (std::gcd(u, v) == 1) {
+                best_u = u; best_v = v;
+                break;
+            }
+        }
+    }
+    long long x = a * best_u, y = a * best_v;
+    if (x &gt; y) swap(x, y);
+    cout &lt;&lt; (x + y) &lt;&lt; "
+" &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; "
+";
+    return 0;
+}</code></pre>
+      </div>
+
+      <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-600"></i> Bài Tập Thực Hành Tại Lớp
+          </h4>
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 1: ĐẾM SỐ NGUYÊN TỐ (PRIME_COUNT)</span>
+              <p class="text-slate-600 text-[11px]">Đếm số lượng số nguyên tố trong đoạn $[L, R]$ với $R \le 10^7$ bằng Sàng Eratosthenes kết hợp Prefix Sum.</p>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 2: TỔNG ƯỚC SỐ (DIVISOR_SUM)</span>
+              <p class="text-slate-600 text-[11px]">Tính tổng các ước số nguyên dương của $N$ trong $O(\sqrt{N})$.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="home" class="w-4 h-4 text-purple-600"></i> Bài Tập Về Nhà &amp; Gia Sư AI
+          </h4>
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-3 text-xs">
+            <div class="font-bold text-purple-950">BTVN: CẶP SỐ NGUYÊN TỐ CÙNG NHAU (COPRIME.CPP)</div>
+            <p class="text-purple-900 leading-relaxed text-[11px]">
+              Cho dãy $A$ gồm $N$ số ($N \le 10^5, A_i \le 10^6$). Đếm số cặp $(i, j)$ sao cho $\gcd(A_i, A_j) = 1$.
+            </p>
+            <div class="pt-2 border-t border-purple-200/60 flex items-center justify-between">
+              <span class="text-[11px] text-purple-700 italic">Cần hướng dẫn thuật toán?</span>
+              <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em cách đếm số cặp nguyên tố cùng nhau tối ưu trong C++ với ạ!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Hỏi Gia Sư AI
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
+    <section id="content-buoi-3" class="tab-content hidden space-y-6">
       <!-- Banner Chuyên Đề -->
       <div class="w-full bg-gradient-to-r from-purple-700 via-indigo-800 to-blue-900 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -2187,6 +3238,105 @@ sort(intervals.begin(), intervals.end(), cmp);</code></pre>
         </div>
 </section>
 
+    
+    <!-- ============================================================== -->
+    <!-- CHUYÊN ĐỀ 6: SẮP XẾP C++ STL & KỸ THUẬT HAI CON TRỎ (TWO POINTERS) -->
+    <!-- ============================================================== -->
+    <section id="content-chuyen-de-6" class="tab-content hidden space-y-8 animate-fadeIn">
+      
+      <!-- HERO BANNER -->
+      <div class="rounded-3xl bg-gradient-to-r from-rose-700 via-pink-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
+            Chặng 1 • Chuyên Đề 6
+          </span>
+          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+            Tối Ưu Hai Con Trỏ &amp; Cửa Sổ Trượt
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+          Sắp Xếp std::sort, Mảng Động vector &amp; Kỹ Thuật Hai Con Trỏ
+        </h2>
+        <p class="text-rose-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
+          Kỹ thuật Hai con trỏ (Two Pointers) là một trong những vũ khí sát thương mạnh nhất ở Bài 1 và Bài 3 trong đề thi Olympic, giúp nén thời gian từ $O(N^2)$ xuống $O(N)$ tức thì.
+        </p>
+      </div>
+
+      <!-- WORKED EXAMPLE: BÀI TOÁN NGHE NHẠC OLYMPIC 2024-2025 -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 bg-rose-600 text-white font-mono font-bold text-xs rounded-lg">WORKED EXAMPLE</span>
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900">Giải Mã Bài Toán NGHE NHẠC (Đề Thi Thật Olympic 11 TP.HCM 2024–2025)</h3>
+          </div>
+          <span class="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
+            Trọn vẹn 6.0 Điểm
+          </span>
+        </div>
+
+        <div class="text-xs text-slate-700 leading-relaxed space-y-2">
+          <p>
+            <strong>Đề bài tóm tắt:</strong> Tìm dãy bài hát liên tiếp dài nhất sao cho tổng thời lượng $\le K$ phút với $N \le 10^5, K \le 10^9$.
+          </p>
+          <p>
+            <strong>Thuật toán:</strong> Duy trì 2 con trỏ `left` và `right`. Khi mở rộng `right`, cộng dồn thời gian. Khi tổng $> K$, tịnh tiến `left` sang phải để thu hẹp cửa sổ. Mỗi phần tử vào/ra đúng 1 lần $\implies O(N)$ thời gian, $O(1)$ bộ nhớ!
+          </p>
+        </div>
+
+        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>int left = 0, ans = 0;
+long long current_sum = 0;
+
+for (int right = 0; right &lt; n; right++) {
+    current_sum += m[right];
+    while (current_sum &gt; k && left &lt;= right) {
+        current_sum -= m[left];
+        left++;
+    }
+    ans = max(ans, right - left + 1);
+}
+cout &lt;&lt; ans &lt;&lt; "
+";</code></pre>
+      </div>
+
+      <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-600"></i> Bài Tập Thực Hành Tại Lớp
+          </h4>
+          <div class="space-y-3 text-xs">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 1: HIỆU BẰNG K (PAIR_DIFF)</span>
+              <p class="text-slate-600 text-[11px]">Sắp xếp mảng và dùng Hai con trỏ đếm số cặp $(i, j)$ sao cho $A[j] - A[i] = K$ trong $O(N \log N)$.</p>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+              <span class="font-bold text-slate-900">Bài 2: ĐOẠN CON NGẮN NHẤT (MIN_SUBARRAY)</span>
+              <p class="text-slate-600 text-[11px]">Tìm độ dài đoạn con liên tiếp ngắn nhất có tổng $\ge S$.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+            <i data-lucide="home" class="w-4 h-4 text-purple-600"></i> Bài Tập Về Nhà &amp; Gia Sư AI
+          </h4>
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-3 text-xs">
+            <div class="font-bold text-purple-950">BTVN: BÌNH CHỨA NƯỚC NHIỀU NHẤT (CONTAINER.CPP)</div>
+            <p class="text-purple-900 leading-relaxed text-[11px]">
+              Hai con trỏ ở 2 đầu mảng, co dần về giữa để tìm lượng nước chứa lớn nhất trong $O(N)$.
+            </p>
+            <div class="pt-2 border-t border-purple-200/60 flex items-center justify-between">
+              <span class="text-[11px] text-purple-700 italic">Hỏi Gia Sư Socratic:</span>
+              <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em kỹ thuật co 2 con trỏ từ 2 đầu trong bài Container with Most Water với ạ!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Hỏi Gia Sư AI
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
     <section id="content-sim-all" class="tab-content hidden space-y-6">
       <div class="w-full bg-slate-900 rounded-2xl p-6 text-white shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
