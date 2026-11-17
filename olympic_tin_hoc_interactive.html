@@ -9165,13 +9165,9 @@ void bfs(int start_node) {
 
     <!-- ============================================================ -->
     <!-- TAB: TRA CỨU CÔNG THỨC & KIẾN THỨC CỐT LÕI (CHEAT SHEET)      -->
-    
 
-    </main>
-  </div>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="w-full bg-white border-t border-slate-200 py-4 px-4 sm:px-6 lg:px-8 mt-auto">
+      <!-- ==================== FOOTER ==================== -->
+  <footer class="w-full bg-white border border-slate-200/90 rounded-2xl py-4 px-4 sm:px-6 mt-12 shadow-xs">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
       <span>© 2026–2027 <strong>Trường Quốc tế Á Châu (The Asian International School)</strong> — Tổ Tin Học.</span>
       <span class="flex items-center gap-1.5">
@@ -9179,6 +9175,9 @@ void bfs(int start_node) {
       </span>
     </div>
   </footer>
+
+    </main>
+  </div>
 
   <!-- ==================== JAVASCRIPT LOGIC ==================== -->
   <script>
@@ -9440,7 +9439,9 @@ int main() {
       }
     }
 
-    function handleHashNavigation() {
+        function handleHashNavigation() {
+      // Khóa cửa sổ tại đỉnh (0, 0)
+      window.scrollTo(0, 0);
       const rawHash = (window.location.hash || '').replace('#', '');
       if (!rawHash) {
         const anyBlock = document.querySelector('.tab-content.block');
@@ -9448,7 +9449,6 @@ int main() {
         return;
       }
 
-      // 1. Kiểm tra nếu rawHash là ID của một element trong DOM (như cd1-template, cd1-bigo, ...)
       const targetEl = document.getElementById(rawHash);
       if (targetEl) {
         const parentSection = targetEl.closest('.tab-content');
@@ -9456,13 +9456,21 @@ int main() {
           const parentTabId = parentSection.id.replace('content-', '');
           switchTab(parentTabId);
           setTimeout(() => {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 150);
+            const mainContainer = document.getElementById('main-content');
+            if (mainContainer) {
+              const targetRect = targetEl.getBoundingClientRect();
+              const mainRect = mainContainer.getBoundingClientRect();
+              const scrollOffset = targetRect.top - mainRect.top + mainContainer.scrollTop - 24;
+              mainContainer.scrollTo({ top: Math.max(0, scrollOffset), behavior: 'smooth' });
+            } else {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            window.scrollTo(0, 0);
+          }, 100);
           return;
         }
       }
 
-      // 2. Nếu rawHash là tên tab
       let targetTab = rawHash;
       if (rawHash.startsWith('content-')) targetTab = rawHash.replace('content-', '');
 
@@ -9470,9 +9478,6 @@ int main() {
       else if (targetTab.startsWith('cd2-') || targetTab.startsWith('prob-') || targetTab.startsWith('chuyen-de-2') || targetTab.startsWith('buoi-2') || targetTab.startsWith('buoi-3') || targetTab.startsWith('buoi-4') || targetTab.startsWith('chuyen-de-6')) targetTab = 'chuyen-de-2';
       else if (targetTab.startsWith('chuyen-de-3')) targetTab = 'chuyen-de-3';
       else if (targetTab.startsWith('chuyen-de-4')) targetTab = 'chuyen-de-4';
-      else if (targetTab.startsWith('buoi-3') || targetTab.startsWith('chuyen-de-5')) targetTab = 'buoi-3';
-      else if (targetTab.startsWith('buoi-4')) targetTab = 'buoi-4';
-      else if (targetTab.startsWith('chuyen-de-6')) targetTab = 'chuyen-de-6';
       else if (targetTab.startsWith('buoi-1') || targetTab === 'handbook' || targetTab === 'formula') targetTab = 'handbook';
       else if (targetTab.startsWith('olympic-info')) targetTab = 'olympic-info';
       else if (targetTab.startsWith('sim-all')) targetTab = 'sim-all';
@@ -9482,13 +9487,25 @@ int main() {
 
       setTimeout(() => {
         const el = document.getElementById(rawHash) || document.getElementById(targetTab);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const mainContainer = document.getElementById('main-content');
+        if (mainContainer && el) {
+          const targetRect = el.getBoundingClientRect();
+          const mainRect = mainContainer.getBoundingClientRect();
+          const scrollOffset = targetRect.top - mainRect.top + mainContainer.scrollTop - 24;
+          mainContainer.scrollTo({ top: Math.max(0, scrollOffset), behavior: 'smooth' });
         }
-      }, 150);
+        window.scrollTo(0, 0);
+      }, 120);
     }
 
     window.addEventListener('hashchange', handleHashNavigation);
+    // Khóa cuộn cấp độ window để bảo vệ bố cục Fullscreen không bao giờ bị trồi sụt
+    window.addEventListener('scroll', function() {
+      if (window.scrollY !== 0 || window.scrollX !== 0) {
+        window.scrollTo(0, 0);
+      }
+    }, { passive: true });
+
 
     
     // ============================================================
