@@ -1549,54 +1549,120 @@ int main() {
                 <th class="p-3">Giới hạn $N$ trong đề bài</th>
                 <th class="p-3">Độ phức tạp $O(...)$</th>
                 <th class="p-3">Thuật toán bắt buộc áp dụng</th>
+                <th class="p-3">Ví dụ bài toán kinh điển</th>
                 <th class="p-3">Chiến lược điểm thi</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-slate-600 font-mono">
               <tr class="hover:bg-slate-50/80">
-                <td class="p-3 font-bold text-purple-700">$N \le 10 - 12$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-purple-50 text-purple-700 rounded border border-purple-200 font-bold">$O(N!)$ hoặc $O(N^2 \cdot 2^N)$</span></td>
+                <td class="p-3 font-bold text-purple-700 whitespace-nowrap">$N \le 10 - 12$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-purple-50 text-purple-700 rounded border border-purple-200 font-bold">$O(N!)$ hoặc $O(N^2 \cdot 2^N)$</span></td>
                 <td class="p-3 font-sans">Duyệt mọi hoán vị (<code>std::next_permutation</code>), Quy hoạch động trạng thái (Bitmask DP).</td>
-                <td class="p-3 font-sans text-emerald-700 font-semibold">Ăn trọn $100\%$</td>
+                <td class="p-3 font-sans text-slate-700 italic">Người du lịch (TSP), Phân việc cho $N$ người, Hoán vị chữ số.</td>
+                <td class="p-3 font-sans text-emerald-700 font-semibold whitespace-nowrap">Ăn trọn $100\%$</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
-                <td class="p-3 font-bold text-rose-700">$N \le 20 - 25$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-rose-50 text-rose-700 rounded border border-rose-200 font-bold">$O(2^N)$</span></td>
+                <td class="p-3 font-bold text-rose-700 whitespace-nowrap">$N \le 20 - 25$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-rose-50 text-rose-700 rounded border border-rose-200 font-bold">$O(2^N)$</span></td>
                 <td class="p-3 font-sans"><strong>Duyệt quay lui (Backtracking), Vét cạn có nhánh cận</strong>. Thử tất cả tập con.</td>
-                <td class="p-3 font-sans text-rose-700 font-bold">Vét Subtask 1 (30-40%)</td>
+                <td class="p-3 font-sans text-slate-700 italic">Cái túi (Knapsack Subtask 1), Xếp $N$ quân hậu, Chia kẹo 2 phần bằng nhau.</td>
+                <td class="p-3 font-sans text-rose-700 font-bold whitespace-nowrap">Vét Subtask 1 (30-40%)</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
-                <td class="p-3 font-bold text-amber-700">$N \le 400$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-amber-50 text-amber-700 rounded border border-amber-200 font-bold">$O(N^3)$</span></td>
+                <td class="p-3 font-bold text-amber-700 whitespace-nowrap">$N \le 400$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-amber-50 text-amber-700 rounded border border-amber-200 font-bold">$O(N^3)$</span></td>
                 <td class="p-3 font-sans">3 vòng for lồng nhau, Nhân ma trận cơ bản, Floyd-Warshall tìm đường đi ngắn nhất.</td>
-                <td class="p-3 font-sans text-amber-700 font-semibold">Ăn Subtask 2 (60%)</td>
+                <td class="p-3 font-sans text-slate-700 italic">Nhân 2 ma trận $N \times N$, Đường đi ngắn nhất mọi cặp đỉnh (Floyd), Đếm tam giác đồ thị.</td>
+                <td class="p-3 font-sans text-amber-700 font-semibold whitespace-nowrap">Ăn Subtask 2 (60%)</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
-                <td class="p-3 font-bold text-blue-700">$N \le 2\,000 - 5\,000$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-blue-50 text-blue-700 rounded border border-blue-200 font-bold">$O(N^2)$</span></td>
+                <td class="p-3 font-bold text-blue-700 whitespace-nowrap">$N \le 2\,000 - 5\,000$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-blue-50 text-blue-700 rounded border border-blue-200 font-bold">$O(N^2)$</span></td>
                 <td class="p-3 font-sans">2 vòng for lồng nhau, Quy hoạch động 2 chiều, Duyệt mọi cặp $(i, j)$.</td>
-                <td class="p-3 font-sans text-blue-700 font-semibold">Ăn Subtask 2 (60%)</td>
+                <td class="p-3 font-sans text-slate-700 italic">Dãy con tăng dài nhất (LIS DP cơ bản), Xâu con chung dài nhất (LCS), Đếm cặp nghịch thế.</td>
+                <td class="p-3 font-sans text-blue-700 font-semibold whitespace-nowrap">Ăn Subtask 2 (60%)</td>
               </tr>
               <tr class="hover:bg-slate-50/80 bg-emerald-50/30">
-                <td class="p-3 font-bold text-emerald-700">$N \le 10^5 - 2 \cdot 10^5$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N \log N)$</span></td>
+                <td class="p-3 font-bold text-emerald-700 whitespace-nowrap">$N \le 10^5 - 2 \cdot 10^5$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N \log N)$</span></td>
                 <td class="p-3 font-sans"><strong>Sắp xếp (<code>std::sort</code>), Tìm kiếm nhị phân, Hai con trỏ, Set/Map, Priority Queue</strong>.</td>
-                <td class="p-3 font-sans text-emerald-700 font-black">Ăn Trọn 100% Bài 1, 2</td>
+                <td class="p-3 font-sans text-slate-700 italic">Đếm cặp có tổng bằng $K$ (Two Pointers/BS), Tìm giá trị nhỏ nhất thỏa điều kiện (Chặt nhị phân kết quả), Segment Tree.</td>
+                <td class="p-3 font-sans text-emerald-700 font-black whitespace-nowrap">Ăn Trọn 100% Bài 1, 2</td>
               </tr>
               <tr class="hover:bg-slate-50/80 bg-emerald-50/30">
-                <td class="p-3 font-bold text-emerald-700">$N \le 10^6 - 10^7$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N)$ hoặc $O(N \log \log N)$</span></td>
+                <td class="p-3 font-bold text-emerald-700 whitespace-nowrap">$N \le 10^6 - 10^7$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N)$ hoặc $O(N \log \log N)$</span></td>
                 <td class="p-3 font-sans"><strong>Mảng đếm tần số (Direct Addressing Table), Mảng cộng dồn (Prefix Sum), Sàng Eratosthenes</strong>.</td>
-                <td class="p-3 font-sans text-emerald-700 font-black">Ăn Trọn 100% Bài 1, 2</td>
+                <td class="p-3 font-sans text-slate-700 italic">Đếm số lần xuất hiện của các phần tử, Tính tổng đoạn con $Q$ truy vấn $O(1)$, Sàng lọc số nguyên tố $\le N$.</td>
+                <td class="p-3 font-sans text-emerald-700 font-black whitespace-nowrap">Ăn Trọn 100% Bài 1, 2</td>
               </tr>
               <tr class="hover:bg-slate-50/80">
-                <td class="p-3 font-bold text-slate-800">$N \ge 10^9 - 10^{18}$</td>
-                <td class="p-3"><span class="px-2 py-0.5 bg-slate-200 text-slate-800 rounded border border-slate-300 font-bold">$O(\log N)$ hoặc $O(1)$</span></td>
+                <td class="p-3 font-bold text-slate-800 whitespace-nowrap">$N \ge 10^9 - 10^{18}$</td>
+                <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 bg-slate-200 text-slate-800 rounded border border-slate-300 font-bold">$O(\log N)$ hoặc $O(1)$</span></td>
                 <td class="p-3 font-sans">Công thức toán học đóng, Thuật toán Euclid GCD, Lũy thừa nhị phân $A^B \pmod M$.</td>
-                <td class="p-3 font-sans text-purple-700 font-black">Giải Nhất Tuyệt Đối</td>
+                <td class="p-3 font-sans text-slate-700 italic">Ước chung lớn nhất $\gcd(A, B)$, Lũy thừa nhanh $A^B \pmod{10^9+7}$, Tính số Fibonacci thứ $10^{18}$ (Nhân ma trận).</td>
+                <td class="p-3 font-sans text-purple-700 font-black whitespace-nowrap">Giải Nhất Tuyệt Đối</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- 💡 3 TÌNH HUỐNG THỰC CHIẾN MINH HỌA -->
+        <div class="p-4 bg-gradient-to-br from-amber-50/70 via-white to-blue-50/60 rounded-xl border border-amber-200/90 shadow-xs space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="font-extrabold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
+              <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+              3 Tình Huống Thực Chiến: Cách Nhìn Giới Hạn $N$ Để Đoán Ngay Thuật Toán Trong 3 Giây
+            </span>
+            <span class="text-[10px] font-bold text-amber-900 bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-300/80">Bí kíp phòng thi Olympic</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <!-- Tình huống 1 -->
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 shadow-2xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-800 text-xs">Ví dụ 1: Đếm cặp số có tổng bằng $K$</span>
+                <span class="px-1.5 py-0.5 text-[10px] font-mono bg-blue-100 text-blue-800 rounded font-bold">Two Sum</span>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                Đề bài: <em>"Cho mảng $A$ có $N$ số nguyên. Hãy đếm số cặp $(i, j)$ ($i < j$) sao cho $A_i + A_j = K$."</em>
+              </p>
+              <div class="text-[11px] space-y-1 font-mono pt-1.5 border-t border-slate-100">
+                <div class="text-rose-600 font-medium">❌ Nếu $N = 10^5$: Duyệt 2 vòng for lồng nhau $O(N^2) = 10^{10} \implies$ <strong>TLE (100 giây) ăn 0 điểm</strong>!</div>
+                <div class="text-emerald-700 font-semibold">✅ Giải pháp đúng: Sort mảng + Kỹ thuật Hai con trỏ $O(N \log N) \approx 1.7 \cdot 10^6 \implies$ <strong>Chạy 0.02s ăn trọn 100%</strong>!</div>
+              </div>
+            </div>
+
+            <!-- Tình huống 2 -->
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 shadow-2xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-800 text-xs">Ví dụ 2: Truy vấn tổng đoạn $[L, R]$</span>
+                <span class="px-1.5 py-0.5 text-[10px] font-mono bg-emerald-100 text-emerald-800 rounded font-bold">Prefix Sum</span>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                Đề bài: <em>"Cho mảng $N$ phần tử và $Q$ câu hỏi. Mỗi câu hỏi tính tổng các số từ vị trí $L$ đến $R$ ($N, Q \le 10^5$)."</em>
+              </p>
+              <div class="text-[11px] space-y-1 font-mono pt-1.5 border-t border-slate-100">
+                <div class="text-rose-600 font-medium">❌ Mỗi câu hỏi chạy vòng for từ $L$ đến $R$: $O(Q \times N) = 10^{10} \implies$ <strong>TLE mất 100s ăn 0 điểm</strong>!</div>
+                <div class="text-emerald-700 font-semibold">✅ Mảng cộng dồn (Prefix Sum): Tiền xử lý $O(N)$, trả lời mỗi câu $O(1) \implies$ <strong>Chạy 0.03s ăn trọn 100%</strong>!</div>
+              </div>
+            </div>
+
+            <!-- Tình huống 3 -->
+            <div class="p-3.5 bg-white rounded-lg border border-slate-200 shadow-2xs space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-800 text-xs">Ví dụ 3: Giới hạn số khổng lồ $10^{18}$</span>
+                <span class="px-1.5 py-0.5 text-[10px] font-mono bg-purple-100 text-purple-800 rounded font-bold">Math O(1)</span>
+              </div>
+              <p class="text-slate-600 text-[11px] leading-relaxed">
+                Đề bài: <em>"Tính tổng các số tự nhiên từ $1$ đến $N$ với giới hạn $N \le 10^{18}$."</em>
+              </p>
+              <div class="text-[11px] space-y-1 font-mono pt-1.5 border-t border-slate-100">
+                <div class="text-rose-600 font-medium">❌ Chạy vòng lặp <code>for (long long i=1; i<=N; ++i)</code>: $10^{18}$ bước $\implies$ <strong>Mất hơn 300 năm</strong>!</div>
+                <div class="text-emerald-700 font-semibold">✅ Dùng công thức Gauss $S = \frac{N \times (N + 1)}{2}$ với $O(1) \implies$ <strong>Chạy 0.000001s ăn trọn 100%</strong>!</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- BẢNG BỘ NHỚ RAM TRONG THI ĐẤU -->
