@@ -199,18 +199,15 @@
           <span>Kỳ Thi &amp; Đề Mẫu</span>
         </button>
         <!-- Nút Sổ Tay & Bảng Công Thức (Gộp chung) -->
-                <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
-          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
-        </button>
         <button onclick="switchTab('handbook')" title="Mở Sổ tay Tra Cứu & Bảng Công Thức (Phím F1)" class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-emerald-500">
           <i data-lucide="book-open" class="w-4 h-4"></i>
           <span>Sổ Tay & Công Thức</span>
           <span class="bg-white/20 text-[10px] px-1 py-0.2 rounded font-mono hidden sm:inline">F1</span>
         </button>
         <!-- Nút Gia Sư AI -->
-        <button onclick="toggleChatbox()" title="Mở Trợ Lý Gia Sư Socratic AI" class="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-purple-400">
+        <button onclick="toggleChatbox()" title="Mở Trợ Lý Sư Phạm Olympic AI" class="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-purple-400">
           <i data-lucide="bot" class="w-4 h-4"></i>
-          <span>Gia Sư AI</span>
+          <span>Trợ Lý Sư Phạm AI</span>
         </button>
       </div>
     </div>
@@ -355,9 +352,6 @@
             <i data-lucide="book-marked" class="w-3.5 h-3.5 text-emerald-500"></i> Tra Cứu &amp; Chiến Lược
           </div>
           <div class="space-y-1">
-                    <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
-          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
-        </button>
         <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="book-open" class="w-4 h-4 text-emerald-600 shrink-0"></i>
               <div class="flex-1 truncate">
@@ -365,14 +359,6 @@
                 <div class="text-[10px] text-slate-500 truncate">Nền Tảng Thi Đấu + Mảng/Xâu + 24 CT</div>
               </div>
               <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">F1</span>
-            </button>
-                        <button onclick="switchTab('onlinegdb')" id="tab-onlinegdb" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="terminal" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-              <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">Trình Biên Dịch OnlineGDB</div>
-                <div class="text-[10px] text-slate-500 truncate">Code & Debug C++ Trực Tiếp</div>
-              </div>
-              <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-blue-100 text-blue-800">IDE</span>
             </button>
             <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="activity" class="w-4 h-4 text-amber-600 shrink-0"></i>
@@ -2141,59 +2127,8 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
         </div>
       </div>
 
-        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 2 (INLINE SOCRATIC HELPER) -->
-        <div id="hw-assistant-card-2" class="p-5 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-2xl space-y-3.5">
-          <div class="flex items-center justify-between border-b border-purple-200/60 pb-3">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-xl bg-purple-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-purple-950 flex items-center gap-1.5">
-                  Trợ Giảng AI Socratic • Hỗ Trợ 2 Bài Về Nhà (PALIN & MAJORITY)
-                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
-                </h4>
-                <p class="text-[11px] text-purple-700">Hướng dẫn tư duy, phân tích bẫy test, giải đáp độ phức tạp (Tuyệt đối không giải hộ)</p>
-              </div>
-            </div>
-            <button onclick="toggleChatbox()" class="text-xs bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
-              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
-            </button>
-          </div>
-
-          <!-- Quick suggestion chips -->
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] text-purple-800 font-bold py-1">Gợi ý nhanh:</span>
-            <button onclick="sendHwAssistantMsg(2, 'Gợi ý thuật toán kiểm tra xâu đối xứng bỏ qua ký tự đặc biệt (PALIN) trong O(N)?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
-              💡 Hướng dẫn bài PALIN
-            </button>
-            <button onclick="sendHwAssistantMsg(2, 'Gợi ý cách tìm phần tử chiếm đa số trong mảng (MAJORITY) bằng mảng đếm tần số?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
-              💡 Hướng dẫn bài MAJORITY
-            </button>
-            <button onclick="sendHwAssistantMsg(2, 'Làm sao để tránh lỗi TLE khi đọc xâu dài 10^6 ký tự?')" class="px-2.5 py-1 bg-white hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-lg text-xs font-medium transition">
-              ⚡ Tránh TLE với xâu 10^6
-            </button>
-          </div>
-
-          <!-- Chat messages stream for buoi 2 -->
-          <div id="hw-chat-messages-2" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-purple-200 space-y-2.5 text-xs">
-            <div class="flex items-start gap-2 text-slate-700">
-              <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
-              <div class="p-2.5 bg-purple-50/70 rounded-xl rounded-tl-none border border-purple-100 leading-relaxed">
-                Chào em! Thầy là Trợ Giảng Socratic chuyên hỗ trợ 2 bài tập về nhà <strong>PALIN</strong> và <strong>MAJORITY</strong>. Em đang vướng ở khâu nào? Bấm gợi ý ở trên hoặc gõ câu hỏi vào ô dưới nhé!
-              </div>
-            </div>
-          </div>
-
-          <!-- Input bar for buoi 2 -->
-          <div class="flex items-center gap-2">
-            <input type="text" id="hw-chat-input-2" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(2)" placeholder="Hỏi thầy về cách giải, phân tích test biên bài PALIN, MAJORITY..." class="flex-1 px-3.5 py-2 text-xs border border-purple-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 bg-white">
-            <button onclick="sendHwAssistantMsg(2)" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
-              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
-            </button>
-          </div>
-        </div>
-</section>
+        
+        </section>
 
         
     <!-- ============================================================== -->
@@ -2991,59 +2926,8 @@ cout &lt;&lt; max_so_far &lt;&lt; "
         </div>
       </div>
 
-        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 3 (INLINE SOCRATIC HELPER) -->
-        <div id="hw-assistant-card-3" class="p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-2xl space-y-3.5">
-          <div class="flex items-center justify-between border-b border-indigo-200/60 pb-3">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-xl bg-indigo-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-indigo-950 flex items-center gap-1.5">
-                  Trợ Giảng AI Socratic • Hỗ Trợ 2 Bài Về Nhà (DIV3 & MINSUB)
-                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
-                </h4>
-                <p class="text-[11px] text-indigo-700">Hướng dẫn tư duy, gợi ý kỹ thuật mảng cộng dồn và Hai con trỏ (Không giải hộ)</p>
-              </div>
-            </div>
-            <button onclick="toggleChatbox()" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
-              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
-            </button>
-          </div>
-
-          <!-- Quick suggestion chips -->
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] text-indigo-900 font-bold py-1">Gợi ý nhanh:</span>
-            <button onclick="sendHwAssistantMsg(3, 'Gợi ý cách dùng mảng cộng dồn và số dư mod 3 để giải bài DIV3 trong O(N)?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
-              💡 Hướng dẫn bài DIV3 (chia hết cho 3)
-            </button>
-            <button onclick="sendHwAssistantMsg(3, 'Gợi ý cách tìm đoạn con ngắn nhất có tổng >= S bằng Two Pointers kết hợp Prefix Sum?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
-              💡 Hướng dẫn bài MINSUB (đoạn ngắn nhất)
-            </button>
-            <button onclick="sendHwAssistantMsg(3, 'Bẫy tràn số long long khi cộng dồn mảng N=10^5, A[i]=10^9 là gì?')" class="px-2.5 py-1 bg-white hover:bg-indigo-100 text-indigo-800 border border-indigo-200 rounded-lg text-xs font-medium transition">
-              ⚠️ Tránh tràn số long long
-            </button>
-          </div>
-
-          <!-- Chat messages stream for buoi 3 -->
-          <div id="hw-chat-messages-3" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-indigo-200 space-y-2.5 text-xs">
-            <div class="flex items-start gap-2 text-slate-700">
-              <div class="w-6 h-6 rounded-md bg-indigo-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
-              <div class="p-2.5 bg-indigo-50/70 rounded-xl rounded-tl-none border border-indigo-100 leading-relaxed">
-                Chào em! Thầy là Trợ Giảng Socratic hỗ trợ 2 bài tập về nhà <strong>DIV3</strong> và <strong>MINSUB</strong>. Em cần thầy gợi ý hướng tư duy hay kiểm tra độ phức tạp của bài nào?
-              </div>
-            </div>
-          </div>
-
-          <!-- Input bar for buoi 3 -->
-          <div class="flex items-center gap-2">
-            <input type="text" id="hw-chat-input-3" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(3)" placeholder="Hỏi thầy về thuật toán, kỹ thuật chia dư mod 3, Two Pointers bài MINSUB..." class="flex-1 px-3.5 py-2 text-xs border border-indigo-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-600 bg-white">
-            <button onclick="sendHwAssistantMsg(3)" class="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
-              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
-            </button>
-          </div>
-        </div>
-</section>
+        
+        </section>
 
         <section id="content-buoi-4" class="tab-content hidden space-y-6">
       <!-- Banner Chuyên Đề -->
@@ -3609,59 +3493,8 @@ sort(intervals.begin(), intervals.end(), cmp);</code></pre>
         </div>
       </div>
 
-        <!-- KHUNG TRỢ GIẢNG AI BTVN BUỔI 4 (INLINE SOCRATIC HELPER) -->
-        <div id="hw-assistant-card-4" class="p-5 bg-gradient-to-r from-rose-50 to-purple-50 border border-rose-200 rounded-2xl space-y-3.5">
-          <div class="flex items-center justify-between border-b border-rose-200/60 pb-3">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-xl bg-rose-700 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                <i data-lucide="bot" class="w-4 h-4 text-amber-300"></i>
-              </div>
-              <div>
-                <h4 class="text-sm font-bold text-rose-950 flex items-center gap-1.5">
-                  Trợ Giảng AI Socratic • Hỗ Trợ Bài Về Nhà (RESTAURANT)
-                  <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-semibold">Tự động 24/7</span>
-                </h4>
-                <p class="text-[11px] text-rose-700">Hướng dẫn tư duy struct Event, viết hàm so sánh cmp và xử lý mốc thời gian trùng</p>
-              </div>
-            </div>
-            <button onclick="toggleChatbox()" class="text-xs bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded-xl transition flex items-center gap-1">
-              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Mở Chatbox Lớn
-            </button>
-          </div>
-
-          <!-- Quick suggestion chips -->
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] text-rose-900 font-bold py-1">Gợi ý nhanh:</span>
-            <button onclick="sendHwAssistantMsg(4, 'Gợi ý cách biểu diễn khách đến (+1) và khách rời đi (-1) để sắp xếp sự kiện trong bài RESTAURANT?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
-              💡 Cách khai báo struct Event {time, type}
-            </button>
-            <button onclick="sendHwAssistantMsg(4, 'Tại sao khi time bằng nhau thì sự kiện rời đi (-1) phải đứng trước sự kiện đến (+1)?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
-              💡 Bẫy hai người cùng lúc t
-            </button>
-            <button onclick="sendHwAssistantMsg(4, 'Làm sao giải bài RESTAURANT trong O(N log N) bằng vector và std::sort?')" class="px-2.5 py-1 bg-white hover:bg-rose-100 text-rose-800 border border-rose-200 rounded-lg text-xs font-medium transition">
-              ⚡ Tối ưu thời gian O(N log N)
-            </button>
-          </div>
-
-          <!-- Chat messages stream for buoi 4 -->
-          <div id="hw-chat-messages-4" class="max-h-56 overflow-y-auto custom-scrollbar p-3.5 bg-white rounded-xl border border-rose-200 space-y-2.5 text-xs">
-            <div class="flex items-start gap-2 text-slate-700">
-              <div class="w-6 h-6 rounded-md bg-rose-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
-              <div class="p-2.5 bg-rose-50/70 rounded-xl rounded-tl-none border border-rose-100 leading-relaxed">
-                Chào em! Thầy là Trợ Giảng Socratic hỗ trợ bài toán kinh điển <strong>RESTAURANT (Khách hàng nhà hàng)</strong>. Em cần thầy gợi mở về cách lập sự kiện rời rạc hay quy tắc sắp xếp?
-              </div>
-            </div>
-          </div>
-
-          <!-- Input bar for buoi 4 -->
-          <div class="flex items-center gap-2">
-            <input type="text" id="hw-chat-input-4" onkeydown="if(event.key==='Enter') sendHwAssistantMsg(4)" placeholder="Hỏi thầy về kỹ thuật Event Sorting, hàm cmp bài RESTAURANT..." class="flex-1 px-3.5 py-2 text-xs border border-rose-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-rose-600 bg-white">
-            <button onclick="sendHwAssistantMsg(4)" class="px-4 py-2 bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5 shrink-0">
-              <i data-lucide="send" class="w-3.5 h-3.5"></i> Gửi Thầy
-            </button>
-          </div>
-        </div>
-</section>
+        
+        </section>
 
     
     <!-- ============================================================== -->
@@ -5186,87 +5019,6 @@ void bfs(int start_node) {
     <!-- TAB: TRA CỨU CÔNG THỨC & KIẾN THỨC CỐT LÕI (CHEAT SHEET)      -->
     
 
-  
-    <!-- ============================================================== -->
-    <!-- TAB TRÌNH BIÊN DỊCH ONLINEGDB (C++17 FAST I/O) -->
-    <!-- ============================================================== -->
-    <section id="content-onlinegdb" class="tab-content hidden space-y-6 animate-fadeIn">
-      
-      <!-- HERO BANNER -->
-      <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 sm:p-8 text-white shadow-xl space-y-4 border border-slate-800">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div class="space-y-1.5">
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Môi Trường Lập Trình Thi Đấu</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/20 text-blue-300 border border-blue-500/30 font-bold">C++17 (G++ 17)</span>
-            </div>
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2.5">
-              <i data-lucide="terminal" class="w-6 h-6 text-emerald-400"></i> Phòng Thực Hành Trực Tuyến OnlineGDB Compiler
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
-              Trình biên dịch và gỡ lỗi C++ trực tuyến tích hợp sẵn. Thầy cô và học sinh có thể soạn thảo mã nguồn, nạp test case vào ô Input (stdin) và chạy kiểm thử thuật toán ngay lập tức.
-            </p>
-          </div>
-          <div class="flex items-center gap-2 flex-wrap">
-            <button onclick="copyTemplateCode()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-              <i data-lucide="copy" class="w-4 h-4"></i> Chép Khung Mẫu C++ (Fast I/O)
-            </button>
-            <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 border border-white/20">
-              <i data-lucide="external-link" class="w-4 h-4"></i> Mở Cửa Sổ Mới
-            </a>
-          </div>
-        </div>
-
-        <!-- HƯỚNG DẪN 3 BƯỚC THAO TÁC -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3 border-t border-slate-800 text-xs">
-          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-[11px] shrink-0">1</span>
-            <div class="space-y-0.5">
-              <div class="font-bold text-slate-200">Chọn Ngôn Ngữ C++</div>
-              <div class="text-[11px] text-slate-400">Góc phải phía trên chọn <strong>C++ (G++ 17)</strong> hoặc <strong>C++20</strong>.</div>
-            </div>
-          </div>
-          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-            <span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-[11px] shrink-0">2</span>
-            <div class="space-y-0.5">
-              <div class="font-bold text-slate-200">Nhập Dữ Liệu Test (stdin)</div>
-              <div class="text-[11px] text-slate-400">Chọn ô <strong>input</strong> ở đáy màn hình và dán test case vào trước khi chạy.</div>
-            </div>
-          </div>
-          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
-            <span class="w-5 h-5 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-[11px] shrink-0">3</span>
-            <div class="space-y-0.5">
-              <div class="font-bold text-slate-200">Bấm Run (F9)</div>
-              <div class="text-[11px] text-slate-400">Nhấn nút <strong>Run</strong> màu xanh hoặc phím <strong>F9</strong> để biên dịch và chạy.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- IFRAME NHÚNG ONLINEGDB -->
-      <div class="bg-white rounded-3xl border border-slate-200 p-2 sm:p-4 shadow-sm space-y-3">
-        <div class="flex items-center justify-between px-3 py-1 text-xs text-slate-500">
-          <div class="flex items-center gap-2">
-            <span class="flex gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
-            </span>
-            <span class="font-mono font-bold text-slate-700">OnlineGDB C++ Compiler v2.0 (Embedded)</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="toggleOnlineGdbFullscreen()" class="px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition flex items-center gap-1 border border-slate-200">
-              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> <span id="btn-fullscreen-text">Phóng Toàn Màn Hình</span>
-            </button>
-          </div>
-        </div>
-        <div id="onlinegdb-wrapper" class="w-full transition-all duration-300">
-          <iframe id="onlinegdb-frame" src="https://www.onlinegdb.com/online_c++_compiler" class="w-full h-[760px] rounded-2xl border border-slate-200 shadow-inner bg-slate-900" allow="clipboard-read; clipboard-write" loading="lazy"></iframe>
-        </div>
-      </div>
-
-    </section>
-
     </main>
   </div>
 
@@ -5431,7 +5183,7 @@ void bfs(int start_node) {
 
     
     // ============================================================
-    // QUẢN LÝ PDF ĐỀ THI GỐC & ONLINEGDB
+    // QUẢN LÝ PDF ĐỀ THI GỐC
     // ============================================================
     const PDF_EXAM_FILES = {
       '2024-2025': {
@@ -5500,27 +5252,10 @@ int main() {
     return 0;
 }`;
       navigator.clipboard.writeText(template).then(() => {
-        alert("Đã sao chép Khung Mẫu Thi Đấu C++17 (Fast I/O) vào bộ nhớ tạm! Thầy/học sinh chỉ cần dán vào OnlineGDB.");
+        alert("Đã sao chép Khung Mẫu Thi Đấu C++17 (Fast I/O) vào bộ nhớ tạm! Thầy/học sinh chỉ cần dán vào IDE lập trình.");
       }).catch(() => {
         alert("Đã chọn mã nguồn, Thầy/học sinh nhấn Ctrl+C để copy.");
       });
-    }
-
-    let isOnlineGdbFullscreen = false;
-    function toggleOnlineGdbFullscreen() {
-      const wrapper = document.getElementById('onlinegdb-wrapper');
-      const frame = document.getElementById('onlinegdb-frame');
-      const btnText = document.getElementById('btn-fullscreen-text');
-      if (!frame) return;
-
-      isOnlineGdbFullscreen = !isOnlineGdbFullscreen;
-      if (isOnlineGdbFullscreen) {
-        frame.style.height = "92vh";
-        if (btnText) btnText.textContent = "Thu Nhỏ Khung";
-      } else {
-        frame.style.height = "760px";
-        if (btnText) btnText.textContent = "Phóng Toàn Màn Hình";
-      }
     }
 
     function handleHashNavigation() {
@@ -5535,7 +5270,7 @@ int main() {
       else if (hash.startsWith('buoi-6')) targetTab = 'buoi-6';
       else if (hash.startsWith('buoi-1') || hash === 'handbook' || hash === 'formula') targetTab = 'handbook';
       else if (hash.startsWith('olympic-info')) targetTab = 'olympic-info';
-      else if (hash.startsWith('onlinegdb')) targetTab = 'onlinegdb';
+      
 
       switchTab(targetTab);
 
@@ -6729,9 +6464,6 @@ int main() {
   <!-- ==================== FLOATING QUICK ACCESS BUTTONS ==================== -->
   <!-- Nút Nổi Mở Sổ Tay Nhanh (Góc Trái Dưới) -->
   <div id="ahs-handbook-quickbtn" class="fixed bottom-5 left-5 z-40">
-            <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
-          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
-        </button>
         <button onclick="switchTab('handbook')" title="Mở nhanh Sổ tay Tra Cứu (Phím tắt: F1)" class="flex items-center gap-2 px-4 py-3 bg-white hover:bg-emerald-50 text-emerald-800 font-extrabold text-xs sm:text-sm rounded-full shadow-2xl border-2 border-emerald-500 transition-all transform hover:scale-105 active:scale-95">
       <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600"></i>
       <span>📖 Sổ Tay Tra Cứu</span>
@@ -6748,7 +6480,7 @@ int main() {
         <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
       </span>
       <i data-lucide="bot" class="w-5 h-5 text-amber-300"></i>
-      <span>Trợ Lý Sư Phạm AHS</span>
+      <span>Trợ Lý Sư Phạm AI</span>
     </button>
 
     <!-- Cửa Sổ Chat (Mặc định ẩn) -->
@@ -7140,86 +6872,7 @@ int main() {
 
     // ============================================================
     // IN-PAGE HOMEWORK SOCRATIC ASSISTANT
-    // ============================================================
-    function sendHwAssistantMsg(sessionNum, customPrompt = '') {
-      const inputEl = document.getElementById(`hw-chat-input-${sessionNum}`);
-      const chatMessages = document.getElementById(`hw-chat-messages-${sessionNum}`);
-      if (!chatMessages) return;
-
-      const userText = customPrompt ? customPrompt : (inputEl ? inputEl.value.trim() : '');
-      if (!userText) return;
-
-      if (inputEl) inputEl.value = '';
-
-      // Append user msg
-      const userDiv = document.createElement('div');
-      userDiv.className = 'flex items-start justify-end gap-2 text-slate-800';
-      userDiv.innerHTML = `
-        <div class="p-2.5 bg-ahs-primary text-white rounded-xl rounded-tr-none leading-relaxed text-xs shadow-xs max-w-[85%]">
-          ${escapeHtml(userText)}
-        </div>
-      `;
-      chatMessages.appendChild(userDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      // Append typing
-      const typingDiv = document.createElement('div');
-      const typingId = `hw-typing-${Date.now()}`;
-      typingDiv.id = typingId;
-      typingDiv.className = 'flex items-start gap-2 text-slate-500';
-      typingDiv.innerHTML = `
-        <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
-        <div class="p-2 bg-slate-100 rounded-xl rounded-tl-none border border-slate-200 text-xs flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.2s]"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]"></span>
-        </div>
-      `;
-      chatMessages.appendChild(typingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      const effectiveKey = getEffectiveApiKey();
-      if (effectiveKey) {
-        callGeminiSocratic(userText, effectiveKey)
-          .then(aiReply => {
-            renderHwResponse(aiReply);
-          })
-          .catch(err => {
-            const fallback = generateInternalSocraticResponse(userText);
-            renderHwResponse(fallback);
-          });
-      } else {
-        setTimeout(() => {
-          const fallback = generateInternalSocraticResponse(userText);
-          renderHwResponse(fallback);
-        }, 300);
-      }
-
-      function renderHwResponse(replyText) {
-        if (typingDiv) typingDiv.remove();
-        const botDiv = document.createElement('div');
-        botDiv.className = 'flex items-start gap-2 text-slate-800';
-        botDiv.innerHTML = `
-          <div class="w-6 h-6 rounded-md bg-purple-700 text-white flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
-          <div class="p-2.5 bg-purple-50/80 rounded-xl rounded-tl-none border border-purple-200 leading-relaxed text-xs max-w-[88%] space-y-1.5">
-            ${formatBotMessage(replyText)}
-          </div>
-        `;
-        chatMessages.appendChild(botDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        if (window.renderMathInElement) {
-          renderMathInElement(botDiv, {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false}
-            ],
-            throwOnError: false
-          });
-        }
-      }
-    }
-
+    
     function askHwQuestion(promptText) {
       toggleChatbox();
       sendQuickPrompt(promptText);
