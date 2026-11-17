@@ -1469,8 +1469,7 @@ int main() {
                 <span class="w-2 h-2 rounded-full bg-amber-500"></span> 2. Phép chia nguyên làm tròn lên
               </div>
               <p class="text-[11px] text-amber-800">
-                Cần tính $\lceil a / b 
-\rceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
+                Cần tính $\lceil a / b \rceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
                 💡 <strong>Công thức chuẩn thi đấu:</strong> <code>(a + b - 1) / b</code> với số nguyên dương.
               </p>
             </div>
@@ -2052,8 +2051,7 @@ for (int i = 0; i &lt; n; i++) {
               <span class="text-xs font-mono bg-white px-2 py-1 rounded border border-slate-200 text-slate-600">DIFFK.INP/OUT</span>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Cho mảng $N$ số nguyên dương và số $K$. Đếm số cặp $(i, j)$ sao cho $A_i - A_j = K$ ($i 
-e j$). Giới hạn: $N \le 10^5, A_i \le 10^6$. Dùng mảng đếm để kiểm tra xem giá trị $A_i + K$ đã xuất hiện bao nhiêu lần.
+              Cho mảng $N$ số nguyên dương và số $K$. Đếm số cặp $(i, j)$ sao cho $A_i - A_j = K$ ($i \ne j$). Giới hạn: $N \le 10^5, A_i \le 10^6$. Dùng mảng đếm để kiểm tra xem giá trị $A_i + K$ đã xuất hiện bao nhiêu lần.
             </p>
             <div class="grid grid-cols-2 gap-2 text-xs font-mono">
               <div class="p-2 bg-white rounded border border-slate-200">
@@ -2124,8 +2122,7 @@ for (int i = 0; i &lt; n; i++) {
               <span class="text-xs font-mono bg-white px-2 py-1 rounded border border-purple-200 text-purple-700 font-bold">MAJORITY.INP/OUT</span>
             </div>
             <p class="text-xs text-slate-700 leading-relaxed">
-              Cho mảng $N$ số nguyên dương ($N \le 10^5, A_i \le 10^6$). Tìm phần tử xuất hiện nhiều hơn $\lfloor N/2 
-floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</code>.
+              Cho mảng $N$ số nguyên dương ($N \le 10^5, A_i \le 10^6$). Tìm phần tử xuất hiện nhiều hơn $\lfloor N/2 \rfloor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</code>.
             </p>
             <div class="p-3 bg-white rounded-xl border border-purple-200 text-xs font-mono space-y-1">
               <div><strong>Input:</strong> 7 
@@ -2306,8 +2303,7 @@ bool is_abnormal(const string &s, int k) {
             <strong>Đề bài tóm tắt:</strong> Cho hai số $a, b$. Tìm $x, y$ sao cho $\gcd(x, y) = a$, $\text{lcm}(x, y) = b$ và tổng $x + y$ nhỏ nhất.
           </p>
           <p>
-            <strong>Phương pháp tối ưu:</strong> Ta biết $x \cdot y = a \cdot b$. Đặt $x = a \cdot u, y = a \cdot v \implies u \cdot v = b/a$ với $\gcd(u, v) = 1$. Duyệt $u$ từ $\lfloor\sqrt{b/a}
-floor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tính!
+            <strong>Phương pháp tối ưu:</strong> Ta biết $x \cdot y = a \cdot b$. Đặt $x = a \cdot u, y = a \cdot v \implies u \cdot v = b/a$ với $\gcd(u, v) = 1$. Duyệt $u$ từ $\lfloor\sqrt{b/a}\rfloor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tính!
           </p>
         </div>
 
