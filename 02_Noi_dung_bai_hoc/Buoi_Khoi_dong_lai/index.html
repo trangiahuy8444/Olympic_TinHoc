@@ -5552,24 +5552,27 @@ int main() {
       });
     }
 
-    function handleHashNavigation() {
-      const hash = window.location.hash.replace('#', '');
-      if (!hash) return;
+        function handleHashNavigation() {
+      const rawHash = window.location.hash.replace('#', '');
+      if (!rawHash) return;
 
-      let targetTab = hash;
-      if (hash.startsWith('buoi-2')) targetTab = 'buoi-2';
-      else if (hash.startsWith('buoi-3')) targetTab = 'buoi-3';
-      else if (hash.startsWith('buoi-4')) targetTab = 'buoi-4';
-      else if (hash.startsWith('buoi-5')) targetTab = 'buoi-5';
-      else if (hash.startsWith('buoi-6')) targetTab = 'buoi-6';
-      else if (hash.startsWith('buoi-1') || hash === 'handbook' || hash === 'formula') targetTab = 'handbook';
-      else if (hash.startsWith('olympic-info')) targetTab = 'olympic-info';
-      
+      let targetTab = rawHash;
+      if (rawHash.startsWith('content-')) targetTab = rawHash.replace('content-', '');
+
+      if (targetTab.startsWith('buoi-2')) targetTab = 'buoi-2';
+      else if (targetTab.startsWith('buoi-3')) targetTab = 'buoi-3';
+      else if (targetTab.startsWith('buoi-4')) targetTab = 'buoi-4';
+      else if (targetTab.startsWith('buoi-5')) targetTab = 'buoi-5';
+      else if (targetTab.startsWith('buoi-6')) targetTab = 'buoi-6';
+      else if (targetTab.startsWith('buoi-1') || targetTab === 'handbook' || targetTab === 'formula') targetTab = 'handbook';
+      else if (targetTab.startsWith('olympic-info')) targetTab = 'olympic-info';
+      else if (targetTab.startsWith('sim-all')) targetTab = 'sim-all';
+      else if (targetTab.startsWith('kehoach')) targetTab = 'kehoach';
 
       switchTab(targetTab);
 
       setTimeout(() => {
-        const el = document.getElementById(hash);
+        const el = document.getElementById(rawHash) || document.getElementById(targetTab);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -5942,6 +5945,93 @@ int main() {
     // ============================================================
     let simPrefArrayA = [2, -1, 4, 7, 3];
     let simPrefArrayP = [0, 2, 1, 5, 12, 15];
+
+    
+    // ============================================================
+    // MÔ PHỎNG PREFIX SUM CHUYÊN ĐỀ 5 (BUỔI 3)
+    // ============================================================
+    const prefSessionA = [3, 1, 4, 1, 5, 9, 2, 6];
+    const prefSessionP = [0, 3, 4, 8, 9, 14, 23, 25, 31];
+
+    function queryPrefixSimSession() {
+      const lEl = document.getElementById('sim-prefix-l');
+      const rEl = document.getElementById('sim-prefix-r');
+      const visualEl = document.getElementById('sim-prefix-visual');
+      const resEl = document.getElementById('sim-prefix-result');
+
+      let L = lEl ? parseInt(lEl.value) || 3 : 3;
+      let R = rEl ? parseInt(rEl.value) || 6 : 6;
+
+      if (L < 1) L = 1;
+      if (R > 8) R = 8;
+      if (L > R) {
+        alert("Chỉ số L (" + L + ") không được lớn hơn R (" + R + ")!");
+        return;
+      }
+
+      if (lEl) lEl.value = L;
+      if (rEl) rEl.value = R;
+
+      const sum = prefSessionP[R] - prefSessionP[L - 1];
+
+      if (visualEl) {
+        let aCells = '';
+        for (let i = 1; i <= 8; i++) {
+          const inRange = (i >= L && i <= R);
+          const bg = inRange ? 'bg-indigo-600 text-white font-extrabold shadow-sm' : 'bg-white text-slate-700 border border-slate-200';
+          aCells += `<div class="p-2 min-w-[38px] text-center rounded-lg ${bg} transition">
+            <div class="text-[9px] ${inRange ? 'text-indigo-200' : 'text-slate-400'}">A[${i}]</div>
+            <div class="font-mono">${prefSessionA[i - 1]}</div>
+          </div>`;
+        }
+
+        let pCells = '';
+        for (let i = 0; i <= 8; i++) {
+          const isR = (i === R);
+          const isLminus1 = (i === L - 1);
+          let bg = 'bg-white text-slate-700 border border-slate-200';
+          let badge = '';
+          if (isR) {
+            bg = 'bg-emerald-600 text-white font-extrabold shadow-sm';
+            badge = '<span class="text-[8px] bg-emerald-800 text-emerald-100 px-1 rounded ml-1">P[R]</span>';
+          } else if (isLminus1) {
+            bg = 'bg-rose-600 text-white font-extrabold shadow-sm';
+            badge = '<span class="text-[8px] bg-rose-800 text-rose-100 px-1 rounded ml-1">P[L-1]</span>';
+          }
+          pCells += `<div class="p-2 min-w-[38px] text-center rounded-lg ${bg} transition">
+            <div class="text-[9px] flex items-center justify-center">${i === 0 ? 'P[0]' : `P[${i}]`}${badge}</div>
+            <div class="font-mono">${prefSessionP[i]}</div>
+          </div>`;
+        }
+
+        visualEl.innerHTML = `
+          <div class="space-y-2">
+            <div>
+              <div class="font-bold text-slate-700 mb-1 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-600"></span> Mảng gốc $A$ (Đoạn [${L}..${R}] tô tím):</div>
+              <div class="flex flex-wrap gap-1.5">${aCells}</div>
+            </div>
+            <div>
+              <div class="font-bold text-slate-700 mb-1 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-600"></span> Mảng cộng dồn $P$ (Công thức: $P[R] - P[L-1]$):</div>
+              <div class="flex flex-wrap gap-1.5">${pCells}</div>
+            </div>
+          </div>
+        `;
+        renderMath(visualEl);
+      }
+
+      if (resEl) {
+        resEl.innerHTML = `
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <span>Công thức: Sum[${L}..${R}] = P[${R}] - P[${L - 1}] = ${prefSessionP[R]} - (${prefSessionP[L - 1]}) = </span>
+              <span class="text-sm font-black text-indigo-700">${sum}</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">1 Phép Toán O(1)</span>
+          </div>
+        `;
+        renderMath(resEl);
+      }
+    }
 
     function initPrefixSim() {
       const arrInput = document.getElementById('pref-arr-input');
