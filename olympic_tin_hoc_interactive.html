@@ -1413,7 +1413,18 @@ int main() {
           <p class="text-xs text-slate-600 leading-relaxed">
             Mỗi bài thi Olympic đều yêu cầu đọc từ tệp <code>NAME.INP</code> và xuất ra <code>NAME.OUT</code>. Đoạn mã dưới đây là bộ khung bắt buộc phải có trong mọi bài làm:
           </p>
-          <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">TEMPLATE_OLYMPIC.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-emerald-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">C++17 Fast I/O</span>
+              </div>
+              <button onclick="copyCode('code-fastio-base')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-fastio-base" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;algorithm&gt;
@@ -1435,6 +1446,7 @@ int main() {
     // Code xử lý chính...
     return 0;
 }</code></pre>
+          </div>
         </div>
 
         <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
@@ -2175,7 +2187,18 @@ floor$ lần. Nếu không có phần tử nào thỏa mãn, in ra <code>-1</cod
           </p>
         </div>
 
-        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+        <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">DI_TRUYEN_DNA.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-blue-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(|S|) Bảng Vị Trí</span>
+              </div>
+              <button onclick="copyCode('code-dna-worked')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-dna-worked" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;vector&gt;
 #include &lt;map&gt;
@@ -2200,6 +2223,7 @@ bool is_abnormal(const string &s, int k) {
     }
     return false;
 }</code></pre>
+          </div>
       </div>
 
       <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
@@ -2287,7 +2311,18 @@ floor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tín
           </p>
         </div>
 
-        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+        <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">HOCTOAN_GCD.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-cyan-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(sqrt(b/a)) Tối Ưu</span>
+              </div>
+              <button onclick="copyCode('code-math-worked')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-math-worked" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;numeric&gt;
 #include &lt;cmath&gt;
 
@@ -2319,6 +2354,7 @@ int main() {
 ";
     return 0;
 }</code></pre>
+          </div>
       </div>
 
       <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
@@ -3541,7 +3577,18 @@ sort(intervals.begin(), intervals.end(), cmp);</code></pre>
           </p>
         </div>
 
-        <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>int left = 0, ans = 0;
+        <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">NGHENHAC_WINDOW.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-emerald-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N) Hai Con Trỏ</span>
+              </div>
+              <button onclick="copyCode('code-music-worked')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-music-worked" class="language-cpp">int left = 0, ans = 0;
 long long current_sum = 0;
 
 for (int right = 0; right &lt; n; right++) {
@@ -3554,6 +3601,7 @@ for (int right = 0; right &lt; n; right++) {
 }
 cout &lt;&lt; ans &lt;&lt; "
 ";</code></pre>
+          </div>
       </div>
 
       <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
@@ -3837,6 +3885,65 @@ cout &lt;&lt; ans &lt;&lt; "
           </button>
         </div>
       </div>
+
+      <!-- THANH TÌM KIẾM CÔNG THỨC & BỘ LỌC CHUYÊN ĐỀ (F1 QUICK FILTER) -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input type="text" id="handbook-search-input" oninput="filterHandbook(this.value)" placeholder="Tra cứu nhanh: gcd, modulo, sàng nguyên tố, prefix sum, two pointers, dp, tràn số 1LL..." class="w-full pl-10 pr-4 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-ahs-primary bg-slate-50 focus:bg-white transition">
+          </div>
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar shrink-0 text-xs">
+            <button onclick="filterHandbookCategory('all')" class="hb-cat-btn active px-3 py-1.5 rounded-xl font-bold bg-ahs-primary text-white text-[11px] shadow-xs transition">Tất Cả</button>
+            <button onclick="filterHandbookCategory('io')" class="hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition">⚡ Fast I/O & Bẫy</button>
+            <button onclick="filterHandbookCategory('math')" class="hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition">🔢 Số Học & Toán</button>
+            <button onclick="filterHandbookCategory('array')" class="hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition">📊 Mảng & Kỹ Thuật</button>
+            <button onclick="filterHandbookCategory('stl')" class="hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition">🧩 Cấu Trúc STL</button>
+            <button onclick="filterHandbookCategory('dp')" class="hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition">🧠 DP & Đồ Thị</button>
+          </div>
+        </div>
+
+        <!-- BẢNG VÀNG QUY ĐỔI GIỚI HẠN N VÀ ĐỘ PHỨC TẠP CHO PHÉP (1 GIÂY = 10^8 PHÉP TÍNH) -->
+        <div class="p-3.5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl text-xs space-y-2">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="font-extrabold text-blue-950 flex items-center gap-1.5">
+              <i data-lucide="gauge" class="w-4 h-4 text-ahs-primary"></i> Bảng Vàng Quy Đổi Giới Hạn $N$ & Thuật Toán Tối Ưu (Khống Chế 1.0s):
+            </span>
+            <span class="text-[10px] font-mono font-bold bg-blue-200/80 text-blue-900 px-2 py-0.5 rounded">Chuẩn Máy Chấm Olympic TP.HCM</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 font-mono text-[11px]">
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 10$</div>
+              <div class="text-[10px] text-rose-600 font-bold">$O(N!)$ Vét cạn</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 20$</div>
+              <div class="text-[10px] text-amber-600 font-bold">$O(2^N)$ Bitmask</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 500$</div>
+              <div class="text-[10px] text-purple-600 font-bold">$O(N^3)$ Floyd/DP</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 5000$</div>
+              <div class="text-[10px] text-blue-600 font-bold">$O(N^2)$ Vòng lặp</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 10^5$</div>
+              <div class="text-[10px] text-emerald-600 font-bold">$O(N \log N)$ Sort/BS</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \le 10^7$</div>
+              <div class="text-[10px] text-emerald-700 font-bold">$O(N)$ 1 Vòng lặp</div>
+            </div>
+            <div class="p-2 bg-white rounded-lg border border-blue-200/60 text-center shadow-xs">
+              <div class="font-bold text-slate-700">$N \ge 10^9$</div>
+              <div class="text-[10px] text-teal-600 font-bold">$O(\log N) / O(1)$</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <!-- Quick Anchor Jump Pills -->
       <div class="flex flex-wrap gap-2 p-3 bg-white border border-slate-200 rounded-2xl shadow-sm text-xs font-semibold">
@@ -4356,9 +4463,20 @@ cout &lt;&lt; ans &lt;&lt; "
             <div>Số số hạng: <strong>n = (un - u1) / d + 1</strong></div>
             <div>Tổng cấp số cộng: <strong>S = n * (u1 + un) / 2</strong></div>
           </div>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>long long n = (B - A) / D + 1;
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">long long n = (B - A) / D + 1;
 long long last = A + (n - 1) * D;
 long long ans = (n % 2 == 0) ? (n / 2) * (A + last) : n * ((A + last) / 2);</code></pre>
+          </div>
           <p class="text-[11px] text-amber-700 font-semibold">⚠️ Bẫy: Chia 2 trước nếu n chẵn để tránh tràn số tích n * (A + last).</p>
         </div>
 
@@ -4374,7 +4492,17 @@ long long ans = (n % 2 == 0) ? (n / 2) * (A + last) : n * ((A + last) / 2);</cod
             <div>Trừ: <strong>(a - b % MOD + MOD) % MOD</strong></div>
             <div>Nhân: <strong>(1LL * (a % MOD) * (b % MOD)) % MOD</strong></div>
           </div>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>long long binpow(long long a, long long b, long long m) {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">long long binpow(long long a, long long b, long long m) {
     long long res = 1; a %= m;
     while (b &gt; 0) {
         if (b & 1) res = (1LL * res * a) % m;
@@ -4383,6 +4511,7 @@ long long ans = (n % 2 == 0) ? (n / 2) * (A + last) : n * ((A + last) / 2);</cod
     }
     return res;
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 3: GCD & LCM -->
@@ -4395,7 +4524,17 @@ long long ans = (n % 2 == 0) ? (n / 2) * (A + last) : n * ((A + last) / 2);</cod
           <p class="text-xs text-slate-600 leading-relaxed">
             Hàm có sẵn: <code>__gcd(a, b)</code> trong <code>&lt;algorithm&gt;</code>. Công thức liên hệ: <strong>a * b = gcd(a, b) * lcm(a, b)</strong>.
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>long long gcd(long long a, long long b) {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">long long gcd(long long a, long long b) {
     return b == 0 ? a : gcd(b, a % b);
 }
 
@@ -4403,6 +4542,7 @@ long long lcm(long long a, long long b) {
     // Chia truoc de chong tran so a * b!
     return (a / __gcd(a, b)) * b;
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 4: SÀNG NGUYÊN TỐ ERATOSTHENES -->
@@ -4412,7 +4552,17 @@ long long lcm(long long a, long long b) {
             <span class="text-xs font-mono font-bold text-emerald-600">O(N log log N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Sàng Số Nguyên Tố Eratosthenes ($N \le 10^7$)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>const int MAX = 10000005;
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">const int MAX = 10000005;
 bool is_prime[MAX];
 
 void sieve() {
@@ -4425,6 +4575,7 @@ void sieve() {
         }
     }
 }</code></pre>
+          </div>
           <p class="text-[11px] text-slate-500">Kiểm tra số nguyên tố đơn lẻ: duyệt đến $\sqrt{N}$ trong $O(\sqrt{N})$.</p>
         </div>
 
@@ -4438,7 +4589,17 @@ void sieve() {
           <p class="text-xs text-slate-600">
             Nếu $N = p_1^{e_1} \cdot p_2^{e_2} \dots p_k^{e_k}$ thì số ước là <strong>d(N) = (e1 + 1)(e2 + 1)...(ek + 1)</strong>.
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>int count_divisors(long long n) {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">int count_divisors(long long n) {
     int cnt = 0;
     for (long long i = 1; i * i &lt;= n; i++) {
         if (n % i == 0) {
@@ -4448,6 +4609,7 @@ void sieve() {
     }
     return cnt;
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 6: PREFIX SUM 1D -->
@@ -4460,12 +4622,23 @@ void sieve() {
           <p class="text-xs text-slate-600">
             Công thức: <strong>Sum(L, R) = Pref[R] - Pref[L - 1]</strong> với mảng 1-based.
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>vector&lt;long long&gt; pref(n + 1, 0);
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">vector&lt;long long&gt; pref(n + 1, 0);
 for (int i = 1; i &lt;= n; i++)
     pref[i] = pref[i - 1] + a[i];
 
 // Truy van [L, R] trong O(1):
 long long sum = pref[R] - pref[L - 1];</code></pre>
+          </div>
         </div>
 
         <!-- CARD 7: PREFIX SUM 2D -->
@@ -4478,11 +4651,22 @@ long long sum = pref[R] - pref[L - 1];</code></pre>
           <p class="text-xs text-slate-600">
             Tổng hình chữ nhật từ góc $(x_1, y_1)$ đến $(x_2, y_2)$ trong $O(1)$:
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>// 1. Khoi tao:
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">// 1. Khoi tao:
 P[i][j] = A[i][j] + P[i-1][j] + P[i][j-1] - P[i-1][j-1];
 
 // 2. Truy van [x1, y1] den [x2, y2]:
 long long sum = P[x2][y2] - P[x1-1][y2] - P[x2][y1-1] + P[x1-1][y1-1];</code></pre>
+          </div>
         </div>
 
         <!-- CARD 8: DIFFERENCE ARRAY -->
@@ -4495,7 +4679,17 @@ long long sum = P[x2][y2] - P[x1-1][y2] - P[x2][y1-1] + P[x1-1][y1-1];</code></p
           <p class="text-xs text-slate-600">
             Thao tác: Cộng $V$ vào tất cả phần tử từ $L$ đến $R$ trong $O(1)$:
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>// Cap nhat O(1):
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">// Cap nhat O(1):
 diff[L] += V;
 diff[R + 1] -= V;
 
@@ -4505,6 +4699,7 @@ for (int i = 1; i &lt;= n; i++) {
     cur += diff[i];
     a[i] = cur;
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 9: CHẶT NHỊ PHÂN KẾT QUẢ -->
@@ -4514,7 +4709,17 @@ for (int i = 1; i &lt;= n; i++) {
             <span class="text-xs font-mono font-bold text-emerald-600">O(log(Range) * check)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Chặt Nhị Phân Kết Quả (Binary Search on Answer)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>bool check(long long mid) {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">bool check(long long mid) {
     // Kiem tra gia tri mid co thoa man de bai khong
     return true;
 }
@@ -4529,6 +4734,7 @@ while (low &lt;= high) {
         low = mid + 1;
     }
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 10: HAI CON TRỎ & CỬA SỔ TRƯỢT -->
@@ -4538,7 +4744,17 @@ while (low &lt;= high) {
             <span class="text-xs font-mono font-bold text-emerald-600">O(N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Cửa Sổ Trượt (Sliding Window) Tìm Đoạn Tổng $\le S$</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>int left = 0, max_len = 0;
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">int left = 0, max_len = 0;
 long long cur_sum = 0;
 
 for (int right = 0; right &lt; n; right++) {
@@ -4549,6 +4765,7 @@ for (int right = 0; right &lt; n; right++) {
     }
     max_len = max(max_len, right - left + 1);
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 11: SORT & COMPARATOR TÙY BIẾN -->
@@ -4558,7 +4775,17 @@ for (int right = 0; right &lt; n; right++) {
             <span class="text-xs font-mono font-bold text-emerald-600">O(N log N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Sắp Xếp Với Hàm So Sánh Tùy Biến (`cmp`)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>struct ThiSinh {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">struct ThiSinh {
     string ten;
     int diem, tuoi;
 };
@@ -4570,6 +4797,7 @@ bool cmp(const ThiSinh &a, const ThiSinh &b) {
 }
 
 sort(ds.begin(), ds.end(), cmp);</code></pre>
+          </div>
         </div>
 
         <!-- CARD 12: PRIORITY QUEUE -->
@@ -4579,7 +4807,17 @@ sort(ds.begin(), ds.end(), cmp);</code></pre>
             <span class="text-xs font-mono font-bold text-emerald-600">O(log N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Hàng Đợi Ưu Tiên (`priority_queue`)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>// 1. Max-heap (Mac dinh, lay so lon nhat truoc):
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">// 1. Max-heap (Mac dinh, lay so lon nhat truoc):
 priority_queue&lt;int&gt; pq_max;
 
 // 2. Min-heap (Lay so nho nhat truoc):
@@ -4588,6 +4826,7 @@ priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq_min;
 pq_min.push(10);
 int top_val = pq_min.top(); // Lay phan tu nho nhat O(1)
 pq_min.pop(); // Xoa phan tu nho nhat O(log N)</code></pre>
+          </div>
         </div>
 
         <!-- CARD 13: DÃY CON TĂNG DÀI NHẤT LIS -->
@@ -4597,13 +4836,24 @@ pq_min.pop(); // Xoa phan tu nho nhat O(log N)</code></pre>
             <span class="text-xs font-mono font-bold text-emerald-600">O(N log N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Dãy Con Tăng Dài Nhất (LIS) Tối Ưu $O(N \log N)$</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>vector&lt;int&gt; b; // b[k] luu phan tu nho nhat ket thuc day tang do dai k
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">vector&lt;int&gt; b; // b[k] luu phan tu nho nhat ket thuc day tang do dai k
 for (int x : a) {
     auto it = lower_bound(b.begin(), b.end(), x);
     if (it == b.end()) b.push_back(x);
     else *it = x;
 }
 int lis_length = b.size();</code></pre>
+          </div>
         </div>
 
         <!-- CARD 14: BALO 0/1 (KNAPSACK) -->
@@ -4616,7 +4866,17 @@ int lis_length = b.size();</code></pre>
           <p class="text-xs text-slate-600">
             Duyệt ngược khối lượng $w$ từ $W$ về $w_i$ để đảm bảo mỗi đồ vật chọn tối đa 1 lần:
           </p>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>vector&lt;long long&gt; dp(W + 1, 0);
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">vector&lt;long long&gt; dp(W + 1, 0);
 
 for (int i = 0; i &lt; n; i++) {
     for (int w = W; w &gt;= weight[i]; w--) {
@@ -4624,6 +4884,7 @@ for (int i = 0; i &lt; n; i++) {
     }
 }
 long long max_val = dp[W];</code></pre>
+          </div>
         </div>
 
         <!-- CARD 15: XÂU CON CHUNG DÀI NHẤT LCS -->
@@ -4633,7 +4894,17 @@ long long max_val = dp[W];</code></pre>
             <span class="text-xs font-mono font-bold text-emerald-600">O(M * N)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Xâu Con Chung Dài Nhất (LCS)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>int dp[1005][1005];
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">int dp[1005][1005];
 
 for (int i = 1; i &lt;= m; i++) {
     for (int j = 1; j &lt;= n; j++) {
@@ -4643,6 +4914,7 @@ for (int i = 1; i &lt;= m; i++) {
             dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
     }
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 16: QUAY LUI VÉT CẠN SINH TẬP CON -->
@@ -4652,7 +4924,17 @@ for (int i = 1; i &lt;= m; i++) {
             <span class="text-xs font-mono font-bold text-rose-600">O(2^N) ($N \le 22$)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Quay Lui Sinh Tập Con (Vét Cạn Subtask 1 Bài 3)</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>void backtrack(int i, long long cur_sum, int count) {
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">void backtrack(int i, long long cur_sum, int count) {
     if (i == n) {
         // Kiem tra phuong an & cap nhat ket qua
         if (cur_sum &lt;= S) ans = max(ans, count);
@@ -4663,6 +4945,7 @@ for (int i = 1; i &lt;= m; i++) {
     // Nhanh 2: Co chon a[i]
     backtrack(i + 1, cur_sum + a[i], count + 1);
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 17: DUYỆT ĐỒ THỊ BFS/DFS -->
@@ -4672,7 +4955,17 @@ for (int i = 1; i &lt;= m; i++) {
             <span class="text-xs font-mono font-bold text-emerald-600">O(V + E)</span>
           </div>
           <h4 class="font-bold text-slate-900 text-base">Biểu Diễn Đồ Thị & Duyệt BFS Hàng Đợi</h4>
-          <pre class="bg-slate-900 text-slate-100 p-2.5 rounded-xl text-xs font-mono overflow-x-auto"><code>vector&lt;int&gt; adj[MAX];
+          <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 space-y-1.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-[10px] font-mono font-bold text-slate-400">C++17 SNIPPET</span>
+              </div>
+              <button onclick="copySnippet(this)" class="text-[11px] text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-1 rounded text-xs font-mono overflow-x-auto custom-scrollbar"><code class="language-cpp">vector&lt;int&gt; adj[MAX];
 bool visited[MAX];
 
 void bfs(int start_node) {
@@ -4689,6 +4982,7 @@ void bfs(int start_node) {
         }
     }
 }</code></pre>
+          </div>
         </div>
 
         <!-- CARD 18: ÉP KIỂU & TRÁNH TRÀN SỐ -->
@@ -5283,6 +5577,65 @@ int main() {
     }
 
     window.addEventListener('hashchange', handleHashNavigation);
+
+    
+    // ============================================================
+    // OLYMPIC GRANDMASTER COACH: TÌM KIẾM & BỘ LỌC SỔ TAY F1
+    // ============================================================
+        function filterHandbook(query) {
+      const q = (query || "").toLowerCase().trim();
+      const cards = document.querySelectorAll('#content-handbook .formula-card');
+      cards.forEach(card => {
+        const text = (card.innerText || "").toLowerCase();
+        const kw = (card.getAttribute('data-keywords') || "").toLowerCase();
+        if (!q || text.includes(q) || kw.includes(q)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    function filterHandbookCategory(cat) {
+      document.querySelectorAll('.hb-cat-btn').forEach(b => {
+        b.className = "hb-cat-btn px-3 py-1.5 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] transition";
+      });
+      if (window.event && window.event.target) {
+        window.event.target.className = "hb-cat-btn active px-3 py-1.5 rounded-xl font-bold bg-ahs-primary text-white text-[11px] shadow-xs transition";
+      }
+
+      const catMap = {
+        'all': '',
+        'io': 'toan',
+        'math': 'toan',
+        'array': 'mang',
+        'stl': 'stl',
+        'dp': 'dp'
+      };
+      const targetCat = catMap[cat] || '';
+      const cards = document.querySelectorAll('#content-handbook .formula-card');
+      cards.forEach(card => {
+        const cCat = card.getAttribute('data-cat') || '';
+        if (!targetCat || cCat === targetCat || (cat === 'dp' && cCat === 'dothi')) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    
+    function copySnippet(btn) {
+      const container = btn.closest('div').parentElement;
+      const codeEl = container ? container.querySelector('code') : null;
+      if (!codeEl) return;
+      const text = codeEl.innerText || codeEl.textContent || "";
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Đã sao chép đoạn mã C++ vào bộ nhớ tạm!");
+      }).catch(() => {
+        alert("Đã chọn mã nguồn, Thầy/học sinh nhấn Ctrl+C để copy.");
+      });
+    }
 
     function switchTab(tabId) {
       // Điều hướng tương thích ngược (Redirects)
@@ -6746,7 +7099,7 @@ int main() {
       if (!str) return '';
       // Code blocks
       let formatted = str.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
-        return `<pre class="bg-slate-900 text-emerald-300 p-2.5 rounded-xl font-mono text-[11px] overflow-x-auto my-2 border border-slate-800"><code>${escapeHtml(code.trim())}</code></pre>`;
+        return `<pre class="bg-slate-900 text-slate-100 p-3 rounded-xl font-mono text-[11px] overflow-x-auto my-2 border border-slate-800 custom-scrollbar"><code>${escapeHtml(code.trim())}</code></pre>`;
       });
 
       // Line-by-line markdown
