@@ -555,7 +555,7 @@
               </li>
               <li class="flex items-start gap-2">
                 <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5"></i>
-                <span><strong>Giới hạn thời gian:</strong> 1.0 giây / test ($\approx 10^8$ phép tính cơ bản). Bộ nhớ: 256 MB.</span>
+                <span><strong>Giới hạn thời gian:</strong> 1.0 giây / test ($\approx 10^8$ phép tính cơ bản). Bộ nhớ: 256 MB.</span>
               </li>
             </ul>
           </div>
@@ -1349,7 +1349,7 @@ int main() {
     }
 
     // Bước 2: Tìm ký tự duy nhất xuất hiện đầu tiên
-    char firstUnique = ' ';
+    char firstUnique = '\0';
     for (char c : s) {
         if (c &gt;= 'a' &amp;&amp; c &lt;= 'z' &amp;&amp; cnt[c - 'a'] == 1) {
             firstUnique = c;
@@ -1357,7 +1357,7 @@ int main() {
         }
     }
 
-    if (firstUnique != ' ') 
+    if (firstUnique != '\0') 
         cout &lt;&lt; "Ky tu duy nhat dau tien: " &lt;&lt; firstUnique &lt;&lt; "
 ";
     else 
@@ -3939,7 +3939,7 @@ int main() {
               <div class="font-bold text-emerald-700">int a[MAXN]; // Đặt ở vùng dữ liệu BSS, an toàn 100%</div>
             </div>
             <p class="text-slate-500">
-              $10^6$ số <code>int</code> $\a\approx 4\text{MB}$; $10^7$ số <code>int</code> $\a\approx 40\text{MB}$ (hoàn toàn an toàn trong giới hạn 256MB của phòng thi).
+              $10^6$ số <code>int</code> $\a\approx 4\text{MB}$; $10^7$ số <code>int</code> $\a\approx 40\text{MB}$ (hoàn toàn an toàn trong giới hạn 256MB của phòng thi).
             </p>
           </div>
 
