@@ -10,9 +10,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- KaTeX for Perfect Mathematical Formulas -->
+      <!-- KaTeX for Perfect Mathematical Formulas -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    function renderMath(targetEl) {
+      const el = targetEl || document.body;
+      if (el && typeof renderMathInElement === "function") {
+        try {
+          renderMathInElement(el, {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\(", right: "\)", display: false},
+              {left: "\[", right: "\]", display: true}
+            ],
+            throwOnError: false,
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+          });
+        } catch (e) {
+          console.warn("KaTeX render error:", e);
+        }
+      }
+    }
+    window.triggerKaTeXAuto = function(targetEl) {
+      renderMath(targetEl);
+      setTimeout(function() { renderMath(targetEl); }, 80);
+      setTimeout(function() { renderMath(targetEl); }, 250);
+      setTimeout(function() { renderMath(targetEl); }, 600);
+      setTimeout(function() { renderMath(targetEl); }, 1500);
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function() { window.triggerKaTeXAuto(); });
+    } else {
+      window.triggerKaTeXAuto();
+    }
+    window.addEventListener("load", function() { window.triggerKaTeXAuto(); });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="if(window.triggerKaTeXAuto) triggerKaTeXAuto();"></script>
   <script>
     function renderMath(targetEl) {
@@ -164,6 +199,9 @@
           <span>Kỳ Thi &amp; Đề Mẫu</span>
         </button>
         <!-- Nút Sổ Tay & Bảng Công Thức (Gộp chung) -->
+                <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
+          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
+        </button>
         <button onclick="switchTab('handbook')" title="Mở Sổ tay Tra Cứu & Bảng Công Thức (Phím F1)" class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs transition border border-emerald-500">
           <i data-lucide="book-open" class="w-4 h-4"></i>
           <span>Sổ Tay & Công Thức</span>
@@ -317,13 +355,24 @@
             <i data-lucide="book-marked" class="w-3.5 h-3.5 text-emerald-500"></i> Tra Cứu &amp; Chiến Lược
           </div>
           <div class="space-y-1">
-            <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+                    <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
+          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
+        </button>
+        <button onclick="switchTab('handbook')" id="tab-handbook" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="book-open" class="w-4 h-4 text-emerald-600 shrink-0"></i>
               <div class="flex-1 truncate">
                 <div class="font-bold text-slate-900 truncate">Sổ Tay &amp; Bảng Công Thức</div>
                 <div class="text-[10px] text-slate-500 truncate">Nền Tảng Thi Đấu + Mảng/Xâu + 24 CT</div>
               </div>
               <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800">F1</span>
+            </button>
+                        <button onclick="switchTab('onlinegdb')" id="tab-onlinegdb" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
+              <i data-lucide="terminal" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+              <div class="flex-1 truncate">
+                <div class="font-bold text-slate-900 truncate">Trình Biên Dịch OnlineGDB</div>
+                <div class="text-[10px] text-slate-500 truncate">Code & Debug C++ Trực Tiếp</div>
+              </div>
+              <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-blue-100 text-blue-800">IDE</span>
             </button>
             <button onclick="switchTab('sim-all')" id="tab-sim-all" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
               <i data-lucide="activity" class="w-4 h-4 text-amber-600 shrink-0"></i>
@@ -633,14 +682,22 @@
             </div>
 
             <!-- Thuật toán & Mã nguồn -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
-                <span>Mã nguồn chuẩn C++17 ăn trọn 6.0/6.0 điểm:</span>
-                <button onclick="copyCode('code-nghenhac')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">NGHENHAC.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-emerald-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N) Thời gian • O(1) Bộ nhớ</span>
+                </div>
+                <button onclick="copyCode('code-nghenhac')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                 </button>
               </div>
-              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-nghenhac">#include &lt;iostream&gt;
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-nghenhac" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
 
@@ -702,14 +759,22 @@ int main() {
             </div>
 
             <!-- Code bài 2 -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
-                <span>Mã nguồn chuẩn C++17 ăn trọn 7.0/7.0 điểm:</span>
-                <button onclick="copyCode('code-hoctoan')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">HOCTOAN.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-cyan-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(log(min(A,B))) Euclid</span>
+                </div>
+                <button onclick="copyCode('code-hoctoan')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                 </button>
               </div>
-              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-hoctoan">#include &lt;iostream&gt;
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-hoctoan" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;numeric&gt;
 #include &lt;cmath&gt;
 
@@ -781,14 +846,22 @@ int main() {
             </div>
 
             <!-- Code bài 3 -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between text-xs font-bold text-slate-800">
-                <span>Mã nguồn chuẩn C++17 ăn trọn 7.0/7.0 điểm:</span>
-                <button onclick="copyCode('code-robot')" class="text-xs text-ahs-primary hover:underline flex items-center gap-1 font-semibold">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép code
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">ROBOT.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-purple-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(M log K) std::set Tọa Độ</span>
+                </div>
+                <button onclick="copyCode('code-robot')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                 </button>
               </div>
-              <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code id="code-robot">#include &lt;iostream&gt;
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-robot" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;set&gt;
 
@@ -865,8 +938,22 @@ int main() {
               <p><strong>Tóm tắt đề:</strong> $N \le 10$ chuỗi DNA độ dài $\le 10^5$. Một chuỗi là bất thường nếu: (1) Ít hơn 3 loại ký tự, (2) Có ký tự chỉ xuất hiện 1 lần, hoặc (3) Khoảng cách giữa 2 ký tự cùng loại liên tiếp $> K$. Tạo chuỗi nhị phân và đổi sang hệ thập phân.</p>
               <p><strong>Thuật toán:</strong> Duyệt chuỗi trong $O(|S|)$, lưu vị trí gần nhất `last_pos[c]`. Đổi nhị phân sang thập phân bằng công thức $ans = ans \times 2 + bit$. Độ phức tạp: $O(N \cdot |S|)$ cực nhanh!</p>
             </div>
-            <!-- Code DNA -->
-            <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>#include &lt;iostream&gt;
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">DNA.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-blue-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N · |S|) Xử Lý Xâu Tối Ưu</span>
+                </div>
+                <button onclick="copyCode('code-dna')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-dna" class="language-cpp">#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;map&gt;
 
@@ -900,6 +987,7 @@ int main() {
 ";
     return 0;
 }</code></pre>
+            </div>
           </div>
 
           <!-- CÂU 2: THU HOẠCH -->
@@ -915,9 +1003,66 @@ int main() {
               <p><strong>Tóm tắt đề:</strong> $N \le 5000$ thửa ruộng. Chọn $K$ máy gặt, mỗi máy gặt $L$ thửa liên tiếp ($K \times L \le N$) không đè lên nhau để tổng giá trị lớn nhất.</p>
               <p><strong>Thuật toán:</strong> Mảng cộng dồn $P[i]$ tính tổng đoạn $L$. Bảng phương án: $dp[i][j] = \max(dp[i-1][j], dp[i-L][j-1] + val[i])$ với $val[i] = P[i] - P[i-L]$. Độ phức tạp: $O(N \cdot K) \le 2.5 \cdot 10^7$ phép tính, chạy trong 0.08s!</p>
             </div>
-            <pre class="bg-slate-900 text-emerald-300 p-3.5 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800"><code>// Công thức Quy Hoạch Động chuẩn Olympic C++
-dp[i][j] = max(dp[i - 1][j], dp[i - L][j - 1] + (P[i] - P[i - L]));
-// Khởi tạo bảng dp với -INF vì trọng số thửa ruộng có thể âm!</code></pre>
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">THUHOACH.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-purple-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N · K) Quy Hoạch Động + Prefix Sum</span>
+                </div>
+                <button onclick="copyCode('code-thuhoach')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-thuhoach" class="language-cpp">#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+const long long INF = 1e18;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("THUHOACH.INP", "r", stdin);
+    freopen("THUHOACH.OUT", "w", stdout);
+    #endif
+
+    int n, k, l;
+    if (!(cin >> n >> k >> l)) return 0;
+
+    vector<long long> a(n + 1), pref(n + 1, 0);
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        pref[i] = pref[i - 1] + a[i];
+    }
+
+    // dp[i][j]: Tổng lớn nhất khi xét i thửa ruộng đầu và chọn j đoạn độ dài L
+    vector<vector<long long>> dp(n + 1, vector<long long>(k + 1, -INF));
+    for (int i = 0; i <= n; i++) dp[i][0] = 0;
+
+    for (int i = l; i <= n; i++) {
+        long long sum_L = pref[i] - pref[i - l];
+        for (int j = 1; j <= k; j++) {
+            dp[i][j] = dp[i - 1][j]; // Không gặt thửa i
+            if (dp[i - l][j - 1] != -INF) {
+                dp[i][j] = max(dp[i][j], dp[i - l][j - 1] + sum_L);
+            }
+        }
+    }
+
+    cout << dp[n][k] << "
+";
+    return 0;
+}</code></pre>
+            </div>
           </div>
 
           <!-- CÂU 3: BỘ SƯU TẬP -->
@@ -932,6 +1077,61 @@ dp[i][j] = max(dp[i - 1][j], dp[i - L][j - 1] + (P[i] - P[i - L]));
             <div class="text-xs text-slate-700 leading-relaxed space-y-1">
               <p><strong>Tóm tắt đề:</strong> Dãy $N \le 10^5$ viên đá có mã màu $C_i \le 10^9$. Tìm đoạn liên tiếp ngắn nhất chứa ít nhất $K$ màu khác nhau.</p>
               <p><strong>Thuật toán:</strong> Vì $C_i \le 10^9$, dùng <code>map&lt;int, int&gt; freq</code> đếm số lượng màu trong cửa sổ. Tăng `right` nạp màu. Khi `freq.size() &gt;= k`, cập nhật `min_len` và tăng `left` để thu hẹp. Độ phức tạp $O(N \log K)$!</p>
+            </div>
+            <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <div class="flex items-center gap-2">
+                  <span class="flex gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-slate-300">SUUTAP.CPP</span>
+                  <span class="text-[10px] bg-slate-800 text-teal-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N log K) Hai Con Trỏ + map</span>
+                </div>
+                <button onclick="copyCode('code-suutap')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+                </button>
+              </div>
+              <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-suutap" class="language-cpp">#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("SUUTAP.INP", "r", stdin);
+    freopen("SUUTAP.OUT", "w", stdout);
+    #endif
+
+    int n, k;
+    if (!(cin >> n >> k)) return 0;
+
+    vector<int> c(n);
+    for (int i = 0; i < n; i++) cin >> c[i];
+
+    map<int, int> freq;
+    int left = 0, min_len = 1e9;
+
+    for (int right = 0; right < n; right++) {
+        freq[c[right]]++;
+        while ((int)freq.size() >= k) {
+            min_len = min(min_len, right - left + 1);
+            freq[c[left]]--;
+            if (freq[c[left]] == 0) freq.erase(c[left]);
+            left++;
+        }
+    }
+
+    if (min_len > n) cout << -1 << "\n";
+    else cout << min_len << "\n";
+    return 0;
+}</code></pre>
             </div>
           </div>
         </div>
@@ -963,7 +1163,231 @@ dp[i][j] = max(dp[i - 1][j], dp[i - L][j - 1] + (P[i] - P[i - L]));
               </p>
             </div>
           </div>
+        
+          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">LOCO.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-amber-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(M · N) Grid DP</span>
+              </div>
+              <button onclick="copyCode('code-loco')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-loco" class="language-cpp">#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+const long long INF = 1e18;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("LOCO.INP", "r", stdin);
+    freopen("LOCO.OUT", "w", stdout);
+    #endif
+
+    int m, n;
+    if (!(cin >> m >> n)) return 0;
+
+    vector<vector<long long>> a(m + 1, vector<long long>(n + 1));
+    for (int i = 1; i <= m; i++)
+        for (int j = 1; j <= n; j++) cin >> a[i][j];
+
+    // dp[i][j]: Chi phí tối ưu đến ô (i, j)
+    vector<vector<long long>> dp(m + 1, vector<long long>(n + 1, INF));
+    dp[1][1] = a[1][1];
+
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (i == 1 && j == 1) continue;
+            long long prev_min = INF;
+            if (i > 1) prev_min = min(prev_min, dp[i - 1][j]);
+            if (j > 1) prev_min = min(prev_min, dp[i][j - 1]);
+            if (prev_min != INF) dp[i][j] = prev_min + a[i][j];
+        }
+    }
+
+    cout << dp[m][n] << "\n";
+    return 0;
+}</code></pre>
+          </div>
+          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">SLTPLT.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-indigo-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(V + E) BFS Đồ Thị</span>
+              </div>
+              <button onclick="copyCode('code-sltplt')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-sltplt" class="language-cpp">#include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    #ifndef ONLINE_JUDGE
+    freopen("SLTPLT.INP", "r", stdin);
+    freopen("SLTPLT.OUT", "w", stdout);
+    #endif
+
+    int n, m;
+    if (!(cin >> n >> m)) return 0;
+
+    vector<vector<int>> adj(n + 1);
+    for (int i = 0; i < m; i++) {
+        int u, v; cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    vector<bool> visited(n + 1, false);
+    int components = 0;
+
+    for (int i = 1; i <= n; i++) {
+        if (!visited[i]) {
+            components++;
+            queue<int> q;
+            q.push(i);
+            visited[i] = true;
+            while (!q.empty()) {
+                int u = q.front(); q.pop();
+                for (int v : adj[u]) {
+                    if (!visited[v]) {
+                        visited[v] = true;
+                        q.push(v);
+                    }
+                }
+            }
+        }
+    }
+
+    cout << components << "\n";
+    return 0;
+}</code></pre>
+          </div></div>
+
+      <!-- ============================================================== -->
+      <!-- HỒ SƠ ĐỀ THI GỐC THỰC TẾ (BẢN SCAN PDF CHÍNH THỨC TỪ SỞ GD&ĐT) -->
+      <!-- ============================================================== -->
+      <div id="olympic-pdf-section" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6 mt-8">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold uppercase bg-rose-50 text-rose-700 border border-rose-200">Tài Liệu Gốc Lưu Trữ</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-50 text-blue-700 border border-blue-200 font-bold">PDF Format</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 flex items-center gap-2">
+              <i data-lucide="file-check-2" class="w-5 h-5 text-rose-600"></i> Đề Thi Thực Tế Bản Gốc (Scan PDF Chính Thức)
+            </h3>
+            <p class="text-xs text-slate-500">
+              Được bảo chứng nguyên văn theo đề thi chính thức do Sở GD&ĐT TP.HCM và Ban Tổ Chức Olympic 30/4 phát hành.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-500 font-semibold">Chọn đề thi muốn xem:</span>
+          </div>
         </div>
+
+        <!-- 3 CARDS CHỌN ĐỀ THI PDF -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- Card 1: 2024-2025 -->
+          <div id="card-pdf-2024-2025" onclick="selectPdfExam('2024-2025')" class="cursor-pointer p-4 rounded-2xl border-2 border-ahs-primary bg-blue-50/50 hover:bg-blue-50 transition space-y-3 shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 bg-blue-600 text-white rounded text-[10px] font-mono font-bold">NĂM 2024–2025</span>
+              <span class="text-[11px] font-bold text-ahs-primary flex items-center gap-1"><i data-lucide="eye" class="w-3.5 h-3.5"></i> Đang chọn</span>
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-slate-900">Đề Thi HSG Khối 11 TP.HCM</h5>
+              <div class="text-[11px] text-slate-500 mt-0.5">3 bài: NGHENHAC, HOCTOAN, ROBOT (758 KB)</div>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-blue-200/60">
+              <a href="./assets/de_thi_pdf/de_thi_olp11_hcm_2024_2025.pdf" target="_blank" class="text-[11px] font-bold text-ahs-primary hover:underline flex items-center gap-1">
+                <i data-lucide="external-link" class="w-3 h-3"></i> Mở tab mới
+              </a>
+              <span class="text-slate-300">•</span>
+              <a href="./assets/de_thi_pdf/de_thi_olp11_hcm_2024_2025.pdf" download="de_thi_olp11_hcm_2024_2025.pdf" class="text-[11px] font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+                <i data-lucide="download" class="w-3 h-3"></i> Tải PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2: 2025-2026 -->
+          <div id="card-pdf-2025-2026" onclick="selectPdfExam('2025-2026')" class="cursor-pointer p-4 rounded-2xl border border-slate-200 bg-white hover:border-purple-300 hover:bg-purple-50/30 transition space-y-3 shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 bg-purple-600 text-white rounded text-[10px] font-mono font-bold">NĂM 2025–2026</span>
+              <span class="text-[11px] font-semibold text-slate-400">Bấm để xem</span>
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-slate-900">Đề Thi HSG THPT TP.HCM</h5>
+              <div class="text-[11px] text-slate-500 mt-0.5">3 bài: DI TRUYỀN, THU HOẠCH, BỘ SƯU TẬP (1.08 MB)</div>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+              <a href="./assets/de_thi_pdf/de_thi_olp_thpt_hcm_2025_2026.pdf" target="_blank" class="text-[11px] font-bold text-purple-700 hover:underline flex items-center gap-1">
+                <i data-lucide="external-link" class="w-3 h-3"></i> Mở tab mới
+              </a>
+              <span class="text-slate-300">•</span>
+              <a href="./assets/de_thi_pdf/de_thi_olp_thpt_hcm_2025_2026.pdf" download="de_thi_olp_thpt_hcm_2025_2026.pdf" class="text-[11px] font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+                <i data-lucide="download" class="w-3 h-3"></i> Tải PDF
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: Olympic 30/4 2023 -->
+          <div id="card-pdf-2023" onclick="selectPdfExam('2023')" class="cursor-pointer p-4 rounded-2xl border border-slate-200 bg-white hover:border-teal-300 hover:bg-teal-50/30 transition space-y-3 shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 bg-teal-600 text-white rounded text-[10px] font-mono font-bold">OLYMPIC 30/4</span>
+              <span class="text-[11px] font-semibold text-slate-400">Bấm để xem</span>
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-slate-900">Đề Thi Olympic 30/4 Khối 11 (2023)</h5>
+              <div class="text-[11px] text-slate-500 mt-0.5">Đề thi chuyên miền Nam có lời giải (3.11 MB)</div>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+              <a href="./assets/de_thi_pdf/de_thi_olp304_k11_2023.pdf" target="_blank" class="text-[11px] font-bold text-teal-700 hover:underline flex items-center gap-1">
+                <i data-lucide="external-link" class="w-3 h-3"></i> Mở tab mới
+              </a>
+              <span class="text-slate-300">•</span>
+              <a href="./assets/de_thi_pdf/de_thi_olp304_k11_2023.pdf" download="de_thi_olp304_k11_2023.pdf" class="text-[11px] font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+                <i data-lucide="download" class="w-3 h-3"></i> Tải PDF
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- KHUNG TRÌNH CHIẾU PDF TRỰC TIẾP TRÊN TRANG -->
+        <div class="bg-slate-900 rounded-2xl p-2 sm:p-3 border border-slate-800 space-y-2">
+          <div class="flex items-center justify-between px-3 py-1 text-xs text-slate-400 border-b border-slate-800 pb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              <span id="pdf-viewer-title" class="font-mono text-slate-200 font-bold ml-2">de_thi_olp11_hcm_2024_2025.pdf</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <a id="pdf-open-btn" href="./assets/de_thi_pdf/de_thi_olp11_hcm_2024_2025.pdf" target="_blank" class="text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1">
+                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> Xem toàn màn hình
+              </a>
+            </div>
+          </div>
+          <iframe id="pdf-viewer-frame" src="./assets/de_thi_pdf/de_thi_olp11_hcm_2024_2025.pdf" class="w-full h-[680px] rounded-xl border border-slate-800 bg-white" loading="lazy"></iframe>
+        </div>
+
+      </div>
 
       </div>
 
@@ -4762,7 +5186,88 @@ void bfs(int start_node) {
     <!-- TAB: TRA CỨU CÔNG THỨC & KIẾN THỨC CỐT LÕI (CHEAT SHEET)      -->
     
 
-  </main>
+  
+    <!-- ============================================================== -->
+    <!-- TAB TRÌNH BIÊN DỊCH ONLINEGDB (C++17 FAST I/O) -->
+    <!-- ============================================================== -->
+    <section id="content-onlinegdb" class="tab-content hidden space-y-6 animate-fadeIn">
+      
+      <!-- HERO BANNER -->
+      <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 sm:p-8 text-white shadow-xl space-y-4 border border-slate-800">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Môi Trường Lập Trình Thi Đấu</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/20 text-blue-300 border border-blue-500/30 font-bold">C++17 (G++ 17)</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2.5">
+              <i data-lucide="terminal" class="w-6 h-6 text-emerald-400"></i> Phòng Thực Hành Trực Tuyến OnlineGDB Compiler
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed">
+              Trình biên dịch và gỡ lỗi C++ trực tuyến tích hợp sẵn. Thầy cô và học sinh có thể soạn thảo mã nguồn, nạp test case vào ô Input (stdin) và chạy kiểm thử thuật toán ngay lập tức.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button onclick="copyTemplateCode()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="copy" class="w-4 h-4"></i> Chép Khung Mẫu C++ (Fast I/O)
+            </button>
+            <a href="https://www.onlinegdb.com/online_c++_compiler" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1.5 border border-white/20">
+              <i data-lucide="external-link" class="w-4 h-4"></i> Mở Cửa Sổ Mới
+            </a>
+          </div>
+        </div>
+
+        <!-- HƯỚNG DẪN 3 BƯỚC THAO TÁC -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3 border-t border-slate-800 text-xs">
+          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-[11px] shrink-0">1</span>
+            <div class="space-y-0.5">
+              <div class="font-bold text-slate-200">Chọn Ngôn Ngữ C++</div>
+              <div class="text-[11px] text-slate-400">Góc phải phía trên chọn <strong>C++ (G++ 17)</strong> hoặc <strong>C++20</strong>.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+            <span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center text-[11px] shrink-0">2</span>
+            <div class="space-y-0.5">
+              <div class="font-bold text-slate-200">Nhập Dữ Liệu Test (stdin)</div>
+              <div class="text-[11px] text-slate-400">Chọn ô <strong>input</strong> ở đáy màn hình và dán test case vào trước khi chạy.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5 bg-slate-800/60 p-3 rounded-xl border border-slate-700/50">
+            <span class="w-5 h-5 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-[11px] shrink-0">3</span>
+            <div class="space-y-0.5">
+              <div class="font-bold text-slate-200">Bấm Run (F9)</div>
+              <div class="text-[11px] text-slate-400">Nhấn nút <strong>Run</strong> màu xanh hoặc phím <strong>F9</strong> để biên dịch và chạy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IFRAME NHÚNG ONLINEGDB -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-2 sm:p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between px-3 py-1 text-xs text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="flex gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+            </span>
+            <span class="font-mono font-bold text-slate-700">OnlineGDB C++ Compiler v2.0 (Embedded)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleOnlineGdbFullscreen()" class="px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-100 rounded-lg transition flex items-center gap-1 border border-slate-200">
+              <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> <span id="btn-fullscreen-text">Phóng Toàn Màn Hình</span>
+            </button>
+          </div>
+        </div>
+        <div id="onlinegdb-wrapper" class="w-full transition-all duration-300">
+          <iframe id="onlinegdb-frame" src="https://www.onlinegdb.com/online_c++_compiler" class="w-full h-[760px] rounded-2xl border border-slate-200 shadow-inner bg-slate-900" allow="clipboard-read; clipboard-write" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </section>
+
+    </main>
   </div>
 
   <!-- ==================== FOOTER ==================== -->
@@ -4924,6 +5429,126 @@ void bfs(int start_node) {
       });
     }
 
+    
+    // ============================================================
+    // QUẢN LÝ PDF ĐỀ THI GỐC & ONLINEGDB
+    // ============================================================
+    const PDF_EXAM_FILES = {
+      '2024-2025': {
+        filename: 'de_thi_olp11_hcm_2024_2025.pdf',
+        path: './assets/de_thi_pdf/de_thi_olp11_hcm_2024_2025.pdf',
+        title: 'Đề Thi HSG Khối 11 TP.HCM Năm 2024–2025'
+      },
+      '2025-2026': {
+        filename: 'de_thi_olp_thpt_hcm_2025_2026.pdf',
+        path: './assets/de_thi_pdf/de_thi_olp_thpt_hcm_2025_2026.pdf',
+        title: 'Đề Thi HSG THPT TP.HCM Năm 2025–2026'
+      },
+      '2023': {
+        filename: 'de_thi_olp304_k11_2023.pdf',
+        path: './assets/de_thi_pdf/de_thi_olp304_k11_2023.pdf',
+        title: 'Đề Thi Olympic 30/4 Khối 11 Năm 2023'
+      }
+    };
+
+    function selectPdfExam(examKey) {
+      const data = PDF_EXAM_FILES[examKey];
+      if (!data) return;
+
+      const frame = document.getElementById('pdf-viewer-frame');
+      const title = document.getElementById('pdf-viewer-title');
+      const openBtn = document.getElementById('pdf-open-btn');
+
+      if (frame) frame.src = data.path;
+      if (title) title.textContent = data.filename;
+      if (openBtn) openBtn.href = data.path;
+
+      // Update card styles
+      ['2024-2025', '2025-2026', '2023'].forEach(k => {
+        const card = document.getElementById('card-pdf-' + k);
+        if (!card) return;
+        if (k === examKey) {
+          card.className = "cursor-pointer p-4 rounded-2xl border-2 border-ahs-primary bg-blue-50/50 hover:bg-blue-50 transition space-y-3 shadow-xs";
+        } else {
+          card.className = "cursor-pointer p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition space-y-3 shadow-xs";
+        }
+      });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function copyTemplateCode() {
+      const template = `#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    // Tối ưu hóa nhập xuất Fast I/O trong C++
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    // Chuyển hướng luồng tệp tin khi nộp bài hoặc chạy nội bộ
+    #ifndef ONLINE_JUDGE
+    freopen("NAME.INP", "r", stdin);
+    freopen("NAME.OUT", "w", stdout);
+    #endif
+
+    // [Thực hiện thuật toán tại đây]
+
+    return 0;
+}`;
+      navigator.clipboard.writeText(template).then(() => {
+        alert("Đã sao chép Khung Mẫu Thi Đấu C++17 (Fast I/O) vào bộ nhớ tạm! Thầy/học sinh chỉ cần dán vào OnlineGDB.");
+      }).catch(() => {
+        alert("Đã chọn mã nguồn, Thầy/học sinh nhấn Ctrl+C để copy.");
+      });
+    }
+
+    let isOnlineGdbFullscreen = false;
+    function toggleOnlineGdbFullscreen() {
+      const wrapper = document.getElementById('onlinegdb-wrapper');
+      const frame = document.getElementById('onlinegdb-frame');
+      const btnText = document.getElementById('btn-fullscreen-text');
+      if (!frame) return;
+
+      isOnlineGdbFullscreen = !isOnlineGdbFullscreen;
+      if (isOnlineGdbFullscreen) {
+        frame.style.height = "92vh";
+        if (btnText) btnText.textContent = "Thu Nhỏ Khung";
+      } else {
+        frame.style.height = "760px";
+        if (btnText) btnText.textContent = "Phóng Toàn Màn Hình";
+      }
+    }
+
+    function handleHashNavigation() {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+
+      let targetTab = hash;
+      if (hash.startsWith('buoi-2')) targetTab = 'buoi-2';
+      else if (hash.startsWith('buoi-3')) targetTab = 'buoi-3';
+      else if (hash.startsWith('buoi-4')) targetTab = 'buoi-4';
+      else if (hash.startsWith('buoi-5')) targetTab = 'buoi-5';
+      else if (hash.startsWith('buoi-6')) targetTab = 'buoi-6';
+      else if (hash.startsWith('buoi-1') || hash === 'handbook' || hash === 'formula') targetTab = 'handbook';
+      else if (hash.startsWith('olympic-info')) targetTab = 'olympic-info';
+      else if (hash.startsWith('onlinegdb')) targetTab = 'onlinegdb';
+
+      switchTab(targetTab);
+
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+    }
+
+    window.addEventListener('hashchange', handleHashNavigation);
+
     function switchTab(tabId) {
       // Điều hướng tương thích ngược (Redirects)
       if (tabId === 'buoi-1') tabId = 'handbook';
@@ -4940,7 +5565,10 @@ void bfs(int start_node) {
       const targetContent = document.getElementById('content-' + tabId);
       const targetTab = document.getElementById('tab-' + tabId);
 
-      if (targetContent) targetContent.classList.remove('hidden');
+      if (targetContent) {
+        targetContent.classList.remove('hidden');
+        renderMath(targetContent);
+      }
       if (targetTab) {
         targetTab.classList.add('active', 'bg-blue-50', 'text-ahs-primary', 'border-blue-200');
       }
@@ -6101,7 +6729,10 @@ int main() {
   <!-- ==================== FLOATING QUICK ACCESS BUTTONS ==================== -->
   <!-- Nút Nổi Mở Sổ Tay Nhanh (Góc Trái Dưới) -->
   <div id="ahs-handbook-quickbtn" class="fixed bottom-5 left-5 z-40">
-    <button onclick="switchTab('handbook')" title="Mở nhanh Sổ tay Tra Cứu (Phím tắt: F1)" class="flex items-center gap-2 px-4 py-3 bg-white hover:bg-emerald-50 text-emerald-800 font-extrabold text-xs sm:text-sm rounded-full shadow-2xl border-2 border-emerald-500 transition-all transform hover:scale-105 active:scale-95">
+            <button onclick="switchTab('onlinegdb')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition flex items-center gap-1.5 shadow-xs">
+          <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> OnlineGDB C++
+        </button>
+        <button onclick="switchTab('handbook')" title="Mở nhanh Sổ tay Tra Cứu (Phím tắt: F1)" class="flex items-center gap-2 px-4 py-3 bg-white hover:bg-emerald-50 text-emerald-800 font-extrabold text-xs sm:text-sm rounded-full shadow-2xl border-2 border-emerald-500 transition-all transform hover:scale-105 active:scale-95">
       <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600"></i>
       <span>📖 Sổ Tay Tra Cứu</span>
       <span class="hidden sm:inline bg-emerald-100 text-emerald-700 text-[10px] px-1.5 py-0.5 rounded font-mono font-bold">F1</span>
@@ -6633,6 +7264,7 @@ int main() {
     // Chạy kích hoạt tức thì không chờ đợi
     triggerKaTeXAuto();
     initAllSimulations();
+    handleHashNavigation();
   </script>
 
 </body>
