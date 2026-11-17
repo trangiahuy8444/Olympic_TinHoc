@@ -264,10 +264,10 @@
           
           <div class="space-y-1 pt-1">
             <button onclick="switchTab('chuyen-de-1')" id="tab-chuyen-de-1" class="nav-tab w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold rounded-xl text-slate-700 hover:text-ahs-primary hover:bg-slate-50 transition text-left border border-transparent">
-              <i data-lucide="terminal" class="w-4 h-4 text-blue-600 shrink-0"></i>
+              <i data-lucide="book-open" class="w-4 h-4 text-blue-600 shrink-0"></i>
               <div class="flex-1 truncate">
-                <div class="font-bold text-slate-900 truncate">1. Cú Pháp C++17 &amp; Bẫy Tràn Số</div>
-                <div class="text-[10px] text-slate-500 truncate">Fast I/O, freopen, bẫy 1LL*a*b</div>
+                <div class="font-bold text-slate-900 truncate">1. Cẩm Nang C++ &amp; Tra Cứu (VNOI)</div>
+                <div class="text-[10px] text-slate-500 truncate">Sổ tay tự học, 5 bẫy, 15 bài tự luyện</div>
               </div>
             </button>
 
@@ -1383,37 +1383,78 @@ int main() {
     <!-- ============================================================== -->
     <!-- CHUYÊN ĐỀ 1: CÚ PHÁP C++17, FAST I/O & BẪY PHÒNG THI -->
     <!-- ============================================================== -->
-    <section id="content-chuyen-de-1" class="tab-content hidden space-y-8 animate-fadeIn">
+        <section id="content-chuyen-de-1" class="tab-content hidden space-y-8 animate-fadeIn">
       
-      <!-- HERO BANNER -->
-      <div class="rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-3">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
-            Chặng 1 • Chuyên Đề 1
-          </span>
-          <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
-            Nền Tảng Thi Đấu &amp; Cú Pháp Cốt Lõi
+      <!-- HERO BANNER: SỔ TAY NỀN TẢNG C++ THI ĐẤU -->
+      <div class="rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 bg-amber-400 text-slate-900 font-extrabold text-xs uppercase rounded-full shadow-xs">
+              Chặng 1 • Cẩm Nang Tự Học
+            </span>
+            <span class="px-3 py-1 bg-white/20 text-white font-semibold text-xs rounded-full">
+              Chuẩn VNOI Wiki &amp; Asian School
+            </span>
+          </div>
+          <span class="text-xs text-blue-200 font-mono flex items-center gap-1.5">
+            <i data-lucide="book-marked" class="w-4 h-4 text-amber-400"></i> Sổ Tay Tra Cứu Cốt Lõi (Tự Ôn Tập Khi Cần)
           </span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
-          Cú Pháp C++17, Tăng Tốc Nhập Xuất (Fast I/O) &amp; Bẫy Phòng Thi Kinh Điển
-        </h2>
-        <p class="text-blue-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
-          Hơn 40% học sinh mất điểm oan trong kỳ thi Olympic không phải vì thuật toán sai, mà vì <strong>tràn số âm</strong>, <strong>chậm I/O dẫn đến Time Limit Exceeded (TLE)</strong> và <strong>quên cấu hình freopen vào/ra tệp</strong>.
-        </p>
+
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
+            Cẩm Nang Nền Tảng C++ Thi Đấu, 5 Bẫy Tử Thần &amp; Kỹ Thuật Bài 1 Olympic
+          </h2>
+          <p class="text-blue-100 text-xs sm:text-sm max-w-4xl leading-relaxed mt-2">
+            Chặng 1 được thiết kế dưới dạng <strong>Sổ tay tra cứu độc lập</strong>. Học sinh tự ôn luyện tại nhà, không mất thời gian giảng lại trên lớp. Mở ra là thấy ngay template chuẩn, công thức bẫy số học, bảng quy đổi Big-O và 15 bài toán cốt lõi ăn trọn $5/20$ điểm Bài 1.
+          </p>
+        </div>
+
+        <!-- QUICK NAV CHIPS -->
+        <div class="flex flex-wrap gap-2 pt-2 border-t border-white/10 text-xs font-semibold">
+          <a href="#cd1-template" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="terminal" class="w-3.5 h-3.5 text-amber-300"></i> Template &amp; Fast I/O
+          </a>
+          <a href="#cd1-bigo" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="gauge" class="w-3.5 h-3.5 text-emerald-300"></i> Bảng Quy Đổi Big-O
+          </a>
+          <a href="#cd1-traps" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-rose-300"></i> 5 Bẫy Phòng Thi
+          </a>
+          <a href="#cd1-casework" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-sky-300"></i> Casework (VNOI)
+          </a>
+          <a href="#cd1-counting" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="hash" class="w-3.5 h-3.5 text-purple-300"></i> Mảng Đếm &amp; Nén Số
+          </a>
+          <a href="#cd1-problems" class="px-3 py-1.5 bg-white/10 hover:bg-white/25 rounded-xl transition flex items-center gap-1.5 text-white">
+            <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-amber-300"></i> 15 Bài Thực Chiến
+          </a>
+          <a href="#cd1-vnoi" class="px-3 py-1.5 bg-amber-400 text-slate-900 font-bold hover:bg-amber-300 rounded-xl transition flex items-center gap-1.5">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> VNOI Wiki Hub
+          </a>
+        </div>
       </div>
 
-      <!-- LÝ THUYẾT VÀ BẪY KINH ĐIỂN -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- ========================================== -->
+      <!-- 1. TEMPLATE C++17 & FAST I/O -->
+      <!-- ========================================== -->
+      <div id="cd1-template" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-          <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
-            <i data-lucide="code" class="w-4 h-4 text-ahs-primary"></i> Template Chuẩn Thi Đấu Olympic C++17
-          </h3>
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="code" class="w-4 h-4 text-ahs-primary"></i> Template C++17 Thi Đấu Chuẩn Olympic
+            </h3>
+            <span class="px-2 py-0.5 bg-blue-50 text-ahs-primary font-mono text-[10px] rounded-full border border-blue-200 font-bold">
+              Bắt Buộc Sử Dụng
+            </span>
+          </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Mỗi bài thi Olympic đều yêu cầu đọc từ tệp <code>NAME.INP</code> và xuất ra <code>NAME.OUT</code>. Đoạn mã dưới đây là bộ khung bắt buộc phải có trong mọi bài làm:
+            Mỗi bài thi Olympic đều yêu cầu đọc từ tệp <code>NAME.INP</code> và xuất ra <code>NAME.OUT</code>. Bộ khung dưới đây bao gồm <strong>Fast I/O</strong> và <strong>Tự động nhận diện môi trường chấm</strong>:
           </p>
-          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs mt-3">
+
+          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2">
               <div class="flex items-center gap-2">
                 <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
@@ -1428,59 +1469,74 @@ int main() {
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;iomanip&gt;
 
 using namespace std;
 
-int main() {
-    // 1. TĂNG TỐC NHẬP XUẤT (FAST I/O)
-    // Tách luồng C++ khỏi C standard stdio, tăng tốc gấp 10 lần
+// Tăng tốc nhập xuất gấp 10 lần (xử lý 10^6 dòng chỉ mất ~0.15s)
+void fastIO() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+}
 
-    // 2. VÀO RA TỆP QUA FREOPEN
+// Điều hướng tệp NAME.INP / NAME.OUT tự động
+void fileIO(const string &taskName) {
     #ifndef ONLINE_JUDGE
-    freopen("BAILAM.INP", "r", stdin);
-    freopen("BAILAM.OUT", "w", stdout);
+    if (!taskName.empty()) {
+        freopen((taskName + ".INP").c_str(), "r", stdin);
+        freopen((taskName + ".OUT").c_str(), "w", stdout);
+    }
     #endif
+}
 
-    // Code xử lý chính...
+int main() {
+    fastIO();
+    fileIO("BAILAM"); // Thay BAILAM bằng mã bài trong đề (ví dụ: DIFFK)
+
+    // TODO: Viết thuật toán giải bài tại đây
+
     return 0;
 }</code></pre>
           </div>
         </div>
 
+        <!-- 3 CỘT MỐC SỐNG CÒN CỦA TEMPLATE -->
         <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-          <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
-            <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-600"></i> 3 Bẫy Tử Thần &amp; Bí Kíp Khắc Phục
-          </h3>
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> 3 Kỹ Thuật I/O Sống Còn Trong Phòng Thi
+            </h3>
+            <span class="px-2 py-0.5 bg-amber-50 text-amber-800 font-mono text-[10px] rounded-full border border-amber-200 font-bold">
+              Chống Trượt TLE
+            </span>
+          </div>
+
           <div class="space-y-3 text-xs text-slate-700">
-            <div class="p-3 bg-rose-50 rounded-xl border border-rose-200 space-y-1">
-              <div class="font-bold text-rose-950 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-rose-500"></span> 1. Bẫy tràn số tích: a * b
-              </div>
-              <p class="text-[11px] text-rose-800">
-                Dù khai báo <code>long long ans = a * b;</code>, nhưng nếu $a, b$ là <code>int</code>, phép nhân được tính trên thanh ghi 32-bit rồi mới gán vào <code>ans</code> $\implies$ <strong>Kết quả bị tràn số âm!</strong><br>
-                💡 <strong>Khắc phục:</strong> Ép kiểu ngay lập tức: <code>1LL * a * b</code> hoặc khai báo $a, b$ là <code>long long</code>.
-              </p>
-            </div>
-
-            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 space-y-1">
-              <div class="font-bold text-amber-950 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 2. Phép chia nguyên làm tròn lên
-              </div>
-              <p class="text-[11px] text-amber-800">
-                Cần tính $\lceil a / b \rceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
-                💡 <strong>Công thức chuẩn thi đấu:</strong> <code>(a + b - 1) / b</code> với số nguyên dương.
-              </p>
-            </div>
-
-            <div class="p-3 bg-blue-50 rounded-xl border border-blue-200 space-y-1">
+            <div class="p-3.5 bg-blue-50/70 rounded-xl border border-blue-200 space-y-1">
               <div class="font-bold text-blue-950 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 3. Bẫy endl làm tràn bộ đệm (Buffer Flush)
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 1. ios_base::sync_with_stdio(false);
               </div>
-              <p class="text-[11px] text-blue-800">
-                Lệnh <code>cout &lt;&lt; endl;</code> vừa xuống dòng vừa xóa bộ đệm (flush), gây chậm 50 lần khi in ra $10^5$ dòng.<br>
-                💡 <strong>Quy tắc thi đấu:</strong> Luôn dùng <code>cout &lt;&lt; "\n";</code>.
+              <p class="text-[11px] text-blue-900 leading-relaxed">
+                Mặc định C++ đồng bộ luồng <code>cin/cout</code> với thư viện C (<code>scanf/printf</code>) để an toàn. Lệnh này ngắt đồng bộ, giúp <code>cin/cout</code> đạt tốc độ ngang ngửa thậm chí nhanh hơn <code>scanf/printf</code>!
+              </p>
+            </div>
+
+            <div class="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200 space-y-1">
+              <div class="font-bold text-emerald-950 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 2. cin.tie(NULL);
+              </div>
+              <p class="text-[11px] text-emerald-900 leading-relaxed">
+                Ngắt liên kết tự động xả bộ đệm (flush) của <code>cout</code> trước mỗi lệnh <code>cin</code>. Trong các bài toán có nhiều thao tác nhập xuất xen kẽ, lệnh này giúp tiết kiệm tới 50% thời gian thực thi.
+              </p>
+            </div>
+
+            <div class="p-3.5 bg-purple-50/70 rounded-xl border border-purple-200 space-y-1">
+              <div class="font-bold text-purple-950 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-500"></span> 3. #ifndef ONLINE_JUDGE và freopen
+              </div>
+              <p class="text-[11px] text-purple-900 leading-relaxed">
+                Khi chấm trên các hệ thống chấm tự động (VNOJ, LQDOJ, Codeforces), macro <code>ONLINE_JUDGE</code> tự động kích hoạt giúp đọc từ Standard I/O. Khi thi offline của Sở, code tự động chuyển sang đọc ghi tệp <code>.INP/.OUT</code> chuẩn xác!
               </p>
             </div>
           </div>
@@ -1488,65 +1544,607 @@ int main() {
 
       </div>
 
-      <!-- BÀI TẬP THỰC HÀNH TẠI LỚP & VỀ NHÀ -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-              <i data-lucide="clipboard-list" class="w-4 h-4 text-emerald-600"></i> Bài Tập Thực Hành Tại Lớp (2 Bài)
-            </h4>
-            <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Hoàn thành 30p</span>
+      <!-- ========================================== -->
+      <!-- 2. BẢNG KIỂU DỮ LIỆU & BẢNG QUY ĐỔI BIG-O (VNOI WIKI) -->
+      <!-- ========================================== -->
+      <div id="cd1-bigo" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="gauge" class="w-5 h-5 text-emerald-600"></i> Bảng Vàng Quy Đổi Giới Hạn $N \implies$ Thuật Toán Tối Ưu
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Quy chuẩn máy chấm thi Olympic: <strong>1.0 giây $\approx 10^8$ phép tính</strong>. Luôn nhìn vào ràng buộc $N$ trong đề để chọn đúng thuật toán!
+            </p>
           </div>
+          <a href="https://wiki.vnoi.info/vi/algo/basic/computational-complexity" target="_blank" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5 shrink-0">
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-ahs-primary"></i> Đọc VNOI Wiki: Độ Phức Tạp
+          </a>
+        </div>
 
-          <div class="space-y-3 text-xs">
-            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
-              <div class="flex items-center justify-between font-bold text-slate-900">
-                <span>Bài 1: TÍCH LỚN (OVERFLOW)</span>
-                <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">OVERFLOW.CPP</span>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200">
+                <th class="p-3">Giới hạn $N$ trong đề bài</th>
+                <th class="p-3">Độ phức tạp $O(...)$</th>
+                <th class="p-3">Thuật toán bắt buộc áp dụng</th>
+                <th class="p-3">Chiến lược điểm thi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-600 font-mono">
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-3 font-bold text-purple-700">$N \le 10 - 12$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-purple-50 text-purple-700 rounded border border-purple-200 font-bold">$O(N!)$ hoặc $O(N^2 \cdot 2^N)$</span></td>
+                <td class="p-3 font-sans">Duyệt mọi hoán vị (<code>std::next_permutation</code>), Quy hoạch động trạng thái (Bitmask DP).</td>
+                <td class="p-3 font-sans text-emerald-700 font-semibold">Ăn trọn $100\%$</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-3 font-bold text-rose-700">$N \le 20 - 25$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-rose-50 text-rose-700 rounded border border-rose-200 font-bold">$O(2^N)$</span></td>
+                <td class="p-3 font-sans"><strong>Duyệt quay lui (Backtracking), Vét cạn có nhánh cận</strong>. Thử tất cả tập con.</td>
+                <td class="p-3 font-sans text-rose-700 font-bold">Vét Subtask 1 (30-40%)</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-3 font-bold text-amber-700">$N \le 400$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-amber-50 text-amber-700 rounded border border-amber-200 font-bold">$O(N^3)$</span></td>
+                <td class="p-3 font-sans">3 vòng for lồng nhau, Nhân ma trận cơ bản, Floyd-Warshall tìm đường đi ngắn nhất.</td>
+                <td class="p-3 font-sans text-amber-700 font-semibold">Ăn Subtask 2 (60%)</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-3 font-bold text-blue-700">$N \le 2\,000 - 5\,000$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-blue-50 text-blue-700 rounded border border-blue-200 font-bold">$O(N^2)$</span></td>
+                <td class="p-3 font-sans">2 vòng for lồng nhau, Quy hoạch động 2 chiều, Duyệt mọi cặp $(i, j)$.</td>
+                <td class="p-3 font-sans text-blue-700 font-semibold">Ăn Subtask 2 (60%)</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80 bg-emerald-50/30">
+                <td class="p-3 font-bold text-emerald-700">$N \le 10^5 - 2 \cdot 10^5$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N \log N)$</span></td>
+                <td class="p-3 font-sans"><strong>Sắp xếp (<code>std::sort</code>), Tìm kiếm nhị phân, Hai con trỏ, Set/Map, Priority Queue</strong>.</td>
+                <td class="p-3 font-sans text-emerald-700 font-black">Ăn Trọn 100% Bài 1, 2</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80 bg-emerald-50/30">
+                <td class="p-3 font-bold text-emerald-700">$N \le 10^6 - 10^7$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-300 font-bold">$O(N)$ hoặc $O(N \log \log N)$</span></td>
+                <td class="p-3 font-sans"><strong>Mảng đếm tần số (Direct Addressing Table), Mảng cộng dồn (Prefix Sum), Sàng Eratosthenes</strong>.</td>
+                <td class="p-3 font-sans text-emerald-700 font-black">Ăn Trọn 100% Bài 1, 2</td>
+              </tr>
+              <tr class="hover:bg-slate-50/80">
+                <td class="p-3 font-bold text-slate-800">$N \ge 10^9 - 10^{18}$</td>
+                <td class="p-3"><span class="px-2 py-0.5 bg-slate-200 text-slate-800 rounded border border-slate-300 font-bold">$O(\log N)$ hoặc $O(1)$</span></td>
+                <td class="p-3 font-sans">Công thức toán học đóng, Thuật toán Euclid GCD, Lũy thừa nhị phân $A^B \pmod M$.</td>
+                <td class="p-3 font-sans text-purple-700 font-black">Giải Nhất Tuyệt Đối</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- BẢNG BỘ NHỚ RAM TRONG THI ĐẤU -->
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <i data-lucide="hard-drive" class="w-4 h-4 text-ahs-primary"></i>
+            <span class="font-bold text-slate-800">Quy tắc ước lượng bộ nhớ RAM (Memory Limit 256MB/512MB):</span>
+          </div>
+          <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+            <span class="px-2 py-1 bg-white border border-slate-200 rounded">10^7 phần tử <code>int</code> $\approx 40\text{MB}$</span>
+            <span class="px-2 py-1 bg-white border border-slate-200 rounded">10^7 phần tử <code>long long</code> $\approx 80\text{MB}$</span>
+            <span class="px-2 py-1 bg-white border border-slate-200 rounded">10^7 phần tử <code>bool</code> $\approx 10\text{MB}$</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 3. 5 BẪY TỬ THẦN TRONG PHÒNG THI -->
+      <!-- ========================================== -->
+      <div id="cd1-traps" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+          <h3 class="font-extrabold text-base text-slate-900 flex items-center gap-2">
+            <i data-lucide="alert-octagon" class="w-5 h-5 text-rose-600"></i> 5 Bẫy Tử Thần Phòng Thi (Mất Điểm Oan &amp; Cách Tránh)
+          </h3>
+          <span class="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
+            Hơn 40% Thí Sinh Dính Bẫy
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+          
+          <!-- Trap 1 -->
+          <div class="p-4 bg-rose-50/70 border border-rose-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-rose-950 flex items-center gap-1.5 pb-1 border-b border-rose-200">
+                <span class="w-2 h-2 rounded-full bg-rose-600"></span> 1. Nhân 2 số int gán vào long long
               </div>
-              <p class="text-slate-600 text-[11px]">
-                Cho 3 số nguyên $A, B, C$ ($1 \le A, B, C \le 10^9$). Hãy tính giá trị $P = (A \times B) \% C$. In ra $P$. Lưu ý $A \times B$ có thể lên đến $10^{18}$, phải dùng <code>1LL * A * B</code>!
+              <p class="text-rose-900 mt-2 text-[11px] leading-relaxed">
+                Code: <code>long long p = a * b;</code> (với $a, b$ là <code>int</code>). Phép nhân được tính trên thanh ghi 32-bit của CPU trước, tràn thành số âm rồi mới gán vào <code>p</code>!
               </p>
             </div>
+            <div class="p-2 bg-white rounded border border-rose-200 text-rose-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> <code>1LL * a * b</code> hoặc ép kiểu <code>(long long)a * b</code>.
+            </div>
+          </div>
 
-            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
-              <div class="flex items-center justify-between font-bold text-slate-900">
-                <span>Bài 2: CHIA PHÒNG KHÁCH SẠN (CEILDIV)</span>
-                <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">CEILDIV.CPP</span>
+          <!-- Trap 2 -->
+          <div class="p-4 bg-amber-50/70 border border-amber-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-amber-950 flex items-center gap-1.5 pb-1 border-b border-amber-200">
+                <span class="w-2 h-2 rounded-full bg-amber-600"></span> 2. Phép chia nguyên làm tròn lên
               </div>
-              <p class="text-slate-600 text-[11px]">
-                Đoàn có $N$ vận động viên ($1 \le N \le 10^{12}$). Mỗi phòng chứa tối đa $K$ người ($1 \le K \le 10^9$). Hỏi cần thuê ít nhất bao nhiêu phòng? Áp dụng công thức làm tròn lên <code>(N + K - 1) / K</code>.
+              <p class="text-amber-900 mt-2 text-[11px] leading-relaxed">
+                Tính $\lceil a / b \rceil$ (xếp người vào xe/phòng). Dùng <code>ceil((double)a / b)</code> dễ bị sai số dấu phẩy động khi $a, b \ge 10^{14}$!
               </p>
+            </div>
+            <div class="p-2 bg-white rounded border border-amber-200 text-amber-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> <code>(a + b - 1) / b</code> với $a, b > 0$.
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-blue-950 flex items-center gap-1.5 pb-1 border-b border-blue-200">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span> 3. Trôi dòng getline sau cin &gt;&gt; n
+              </div>
+              <p class="text-blue-900 mt-2 text-[11px] leading-relaxed">
+                Sau khi đọc số <code>cin &gt;&gt; n;</code>, ký tự xuống dòng <code>'\n'</code> vẫn đọng trong buffer. Lệnh <code>getline(cin, s);</code> tiếp theo đọc trúng <code>'\n'</code> và trả về chuỗi rỗng!
+              </p>
+            </div>
+            <div class="p-2 bg-white rounded border border-blue-200 text-blue-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> Gọi <code>cin.ignore();</code> ngay sau <code>cin &gt;&gt; n;</code>.
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="p-4 bg-indigo-50/70 border border-indigo-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-indigo-950 flex items-center gap-1.5 pb-1 border-b border-indigo-200">
+                <span class="w-2 h-2 rounded-full bg-indigo-600"></span> 4. Lệnh endl gây tràn xả bộ đệm (TLE)
+              </div>
+              <p class="text-indigo-900 mt-2 text-[11px] leading-relaxed">
+                Lệnh <code>cout &lt;&lt; endl;</code> không chỉ xuống dòng mà còn ép CPU xả bộ đệm (flush buffer) xuống đĩa. Khi in $10^5$ dòng, chương trình chạy chậm hơn 50 lần!
+              </p>
+            </div>
+            <div class="p-2 bg-white rounded border border-indigo-200 text-indigo-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> Luôn dùng <code>cout &lt;&lt; "\n";</code>.
+            </div>
+          </div>
+
+          <!-- Trap 5 -->
+          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-purple-950 flex items-center gap-1.5 pb-1 border-b border-purple-200">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span> 5. Khai báo mảng lớn trong hàm main (RTE)
+              </div>
+              <p class="text-purple-900 mt-2 text-[11px] leading-relaxed">
+                Khai báo <code>int a[1000000];</code> bên trong hàm <code>main()</code> sẽ sử dụng vùng nhớ Stack (mặc định chỉ 8MB), gây lỗi tràn Stack (Runtime Error / Crash).
+              </p>
+            </div>
+            <div class="p-2 bg-white rounded border border-purple-200 text-purple-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> Khai báo mảng toàn cục (ngoài <code>main</code>) hoặc <code>static</code>.
+            </div>
+          </div>
+
+          <!-- Trap Bonus -->
+          <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="font-extrabold text-emerald-950 flex items-center gap-1.5 pb-1 border-b border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span> 6. Quên reset mảng khi có nhiều Test Case
+              </div>
+              <p class="text-emerald-900 mt-2 text-[11px] leading-relaxed">
+                Khi đề bài có $T$ test case, dữ liệu của test trước còn lưu trong mảng đếm <code>cnt[]</code> sẽ làm sai hoàn toàn test sau.
+              </p>
+            </div>
+            <div class="p-2 bg-white rounded border border-emerald-200 text-emerald-950 font-mono text-[10px]">
+              <strong>Khắc phục:</strong> <code>memset(cnt, 0, sizeof(cnt));</code> hoặc <code>fill()</code> đầu mỗi test.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 4. KỸ NĂNG CASEWORK & BẮT TEST BIÊN (VNOI WIKI) -->
+      <!-- ========================================== -->
+      <div id="cd1-casework" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+        <div class="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="shield-check" class="w-5 h-5 text-sky-600"></i> Kỹ Năng Casework &amp; Kiểm Soát Test Biên (Chuẩn VNOI Wiki)
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Theo VNOI Wiki, <strong>Casework</strong> là kỹ năng chia nhỏ bài toán thành các trường hợp đặc biệt để xử lý chính xác và tránh mất điểm subtask.
+            </p>
+          </div>
+          <span class="px-3 py-1 bg-sky-50 text-sky-800 text-xs font-bold rounded-xl border border-sky-200 shrink-0">
+            Checklist 6 Câu Hỏi Vàng
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5">
+            <span class="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> 4 Tình Huống Biên Thường Gặp Nhất:
+            </span>
+            <ul class="space-y-2 text-slate-600 leading-relaxed text-[11px]">
+              <li class="flex items-start gap-2">
+                <span class="font-mono text-emerald-700 font-bold bg-white px-1.5 py-0.5 rounded border border-slate-200">N = 1, N = 0:</span>
+                <span>Kiểm tra xem mảng chỉ có 1 phần tử có làm thuật toán bị lỗi chỉ số âm hoặc chia cho 0 không?</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="font-mono text-emerald-700 font-bold bg-white px-1.5 py-0.5 rounded border border-slate-200">Không có nghiệm:</span>
+                <span>Đề bài yêu cầu in ra <code>-1</code> hoặc <code>0</code> nếu không tìm thấy. Bạn đã có cờ <code>bool found = false;</code> chưa?</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="font-mono text-emerald-700 font-bold bg-white px-1.5 py-0.5 rounded border border-slate-200">Dãy số bằng nhau:</span>
+                <span>Trường hợp toàn bộ phần tử mảng đều bằng nhau (ví dụ: <code>5 5 5 5</code>). Các thuật toán tìm max/min thứ hai thường bị lỗi ở đây.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="font-mono text-emerald-700 font-bold bg-white px-1.5 py-0.5 rounded border border-slate-200">Số âm và số 0:</span>
+                <span>Giá trị $A_i$ có thể âm không? Nếu có, mảng đếm <code>cnt[A[i]]</code> sẽ bị lỗi runtime do chỉ số mảng âm!</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5">
+            <span class="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
+              <i data-lucide="cpu" class="w-4 h-4 text-ahs-primary"></i> Kỹ Thuật Hardcode &amp; Bảng Giá Trị Sẵn:
+            </span>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              Theo VNOI Wiki, khi một bài toán có tập giá trị đầu vào rất nhỏ hoặc tập đáp án cố định, bạn hoàn toàn có thể tính trước kết quả bằng tay và <strong>hardcode trực tiếp vào mã nguồn</strong> để đạt thời gian thực thi $O(1)$:
+            </p>
+            <div class="border border-slate-800 rounded-xl p-3 bg-slate-900 text-slate-100 font-mono text-[10px]">
+              <span class="text-slate-400">// Ví dụ: Hardcode số ngày trong tháng hoặc giá trị nhỏ</span><br>
+              <span class="text-emerald-400">const int</span> days[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};<br>
+              <span class="text-slate-400">// Hoặc hardcode test nhỏ ăn trọn Subtask 1:</span><br>
+              <span class="text-blue-400">if</span> (n == 1) { cout &lt;&lt; 0; return 0; }<br>
+              <span class="text-blue-400">if</span> (n == 2) { cout &lt;&lt; 1; return 0; }
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 5. KỸ THUẬT MẢNG ĐẾM & NÉN TỌA ĐỘ SƠ CẤP (VNOI WIKI) -->
+      <!-- ========================================== -->
+      <div id="cd1-counting" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- MẢNG ĐẾM -->
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
+          <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="hash" class="w-4 h-4 text-emerald-600"></i> Mảng Đếm Tần Số (Direct Addressing Table)
+            </h3>
+            <span class="px-2 py-0.5 bg-emerald-50 text-emerald-800 font-mono text-[10px] rounded-full border border-emerald-200 font-bold">
+              Độ phức tạp O(1)
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Thay vì duyệt 2 vòng for $O(N^2)$, ta dùng chính giá trị của phần tử làm chỉ số mảng: <code>cnt[x]++;</code>. Quy chuẩn ánh xạ chỉ số:
+          </p>
+
+          <div class="space-y-2 text-xs font-mono">
+            <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+              <span class="text-slate-700">Chữ cái thường ('a'-'z'):</span>
+              <code class="text-emerald-700 font-bold bg-white px-2 py-0.5 rounded border">cnt[c - 'a']++ (mảng 26 ô)</code>
+            </div>
+            <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+              <span class="text-slate-700">Chữ cái hoa ('A'-'Z'):</span>
+              <code class="text-blue-700 font-bold bg-white px-2 py-0.5 rounded border">cnt[c - 'A']++ (mảng 26 ô)</code>
+            </div>
+            <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+              <span class="text-slate-700">Ký tự số ('0'-'9'):</span>
+              <code class="text-amber-700 font-bold bg-white px-2 py-0.5 rounded border">cnt[c - '0']++ (mảng 10 ô)</code>
+            </div>
+            <div class="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+              <span class="text-slate-700">Số âm ($-10^6 \le x \le 10^6$):</span>
+              <code class="text-purple-700 font-bold bg-white px-2 py-0.5 rounded border">cnt[x + 1000000]++ (offset 10^6)</code>
             </div>
           </div>
         </div>
 
+        <!-- NÉN TỌA ĐỘ SƠ CẤP (VNOI WIKI) -->
         <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-              <i data-lucide="home" class="w-4 h-4 text-purple-600"></i> Bài Tập Về Nhà &amp; AI Gia Sư Socratic
-            </h4>
-            <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">3 - 4 Tiếng</span>
+          <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="shrink" class="w-4 h-4 text-purple-600"></i> Nén Số / Rời Rạc Hóa (Coordinate Compression)
+            </h3>
+            <a href="https://wiki.vnoi.info/vi/algo/trick/Roi-rac-hoa-va-ung-dung" target="_blank" class="text-[10px] text-ahs-primary hover:underline font-bold flex items-center gap-1">
+              VNOI Wiki <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
           </div>
 
-          <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-3">
-            <div class="flex items-center justify-between text-xs font-bold text-purple-950">
-              <span>BTVN: RÚT GỌN PHÂN SỐ (REDUCE.CPP)</span>
-              <span class="text-[10px] bg-purple-200 px-2 py-0.5 rounded font-mono">Olympic Warm-up</span>
-            </div>
-            <p class="text-xs text-purple-900 leading-relaxed">
-              Cho tử số $A$ và mẫu số $B$ ($1 \le A, B \le 10^{12}$). Rút gọn phân số $A/B$ về dạng tối giản bằng cách chia cả tử và mẫu cho $\gcd(A, B)$ dùng hàm <code>std::gcd</code> trong thư viện <code>&lt;numeric&gt;</code>.
-            </p>
-            <div class="pt-2 border-t border-purple-200/60 flex items-center justify-between">
-              <span class="text-[11px] text-purple-700 italic">Bí ý tưởng giải bài này?</span>
-              <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em cách rút gọn phân số số lớn bằng std::gcd trong C++ với ạ!')" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5">
-                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Hỏi Gia Sư AI
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Khi giá trị $A_i \le 10^9$ nhưng số phần tử $N \le 10^5$, ta <strong>không thể tạo mảng <code>cnt[10^9]</code></strong>. Kỹ thuật nén số giúp ánh xạ các giá trị lớn về đoạn $[1, N]$:
+          </p>
+
+          <div class="border border-slate-800 rounded-2xl p-4 bg-slate-900 text-slate-100 space-y-2 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span></span>
+                <span class="text-xs font-mono font-bold text-slate-300">COMPRESSION.CPP</span>
+                <span class="text-[10px] bg-slate-800 text-purple-400 font-mono px-2 py-0.5 rounded border border-slate-700 font-medium">O(N log N)</span>
+              </div>
+              <button onclick="copyCode('code-compression')" class="text-xs text-ahs-primary hover:text-blue-300 font-bold flex items-center gap-1 transition">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
               </button>
             </div>
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-compression" class="language-cpp">// Nén các giá trị lớn của mảng a[] về đoạn [1, k]
+vector&lt;int&gt; vals = a;
+sort(vals.begin(), vals.end());
+vals.erase(unique(vals.begin(), vals.end()), vals.end());
+
+// Ánh xạ từng phần tử a[i] sang giá trị nén (từ 1 đến vals.size())
+for (int i = 0; i &lt; n; i++) {
+    int id = lower_bound(vals.begin(), vals.end(), a[i]) - vals.begin() + 1;
+    // Bây giờ id nằm gọn trong [1, n], tha hồ dùng mảng đếm!
+    cnt[id]++;
+}</code></pre>
           </div>
         </div>
 
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 6. BỘ 15 BÀI TẬP THỰC CHIẾN CỐT LÕI (TỰ LUYỆN) -->
+      <!-- ========================================== -->
+      <div id="cd1-problems" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-6">
+        <div class="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900 flex items-center gap-2">
+              <i data-lucide="award" class="w-5 h-5 text-amber-500"></i> Bộ 15 Bài Tập Thực Chiến Cốt Lõi (Tự Luyện Tại Nhà)
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Được tuyển chọn theo nguyên tắc <strong>"1 bài hiểu 5 bài"</strong>. Giải quyết trọn vẹn 15 bài này đảm bảo ăn trọn $5/20$ điểm Bài 1 trong đề thi chính thức!
+            </p>
+          </div>
+          <span class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 shrink-0">
+            Tự Luyện 3 - 4 Tiếng / Tuần
+          </span>
+        </div>
+
+        <!-- 3 CỤM BÀI TẬP -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- CỤM 1 -->
+          <div class="space-y-3">
+            <div class="px-3 py-2 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between">
+              <span class="font-bold text-blue-950 text-xs flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i> Cụm 1: Cú Pháp &amp; Số Học (5 Bài)
+              </span>
+              <span class="text-[10px] font-mono text-blue-700 font-bold">1 - 5</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-blue-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>1. OVERFLOW (Tích lớn Modulo)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">1LL * a * b</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Cho $A, B, C \le 10^9$. Tính $(A \times B) \pmod C$. Rèn ép kiểu <code>1LL</code> chống tràn số.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-blue-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>2. CEILDIV (Chia phòng khách sạn)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">(A+B-1)/B</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Cho $N \le 10^{12}, K \le 10^9$. Tính số phòng ít nhất $\lceil N/K \rceil$ không dùng số thực.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-blue-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>3. REDUCE (Rút gọn phân số lớn)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">std::gcd</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Cho $A, B \le 10^{14}$. Rút gọn $A/B$ về tối giản bằng <code>std::gcd</code> trong thư viện <code>&lt;numeric&gt;</code>.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-blue-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>4. SUMDIGIT (Tổng chữ số số lớn)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">string</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Tính tổng các chữ số của $N$ ($N \le 10^{100000}$). Rèn kỹ thuật đọc số lớn bằng <code>string</code>.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-blue-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>5. MODSUM (Tổng dãy số Modulo)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">Modulo</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Tính $(1 + 2 + \dots + N) \pmod{10^9+7}$ với $N \le 10^9$. Rèn chia trước cho 2 trước khi nhân.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CỤM 2 -->
+          <div class="space-y-3">
+            <div class="px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between">
+              <span class="font-bold text-emerald-950 text-xs flex items-center gap-1.5">
+                <i data-lucide="hash" class="w-4 h-4 text-emerald-600"></i> Cụm 2: Mảng &amp; Mảng Đếm (5 Bài)
+              </span>
+              <span class="text-[10px] font-mono text-emerald-700 font-bold">6 - 10</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-emerald-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>6. DIFFK (Đếm cặp hiệu bằng K)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">cnt[A[i]+K]</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Đếm cặp $(i, j)$ sao cho $A_i - A_j = K$ ($N \le 10^5, A_i \le 10^6$) trong độ phức tạp $O(N)$.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-emerald-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>7. MAJORITY (Phần tử chiếm đa số)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">&gt; N / 2</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Tìm số xuất hiện nhiều hơn $\lfloor N/2 \rfloor$ lần trong mảng $N \le 10^5$. In <code>-1</code> nếu không có.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-emerald-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>8. ANAGRAM (Kiểm tra đảo chữ)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">cnt1 == cnt2</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Kiểm tra 2 xâu $S$ và $T$ ($|S|, |T| \le 10^5$) có cùng phân phối tần số các ký tự hay không.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-emerald-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>9. MEX (Số không âm nhỏ nhất vắng mặt)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">bool mark[]</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Cho mảng $N \le 10^5$. Tìm số nguyên không âm nhỏ nhất chưa từng xuất hiện trong mảng.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-emerald-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>10. DIAGSUM (Tổng chéo ma trận)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">i == j</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Cho ma trận vuông cấp $N$ ($N \le 1000$). Tính tổng đường chéo chính và phụ trong đúng 1 vòng for $O(N)$.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CỤM 3 -->
+          <div class="space-y-3">
+            <div class="px-3 py-2 bg-purple-50 border border-purple-200 rounded-xl flex items-center justify-between">
+              <span class="font-bold text-purple-950 text-xs flex items-center gap-1.5">
+                <i data-lucide="type" class="w-4 h-4 text-purple-600"></i> Cụm 3: Xâu Ký Tự &amp; ASCII (5 Bài)
+              </span>
+              <span class="text-[10px] font-mono text-purple-700 font-bold">11 - 15</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-purple-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>11. PALIN (Xâu con đối xứng dài nhất)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">2 con trỏ</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Kiểm tra tính đối xứng và tìm xâu con đối xứng bằng kỹ thuật duyệt tâm hoặc 2 con trỏ.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-purple-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>12. WORDS (Tách và sắp xếp từ)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">stringstream</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Đọc đoạn văn bản có nhiều dấu cách thừa, tách từng từ và in ra theo thứ tự từ điển.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-purple-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>13. COMPRESS (Nén xâu Run-Length)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">aabcc -&gt; a2b1c2</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Nén các ký tự liên tiếp giống nhau thành dạng <code>&lt;ký tự&gt;&lt;số lần&gt;</code> trong đúng 1 lượt duyệt $O(N)$.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-purple-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>14. DNAGROUP (Đề Olympic TP.HCM)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">substr(i, 3)</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Đếm tần số các codon bộ ba liên tiếp trong chuỗi gen DNA (ví dụ: <code>ATG</code>, <code>GTA</code>) dùng mảng đếm.</p>
+              </div>
+
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 hover:border-purple-300 transition">
+                <div class="flex items-center justify-between font-bold text-slate-900">
+                  <span>15. CAESAR (Mã hóa xoay vòng K bước)</span>
+                  <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">(c-'a'+K)%26</span>
+                </div>
+                <p class="text-[11px] text-slate-600">Dịch chuyển mỗi chữ cái trong xâu đi $K$ bước ($K \le 10^9$) theo bảng mã ASCII xoay vòng.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <i data-lucide="bot" class="w-5 h-5 text-purple-600"></i>
+            <span class="text-purple-950 font-semibold">Bí ý tưởng hoặc gặp lỗi Run-time Error khi giải 15 bài trên?</span>
+          </div>
+          <button onclick="askHwQuestion('Thầy ơi, hướng dẫn em ý tưởng và cách cài đặt bài OVERFLOW và DIFFK trong C++ với ạ!')" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-xs transition flex items-center gap-1.5 shrink-0">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Hỏi Trợ Lý Sư Phạm AI
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- 7. VNOI WIKI HUB: LIÊN KẾT TRA CỨU CHUYÊN SÂU -->
+      <!-- ========================================== -->
+      <div id="cd1-vnoi" class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 text-white shadow-md space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+            <h3 class="font-extrabold text-base text-white flex items-center gap-2">
+              <i data-lucide="external-link" class="w-5 h-5 text-amber-400"></i> Cổng Tra Cứu Chuyên Sâu VNOI Wiki (Dành Cho Học Sinh Đọc Thêm)
+            </h3>
+          </div>
+          <a href="https://wiki.vnoi.info/roadmap/general-roadmap" target="_blank" class="px-3 py-1 bg-amber-400 text-slate-900 text-xs font-bold rounded-lg hover:bg-amber-300 transition flex items-center gap-1 shrink-0">
+            VNOI General Roadmap <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <p class="text-slate-300 text-xs leading-relaxed">
+          VNOI Wiki là bách khoa toàn thư lập trình thi đấu chuẩn xác nhất Việt Nam. Khi cần đọc sâu về chứng minh toán học và các biến thể nâng cao, em có thể bấm trực tiếp vào các liên kết chuyên đề dưới đây:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <a href="https://wiki.vnoi.info/vi/algo/basic/computational-complexity" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="clock" class="w-4 h-4 text-emerald-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Độ Phức Tạp Thuật Toán (Big-O)</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Phân tích thời gian, không gian, ước lượng giới hạn máy chấm.</div>
+            </div>
+          </a>
+
+          <a href="https://wiki.vnoi.info/vi/algo/basic/sorting-new" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="arrow-up-narrow-wide" class="w-4 h-4 text-blue-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Thuật Toán Sắp Xếp &amp; Counting Sort</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Quick Sort, Merge Sort, Counting Sort không so sánh.</div>
+            </div>
+          </a>
+
+          <a href="https://wiki.vnoi.info/vi/algo/trick/Roi-rac-hoa-va-ung-dung" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="shrink" class="w-4 h-4 text-purple-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Rời Rạc Hóa (Nén Số Tọa Độ)</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Nén giá trị lớn về [1, N] để dùng với mảng đếm tần số.</div>
+            </div>
+          </a>
+
+          <a href="https://wiki.vnoi.info/vi/algo/algebra/euclid" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="binary" class="w-4 h-4 text-amber-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Modulo &amp; Thuật Toán Euclid GCD</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Tìm ước chung lớn nhất O(log N) và các tính chất đồng dư.</div>
+            </div>
+          </a>
+
+          <a href="https://wiki.vnoi.info/vi/algo/basic/two-pointers" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="git-merge" class="w-4 h-4 text-rose-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Kỹ Thuật Hai Con Trỏ (Two Pointers)</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Duyệt mảng và xâu đối xứng trong O(N) thay cho O(N^2).</div>
+            </div>
+          </a>
+
+          <a href="https://wiki.vnoi.info/vi/translate/topcoder/Planning-an-Approach-to-a-Topcoder-Problem-Part-1" target="_blank" class="p-3 bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition flex items-start gap-2.5 group">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-teal-400 mt-0.5 group-hover:scale-110 transition"></i>
+            <div>
+              <div class="font-bold text-white group-hover:text-amber-300 transition">Tư Duy Vét Cạn Brute Force &amp; Test Biên</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Cách tiếp cận bài toán thi đấu và viết code ăn trọn subtask.</div>
+            </div>
+          </a>
+        </div>
       </div>
 
     </section>
