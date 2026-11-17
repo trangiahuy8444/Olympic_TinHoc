@@ -4338,7 +4338,7 @@ int main() {
     <!-- ========================================== -->
     <!-- CHẶNG 2: THƯ VIỆN STL & KỸ THUẬT SƠ CẤP     -->
     <!-- ========================================== -->
-    <section id="content-chuyen-de-2" class="tab-content hidden space-y-8 animate-fadeIn">
+    <section id="content-chuyen-de-2" class="tab-content block space-y-8 animate-fadeIn">
       
       <!-- HERO BANNER: CHẶNG 2 -->
       <div class="rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-4">
@@ -9442,7 +9442,11 @@ int main() {
 
     function handleHashNavigation() {
       const rawHash = (window.location.hash || '').replace('#', '');
-      if (!rawHash) return;
+      if (!rawHash) {
+        const anyBlock = document.querySelector('.tab-content.block');
+        if (!anyBlock) switchTab('chuyen-de-2');
+        return;
+      }
 
       // 1. Kiểm tra nếu rawHash là ID của một element trong DOM (như cd1-template, cd1-bigo, ...)
       const targetEl = document.getElementById(rawHash);
@@ -11197,6 +11201,9 @@ int main() {
     // Chạy kích hoạt tức thì không chờ đợi
     triggerKaTeXAuto();
     initAllSimulations();
+    if (!window.location.hash) {
+      switchTab('chuyen-de-2');
+    }
     handleHashNavigation();
     setTimeout(handleHashNavigation, 80);
     setTimeout(handleHashNavigation, 250);
