@@ -1383,7 +1383,7 @@ int main() {
     <!-- ============================================================== -->
     <!-- CHUYÊN ĐỀ 1: CÚ PHÁP C++17, FAST I/O & BẪY PHÒNG THI -->
     <!-- ============================================================== -->
-            <section id="content-chuyen-de-1" class="tab-content hidden space-y-8 animate-fadeIn">
+                <section id="content-chuyen-de-1" class="tab-content hidden space-y-8 animate-fadeIn">
       
       <!-- HERO BANNER: SỔ TAY NỀN TẢNG C++ THI ĐẤU -->
       <div class="rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-ahs-primary p-6 sm:p-8 text-white shadow-lg space-y-4">
@@ -2035,7 +2035,7 @@ for (int i = 0; i &lt; n; i++) {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-1" class="language-cpp">#include <iostream>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-1" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -2048,9 +2048,9 @@ int main() {
     #endif
 
     long long a, b, c;
-    if (cin >> a >> b >> c) {
+    if (cin &gt;&gt; a &gt;&gt; b &gt;&gt; c) {
         long long ans = (1LL * (a % c) * (b % c)) % c;
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2182,7 +2182,7 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-2" class="language-cpp">#include <iostream>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-2" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 int main() {
@@ -2195,9 +2195,9 @@ int main() {
     #endif
 
     long long n, k;
-    if (cin >> n >> k) {
+    if (cin &gt;&gt; n &gt;&gt; k) {
         long long ans = (n + k - 1) / k;
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2329,8 +2329,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-3" class="language-cpp">#include <iostream>
-#include <numeric>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-3" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;numeric&gt;
 using namespace std;
 
 int main() {
@@ -2343,9 +2343,9 @@ int main() {
     #endif
 
     long long a, b;
-    if (cin >> a >> b) {
+    if (cin &gt;&gt; a &gt;&gt; b) {
         long long g = std::gcd(a, b);
-        cout << (a / g) << " " << (b / g) << "\n";
+        cout &lt;&lt; (a / g) &lt;&lt; " " &lt;&lt; (b / g) &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2477,8 +2477,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-4" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-4" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
 int main() {
@@ -2491,12 +2491,12 @@ int main() {
     #endif
 
     string s;
-    if (cin >> s) {
+    if (cin &gt;&gt; s) {
         long long sum = 0;
         for (char c : s) {
             sum += (c - '0');
         }
-        cout << sum << "\n";
+        cout &lt;&lt; sum &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2628,7 +2628,7 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-5" class="language-cpp">#include <iostream>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-5" class="language-cpp">#include &lt;iostream&gt;
 using namespace std;
 
 const long long MOD = 1e9 + 7;
@@ -2643,7 +2643,7 @@ int main() {
     #endif
 
     long long n;
-    if (cin >> n) {
+    if (cin &gt;&gt; n) {
         long long a, b;
         if (n % 2 == 0) {
             a = (n / 2) % MOD;
@@ -2653,7 +2653,7 @@ int main() {
             b = ((n + 1) / 2) % MOD;
         }
         long long ans = (a * b) % MOD;
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2786,8 +2786,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-6" class="language-cpp">#include <iostream>
-#include <vector>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-6" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
 
 const int MAX_VAL = 2000005;
@@ -2804,16 +2804,16 @@ int main() {
 
     int n;
     long long k;
-    if (cin >> n >> k) {
-        vector<long long> a(n);
+    if (cin &gt;&gt; n &gt;&gt; k) {
+        vector&lt;long long&gt; a(n);
         long long ans = 0;
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-            if (a[i] + k < MAX_VAL) ans += cnt[a[i] + k];
-            if (k != 0 && a[i] - k >= 0) ans += cnt[a[i] - k];
+        for (int i = 0; i &lt; n; i++) {
+            cin &gt;&gt; a[i];
+            if (a[i] + k &lt; MAX_VAL) ans += cnt[a[i] + k];
+            if (k != 0 &amp;&amp; a[i] - k &gt;= 0) ans += cnt[a[i] - k];
             cnt[a[i]]++;
         }
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -2946,8 +2946,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-7" class="language-cpp">#include <iostream>
-#include <vector>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-7" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
 
 const int MAX_VAL = 1000005;
@@ -2963,20 +2963,20 @@ int main() {
     #endif
 
     int n;
-    if (cin >> n) {
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+    if (cin &gt;&gt; n) {
+        vector&lt;int&gt; a(n);
+        for (int i = 0; i &lt; n; i++) {
+            cin &gt;&gt; a[i];
             cnt[a[i]]++;
         }
         int ans = -1;
         for (int x : a) {
-            if (cnt[x] > n / 2) {
+            if (cnt[x] &gt; n / 2) {
                 ans = x;
                 break;
             }
         }
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -3109,8 +3109,8 @@ silent</pre>
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-8" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-8" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
 int main() {
@@ -3123,9 +3123,9 @@ int main() {
     #endif
 
     string s, t;
-    if (cin >> s >> t) {
+    if (cin &gt;&gt; s &gt;&gt; t) {
         if (s.size() != t.size()) {
-            cout << "NO\n";
+            cout &lt;&lt; "NO\n";
             return 0;
         }
         int cnt[26] = {0};
@@ -3133,13 +3133,13 @@ int main() {
         for (char c : t) cnt[c - 'a']--;
 
         bool ok = true;
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i &lt; 26; i++) {
             if (cnt[i] != 0) {
                 ok = false;
                 break;
             }
         }
-        cout << (ok ? "YES\n" : "NO\n");
+        cout &lt;&lt; (ok ? "YES\n" : "NO\n");
     }
     return 0;
 }</code></pre>
@@ -3272,8 +3272,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-9" class="language-cpp">#include <iostream>
-#include <vector>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-9" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
 
 int main() {
@@ -3286,18 +3286,18 @@ int main() {
     #endif
 
     int n;
-    if (cin >> n) {
-        vector<bool> mark(n + 2, false);
-        for (int i = 0; i < n; i++) {
+    if (cin &gt;&gt; n) {
+        vector&lt;bool&gt; mark(n + 2, false);
+        for (int i = 0; i &lt; n; i++) {
             long long x;
-            cin >> x;
-            if (x <= n) {
+            cin &gt;&gt; x;
+            if (x &lt;= n) {
                 mark[x] = true;
             }
         }
-        for (int i = 0; i <= n + 1; i++) {
+        for (int i = 0; i &lt;= n + 1; i++) {
             if (!mark[i]) {
-                cout << i << "\n";
+                cout &lt;&lt; i &lt;&lt; "\n";
                 break;
             }
         }
@@ -3435,8 +3435,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-10" class="language-cpp">#include <iostream>
-#include <vector>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-10" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
 using namespace std;
 
 int main() {
@@ -3449,21 +3449,21 @@ int main() {
     #endif
 
     int n;
-    if (cin >> n) {
-        vector<vector<long long>> a(n, vector<long long>(n));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                cin >> a[i][j];
+    if (cin &gt;&gt; n) {
+        vector&lt;vector&lt;long long&gt;&gt; a(n, vector&lt;long long&gt;(n));
+        for (int i = 0; i &lt; n; i++) {
+            for (int j = 0; j &lt; n; j++) {
+                cin &gt;&gt; a[i][j];
             }
         }
         long long sum = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i &lt; n; i++) {
             sum += a[i][i];
             if (i != n - 1 - i) {
                 sum += a[i][n - 1 - i];
             }
         }
-        cout << sum << "\n";
+        cout &lt;&lt; sum &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -3595,12 +3595,12 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-11" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-11" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
-bool isPalinRange(const string &s, int l, int r) {
-    while (l < r) {
+bool isPalinRange(const string &amp;s, int l, int r) {
+    while (l &lt; r) {
         if (s[l] != s[r]) return false;
         l++; r--;
     }
@@ -3617,17 +3617,17 @@ int main() {
     #endif
 
     string s;
-    if (cin >> s) {
+    if (cin &gt;&gt; s) {
         int l = 0, r = s.size() - 1;
         bool ok = true;
-        while (l < r) {
+        while (l &lt; r) {
             if (s[l] != s[r]) {
                 ok = isPalinRange(s, l + 1, r) || isPalinRange(s, l, r - 1);
                 break;
             }
             l++; r--;
         }
-        cout << (ok ? "YES\n" : "NO\n");
+        cout &lt;&lt; (ok ? "YES\n" : "NO\n");
     }
     return 0;
 }</code></pre>
@@ -3762,10 +3762,10 @@ tin</pre>
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-12" class="language-cpp">#include <iostream>
-#include <string>
-#include <sstream>
-#include <set>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-12" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;set&gt;
 using namespace std;
 
 int main() {
@@ -3781,12 +3781,12 @@ int main() {
     if (getline(cin, s)) {
         stringstream ss(s);
         string word;
-        set<string> dict;
-        while (ss >> word) {
+        set&lt;string&gt; dict;
+        while (ss &gt;&gt; word) {
             dict.insert(word);
         }
-        for (const string &w : dict) {
-            cout << w << "\n";
+        for (const string &amp;w : dict) {
+            cout &lt;&lt; w &lt;&lt; "\n";
         }
     }
     return 0;
@@ -3919,8 +3919,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-13" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-13" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
 int main() {
@@ -3933,15 +3933,15 @@ int main() {
     #endif
 
     string s;
-    if (cin >> s) {
+    if (cin &gt;&gt; s) {
         int n = s.size();
-        for (int i = 0; i < n; ) {
+        for (int i = 0; i &lt; n; ) {
             int j = i;
-            while (j < n && s[j] == s[i]) j++;
-            cout << s[i] << (j - i);
+            while (j &lt; n &amp;&amp; s[j] == s[i]) j++;
+            cout &lt;&lt; s[i] &lt;&lt; (j - i);
             i = j;
         }
-        cout << "\n";
+        cout &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -4074,8 +4074,8 @@ ATG</pre>
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-14" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-14" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
 int main() {
@@ -4088,15 +4088,15 @@ int main() {
     #endif
 
     string s, t;
-    if (cin >> s >> t) {
+    if (cin &gt;&gt; s &gt;&gt; t) {
         int cnt = 0;
         int n = s.size();
-        for (int i = 0; i + 2 < n; i++) {
-            if (s[i] == t[0] && s[i+1] == t[1] && s[i+2] == t[2]) {
+        for (int i = 0; i + 2 &lt; n; i++) {
+            if (s[i] == t[0] &amp;&amp; s[i+1] == t[1] &amp;&amp; s[i+2] == t[2]) {
                 cnt++;
             }
         }
-        cout << cnt << "\n";
+        cout &lt;&lt; cnt &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -4229,8 +4229,8 @@ int main() {
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i> Sao chép
                   </button>
                 </div>
-                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-15" class="language-cpp">#include <iostream>
-#include <string>
+                <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="code-prob-15" class="language-cpp">#include &lt;iostream&gt;
+#include &lt;string&gt;
 using namespace std;
 
 int main() {
@@ -4244,16 +4244,16 @@ int main() {
 
     string s;
     long long k;
-    if (getline(cin, s) && cin >> k) {
+    if (getline(cin, s) &amp;&amp; cin &gt;&gt; k) {
         int step = k % 26;
-        for (char &c : s) {
-            if (c >= 'a' && c <= 'z') {
+        for (char &amp;c : s) {
+            if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') {
                 c = (c - 'a' + step) % 26 + 'a';
-            } else if (c >= 'A' && c <= 'Z') {
+            } else if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') {
                 c = (c - 'A' + step) % 26 + 'A';
             }
         }
-        cout << s << "\n";
+        cout &lt;&lt; s &lt;&lt; "\n";
     }
     return 0;
 }</code></pre>
@@ -8368,6 +8368,23 @@ int main() {
       }
     }
 
+        function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        const parentSection = el.closest('.tab-content');
+        if (parentSection && parentSection.classList.contains('hidden')) {
+          const parentTabId = parentSection.id.replace('content-', '');
+          switchTab(parentTabId);
+        }
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+        if (history.replaceState) {
+          history.replaceState(null, null, '#' + id);
+        }
+      }
+    }
+
     function handleHashNavigation() {
       const rawHash = (window.location.hash || '').replace('#', '');
       if (!rawHash) return;
@@ -8473,7 +8490,7 @@ int main() {
       });
     }
 
-        function switchTab(tabId) {
+            function switchTab(tabId) {
       // Điều hướng tương thích ngược (Redirects)
       if (tabId === 'buoi-1') tabId = 'handbook';
       if (tabId === 'formula') tabId = 'handbook';
@@ -10121,6 +10138,8 @@ int main() {
     triggerKaTeXAuto();
     initAllSimulations();
     handleHashNavigation();
+    setTimeout(handleHashNavigation, 80);
+    setTimeout(handleHashNavigation, 250);
   </script>
 
 </body>
