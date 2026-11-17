@@ -4142,9 +4142,7 @@ void bfs(int start_node) {
       queryPrefixSimSession();
     }
 
-    function renderMath() {
-      triggerKaTeXAuto();
-    }
+    // renderMath() is defined globally at line ~1038
 
     // ============================================================
     // MÔ PHỎNG 4: MẢNG HIỆU (DIFFERENCE ARRAY)
@@ -5200,10 +5198,49 @@ int main() {
     }
 
     function formatBotMessage(str) {
-      return str
-        .replace(/\n/g, "<br>")
-        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/`(.*?)`/g, "<code class=\"bg-slate-100 text-blue-700 px-1 py-0.5 rounded font-mono font-bold\">$1</code>");
+      if (!str) return '';
+      // Code blocks
+      let formatted = str.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+        return `<pre class="bg-slate-900 text-emerald-300 p-2.5 rounded-xl font-mono text-[11px] overflow-x-auto my-2 border border-slate-800"><code>${escapeHtml(code.trim())}</code></pre>`;
+      });
+
+      // Line-by-line markdown
+      let lines = formatted.split('\n');
+      let out = [];
+      for (let line of lines) {
+        let trimmed = line.trim();
+        if (/^###\s+/.test(trimmed)) {
+          out.push(`<h4 class="font-extrabold text-slate-900 text-xs mt-2.5 mb-1 flex items-center gap-1.5 text-ahs-primary">${trimmed.replace(/^###\s+/, '')}</h4>`);
+        } else if (/^##\s+/.test(trimmed)) {
+          out.push(`<h3 class="font-black text-slate-900 text-sm mt-3 mb-1.5 flex items-center gap-1.5 text-ahs-primary">${trimmed.replace(/^##\s+/, '')}</h3>`);
+        } else if (/^---+$/.test(trimmed)) {
+          out.push(`<hr class="my-2 border-slate-200">`);
+        } else if (/^>\s+/.test(trimmed)) {
+          out.push(`<div class="border-l-2 border-ahs-primary pl-2.5 my-1.5 text-slate-600 bg-slate-50 py-1 rounded-r-lg italic text-[11px]">${trimmed.replace(/^>\s+/, '')}</div>`);
+        } else if (/^[\*\-]\s+/.test(trimmed)) {
+          out.push(`<div class="flex items-start gap-1.5 my-0.5"><span class="text-ahs-primary font-bold">•</span><span>${trimmed.replace(/^[\*\-]\s+/, '')}</span></div>`);
+        } else if (/^\d+\.\s+/.test(trimmed)) {
+          const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+          if (numMatch) {
+            out.push(`<div class="flex items-start gap-1.5 my-0.5"><span class="font-bold text-slate-700 font-mono">${numMatch[1]}.</span><span>${numMatch[2]}</span></div>`);
+          } else {
+            out.push(line);
+          }
+        } else if (trimmed === '') {
+          out.push('<div class="h-1"></div>');
+        } else {
+          out.push(line);
+        }
+      }
+
+      formatted = out.join('<br>');
+
+      // Inline markdown
+      formatted = formatted
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900">$1</strong>')
+        .replace(/`(.*?)`/g, '<code class="bg-slate-100 text-blue-700 px-1 py-0.5 rounded font-mono font-bold text-[11px]">$1</code>');
+
+      return formatted;
     }
 
     function generateInternalSocraticResponse(userQuery) {
