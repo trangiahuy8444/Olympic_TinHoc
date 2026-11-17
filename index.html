@@ -555,7 +555,7 @@
               </li>
               <li class="flex items-start gap-2">
                 <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5"></i>
-                <span><strong>Giới hạn thời gian:</strong> 1.0 giây / test ($pprox 10^8$ phép tính cơ bản). Bộ nhớ: 256 MB.</span>
+                <span><strong>Giới hạn thời gian:</strong> 1.0 giây / test ($\approx 10^8$ phép tính cơ bản). Bộ nhớ: 256 MB.</span>
               </li>
             </ul>
           </div>
@@ -1047,7 +1047,8 @@ int main() {
                 <span class="w-2 h-2 rounded-full bg-amber-500"></span> 2. Phép chia nguyên làm tròn lên
               </div>
               <p class="text-[11px] text-amber-800">
-                Cần tính $\lceil a / b ceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
+                Cần tính $\lceil a / b 
+\rceil$ (ví dụ xếp $N$ học sinh vào các phòng chứa $K$ người). Không dùng số thực <code>ceil((double)a/b)</code> vì dễ sai số float!<br>
                 💡 <strong>Công thức chuẩn thi đấu:</strong> <code>(a + b - 1) / b</code> với số nguyên dương.
               </p>
             </div>
@@ -1058,8 +1059,7 @@ int main() {
               </div>
               <p class="text-[11px] text-blue-800">
                 Lệnh <code>cout &lt;&lt; endl;</code> vừa xuống dòng vừa xóa bộ đệm (flush), gây chậm 50 lần khi in ra $10^5$ dòng.<br>
-                💡 <strong>Quy tắc thi đấu:</strong> Luôn dùng <code>cout &lt;&lt; "
-";</code>.
+                💡 <strong>Quy tắc thi đấu:</strong> Luôn dùng <code>cout &lt;&lt; "\n";</code>.
               </p>
             </div>
           </div>
@@ -1085,7 +1085,7 @@ int main() {
                 <span class="text-[10px] bg-slate-200 px-1.5 py-0.5 rounded font-mono">OVERFLOW.CPP</span>
               </div>
               <p class="text-slate-600 text-[11px]">
-                Cho 3 số nguyên $A, B, C$ ($1 \le A, B, C \le 10^9$). Hãy tính giá trị $P = (A 	imes B) \% C$. In ra $P$. Lưu ý $A 	imes B$ có thể lên đến $10^{18}$, phải dùng <code>1LL * A * B</code>!
+                Cho 3 số nguyên $A, B, C$ ($1 \le A, B, C \le 10^9$). Hãy tính giá trị $P = (A \times B) \% C$. In ra $P$. Lưu ý $A \times B$ có thể lên đến $10^{18}$, phải dùng <code>1LL * A * B</code>!
               </p>
             </div>
 
@@ -1902,7 +1902,7 @@ bool is_abnormal(const string &s, int k) {
           Số Nguyên Tố, Sàng Eratosthenes &amp; Thuật Toán Euclid GCD/LCM
         </h2>
         <p class="text-amber-100 text-xs sm:text-sm max-w-4xl leading-relaxed">
-          Làm chủ kỹ thuật kiểm tra số nguyên tố $O(\sqrt{N})$, sàng mảng lớn $10^7$ trong $O(N \log \log N)$ và ứng dụng tính chất $x \cdot y = \gcd(x, y) \cdot 	ext{lcm}(x, y)$.
+          Làm chủ kỹ thuật kiểm tra số nguyên tố $O(\sqrt{N})$, sàng mảng lớn $10^7$ trong $O(N \log \log N)$ và ứng dụng tính chất $x \cdot y = \gcd(x, y) \cdot \text{lcm}(x, y)$.
         </p>
       </div>
 
@@ -1920,10 +1920,11 @@ bool is_abnormal(const string &s, int k) {
 
         <div class="text-xs text-slate-700 leading-relaxed space-y-2">
           <p>
-            <strong>Đề bài tóm tắt:</strong> Cho hai số $a, b$. Tìm $x, y$ sao cho $\gcd(x, y) = a$, $	ext{lcm}(x, y) = b$ và tổng $x + y$ nhỏ nhất.
+            <strong>Đề bài tóm tắt:</strong> Cho hai số $a, b$. Tìm $x, y$ sao cho $\gcd(x, y) = a$, $\text{lcm}(x, y) = b$ và tổng $x + y$ nhỏ nhất.
           </p>
           <p>
-            <strong>Phương pháp tối ưu:</strong> Ta biết $x \cdot y = a \cdot b$. Đặt $x = a \cdot u, y = a \cdot v \implies u \cdot v = b/a$ với $\gcd(u, v) = 1$. Duyệt $u$ từ $\lfloor\sqrt{b/a}floor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tính!
+            <strong>Phương pháp tối ưu:</strong> Ta biết $x \cdot y = a \cdot b$. Đặt $x = a \cdot u, y = a \cdot v \implies u \cdot v = b/a$ với $\gcd(u, v) = 1$. Duyệt $u$ từ $\lfloor\sqrt{b/a}
+floor$ giảm dần về 1, thuật toán chỉ mất $O(\sqrt{b/a})$ phép tính!
           </p>
         </div>
 
@@ -2011,7 +2012,7 @@ int main() {
             Kỹ Thuật Tiền Xử Lý: Mảng Cộng Dồn (Prefix Sum 1D & 2D)
           </h2>
           <p class="text-purple-100 text-sm sm:text-base mt-1 max-w-4xl">
-            Vũ khí tối thượng xử lý $Q = 10^5$ câu hỏi tính tổng đoạn con liên tiếp từ $O(Q 	imes N)$ xuống $O(Q 	imes 1)$ tức thì dưới 1 giây.
+            Vũ khí tối thượng xử lý $Q = 10^5$ câu hỏi tính tổng đoạn con liên tiếp từ $O(Q \times N)$ xuống $O(Q \times 1)$ tức thì dưới 1 giây.
           </p>
         </div>
         <div class="shrink-0 flex items-center gap-2">
@@ -2080,7 +2081,7 @@ int main() {
               </h3>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Cho bảng số $N 	imes M$. Ta muốn tính tổng mọi phần tử trong hình chữ nhật con từ góc trái trên $(x_1, y_1)$ đến góc phải dưới $(x_2, y_2)$ trong đúng $O(1)$ phép tính.
+              Cho bảng số $N \times M$. Ta muốn tính tổng mọi phần tử trong hình chữ nhật con từ góc trái trên $(x_1, y_1)$ đến góc phải dưới $(x_2, y_2)$ trong đúng $O(1)$ phép tính.
             </p>
             <div class="space-y-2 text-xs">
               <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
@@ -2440,7 +2441,7 @@ int main() {
               <span class="text-xs font-mono bg-white px-2 py-1 rounded border border-slate-200 text-slate-600">RANGESUM.INP/OUT</span>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              Cho mảng $N$ phần tử và $Q$ truy vấn. Mỗi truy vấn gồm 2 số $L, R$. Hãy tính tổng các phần tử từ $L$ đến $R$. Giới hạn: $N, Q \le 10^5, A_i \le 10^9$. Bắt buộc dùng kiểu <code>long long</code> và mảng cộng dồn để đạt $O(Q 	imes 1)$.
+              Cho mảng $N$ phần tử và $Q$ truy vấn. Mỗi truy vấn gồm 2 số $L, R$. Hãy tính tổng các phần tử từ $L$ đến $R$. Giới hạn: $N, Q \le 10^5, A_i \le 10^9$. Bắt buộc dùng kiểu <code>long long</code> và mảng cộng dồn để đạt $O(Q \times 1)$.
             </p>
             <div class="grid grid-cols-2 gap-2 text-xs font-mono">
               <div class="p-2 bg-white rounded border border-slate-200">
@@ -2684,7 +2685,7 @@ cout &lt;&lt; max_so_far &lt;&lt; "
               </div>
               <p class="font-sans text-[11px] text-rose-800 leading-normal">
                 <strong>Ý nghĩa sư phạm:</strong> Sau khi hoàn tất tất cả $Q$ thao tác cập nhật, ta tính mảng cộng dồn trên $D$ để khôi phục toàn bộ mảng $A$ cuối cùng chỉ trong đúng 1 lần duyệt $O(N)$!
-                <br>Tổng chi phí thuật toán: $O(Q + N)$ thay vì $O(Q 	imes N)$!
+                <br>Tổng chi phí thuật toán: $O(Q + N)$ thay vì $O(Q \times N)$!
               </p>
             </div>
           </div>
@@ -3849,7 +3850,7 @@ int main() {
         <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
           <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">4</span>
           <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <i data-lucide="gauge" class="w-5 h-5 text-emerald-600"></i> Quy Tắc Vàng: 1 Giây $\approx 10^8$ Phép Tính & Bản Đồ Chọn Thuật Toán
+            <i data-lucide="gauge" class="w-5 h-5 text-emerald-600"></i> Quy Tắc Vàng: 1 Giây $\a\approx 10^8$ Phép Tính & Bản Đồ Chọn Thuật Toán
           </h3>
         </div>
 
@@ -3938,7 +3939,7 @@ int main() {
               <div class="font-bold text-emerald-700">int a[MAXN]; // Đặt ở vùng dữ liệu BSS, an toàn 100%</div>
             </div>
             <p class="text-slate-500">
-              $10^6$ số <code>int</code> $pprox 4	ext{MB}$; $10^7$ số <code>int</code> $pprox 40	ext{MB}$ (hoàn toàn an toàn trong giới hạn 256MB của phòng thi).
+              $10^6$ số <code>int</code> $\a\approx 4\text{MB}$; $10^7$ số <code>int</code> $\a\approx 40\text{MB}$ (hoàn toàn an toàn trong giới hạn 256MB của phòng thi).
             </p>
           </div>
 
@@ -4889,6 +4890,37 @@ void bfs(int start_node) {
         } else {
           card.style.display = 'none';
         }
+      });
+    }
+
+        // ============================================================
+    // BỘ ĐIỀU HƯỚNG TAB ĐỀ THI OLYMPIC CÁC NĂM
+    // ============================================================
+    function selectExamYear(year) {
+      document.querySelectorAll('.exam-panel').forEach(function(p) { p.classList.add('hidden'); });
+      ['2024-2025', '2025-2026', '2023'].forEach(function(y) {
+        var btn = document.getElementById('btn-exam-' + y);
+        if (btn) {
+          btn.className = "px-3.5 py-1.5 text-xs font-bold rounded-xl transition text-slate-600 hover:text-slate-900";
+        }
+      });
+      var activePanel = document.getElementById('exam-year-' + year);
+      if (activePanel) activePanel.classList.remove('hidden');
+      var activeBtn = document.getElementById('btn-exam-' + year);
+      if (activeBtn) {
+        activeBtn.className = "px-3.5 py-1.5 text-xs font-extrabold rounded-xl transition bg-white text-ahs-primary shadow-xs";
+      }
+      renderMath(activePanel);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function copyCode(codeId) {
+      var el = document.getElementById(codeId);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText).then(function() {
+        alert("Đã sao chép mã nguồn C++ vào bộ nhớ tạm!");
+      }).catch(function() {
+        alert("Đã chọn mã nguồn, Thầy/học sinh nhấn Ctrl+C để copy.");
       });
     }
 
@@ -6428,7 +6460,7 @@ int main() {
 
       // 7. TLE
       if (q.includes("tle") || q.includes("thoi gian") || q.includes("cham") || q.includes("qua gio") || q.includes("time limit")) {
-        return "⚡ **Chẩn đoán lỗi Time Limit Exceeded (TLE):**\n\n1. **Quy tắc vàng:** Máy chấm cho 1.0 giây $\\approx 10^8$ phép tính.\n2. Nếu $N = 10^5$, 2 vòng lặp lồng nhau là $O(N^2) = 10^{10}$ phép tính $\\implies$ **Chắc chắn dính TLE!**\n3. **Cách khắc phục:**\n   - Dùng **Mảng đếm** hoặc **Mảng cộng dồn** để chuyển về $O(N)$.\n   - Thêm `ios_base::sync_with_stdio(0); cin.tie(0);` vào đầu `main()`.\n   - Thay toàn bộ `endl` bằng `\\n`.";
+        return "⚡ **Chẩn đoán lỗi Time Limit Exceeded (TLE):**\n\n1. **Quy tắc vàng:** Máy chấm cho 1.0 giây $\\a\approx 10^8$ phép tính.\n2. Nếu $N = 10^5$, 2 vòng lặp lồng nhau là $O(N^2) = 10^{10}$ phép tính $\\implies$ **Chắc chắn dính TLE!**\n3. **Cách khắc phục:**\n   - Dùng **Mảng đếm** hoặc **Mảng cộng dồn** để chuyển về $O(N)$.\n   - Thêm `ios_base::sync_with_stdio(0); cin.tie(0);` vào đầu `main()`.\n   - Thay toàn bộ `endl` bằng `\\n`.";
       }
 
       // 8. Tràn số
